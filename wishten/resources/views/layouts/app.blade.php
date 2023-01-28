@@ -33,7 +33,7 @@
                 @if (Auth::user()->profile_pic != 'None')
                     <img src="{{ url('storage/'.Auth::user()->profile_pic) }}" alt="mdo" class="rounded-circle" width="32" height="32">
                 @else
-                    <img src="/storage/app/profile_pics/default.jpg" alt="mdo" class="rounded-circle" width="32" height="32">
+                    <img src="{{ url('storage/profile_pics/default.png') }}" alt="mdo" class="rounded-circle" width="32" height="32">
                 @endif
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
