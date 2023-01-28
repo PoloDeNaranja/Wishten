@@ -5,21 +5,7 @@
 
 @section('content')
 
-@if ($message = Session::get('success'))
-
-<div class="alert alert-info">
-    {{ $message }}
-</div>
-
-@endif
-
-@if ($message = Session::get('error'))
-
-<div class="alert alert-danger">
-    {{ $message }}
-</div>
-
-@endif
+@include('layouts.messages')
 
 <div class="row justify-content-center">
     <div class="col-md-4">

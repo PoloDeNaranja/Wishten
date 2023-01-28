@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +36,13 @@ Route::controller(AuthController::class)->group(function(){
 
     //Route::get()
 });
+
+Route::controller(ProfileController::class)->group(function(){
+
+    Route::get('profile', 'index')->name('profile');
+
+    Route::post('update_pic', 'update_pic')->name('profile.update_pic');
+
+});
+
+
