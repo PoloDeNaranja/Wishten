@@ -15,7 +15,6 @@ while True: #Hasta que el usuario que este grabando su pantalla decida parar de 
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)# convierto de  BGR to RGB porque c2v usa BGR def
     out.write(frame)#escribes cada frame que hay en el array 
     if keyboard.is_pressed("q"): #Aquí en verdad sería el boton que haya en la aplicación que tengamos en la web
-        print("q pressed, ending loop")
         break
 
 out.release()      
