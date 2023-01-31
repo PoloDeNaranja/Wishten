@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 //use League\Flysystem\WhitespacePathNormalizer;
 
-class ProfileController extends Controller
+class UserController extends Controller
 {
     function index() {
         return view('profile');
@@ -33,4 +33,16 @@ class ProfileController extends Controller
 
         return redirect('profile')->with('success', 'Picture uploaded');
     }
+
+    function update_info(Request $request) {
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
+
+        $user->update([
+            'email' =>  $request->email,
+            'name'  =>  $request->name
+        ]);
+    }
+
+
 }

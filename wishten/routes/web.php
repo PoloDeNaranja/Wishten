@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -37,7 +37,7 @@ Route::controller(AuthController::class)->group(function(){
     //Route::get()
 });
 
-Route::controller(ProfileController::class)->group(function(){
+Route::controller(UserController::class)->group(function(){
 
     Route::get('profile', 'index')->name('profile');
 
