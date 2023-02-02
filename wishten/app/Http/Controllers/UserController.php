@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-//use League\Flysystem\WhitespacePathNormalizer;
 
 class UserController extends Controller
 {
@@ -14,6 +13,7 @@ class UserController extends Controller
         return view('profile');
     }
 
+    // Cambia la foto de perfil y elimina la anterior
     function update_pic(Request $request) {
         $userId = Auth::id();
         $user = User::findOrFail($userId);
@@ -34,14 +34,45 @@ class UserController extends Controller
         return redirect('profile')->with('success', 'Picture uploaded');
     }
 
+    // Elimina la foto de perfil
+    function delete_pic(Request $request) {
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
+        if ($user->profile_pic != 'None') {
+            Storage::delete('public/'.$user->profile_pic);
+        }
+
+        $user->update([
+            'profile_pic'   =>  'None'
+        ]);
+        $user->updateTimestamps();
+
+        return redirect('profile')->with('success', 'Picture deleted');
+    }
+
+    // Actualiza el nombre y el correo del usuario
     function update_info(Request $request) {
         $userId = Auth::id();
         $user = User::findOrFail($userId);
+        $modification = $user->name !== $request->username || $user->email !== $request->email;
+        // si se ha modificado el nombre o el email, validamos los datos y actualizamos la base de datos
+        if($user->name !== $request->username) {
+            $request->validate(['username'  =>  ['string', 'max:255']]);
+            $user->update(['name'  =>  $request->username]);
+        }
+        if($user->email !== $request->email) {
+            $request->validate(['email'     =>  ['string', 'max:255', 'email', 'unique:'.User::class]]);
+            $user->update(['email' =>  $request->email]);
+        }
+        $user->updateTimestamps();
 
-        $user->update([
-            'email' =>  $request->email,
-            'name'  =>  $request->name
-        ]);
+        if($modification) {
+            return redirect('profile')->with('success', 'All changes were saved correctly');
+        }
+        else {
+            return redirect('profile')->with('success', 'No data was modified');
+        }
+
     }
 
 

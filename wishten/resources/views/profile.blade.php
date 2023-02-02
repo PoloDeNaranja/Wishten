@@ -25,29 +25,30 @@
         <button type="submit" class="btn btn-primary mb-3">Upload</button>
     </form>
 
-    <form action="">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" value="{{ Auth::user()->email }}">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" value="{{ Auth::user()->name }}">
+    <form action="{{ route('profile.delete_pic') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <button type="submit" class="btn btn-danger mb-3">Delete Picture</button>
     </form>
 
-<form action="">
-    <div class="form-group">
-        <label for="InputPassword">New Password</label>
-        <input type="password" class="form-control" name="password" id="InputPassword" placeholder="Enter password">
-        @if ($errors->has('password'))
-            <span class="text-danger">{{ $errors->first('password') }}</span>
-        @endif
-    </div>
-    <div class="form-group">
-        <label for="InputPasswordConfirmation">Confirm password</label>
-        <input type="password" class="form-control" name="password_confirmation" id="InputPasswordConfirmation" placeholder="Repeat password" required>
-        @if ($errors->has('password_confirmation'))
-            <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
-        @endif
-    </div>
-</form>
+    <form action="{{ route('profile.update_info') }}" method="POST">
+        @csrf
+        <div class="form-group">
+            <label for="InputUsername">User name</label>
+            <input type="text" class="form-control" name="username" id="InputUsername" value="{{ Auth::user()->name }}">
+            @if ($errors->has('username'))
+                <span class="text-danger">{{ $errors->first('username') }}</span>
+            @endif
+        </div>
+        <div class="form-group">
+            <label for="InputEmail">Email address</label>
+            <input type="email" class="form-control" name="email" id="InputEmail" aria-describedby="emailHelp" value="{{ Auth::user()->email }}">
+            @if ($errors->has('email'))
+                <span class="text-danger">{{ $errors->first('email') }}</span>
+            @endif
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">Save changes</button>
+    </form>
+
 
 </div>
 

@@ -43,6 +43,10 @@ Route::controller(UserController::class)->group(function(){
 
     Route::post('update_pic', 'update_pic')->name('profile.update_pic');
 
+    Route::post('update_info', 'update_info')->name('profile.update_info');
+
+    Route::post('delete_pic', 'delete_pic')->name('profile.delete_pic');
+
 });
 
 
