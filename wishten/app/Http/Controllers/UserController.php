@@ -6,11 +6,17 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rules;
+use Hash;
 
 class UserController extends Controller
 {
     function index() {
         return view('profile');
+    }
+
+    function privacy_security() {
+        return view('privacy-security');
     }
 
     // Cambia la foto de perfil y elimina la anterior
@@ -73,6 +79,30 @@ class UserController extends Controller
             return redirect('profile')->with('success', 'No data was modified');
         }
 
+    }
+
+    // Cambia la contraseña del usuario (logeado)
+    function change_password(Request $request) {
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
+        echo($userId);
+
+        $request->validate([
+            'old_password'  =>  'required',
+            'new_password'  =>  ['required', 'confirmed', Rules\Password::defaults()]
+        ]);
+
+        if(!Hash::check($request->old_password, $user->password)) {
+            return back()->with('error', 'Old password is not correct');
+        }
+        elseif(Hash::check($request->old_password, HASH::make($request->new_password))) {
+            return back()->with('error', 'You can\'t use the same password');
+        }
+
+        $user->update(['password' =>  Hash::make($request->new_password)]);
+        $user->updateTimestamps();
+
+        return back()->with('success', 'Your password was changed correctly');
     }
 
 

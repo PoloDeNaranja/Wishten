@@ -45,6 +45,7 @@
               <li><a class="dropdown-item" href="#">New project...</a></li>
               <li><a class="dropdown-item" href="#">Settings</a></li>
               <li><a class="dropdown-item" href="{{ route('profile') }}">Profile</a></li>
+              <li><a class="dropdown-item" href="{{ route('privacy-security') }}">Privacy and Security</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{{ 'logout' }}">Logout</a></li>
             </ul>

@@ -34,18 +34,21 @@ Route::controller(AuthController::class)->group(function(){
 
     Route::post('validate_login', 'validate_login')->name('auth.validate_login');
 
-    //Route::get()
 });
 
 Route::controller(UserController::class)->group(function(){
 
     Route::get('profile', 'index')->name('profile');
 
+    Route::get('privacy-security', 'privacy_security')->name('privacy-security');
+
     Route::post('update_pic', 'update_pic')->name('profile.update_pic');
 
     Route::post('update_info', 'update_info')->name('profile.update_info');
 
     Route::post('delete_pic', 'delete_pic')->name('profile.delete_pic');
+
+    Route::post('change_password', 'change_password')->name('profile.change_password');
 
 });
 
