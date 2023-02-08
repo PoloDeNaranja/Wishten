@@ -19,5 +19,3 @@ while True: #Hasta que el usuario que este grabando su pantalla decida parar de 
 
 out.release()      
 cv2.destroyAllWindows() #cierro todo 
-
-
