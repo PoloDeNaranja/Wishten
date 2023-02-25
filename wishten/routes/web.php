@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\AdminUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +17,12 @@ use App\Http\Controllers\UserController;
 |
 */
 
-
+// Ruta de Home
 Route::get('/', function () {
     return view('home');
 });
 
+// Rutas de Login y Registro
 Route::controller(AuthController::class)->group(function(){
 
     Route::get('login', 'index')->name('login');
@@ -36,7 +37,8 @@ Route::controller(AuthController::class)->group(function(){
 
 });
 
-Route::controller(UserController::class)->group(function(){
+// Rutas de Modificación de perfil
+Route::controller(UserController::class)->middleware('auth')->group(function(){
 
     Route::get('profile', 'index')->name('profile');
 
@@ -52,4 +54,15 @@ Route::controller(UserController::class)->group(function(){
 
 });
 
+// Rutas de Administración
+
+// Página de administración general
+Route::get('admin', function(){
+    return view('admin');
+})->middleware('auth', 'roles:admin');
+
+// Administración de usuarios
+Route::controller(AdminUserController::class)->middleware('auth', 'roles:admin')->group(function(){
+    Route::get('adminUsers', 'index')->name('adminUsers');
+});
 
