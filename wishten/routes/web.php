@@ -37,32 +37,40 @@ Route::controller(AuthController::class)->group(function(){
 
 });
 
-// Rutas de Modificación de perfil
-Route::controller(UserController::class)->middleware('auth')->group(function(){
+// Rutas que requieren autenticación
+Route::middleware('auth')->group(function () {
 
-    Route::get('profile', 'index')->name('profile');
+    // Rutas de Modificación de perfil
+    Route::controller(UserController::class)->group(function(){
 
-    Route::get('privacy-security', 'privacy_security')->name('privacy-security');
+        Route::get('profile', 'index')->name('profile');
 
-    Route::post('update_pic', 'update_pic')->name('profile.update_pic');
+        Route::get('privacy-security', 'privacy_security')->name('privacy-security');
 
-    Route::post('update_info', 'update_info')->name('profile.update_info');
+        Route::post('update_pic', 'update_pic')->name('profile.update_pic');
 
-    Route::post('delete_pic', 'delete_pic')->name('profile.delete_pic');
+        Route::post('update_info', 'update_info')->name('profile.update_info');
 
-    Route::post('change_password', 'change_password')->name('profile.change_password');
+        Route::post('delete_pic', 'delete_pic')->name('profile.delete_pic');
 
+        Route::post('change_password', 'change_password')->name('profile.change_password');
+
+    });
 });
 
+
+
 // Rutas de Administración
+Route::middleware('auth', 'roles:admin')->group(function () {
 
-// Página de administración general
-Route::get('admin', function(){
-    return view('admin');
-})->middleware('auth', 'roles:admin');
+    // Página de administración general
+    Route::get('admin', function(){
+        return view('admin');
+    });
 
-// Administración de usuarios
-Route::controller(AdminUserController::class)->middleware('auth', 'roles:admin')->group(function(){
-    Route::get('adminUsers', 'index')->name('adminUsers');
+    // Administración de usuarios
+    Route::controller(AdminUserController::class)->group(function(){
+        Route::get('adminUsers', 'index')->name('adminUsers');
+    });
 });
 
