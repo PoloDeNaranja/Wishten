@@ -9,6 +9,9 @@ use Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules;
+use App\Http\Requests\RegistrationRequest;
+use App\Http\Requests\LoginRequest;
+
 
 
 class AuthController extends Controller
@@ -21,13 +24,7 @@ class AuthController extends Controller
         return view('registration');
     }
 
-    function validate_registration(Request $request) {
-        $request->validate([
-            'username'  =>  ['required', 'string', 'max:255'],
-            'email'     =>  ['required', 'string', 'max:255', 'email', 'unique:'.User::class],
-            'password'  =>  ['required', 'confirmed', Rules\Password::defaults()]
-        ]);
-
+    function validate_registration(RegistrationRequest $request) {
         $data = $request->all();
 
         User::create([
@@ -39,12 +36,7 @@ class AuthController extends Controller
         return redirect('login')->with('success', 'Registration completed');
     }
 
-    function validate_login(Request $request) {
-        $request->validate([
-            'email'     =>  'required',
-            'password'  =>  'required',
-        ]);
-
+    function validate_login(LoginRequest $request) {
         $credentials = $request->only('email', 'password');
 
         if(Auth::attempt($credentials)) {
