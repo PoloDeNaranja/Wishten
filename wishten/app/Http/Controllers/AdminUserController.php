@@ -11,4 +11,22 @@ class AdminUserController extends Controller
         $users = User::all();
         return view('adminUsers')->with('users', $users);
     }
+
+    function addUser() {}
+
+    function deleteUser() {}
+
+    function setName() {}
+
+    function setEmail() {}
+
+    function setPassword() {}
+
+    function setRole() {}
+
+    function setPic() {}
+
+    function ban() {}
+
+
 }
