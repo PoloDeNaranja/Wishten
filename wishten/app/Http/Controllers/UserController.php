@@ -15,12 +15,12 @@ class UserController extends Controller
         return view('profile');
     }
 
-    function privacy_security() {
+    function privacySecurity() {
         return view('privacy-security');
     }
 
     // Cambia la foto de perfil y elimina la anterior
-    function update_pic(Request $request) {
+    function updatePic(Request $request) {
         $userId = Auth::id();
         $user = User::findOrFail($userId);
         if(!$request->hasFile('new_pic')) {
@@ -41,7 +41,7 @@ class UserController extends Controller
     }
 
     // Elimina la foto de perfil
-    function delete_pic(Request $request) {
+    function deletePic(Request $request) {
         $userId = Auth::id();
         $user = User::findOrFail($userId);
         if ($user->profile_pic != 'None') {
@@ -57,7 +57,7 @@ class UserController extends Controller
     }
 
     // Actualiza el nombre y el correo del usuario
-    function update_info(Request $request) {
+    function updateInfo(Request $request) {
         $userId = Auth::id();
         $user = User::findOrFail($userId);
         $modification = $user->name !== $request->username || $user->email !== $request->email;
@@ -82,7 +82,7 @@ class UserController extends Controller
     }
 
     // Cambia la contraseña del usuario (logeado)
-    function change_password(Request $request) {
+    function changePassword(Request $request) {
         $userId = Auth::id();
         $user = User::findOrFail($userId);
         echo($userId);

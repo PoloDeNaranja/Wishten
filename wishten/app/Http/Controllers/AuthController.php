@@ -24,7 +24,7 @@ class AuthController extends Controller
         return view('registration');
     }
 
-    function validate_registration(RegistrationRequest $request) {
+    function validateRegistration(RegistrationRequest $request) {
         $data = $request->all();
 
         User::create([
@@ -36,7 +36,7 @@ class AuthController extends Controller
         return redirect('login')->with('success', 'Registration completed');
     }
 
-    function validate_login(LoginRequest $request) {
+    function validateLogin(LoginRequest $request) {
         $credentials = $request->only('email', 'password');
 
         if(Auth::attempt($credentials)) {
