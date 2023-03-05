@@ -1,0 +1,40 @@
+body{
+    margin: 0;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    min-height: 60px;
+    background-color: rgb(33, 186, 66);
+    align-items: center;
+    padding: 10px;
+}
+a{
+    text-decoration: none;
+}
+.logo img{
+    align-items: center;
+    height: 40px;
+}
+nav a{
+    color:azure;
+    padding-left:10px;
+    
+}
+nav img{
+      border-radius: 50px;
+}
+
+nav a:hover{
+    color:black;
+}
+
+@media (max-width:600px){
+    header{
+        flex-direction: column;
+    }
+    nav{
+        padding: 10px;
+    }
+}
