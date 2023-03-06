@@ -8,8 +8,10 @@
 @endsection
 
 @section('content')
-
-    <div class="container">
+    @for ($i = 0; $i < 10; $i++)
+        <h1>HOME</h1>
+    @endfor
+    {{-- <div class="container">
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             @for ($i = 0; $i < 10; $i++)
@@ -38,7 +40,7 @@
                 </div>
             @endfor
         </div>
-    </div>
+    </div> --}}
 
 @endsection
 

@@ -1,0 +1,66 @@
+body{
+    margin: 0;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    min-height: 60px;
+    background-color: rgb(33, 186, 66);
+    align-items: center;
+    padding: 10px;
+}
+a{
+    text-decoration: none;
+}
+.logo img{
+    align-items: center;
+    height: 40px;
+}
+nav a{
+    color:azure;
+    padding-left:10px;
+
+}
+nav img{
+      border-radius: 50px;
+}
+
+nav a:hover{
+    color:black;
+}
+
+@media (max-width:600px){
+    header{
+        flex-direction: column;
+    }
+    nav{
+        padding: 10px;
+    }
+}
+
+/* Profile Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    right: 1px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.show {display: block;}
