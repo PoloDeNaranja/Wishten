@@ -2,6 +2,11 @@
 
 @section('title', 'Login')
 
+@section('header')
+@endsection
+
+@section('footer')
+@endsection
 
 @section('content')
 

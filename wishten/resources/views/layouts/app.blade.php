@@ -84,9 +84,9 @@
 
             <div class="info">
                 <h2>Wishten</h2>
-                <a href="#">Sobre nosotros</a>
-                <a href="#">Preguntas frecuentes</a>
-                <a href="#">Servicios</a>
+                <a href="#">About us</a>
+                <a href="#">FAQ</a>
+                <a href="#">Services</a>
             </div>
             <div class="redes">
             <a href="https://twitter.com" class="nav-link"></a>
@@ -105,7 +105,7 @@
                 </a>
             </div>
             <div class="cop">
-                <p class = "copyright"> &copy; 2023 por Wishten</p>
+                <p class = "copyright"> &copy; 2023 by Wishten</p>
             </div>
 
         </footer>

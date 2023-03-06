@@ -2,10 +2,6 @@
 
 @section('title', 'Home')
 
-@section('header')
-    @parent
-
-@endsection
 
 @section('content')
     @for ($i = 0; $i < 10; $i++)
@@ -44,6 +40,3 @@
 
 @endsection
 
-{{-- @section('footer')
-    @parent
-@endsection --}}
