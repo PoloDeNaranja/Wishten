@@ -12,7 +12,7 @@
     <form action="">
         <h1 class="titulo">Create your account!</h1>
         <label>
-            <i class="fa-solid fa-user"></i>
+           <i class="fa-solid fa-user"></i>
             <input placeholder="Enter your username" type="text">
         </label>
         <label>
