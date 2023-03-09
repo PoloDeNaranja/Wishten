@@ -10,13 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {{-- CSS --}}
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/appStyle.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url('/css/headerStyle.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url('/css/footerStyle.css') }}" />
 
 
     {{-- Scripts --}}
-    <script type="text/javascript" src="{{ url('/js/headerScript.js') }}"></script>
-    <script src="https://kit.fontawesome.com/0d34bde1b9.js" crossorigin="anonymous"></script>
+    <script async type="text/javascript" src="{{ url('/js/headerScript.js') }}"></script>
+    <script async src="https://kit.fontawesome.com/0d34bde1b9.js" crossorigin="anonymous"></script>
 
     {{-- Para añadir más ficheros CSS y JavaScript --}}
     @yield('css')
