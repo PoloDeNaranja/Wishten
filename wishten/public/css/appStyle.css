@@ -12,3 +12,24 @@ body{
 }
 
 
+.alert.error{
+    font-size: 14px;
+    border-radius: 7px;
+    color: darkred;
+    border: 2px solid darkred;
+    background-color: rgba(187, 33, 35, 0.541);
+    padding: 4px;
+    margin-bottom: 14px;
+}
+
+.alert.success{
+    font-size: 14px;
+    border-radius: 7px;
+    color: darkblue;
+    border: 2px solid darkblue;
+    background-color: lightblue;
+    padding: 4px;
+    margin-bottom: 14px;
+}
+
+

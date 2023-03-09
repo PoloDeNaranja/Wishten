@@ -1,6 +1,6 @@
 @if ($message = Session::get('success'))
 
-<div class="alert alert-info">
+<div class="alert success">
     {{ $message }}
 </div>
 
@@ -8,7 +8,7 @@
 
 @if ($message = Session::get('error'))
 
-<div class="alert alert-danger">
+<div class="alert error">
     {{ $message }}
 </div>
 
