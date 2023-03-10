@@ -54,7 +54,7 @@
                         @if (Auth::user()->profile_pic != 'None')
                             <img src="{{ url('storage/'.Auth::user()->profile_pic) }}" alt="mdo" class="dropbtn" width="32" height="32">
                         @else
-                            <img src="{{ url('storage/profile_pics/default.png') }}" alt="mdo" class="dropbtn" width="32" height="32">
+                            <i class="dropbtn fa fa-user-circle-o fa-xl" aria-hidden="true"></i>
                         @endif
                     </a>
                     <div id="myDropdown" class="dropdown-content">
