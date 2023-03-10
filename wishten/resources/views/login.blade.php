@@ -19,14 +19,14 @@
     <h1 class="title">Login</h1>
     <label>
         <i class="fa-solid fa-envelope"></i>
-        <input placeholder="e-mail" type="text" name="email" id="InputEmail">
+        <input placeholder="e-mail" type="text" name="email">
         @if ($errors->has('email'))
             <span class="error-text">{{ $errors->first('email') }}</span>
         @endif
     </label>
     <label>
         <i class="fa-solid fa-lock"></i>
-        <input placeholder="password" type="password" name="password" id="InputPassword">
+        <input placeholder="password" type="password" name="password">
         @if ($errors->has('password'))
             <span class="error-text">{{ $errors->first('password') }}</span>
         @endif

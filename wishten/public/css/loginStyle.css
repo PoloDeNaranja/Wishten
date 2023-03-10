@@ -46,6 +46,11 @@ form a{
     color: white;
     background-color: lightgreen;
     padding: 5px;
+    cursor: pointer;
+}
+
+.button-log:hover{
+    color:black;
 }
 
 .button-reg{
@@ -57,19 +62,8 @@ form a{
     padding: 4px;
 }
 
-.error-text{
-    font-size: 11px;
-    color: red;
-    display: block;
-}
-
-.container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-self: center;
-    justify-content: center;
-    height: 100%;
+.button-reg:hover{
+    background-color: lightgray;
 }
 
 .log{

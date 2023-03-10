@@ -60,11 +60,11 @@ class UserController extends Controller
     function updateInfo(Request $request) {
         $userId = Auth::id();
         $user = User::findOrFail($userId);
-        $modification = $user->name !== $request->username || $user->email !== $request->email;
+        $modification = $user->name !== $request->name || $user->email !== $request->email;
         // si se ha modificado el nombre o el email, validamos los datos y actualizamos la base de datos
-        if($user->name !== $request->username) {
-            $request->validate(['username'  =>  ['string', 'max:255']]);
-            $user->update(['name'  =>  $request->username]);
+        if($user->name !== $request->name) {
+            $request->validate(['name'  =>  ['string', 'max:255']]);
+            $user->update(['name'  =>  $request->name]);
         }
         if($user->email !== $request->email) {
             $request->validate(['email'     =>  ['string', 'max:255', 'email', 'unique:'.User::class]]);

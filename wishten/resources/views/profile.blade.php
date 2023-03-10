@@ -8,10 +8,10 @@
 @include('layouts.messages')
 
 @if (Auth::user()->profile_pic != 'None')
-                    <img src="{{ url('storage/'.Auth::user()->profile_pic) }}" alt="mdo" class="rounded-circle" width="50" height="50">
-                @else
-                    <img src="{{ url('storage/profile_pics/default.png') }}" alt="mdo" class="rounded-circle" width="50" height="50">
-                @endif
+    <img src="{{ url('storage/'.Auth::user()->profile_pic) }}" alt="mdo" class="rounded-circle" width="50" height="50">
+@else
+    <i class="dropbtn fa fa-user-circle-o fa-xl" aria-hidden="true"></i>
+@endif
 <p>Email: {{ Auth::user()->email }}</p>
 <p>Name: {{ Auth::user()->name }}</p>
 
@@ -33,10 +33,10 @@
     <form action="{{ route('profile.update_info') }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="InputUsername">User name</label>
-            <input type="text" class="form-control" name="username" id="InputUsername" value="{{ Auth::user()->name }}">
-            @if ($errors->has('username'))
-                <span class="text-danger">{{ $errors->first('username') }}</span>
+            <label for="InputName">User name</label>
+            <input type="text" class="form-control" name="name" id="InputName" value="{{ Auth::user()->name }}">
+            @if ($errors->has('name'))
+                <span class="text-danger">{{ $errors->first('name') }}</span>
             @endif
         </div>
         <div class="form-group">
