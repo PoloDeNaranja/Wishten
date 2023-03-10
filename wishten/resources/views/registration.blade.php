@@ -38,17 +38,17 @@
         <button type="button" style="margin-left: 10px" id="show-password">
             <i class="fa fa-eye" aria-hidden="true"></i>
         </button>
-       @if ($errors->has('password'))
+        @if ($errors->has('password'))
             <span class="error-text">{{ $errors->first('password') }}</span>
         @endif
     </label>
     <label>
         <i class="fa-solid fa-lock"></i>
         <input placeholder="Confirm password" type="password" name="password_confirmation" id="confirm" required>
-       <button type="button" style="margin-left: 13px" id="show">
+        <button type="button" style="margin-left: 10px" id="show">
             <i class="fa fa-eye" aria-hidden="true"></i>
         </button>
-       @if ($errors->has('password_confirmation'))
+        @if ($errors->has('password_confirmation'))
             <span class="error-text">{{ $errors->first('password_confirmation') }}</span>
         @endif
     </label>
