@@ -5,7 +5,6 @@
 3. Instalar las dependencias de Composer y NPM necesarias con los comandos:
     ```
     composer install
-    npm install
     ```
 4. Crear el fichero *.env* que define variables importantes para la configuración del proyecto, como por ejemplo las credenciales de la base de datos. Para ello crear una copia del fichero *.env.example* y llamarla *.env*.
 5. Generar una clave de encriptación para la aplicación. Laravel genera esta clave al crear un proyecto y la almacena en el fichero *.env*. Esta clave se usa para cifrar algunos elementos de la aplicación, como cookies, hashes de contraseñas, etc. Para ello, simplemente ejecutar el comando:

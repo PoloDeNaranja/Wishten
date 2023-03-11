@@ -2,20 +2,19 @@
 
 @section('title', 'Admin')
 
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/adminStyle.css') }}" />
+@endsection
 
 @section('content')
 
 @include('layouts.messages')
 
 
-<div class="mb-3">
+
     <h1>Administration</h1>
-    <a class="dropdown-item" href="{{ route('adminUsers') }}">Users Administration</a>
+    <a class="admin-element" href="{{ route('adminUsers') }}">Users Administration</a>
 
-
-
-
-</div>
 
 
 

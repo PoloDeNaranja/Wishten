@@ -1,0 +1,18 @@
+.container {
+    height: 500px;
+}
+
+
+.admin-element {
+    color: black;
+    text-decoration: none;
+    padding: 5px;
+    width: 80%;
+    text-align: center;
+
+}
+
+.admin-element:hover {
+    background-color: lightgray;
+
+}
