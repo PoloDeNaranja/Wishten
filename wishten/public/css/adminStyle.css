@@ -16,3 +16,17 @@
     background-color: lightgray;
 
 }
+
+.admin-list {
+    display: flex;
+    flex-direction: row;
+}
+
+.user-list-header {
+    word-spacing: 90px;
+}
+
+.user-data {
+    display: flex;
+    flex-direction: row;
+}

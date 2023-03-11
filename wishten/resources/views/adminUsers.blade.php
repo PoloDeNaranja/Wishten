@@ -8,50 +8,24 @@
 
 @section('content')
 
-@include('layouts.messages')
+    @include('layouts.messages')
 
-
-<div class="mb-3">
     <h1>Admin Users</h1>
-    <ul>
-        @foreach ($users as $user)
-        <form action="{{ route('profile.update_pic') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <input class="form-control" type="file" name="new_pic" id="new_pic" accept=".jpg,.jpeg,.png">
-            <button type="submit" class="btn btn-primary mb-3">Upload</button>
-        </form>
-
-        <form action="{{ route('profile.delete_pic') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <button type="submit" class="btn btn-danger mb-3">Delete Picture</button>
-        </form>
-
-        <form action="{{ route('profile.update_info') }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="InputName">User name</label>
-                <input type="text" class="form-control" name="name" id="InputName" value="{{ $user->name }}">
-                @if ($errors->has('name'))
-                    <span class="text-danger">{{ $errors->first('name') }}</span>
-                @endif
-            </div>
-            <div class="form-group">
-                <label for="InputEmail">Email address</label>
-                <input type="email" class="form-control" name="email" id="InputEmail" aria-describedby="emailHelp" value="{{ $user->email }}">
-                @if ($errors->has('email'))
-                    <span class="text-danger">{{ $errors->first('email') }}</span>
-                @endif
-            </div>
-            <button type="submit" class="btn btn-primary mb-3">Save changes</button>
-        </form>
-        @endforeach
-    </ul>
-
-
-</div>
-
-
-
+    @foreach ($users as $user)
+        <div class="user-data">
+            <form action="" method="post">
+                <input type="text" name="name" value="{{ $user->name }}">
+                <input type="text" name="email" value="{{ $user->email }}">
+                <select name="roles" id="roles" >
+                    <option value="admin">admin</option>
+                    <option value="standard">standard</option>
+                    <option value="company">company</option>
+                </select>
+                <button type="submit">Save changes</button>
+            </form>
+            <button>Ban</button>
+        </div>
+    @endforeach
 
 
 
