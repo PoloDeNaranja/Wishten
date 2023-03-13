@@ -7,7 +7,7 @@
 @endsection
 
 @section('js')
-    <script async type="text/javascript" src="{{ url('/js/registrationScript.js') }}"></script>
+    <script async type="text/javascript" src="{{ url('/js/showPassword.js') }}"></script>
 @endsection
 
 @section('header')

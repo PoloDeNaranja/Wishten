@@ -6,6 +6,10 @@
     <link rel="stylesheet" type="text/css" href="{{ url('/css/loginStyle.css') }}" />
 @endsection
 
+@section('js')
+    <script async type="text/javascript" src="{{ url('/js/showPassword.js') }}"></script>
+@endsection
+
 @section('header')
 @endsection
 
@@ -26,7 +30,10 @@
     </label>
     <label>
         <i class="fa-solid fa-lock"></i>
-        <input placeholder="password" type="password" name="password">
+        <input placeholder="password" type="password" name="password" id="password">
+        <button type="button" style="margin-left: 10px" id="show-password">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+        </button>
         @if ($errors->has('password'))
             <span class="error-text">{{ $errors->first('password') }}</span>
         @endif
