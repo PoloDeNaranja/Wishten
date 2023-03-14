@@ -34,14 +34,14 @@
         @csrf
         <div class="form-group">
             <label for="InputName">User name</label>
-            <input type="text" class="form-control" name="name" id="InputName" value="{{ Auth::user()->name }}">
+            <input type="text" class="form-control" name="name" id="InputName" value="{{ $user->name }}">
             @if ($errors->has('name'))
                 <span class="text-danger">{{ $errors->first('name') }}</span>
             @endif
         </div>
         <div class="form-group">
             <label for="InputEmail">Email address</label>
-            <input type="email" class="form-control" name="email" id="InputEmail" aria-describedby="emailHelp" value="{{ Auth::user()->email }}">
+            <input type="email" class="form-control" name="email" id="InputEmail" aria-describedby="emailHelp" value="{{ $user->email }}">
             @if ($errors->has('email'))
                 <span class="text-danger">{{ $errors->first('email') }}</span>
             @endif

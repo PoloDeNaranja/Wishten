@@ -66,7 +66,7 @@
                             <a class="dropdown-item" href="{{ 'admin' }}">Administration</a>
                         @endif
                         <hr>
-                        <a href="{{ 'logout' }}">Logout</a>
+                        <a href="{{ '/logout' }}">Logout</a>
                     </div>
                 </div>
             @endguest
