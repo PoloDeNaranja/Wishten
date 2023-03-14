@@ -19,12 +19,19 @@ class UserController extends Controller
         return view('privacy-security');
     }
 
+    function adminUsers() {
+        $users = User::all();
+        return view('adminUsers')->with('users', $users);
+    }
+
+    function userInfo(User $user) {
+        return view('userInfo')->with('user', $user);
+    }
+
     // Cambia la foto de perfil y elimina la anterior
-    function updatePic(Request $request) {
-        $userId = Auth::id();
-        $user = User::findOrFail($userId);
+    function updatePic(User $user, Request $request) {
         if(!$request->hasFile('new_pic')) {
-            return redirect('profile')->with('error', 'No file provided');
+            return back()->with('error', 'No file provided');
         }
         $path = $request->file('new_pic')->store('profile_pics', 'public');
 
@@ -37,13 +44,11 @@ class UserController extends Controller
         ]);
         $user->updateTimestamps();
 
-        return redirect('profile')->with('success', 'Picture uploaded');
+        return back()->with('success', 'Picture uploaded');
     }
 
     // Elimina la foto de perfil
-    function deletePic(Request $request) {
-        $userId = Auth::id();
-        $user = User::findOrFail($userId);
+    function deletePic(User $user, Request $request) {
         if ($user->profile_pic != 'None') {
             Storage::delete('public/'.$user->profile_pic);
         }
@@ -53,13 +58,11 @@ class UserController extends Controller
         ]);
         $user->updateTimestamps();
 
-        return redirect('profile')->with('success', 'Picture deleted');
+        return back()->with('success', 'Picture deleted');
     }
 
     // Actualiza el nombre y el correo del usuario
-    function updateInfo(Request $request) {
-        $userId = Auth::id();
-        $user = User::findOrFail($userId);
+    function updateInfo(User $user, Request $request) {
         $modification = $user->name !== $request->name || $user->email !== $request->email;
         // si se ha modificado el nombre o el email, validamos los datos y actualizamos la base de datos
         if($user->name !== $request->name) {
@@ -73,20 +76,16 @@ class UserController extends Controller
         $user->updateTimestamps();
 
         if($modification) {
-            return redirect('profile')->with('success', 'All changes were saved correctly');
+            return back()->with('success', 'All changes were saved correctly');
         }
         else {
-            return redirect('profile')->with('success', 'No data was modified');
+            return back()->with('success', 'No data was modified');
         }
 
     }
 
     // Cambia la contraseña del usuario (logeado)
-    function changePassword(Request $request) {
-        $userId = Auth::id();
-        $user = User::findOrFail($userId);
-        echo($userId);
-
+    function changePassword(User $user, Request $request) {
         $request->validate([
             'old_password'  =>  'required',
             'new_password'  =>  ['required', 'confirmed', Rules\Password::defaults()]

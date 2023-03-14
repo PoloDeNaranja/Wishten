@@ -47,13 +47,13 @@ Route::middleware('auth')->group(function () {
 
         Route::get('privacy-security', 'privacySecurity')->name('privacy-security');
 
-        Route::post('update_pic', 'updatePic')->name('profile.update_pic');
+        Route::post('update_pic/{user}', 'updatePic')->name('profile.update_pic');
 
-        Route::post('update_info', 'updateInfo')->name('profile.update_info');
+        Route::post('update_info/{user}', 'updateInfo')->name('profile.update_info');
 
-        Route::post('delete_pic', 'deletePic')->name('profile.delete_pic');
+        Route::post('delete_pic/{user}', 'deletePic')->name('profile.delete_pic');
 
-        Route::post('change_password', 'changePassword')->name('profile.change_password');
+        Route::post('change_password/{user}', 'changePassword')->name('profile.change_password');
 
     });
 });
@@ -69,8 +69,12 @@ Route::middleware('auth', 'roles:admin')->group(function () {
     });
 
     // Administración de usuarios
-    Route::controller(AdminUserController::class)->group(function(){
-        Route::get('adminUsers', 'index')->name('adminUsers');
+    Route::controller(UserController::class)->group(function(){
+
+        Route::get('adminUsers', 'adminUsers')->name('adminUsers');
+
+        Route::get('userInfo/{user}', 'userInfo')->name('userInfo');
+
     });
 });
 

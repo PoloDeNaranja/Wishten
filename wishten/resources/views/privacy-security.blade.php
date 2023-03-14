@@ -10,7 +10,7 @@
 
 <div class="mb-3">
     <div class="card-header">Change password</div>
-    <form action="{{ route('profile.change_password') }}" method="POST">
+    <form action="{{ route('profile.change_password', Auth::id()) }}" method="POST">
         @csrf
         <div class="form-group">
             <label for="InputOldPassword">Old Password</label>

@@ -12,8 +12,9 @@
 
     <h1>Admin Users</h1>
     @foreach ($users as $user)
-        <div class="user-data">
-            <form action="" method="post">
+        {{-- <div class="user-data">
+            <form action="{{ route('profile.update_info', Auth::id()) }}" method="post">
+                @csrf
                 <input type="text" name="name" value="{{ $user->name }}">
                 <input type="text" name="email" value="{{ $user->email }}">
                 <select name="roles" id="roles" >
@@ -24,7 +25,8 @@
                 <button type="submit">Save changes</button>
             </form>
             <button>Ban</button>
-        </div>
+        </div> --}}
+        <a href="{{ route('userInfo', $user->id) }}">{{ $user->name }}</a>
     @endforeach
 
 
