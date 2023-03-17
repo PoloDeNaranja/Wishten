@@ -29,6 +29,6 @@
     ```
     
 ## Paleta de colores
-     ```
+    
     https://colorhunt.co/palette/22577a38a3a557cc9980ed99
-    ```
+    
