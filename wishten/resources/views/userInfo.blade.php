@@ -49,6 +49,15 @@
         <button type="submit" class="btn btn-primary mb-3">Save changes</button>
     </form>
 
+    <form action="{{ route('adminUsers.ban', $user->id) }}" method="post">
+        @csrf
+        @if ($user->ban)
+            <button type="submit">Unban</button>
+        @else
+            <button type="submit">Ban</button>
+        @endif
+    </form>
+
 
 </div>
 

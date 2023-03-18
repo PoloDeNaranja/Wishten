@@ -104,5 +104,15 @@ class UserController extends Controller
         return back()->with('success', 'Your password was changed correctly');
     }
 
+    // Si el usuario tiene ban, se lo quita y viceversa
+    function ban(User $user) {
+        if($user->ban) {
+            $user->update(['ban' =>  0]);
+            return back()->with('success', 'The user '.$user->name.' was unbanned!');
+        }
+        $user->update(['ban' =>  1]);
+        return back()->with('success', 'The user '.$user->name.' was banned!');
+    }
+
 
 }

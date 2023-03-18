@@ -75,6 +75,8 @@ Route::middleware('auth', 'roles:admin')->group(function () {
 
         Route::get('userInfo/{user}', 'userInfo')->name('userInfo');
 
+        Route::post('ban/{user}', 'ban')->name('adminUsers.ban');
+
     });
 });
 
