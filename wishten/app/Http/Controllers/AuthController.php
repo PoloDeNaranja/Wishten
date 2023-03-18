@@ -39,11 +39,10 @@ class AuthController extends Controller
     function validateLogin(LoginRequest $request) {
         $credentials = $request->only('email', 'password');
 
-        if(User::where('email', $request->email)->first()->ban) {
-            return back()->with('error', 'Your account was banned! Please contact the administrators.');
-        }
-
         if(Auth::attempt($credentials)) {
+            if(User::where('email', $request->email)->first()->ban) {
+                return back()->with('error', 'Your account was banned! Please contact the administrators.');
+            }
             return redirect('/');
         }
 
