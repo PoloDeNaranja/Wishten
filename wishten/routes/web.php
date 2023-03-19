@@ -62,7 +62,9 @@ Route::middleware('auth')->group(function () {
 
         Route::get('watch/{video}', 'watch')->name('video.watch');
 
-        Route::get('new_video', 'newVideo')->name('new-video');
+        Route::get('new-video', 'newVideo')->name('new-video');
+
+        Route::get('my-videos', 'myVideos')->name('my-videos');
 
         Route::post('upload/{user}', 'upload')->name('video.upload');
 
