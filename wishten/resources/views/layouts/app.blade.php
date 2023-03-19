@@ -58,7 +58,7 @@
                         @endif
                     </a>
                     <div id="myDropdown" class="dropdown-content">
-                        <a href="#">New project...</a>
+                        <a href="{{ route('new-video') }}">New video...</a>
                         <a href="#">Settings</a>
                         <a href="{{ route('profile') }}">Profile</a>
                         <a href="{{ route('privacy-security') }}">Privacy and Security</a>

@@ -34,5 +34,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'user@user.user',
             'password' => Hash::make('user'),
         ]);
+
+        DB::table('subjects')->insert([
+            'name'  =>  'Uncategorized'
+        ]);
     }
 }

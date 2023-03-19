@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\VideoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +54,17 @@ Route::middleware('auth')->group(function () {
         Route::post('delete_pic/{user}', 'deletePic')->name('profile.delete_pic');
 
         Route::post('change_password/{user}', 'changePassword')->name('profile.change_password');
+
+    });
+
+    // Rutas de gestión de vídeos
+    Route::controller(VideoController::class)->group(function(){
+
+        Route::get('watch/{video}', 'watch')->name('video.watch');
+
+        Route::get('new_video', 'newVideo')->name('new-video');
+
+        Route::post('upload/{user}', 'upload')->name('video.upload');
 
     });
 });
