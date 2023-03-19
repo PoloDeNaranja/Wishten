@@ -63,7 +63,7 @@
                         <a href="{{ route('profile') }}">Profile</a>
                         <a href="{{ route('privacy-security') }}">Privacy and Security</a>
                         @if (Auth::user()->role == 'admin')
-                            <a class="dropdown-item" href="{{ 'admin' }}">Administration</a>
+                            <a class="dropdown-item" href="{{ '/admin' }}">Administration</a>
                         @endif
                         <hr>
                         <a href="{{ '/logout' }}">Logout</a>
