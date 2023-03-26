@@ -1,5 +1,5 @@
 body{
-    background-color: lightgreen;
+    background-color: #38A3A5;
     height: 100%;
 }
 form{
@@ -23,7 +23,7 @@ form label{
 form label .fa-solid{
     margin-right: 10px;
     font-size: 20px;
-    color: chartreuse;
+    color: #57CC99;
 }
 
 form label input{
@@ -44,13 +44,13 @@ form a{
     border-radius: 8px;
     border: none;
     color: white;
-    background-color: lightgreen;
+    background-color: #57CC99;
     padding: 5px;
     cursor: pointer;
 }
 
 .button-log:hover{
-    color:black;
+    background-color: #80ED99;
 }
 
 .button-reg{
@@ -63,7 +63,7 @@ form a{
 }
 
 .button-reg:hover{
-    background-color: lightgray;
+    background-color: #80ED998a;
 }
 
 .log{
@@ -72,10 +72,14 @@ form a{
 
 #show-password {
     border-radius: 5px;
-    background-color: #4CAF50;
+    background-color: #57CC99;
     color: white;
     font-size: 16px;
     cursor: pointer;
     position:absolute;
 
+}
+
+#show-password:hover {
+    background-color: #80ED99;
 }

@@ -2,7 +2,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: lightgreen;
+    background-color: #38A3A5;
     height: 100%;
 }
 form{
@@ -29,7 +29,7 @@ form label{
 form label .fa-solid{
     margin-right: 10px;
     font-size: 20px;
-    color: chartreuse;
+    color: #57CC99;
 }
 
 form label input{
@@ -38,13 +38,13 @@ form label input{
     border-bottom: solid 1px black;
     font-size: 20px;
 }
-form .tiene{
+form a{
     margin-bottom: 10px;
     color: blue;
     text-decoration: none;
     cursor: pointer;
 }
-form .tiene:hover{
+form a:hover{
    color:black;
 }
 
@@ -55,7 +55,7 @@ form .tiene:hover{
    border-radius: 8px;
   border: none;
   color: white;
-  background-color: lightgreen;
+  background-color: #57CC99;
   padding: 5px;
   cursor: pointer;
 
@@ -64,7 +64,7 @@ form .tiene:hover{
    border-radius: 8px;
   border: none;
   color: white;
-  background-color: lightgreen;
+  background-color: #57CC99;
   padding: 5px;
   cursor: pointer;
 }
@@ -72,7 +72,7 @@ form .tiene:hover{
 
 #show-password {
   border-radius: 5px;
-  background-color: #4CAF50;
+  background-color: #57CC99;
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -82,7 +82,7 @@ form .tiene:hover{
 
 #show {
   border-radius: 5px;
-  background-color: #4CAF50;
+  background-color: #57CC99;
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -92,10 +92,14 @@ form .tiene:hover{
 }
 
 #show-password:hover {
-  background-color: #3E8E41;
+  background-color: #80ED99;
+}
+
+#show:hover {
+    background-color: #80ED99;
 }
 
 button:hover{
-    color:black;
+    background-color: #80ED99;
 }
 
