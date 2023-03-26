@@ -60,13 +60,17 @@ Route::middleware('auth')->group(function () {
     // Rutas de gestión de vídeos
     Route::controller(VideoController::class)->group(function(){
 
-        Route::get('watch/{video}', 'watch')->name('video.watch');
+        Route::get('watch', 'watch')->name('video.watch');
+
+        Route::get('edit', 'edit')->name('video.edit');
 
         Route::get('new-video', 'newVideo')->name('new-video');
 
         Route::get('my-videos', 'myVideos')->name('my-videos');
 
         Route::post('upload/{user}', 'upload')->name('video.upload');
+
+        Route::post('delete_vid/{video}', 'delete')->name('video.delete');
 
     });
 });

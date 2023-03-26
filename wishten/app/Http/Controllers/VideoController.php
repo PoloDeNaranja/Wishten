@@ -7,12 +7,21 @@ use App\Models\Video;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\VideoRequest;
+use Illuminate\Support\Facades\Storage;
+
 
 class VideoController extends Controller
 {
     // Devuelve la vista de un vídeo
-    function watch(Video $video) {
-        return view('video')->with('video', $video);
+    function watch(Request $request) {
+        $video = Video::find($request['video']);
+        return view('videoWatch')->with('video', $video);
+    }
+
+    // Devuelve la vista para editar un vídeo
+    function edit(Request $request) {
+        $video = Video::find($request['video']);
+        return view('videoEdit')->with('video', $video);
     }
 
     // Devuelve la vista para crear un nuevo vídeo
@@ -38,6 +47,16 @@ class VideoController extends Controller
             'file_path' =>  $path
         ]);
 
-        return back()->with('success', 'Your video was uploaded correctly!');
+        return back()->with('success', 'Your video was uploaded successfully!');
+    }
+
+    // Elimina la información de un video de la base de datos y el fichero asociado
+    function delete(Video $video) {
+        if(Auth::user()->isAdmin() || Auth::id() == $video->owner_id) {
+            Storage::delete('public/'.$video->file_path);
+            $video->delete();
+            return redirect(route('my-videos'))->with('success', 'Your video was deleted successfully!');
+        }
+        return back();
     }
 }

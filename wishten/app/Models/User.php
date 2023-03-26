@@ -52,4 +52,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Video::class, 'owner_id');
     }
+
+    /**
+     * Check if the user role is admin
+     */
+    public function isAdmin()
+    {
+        return $this->role == 'admin';
+    }
 }
