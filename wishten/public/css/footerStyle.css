@@ -1,7 +1,7 @@
 footer{
     width: 100%;
     padding: 40px 0 ;
-    background-color: rgb(33, 186, 66);
+    background-color: #22577A;
 }
 /* .cont_footer{
     display:flex;
@@ -17,7 +17,7 @@ footer .cop{
     align-items: end;
 }
 footer .info{
-    color:black;
+    color:white;
 }
 footer .redes{
     display:flex;
@@ -27,6 +27,7 @@ footer .redes{
     font-size: 30px;
     padding:0 10px;
     align-items: end;
+    color: white;
 }
 .logo{
     display:flex;
