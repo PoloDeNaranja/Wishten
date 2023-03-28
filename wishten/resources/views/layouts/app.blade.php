@@ -16,7 +16,7 @@
 
 
     {{-- Scripts --}}
-    <script async type="text/javascript" src="{{ url('/js/headerScript.js') }}"></script>
+    <script async type="text/javascript" src="{{ url('/js/dropdown.js') }}"></script>
     <script async src="https://kit.fontawesome.com/0d34bde1b9.js" crossorigin="anonymous"></script>
 
     {{-- Para añadir más ficheros CSS y JavaScript --}}
