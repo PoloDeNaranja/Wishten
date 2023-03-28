@@ -21,7 +21,7 @@
     <label>
        <i class="fa-solid fa-user"></i>
         <input placeholder="Enter your username" type="text" name="name" required>
-        @if ($errors->has('username'))
+        @if ($errors->has('name'))
             <span class="error-text">{{ $errors->first('name') }}</span>
         @endif
     </label>

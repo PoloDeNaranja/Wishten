@@ -66,7 +66,7 @@ class UserController extends Controller
         $modification = $user->name !== $request->name || $user->email !== $request->email;
         // si se ha modificado el nombre o el email, validamos los datos y actualizamos la base de datos
         if($user->name !== $request->name) {
-            $request->validate(['name'  =>  ['string', 'max:255']]);
+            $request->validate(['name'  =>  ['string', 'max:255', 'unique:'.User::class]]);
             $user->update(['name'  =>  $request->name]);
         }
         if($user->email !== $request->email) {
