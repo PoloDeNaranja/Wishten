@@ -19,7 +19,7 @@
  }
  
  .popupContent{
-    background-color: #e7d9d9; /*Color del Popup*/
+    background-color: white; /*Color del Popup*/
     margin: auto; /*Que se adapte al centro*/
     padding: 50px;
     border-radius: 15px;
@@ -68,20 +68,20 @@
  form label .fa-solid{
      margin-right: 10px;
      font-size: 20px;
-     color: chartreuse; 
+     color: #57CC99; 
  }
  .res{ 
        border-radius: 8px;
        border: none;
        color: white;
-       background-color: lightgreen;
+       background-color: #57CC99;
        padding: 5px;
        cursor: pointer;
        margin: 0 60px 0 60px;/* Añade margen izquierdo y derecho para que el boton cuadre*/
   }
   #show-password {
     border-radius: 5px;
-    background-color: #4CAF50;
+    background-color: #57CC99;
     color: white;
     font-size: 16px;
     cursor: pointer;    
@@ -89,17 +89,17 @@
   
   #show {
     border-radius: 5px;
-    background-color: #4CAF50;
+    background-color: #57CC99;
     color: white;
     font-size: 16px;
     cursor: pointer;
   }
   
   #show-password:hover {
-    background-color: #3E8E41;
+    background-color: #80ED99;
   }
  #show:hover {
-    background-color: #3E8E41;
+    background-color: #80ED99;
   }
   
   button:hover{
