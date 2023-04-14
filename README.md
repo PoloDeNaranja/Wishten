@@ -32,3 +32,15 @@
     
     https://colorhunt.co/palette/22577a38a3a557cc9980ed99
     
+## Enlaces cuestionarios 
+Enlace cuestionario estudio
+
+     https://docs.google.com/forms/d/e/1FAIpQLSeUYRayfcMx0YC6p7EwIyVYDvsop1NOFOUQdvF4d3K5PYxb_w/viewform?usp=sf_link
+     
+Enlace cuestionario prácticas
+     
+     https://docs.google.com/forms/d/e/1FAIpQLSdRRHzArYD5k9Ygfp8Rg_4FQA2zLR29zEquk5tmyKqJZtmk0w/viewform?usp=sf_link
+
+     
+
+    
