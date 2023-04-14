@@ -56,29 +56,31 @@ body{
     /* border-style: solid; */
     left: 0;
     top: 0;
-    right:0;
-    bottom:0;
     padding-top: 100px;
-    width: 100%; /*quiero que se aplique a toda la página*/
-    height: 100%; /*quiero que se aplique a toda la página*/
-    background-color: rgba(0,0,0,0.4); /*color del fondo cuando salta el popup*/
-}
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0,0,0,0.4);
+ }
 
-.popupContent{
-    background-color: #e7d9d9; /*Color del Popup*/
+ .popupContent{
+    background-color: white; /*Color del Popup*/
     margin: auto; /*Que se adapte al centro*/
     padding: 50px;
-    border: 5px solid black;
-    width: 50%;
-}
-
-.closePopup {
+    border-radius: 15px;
+    max-width: 500px;
+    position: relative;
+    width: 90%;
+ }
+ .closePopup {
     color: white;
-    float:right;
     font-size: 35px;
-}
-
-.closePopup:hover{/*Cuando pases el cursor se te cambie de color y dado que es un span que pase a ser un cursor y no una I*/
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 10px;  /*Que se separe un poco la x del borde de la derecha*/
+ }
+ .closePopup:hover{
     color:black;
     cursor: pointer;
-}
+ }
+
