@@ -4,6 +4,8 @@
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ url('/css/adminStyle.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/popupStyle.css') }}" />
+
 @endsection
 
 @section('js')
@@ -15,7 +17,7 @@
     @include('layouts.messages')
 
     <h1>Admin Users</h1>
-    <div id="buttons">
+    <div id="userList">
         @foreach ($users as $user)
             {{-- <div class="user-data">
                 <form action="{{ route('profile.update_info', Auth::id()) }}" method="post">
@@ -31,8 +33,10 @@
                 </form>
                 <button>Ban</button>
             </div> --}}
+
             <p>{{ $user->name }}</p>
-            <button class="openPopup">Modify</button>
+            <button class="openPopup button">Modify</button>
+
             <div id="PopupWindow" class="popup">
                 <div class="popupContent">
                     <span class="closePopup">&times;</span>
@@ -40,39 +44,39 @@
                     <form action="{{ route('profile.update_pic', $user->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input class="form-control" type="file" name="new_pic" id="new_pic" accept=".jpg,.jpeg,.png">
-                        <button type="submit" class="btn btn-primary mb-3">Upload</button>
+                        <button type="submit" class="button">Upload</button>
                     </form>
 
                     <form action="{{ route('profile.delete_pic', $user->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <button type="submit" class="btn btn-danger mb-3">Delete Picture</button>
+                        <button type="submit" class="button red">Delete Picture</button>
                     </form>
 
                     <form action="{{ route('profile.update_info', $user->id) }}" method="POST">
                         @csrf
-                        <div class="form-group">
-                            <label for="InputName">User name</label>
-                            <input type="text" class="form-control" name="name" id="InputName" value="{{ $user->name }}">
+                        <label>
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" name="name" value="{{ $user->name }}">
                             @if ($errors->has('name'))
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                             @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="InputEmail">Email address</label>
-                            <input type="email" class="form-control" name="email" id="InputEmail" aria-describedby="emailHelp" value="{{ $user->email }}">
+                        </label>
+                        <label>
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" name="email" aria-describedby="emailHelp" value="{{ $user->email }}">
                             @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                             @endif
-                        </div>
-                        <button type="submit" class="btn btn-primary mb-3">Save changes</button>
+                        </label>
+                        <button type="submit" class="button">Save changes</button>
                     </form>
 
                     <form action="{{ route('adminUsers.ban', $user->id) }}" method="post">
                         @csrf
                         @if ($user->ban)
-                            <button type="submit">Unban</button>
+                            <button type="submit" class="button">Unban</button>
                         @else
-                            <button type="submit">Ban</button>
+                            <button type="submit" class="button red">Ban</button>
                         @endif
                     </form>
                 </div>

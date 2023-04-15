@@ -1,6 +1,6 @@
 
 //Boton de abrir popup
-var abrir = document.getElementById("buttons").getElementsByClassName("openPopup");
+var abrir = document.getElementById("userList").getElementsByClassName("openPopup");
 //Ventana del popup
 var content = document.getElementsByClassName("popup");
 //Cerar con x
