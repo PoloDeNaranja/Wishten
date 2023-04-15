@@ -1,22 +1,25 @@
 
+//Boton de abrir popup
+var abrir = document.getElementById("buttons").getElementsByClassName("openPopup");
+//Ventana del popup
+var content = document.getElementsByClassName("popup");
+//Cerar con x
+var x = document.getElementsByClassName("closePopup");
 
-function openPopup(id) {
-    var popup = document.getElementById(id);
-    popup.style.display = "block";
-}
+for (let i = 0; i < abrir.length; i++) {
+    abrir[i].addEventListener("click", function() {
+        content[i].style.display = "block";
+    });
 
-function closePopup(id) {
-    var popup = document.getElementById(id);
-    popup.style.display = "none";
-}
+    x[i].addEventListener("click",function() {
+        content[i].style.display = "none";
+    });
 
-window.onclick = function(event) {
-    if (event.target.matches('.popup')) {
-        var popups = document.getElementsByClassName("popup");
-        var i;
-        for (i = 0; i < popups.length; i++) {
-            closePopup(popups[i].id);
+    window.addEventListener("click",function(event) {
+        if (event.target == content[i]) {
+            content[i].style.display = "none";
         }
-    }
+    });
 }
+
 
