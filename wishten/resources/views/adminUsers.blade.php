@@ -33,17 +33,24 @@
                 </form>
                 <button>Ban</button>
             </div> --}}
-
-            <p>{{ $user->name }}</p>
-            <button class="openPopup button">Modify</button>
-
+            <div class="userList-item">
+                <label>{{ $user->name }}</label>
+                <button class="openPopup button">Modify</button>
+            </div>
             <div id="PopupWindow" class="popup">
                 <div class="popupContent">
                     <span class="closePopup">&times;</span>
-                    <label for="new_pic" class="form-label">Upload a profile picture</label>
+                    <h3>Modify user "{{ $user->name }}" data</h3>
                     <form action="{{ route('profile.update_pic', $user->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <input class="form-control" type="file" name="new_pic" id="new_pic" accept=".jpg,.jpeg,.png">
+                        <label for="new_pic">
+                            <input class="form-control" type="file" name="new_pic" id="new_pic" accept=".jpg,.jpeg,.png">
+                            @if ($user->profile_pic != 'None')
+                                <img src="{{ url('storage/'.$user->profile_pic) }}" alt="mdo" width="50" height="50">
+                            @else
+                                <i class="fa fa-user-circle-o fa-xl" aria-hidden="true"></i>
+                            @endif
+                        </label>
                         <button type="submit" class="button">Upload</button>
                     </form>
 

@@ -17,16 +17,14 @@
 
 }
 
-.admin-list {
+.userList-item {
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.user-list-header {
-    word-spacing: 90px;
+#userList label {
+    flex-grow: 1;
+    margin-right: 10px;
 }
 
-.user-data {
-    display: flex;
-    flex-direction: row;
-}

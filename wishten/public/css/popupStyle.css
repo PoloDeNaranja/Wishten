@@ -5,39 +5,39 @@
 
 }
 .popup{
-display:none;
-position: fixed;
-z-index:1; /* que se coloque sobre la pagina */
-overflow: auto;/*scroll*/
-/* border-style: solid; */
-left: 0;
-top: 0;
-padding-top: 100px;
-width: 100%; /* Full width */
-height: 100%; /* Full height */
-background-color: rgba(0,0,0,0.4);
+    display:none;
+    position: fixed;
+    z-index:1; /* que se coloque sobre la pagina */
+    overflow: auto;/*scroll*/
+    /* border-style: solid; */
+    left: 0;
+    top: 0;
+    padding-top: 100px;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0,0,0,0.4);
 }
 
 .popupContent{
-background-color: white; /*Color del Popup*/
-margin: auto; /*Que se adapte al centro*/
-padding: 50px;
-border-radius: 15px;
-max-width: 500px;
-position: relative;
-width: 90%;
+    background-color: white; /*Color del Popup*/
+    margin: auto; /*Que se adapte al centro*/
+    padding: 50px;
+    border-radius: 15px;
+    max-width: 500px;
+    position: relative;
+    width: 90%;
 }
 .closePopup {
-color: white;
-font-size: 35px;
-position: absolute;
-top: 0;
-right: 0;
-margin-right: 10px;  /*Que se separe un poco la x del borde de la derecha*/
+    color: white;
+    font-size: 35px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 10px;  /*Que se separe un poco la x del borde de la derecha*/
 }
 .closePopup:hover{
-color:black;
-cursor: pointer;
+    color:black;
+    cursor: pointer;
 }
 form{
     display: flex;
@@ -45,24 +45,23 @@ form{
     text-align: center;
     display: flex;
     flex-direction: column;
-    text-align: center;
     padding: 20px 60px;
 }
 form .titulo{
-color: black;
-margin-bottom: 25px;
-font-size:20px;
+    color: black;
+    margin-bottom: 25px;
+    font-size:20px;
 
 }
 form label{
-margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 form label input{
-border:none;
-border-bottom: solid 1px black;
-font-size: 15px;
-background: transparent;/*Quitar el recuadro blanco*/
-outline:none;/*Quitar que salga el borde cuando escribes*/
+    border:none;
+    border-bottom: solid 1px black;
+    font-size: 15px;
+    background: transparent;/*Quitar el recuadro blanco*/
+    outline:none;/*Quitar que salga el borde cuando escribes*/
 }
 
 form label .fa-solid{
@@ -80,33 +79,47 @@ form label .fa-solid{
     margin: 0 60px 0 60px;/* Añade margen izquierdo y derecho para que el boton cuadre*/
 }
 .button.red {
-background-color: #CB5763;
+    background-color: #CB5763;
 }
 #show-password {
-border-radius: 5px;
-background-color: #57CC99;
-color: white;
-font-size: 16px;
-cursor: pointer;
+    border-radius: 5px;
+    background-color: #57CC99;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 #show {
-border-radius: 5px;
-background-color: #57CC99;
-color: white;
-font-size: 16px;
-cursor: pointer;
+    border-radius: 5px;
+    background-color: #57CC99;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 #show-password:hover {
-background-color: #80ED99;
+    background-color: #80ED99;
 }
 #show:hover {
-background-color: #80ED99;
+    background-color: #80ED99;
 }
 
 button:hover{
     color:black;
 }
 
+input[type="file"] {
+    display: none;
+}
 
+label[for="new_pic"]:hover {
+    cursor: pointer;
+}
+
+label[for="new_pic"] img {
+    border-radius: 50px;
+}
+
+h3 {
+    text-align: center;
+}
