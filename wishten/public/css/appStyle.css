@@ -26,9 +26,9 @@ body{
 .alert.error{
     font-size: 14px;
     border-radius: 7px;
-    color: darkred;
-    border: 2px solid darkred;
-    background-color: rgba(187, 33, 35, 0.541);
+    color: black;
+    border: 2px solid black;
+    background-color: #CB5763;
     padding: 4px;
     margin-bottom: 14px;
 }
@@ -36,9 +36,9 @@ body{
 .alert.success{
     font-size: 14px;
     border-radius: 7px;
-    color: darkblue;
-    border: 2px solid darkblue;
-    background-color: lightblue;
+    color: black;
+    border: 2px solid black;
+    background-color: #57B0CB;
     padding: 4px;
     margin-bottom: 14px;
 }
