@@ -123,3 +123,7 @@ label[for="new_pic"] img {
 h3 {
     text-align: center;
 }
+
+.profile_pic:hover {
+    opacity: 0.3;
+}
