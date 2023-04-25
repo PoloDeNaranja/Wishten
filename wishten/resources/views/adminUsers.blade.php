@@ -65,14 +65,14 @@
                             <i class="fa-solid fa-user"></i>
                             <input type="text" name="name" value="{{ $user->name }}">
                             @if ($errors->has('name'))
-                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                                <span class="error-text">{{ $errors->first('name') }}</span>
                             @endif
                         </label>
                         <label>
                             <i class="fa-solid fa-envelope"></i>
                             <input type="email" name="email" aria-describedby="emailHelp" value="{{ $user->email }}">
                             @if ($errors->has('email'))
-                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                                <span class="error-text">{{ $errors->first('email') }}</span>
                             @endif
                         </label>
                         <button type="submit" class="button">Save changes</button>
