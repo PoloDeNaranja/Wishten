@@ -5,6 +5,17 @@ body{
     background-color: #38A3A5;
     height: 100%;
 }
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    height: 100%;
+    padding-top: 0%;
+}
+
 form{
     display: flex;
     flex-direction: column;
