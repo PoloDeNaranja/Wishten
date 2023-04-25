@@ -20,11 +20,17 @@
 .userList-item {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
 }
 
 #userList label {
     flex-grow: 1;
-    margin-right: 10px;
+}
+
+form#delete-user {
+    margin-left: -100px;
+}
+
+.openPopup.button {
+    z-index: +1;
 }
 

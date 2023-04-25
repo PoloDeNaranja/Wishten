@@ -36,6 +36,10 @@
             <div class="userList-item">
                 <label>{{ $user->name }}</label>
                 <button class="openPopup button">Modify</button>
+                <form id="delete-user" action="{{ route('user.delete', $user->id) }}" method="post">
+                    @csrf
+                    <button class="delete-user button red">Delete</button>
+                </form>
             </div>
             <div id="PopupWindow" class="popup">
                 <div class="popupContent">

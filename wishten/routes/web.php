@@ -55,6 +55,8 @@ Route::middleware('auth')->group(function () {
 
         Route::post('change_password/{user}', 'changePassword')->name('profile.change_password');
 
+        Route::post('delete_user/{user}', 'delete')->name('user.delete');
+
     });
 
     // Rutas de gestión de vídeos

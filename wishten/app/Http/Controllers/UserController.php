@@ -114,5 +114,12 @@ class UserController extends Controller
         return back()->with('success', 'The user '.$user->name.' was banned!');
     }
 
-
+    // Elimina el usuario de la base de datos
+    function delete(User $user) {
+        if(Auth::user()->isAdmin() || Auth::id() == $user->id) {
+            $user->delete();
+            return back()->with('success', 'The account was deleted successfully!');
+        }
+        return back();
+    }
 }
