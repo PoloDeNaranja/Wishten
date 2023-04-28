@@ -6,6 +6,10 @@
     <link rel="stylesheet" type="text/css" href="{{ url('/css/newVideoStyle.css') }}" />
 @endsection
 
+@section('js')
+    <script async type="text/javascript" src="{{ url('/js/validateInputs.js') }}"></script>
+@endsection
+
 @section('content')
 
 @include('layouts.messages')
@@ -14,7 +18,7 @@
     @csrf
 
     <label for="video">
-        <i class="fa-solid fa-file-video fa-bounce fa-10x"></i>
+        <i for="video" class="fa-solid fa-file-video fa-bounce fa-10x"></i>
         <input type="file" name="video" id="video" accept="video/*"required>
     </label>
     <label for="title">

@@ -11,6 +11,7 @@ inputs.forEach(function(input) {
       var icon = document.querySelector("i[for='" + this.id + "']");
       // Añadimos la clase .valid-color al icono para cambiarlo de color
       icon.classList.add("valid-color");
+      icon.classList.remove("fa-bounce");
     } else {
       var icon = document.querySelector("i[for='" + this.id + "']");
       icon.classList.remove("valid-color");

@@ -33,6 +33,15 @@ label[for="video"]:hover {
     cursor: pointer;
 }
 
+.fa-solid:hover {
+    color: #57CC99;
+    transition: color 0.3s ease-in-out;
+}
+
+.fa-solid.valid-color {
+    color: #57CC99;
+}
+
 .button-upload{
     font-size: 14px;
     border-radius: 8px;
@@ -52,4 +61,5 @@ textarea {
     border-radius: 5px;
     font-size: 16px;
 }
+
 
