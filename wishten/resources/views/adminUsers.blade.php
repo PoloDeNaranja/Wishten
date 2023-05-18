@@ -10,6 +10,7 @@
 
 @section('js')
     <script async type="text/javascript" src="{{ url('/js/popup.js') }}"></script>
+    <script async type="text/javascript" src="{{ url('/js/showPassword.js') }}"></script>
 @endsection
 
 @section('content')
@@ -94,7 +95,52 @@
             </div>
         @endforeach
     </div>
+    <button class="openPopup button">Add user</button>
+    <div id="PopupWindow" class="popup">
+        <div class="popupContent">
+            <span class="closePopup">&times;</span>
+            <form action="{{ route('adminUsers.addUser') }}" method="POST">
+                @csrf
+                <h1 class="titulo">Create your account!</h1>
+                <label>
+                   <i class="fa-solid fa-user" for="name"></i>
+                    <input placeholder="Enter your username" type="text" name="name" id="name" required>
+                    @if ($errors->has('name'))
+                        <span class="error-text">{{ $errors->first('name') }}</span>
+                    @endif
+                </label>
+                <label>
+                   <i class="fa-solid fa-envelope" for="email"></i>
+                    <input placeholder="Enter your e-mail" type="email" name="email" id="email" required>
+                    @if ($errors->has('email'))
+                        <span class="error-text">{{ $errors->first('email') }}</span>
+                    @endif
+                </label>
+                <label>
+                    <i class="fa-solid fa-lock" for="password"></i>
+                    <input type="password" placeholder="Enter your password"  name= "password" id="password" required>
+                    <button type="button" style="margin-left: 10px" id="show-password">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </button>
+                    @if ($errors->has('password'))
+                        <span class="error-text">{{ $errors->first('password') }}</span>
+                    @endif
+                </label>
+                <label>
+                    <i class="fa-solid fa-lock" for="confirm"></i>
+                    <input placeholder="Confirm password" type="password" name="password_confirmation" id="confirm" required>
+                    <button type="button" style="margin-left: 10px" id="show">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </button>
+                    @if ($errors->has('password_confirmation'))
+                        <span class="error-text">{{ $errors->first('password_confirmation') }}</span>
+                    @endif
+                </label>
+                <button class="button reg">Add user</button>
 
+            </form>
+        </div>
+    </div>
 
 @endsection
 

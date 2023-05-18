@@ -31,6 +31,6 @@ form#delete-user {
 }
 
 .openPopup.button {
-    z-index: +1;
+    z-index: 1;
 }
 

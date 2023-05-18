@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules;
+use App\Http\Requests\RegistrationRequest;
 use Hash;
 
 class UserController extends Controller
@@ -24,8 +25,16 @@ class UserController extends Controller
         return view('adminUsers')->with('users', $users);
     }
 
-    function userInfo(User $user) {
-        return view('userInfo')->with('user', $user);
+    function addUser(RegistrationRequest $request) {
+        $data = $request->all();
+
+        User::create([
+            'name'      =>  $data['name'],
+            'email'     =>  $data['email'],
+            'password'  =>  Hash::make($data['password'])
+        ]);
+
+        return back()->with('success', 'The account was added successfully!');
     }
 
     // Cambia la foto de perfil y elimina la anterior

@@ -92,7 +92,7 @@ Route::middleware('auth', 'roles:admin')->group(function () {
 
         Route::get('adminUsers', 'adminUsers')->name('adminUsers');
 
-        Route::get('userInfo/{user}', 'userInfo')->name('userInfo');
+        Route::post('addUser', 'addUser')->name('adminUsers.addUser');
 
         Route::post('ban/{user}', 'ban')->name('adminUsers.ban');
 

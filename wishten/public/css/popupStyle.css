@@ -7,7 +7,7 @@
 .popup{
     display:none;
     position: fixed;
-    z-index:1; /* que se coloque sobre la pagina */
+    z-index:2; /* que se coloque sobre la pagina */
     overflow: auto;/*scroll*/
     /* border-style: solid; */
     left: 0;
@@ -43,8 +43,6 @@ form{
     display: flex;
     flex-direction: column;
     text-align: center;
-    display: flex;
-    flex-direction: column;
     padding: 20px 60px;
 }
 form .titulo{
@@ -87,6 +85,7 @@ form label .fa-solid{
     color: white;
     font-size: 16px;
     cursor: pointer;
+    position:absolute;
 }
 
 #show {
@@ -94,6 +93,7 @@ form label .fa-solid{
     background-color: #57CC99;
     color: white;
     font-size: 16px;
+    position:absolute;
     cursor: pointer;
 }
 
