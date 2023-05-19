@@ -62,6 +62,8 @@ Route::middleware('auth')->group(function () {
     // Rutas de gestión de vídeos
     Route::controller(VideoController::class)->group(function(){
 
+        Route::get('videos', 'index')->name('videos');
+
         Route::get('watch', 'watch')->name('video.watch');
 
         Route::get('edit', 'edit')->name('video.edit');

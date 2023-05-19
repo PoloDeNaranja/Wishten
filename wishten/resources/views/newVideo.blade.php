@@ -19,13 +19,22 @@
 
     <label for="video">
         <i for="video" class="fa-solid fa-file-video fa-bounce fa-10x"></i>
-        <input type="file" name="video" id="video" accept="video/*"required>
+        <input type="file" name="video" id="video" accept="video/*" required>
     </label>
     <label for="title">
         <input type="text" placeholder="Title of your video" name="title" required>
     </label>
     <label for="description">
         <textarea type="text" placeholder="Description of your video" name="description" rows="4" cols="50" required></textarea>
+    </label>
+    <label for="subject">
+        <input type="text" name="subject_name" list="subject_names">
+        <datalist id="subject_names">
+            @foreach ($subjects as $subject)
+                <option value="{{ $subject->name }}"></option>
+            @endforeach
+        </datalist>
+
     </label>
     <button type="submit" class="button-upload">Upload Video</button>
 

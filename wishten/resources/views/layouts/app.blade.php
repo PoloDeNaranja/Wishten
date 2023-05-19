@@ -32,6 +32,7 @@
         </a>
         <nav>
             <a href="/" class="nav-link">Home</a>
+            <a href="videos" class="nav-link">Videos</a>
             <a href="#" class="nav-link">Offers</a>
             <!-- <ul>
                     <li><a href="">1º Cuatrimestre</li>
