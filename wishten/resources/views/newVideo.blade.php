@@ -27,14 +27,13 @@
     <label for="description">
         <textarea type="text" placeholder="Description of your video" name="description" rows="4" cols="50" required></textarea>
     </label>
-    <label for="subject">
-        <input type="text" name="subject_name" list="subject_names">
+    <label for="subject_name">
+        <input type="text" placeholder="Subject of your video" name="subject_name" list="subject_names">
         <datalist id="subject_names">
             @foreach ($subjects as $subject)
                 <option value="{{ $subject->name }}"></option>
             @endforeach
         </datalist>
-
     </label>
     <button type="submit" class="button-upload">Upload Video</button>
 

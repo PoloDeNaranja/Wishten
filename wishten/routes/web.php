@@ -76,6 +76,8 @@ Route::middleware('auth')->group(function () {
 
         Route::post('delete_vid/{video}', 'delete')->name('video.delete');
 
+        Route::post('filter', 'filter')->name('video.filter');
+
     });
 });
 

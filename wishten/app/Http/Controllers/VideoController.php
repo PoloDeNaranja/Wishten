@@ -13,10 +13,30 @@ use Illuminate\Support\Facades\Storage;
 
 class VideoController extends Controller
 {
-
+    // Devuelve la vista con todos los videos
     function index() {
         $videos = Video::all()->take(10);
-        return view('videos')->with('videos', $videos);
+        $subjects = Subject::all()->sortBy('name');
+        return view('videos')->with([
+            'videos'    =>  $videos,
+            'subjects'  =>  $subjects
+        ]);
+    }
+
+    function filter(Request $request) {
+        $subject = Subject::firstWhere('name', $request->subject_name);
+        $subjects = Subject::all()->sortBy('name');
+        if(!$subject) {
+            $request->session()->flash('error', 'No se encontraron videos para el tema \'' . $request->subject_name . '\'');
+            return view('videos')->with([
+                'videos'    =>  null,
+                'subjects'  =>  $subjects
+            ])->with('error', 'No videos found for subject \''.$request->subject_name.'\'');
+        }
+        return view('videos')->with([
+            'videos'    =>  $subject->videos()->get(),
+            'subjects'  =>  $subjects
+        ]);
     }
 
     // Devuelve la vista de un vídeo
