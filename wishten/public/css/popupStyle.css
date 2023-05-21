@@ -67,18 +67,10 @@ form label .fa-solid{
     font-size: 20px;
     color: #57CC99;
 }
-.button{
-    border-radius: 8px;
-    border: none;
-    color: white;
-    background-color: #57CC99;
-    padding: 5px;
-    cursor: pointer;
+#PopupWindow button{
     margin: 0 60px 0 60px;/* Añade margen izquierdo y derecho para que el boton cuadre*/
 }
-.button.red {
-    background-color: #CB5763;
-}
+
 #show-password {
     border-radius: 5px;
     background-color: #57CC99;

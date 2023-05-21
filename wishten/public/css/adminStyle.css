@@ -1,5 +1,6 @@
 .container {
-    height: 500px;
+    min-height: 100%;
+    height: auto;
 }
 
 
@@ -17,20 +18,52 @@
 
 }
 
-.userList-item {
-    display: flex;
-    align-items: center;
-}
-
 #userList label {
     flex-grow: 1;
 }
 
-form#delete-user {
-    margin-left: -100px;
+.button{
+    border-radius: 8px;
+    border: none;
+    color: white;
+    background-color: #57CC99;
+    padding: 5px;
+    cursor: pointer;
+}
+.button.red {
+    background-color: #CB5763;
 }
 
 .openPopup.button {
     z-index: 1;
+}
+
+#userInfo {
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    margin-bottom: 5%;
+}
+
+#userInfo th, #userInfo td {
+    text-align: center;
+    padding: 12px;
+}
+
+#userInfo tr {
+    border-bottom: 1px solid #ddd;
+}
+
+#userInfo tr.header, #userInfo tr:hover {
+    background-color: #f1f1f1;
+}
+
+#action-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+#addUser {
+    margin-bottom: 1%;
 }
 
