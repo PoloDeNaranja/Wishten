@@ -11,6 +11,7 @@
 @section('js')
     <script async type="text/javascript" src="{{ url('/js/popup.js') }}"></script>
     <script async type="text/javascript" src="{{ url('/js/showPassword.js') }}"></script>
+    <script async type="text/javascript" src="{{ url('/js/filterTable.js') }}"></script>
 @endsection
 
 @section('content')
@@ -18,8 +19,9 @@
     @include('layouts.messages')
 
     <h1>Admin Users</h1>
+    <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search user name">
     <div id="userList">
-        <table id="userInfo">
+        <table id="filteredTable" class="userInfo">
             <tr class="header">
                 <th>ID</th>
                 <th>Name</th>
