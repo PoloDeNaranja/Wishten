@@ -123,6 +123,20 @@ class UserController extends Controller
         return back()->with('success', 'The user '.$user->name.' was banned!');
     }
 
+     // Modifica el rol del usuario
+     function changeRole(User $user, Request $request) {
+        if($user->role == $request->roles) {
+            return back()->with('success', 'No data was modified');
+        }
+        $user->update(['role' =>  $request->roles]);
+        if($user == Auth::user() && !$user->isAdmin()) {
+            return route('/');
+            //return back()->with('success', 'The user '.$user->name.' has now the role \''.$user->role.'\'');
+        }
+        return back()->with('success', 'The user '.$user->name.' has now the role \''.$user->role.'\'');
+        //return route('/');
+    }
+
     // Elimina el usuario de la base de datos
     function delete(User $user) {
         if(Auth::user()->isAdmin() || Auth::id() == $user->id) {

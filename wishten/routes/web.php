@@ -98,6 +98,8 @@ Route::middleware('auth', 'roles:admin')->group(function () {
 
         Route::post('ban/{user}', 'ban')->name('adminUsers.ban');
 
+        Route::post('changeRole/{user}', 'changeRole')->name('adminUsers.changeRole');
+
     });
 });
 

@@ -31,20 +31,6 @@
                 <th>Action</th>
             </tr>
             @foreach ($users as $user)
-                {{-- <div class="user-data">
-                <form action="{{ route('profile.update_info', Auth::id()) }}" method="post">
-                    @csrf
-                    <input type="text" name="name" value="{{ $user->name }}">
-                    <input type="text" name="email" value="{{ $user->email }}">
-                    <select name="roles" id="roles" >
-                        <option value="admin">admin</option>
-                        <option value="standard">standard</option>
-                        <option value="company">company</option>
-                    </select>
-                    <button type="submit">Save changes</button>
-                </form>
-                <button>Ban</button>
-            </div> --}}
                 <tr>
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
@@ -55,8 +41,12 @@
                     <td>
                         <form id="action-buttons" action="{{ route('user.delete', $user->id) }}" method="post">
                             @csrf
-                            <button class="openPopup button" type="button">Modify</button>
-                            <button class="delete-user button red" type="submit">Delete</button>
+                            <button class="openPopup button" type="button"
+                                @if (Auth::user()->id == $user->id) disabled @endif>Modify</button>
+                            <button class="openPopup button" type="button"
+                                @if (Auth::user()->id == $user->id) disabled @endif>Password</button>
+                            <button class="delete-user button red" type="submit"
+                                @if (Auth::user()->id == $user->id) disabled @endif>Delete</button>
                         </form>
                     </td>
                 </tr>
@@ -105,7 +95,15 @@
                     </label>
                     <button type="submit" class="button">Save changes</button>
                 </form>
-
+                <form action="{{ route('adminUsers.changeRole', $user->id) }}" method="post">
+                    @csrf
+                    <select name="roles" id="roles">
+                        <option value="admin" @if ($user->isAdmin()) selected @endif>admin</option>
+                        <option value="standard" @if ($user->role == 'standard') selected @endif>standard</option>
+                        <option value="company" @if ($user->role == 'company') selected @endif>company</option>
+                    </select>
+                    <button type="submit" class="button">Change role</button>
+                </form>
                 <form action="{{ route('adminUsers.ban', $user->id) }}" method="post">
                     @csrf
                     @if ($user->ban)
@@ -113,6 +111,39 @@
                     @else
                         <button type="submit" class="button red">Ban</button>
                     @endif
+                </form>
+            </div>
+        </div>
+        <div id="PopupWindow" class="popup">
+            <div class="popupContent">
+                <span class="closePopup">&times;</span>
+                <form action="{{ route('profile.change_password', $user->id) }}" method="POST">
+                    @csrf
+                    <label>
+                        <i class="fa-solid fa-lock" for="password"></i>
+                        <input type="password" name="old_password" id="InputOldPassword"
+                            placeholder="Enter your old password" required>
+                        @if ($errors->has('old_password'))
+                            <span class="error-text">{{ $errors->first('old_password') }}</span>
+                        @endif
+                    </label>
+                    <label>
+                        <i class="fa-solid fa-lock" for="password"></i>
+                        <input type="password" name="new_password" id="InputNewPassword" placeholder="Enter a new password"
+                            required>
+                        @if ($errors->has('new_password'))
+                            <span class="error-text">{{ $errors->first('new_password') }}</span>
+                        @endif
+                    </label>
+                    <label>
+                        <i class="fa-solid fa-lock" for="confirm"></i>
+                        <input type="password" name="new_password_confirmation" id="InputPasswordConfirmation"
+                            placeholder="Repeat password" required>
+                        @if ($errors->has('new_password_confirmation'))
+                            <span class="error-text">{{ $errors->first('new_password_confirmation') }}</span>
+                        @endif
+                    </label>
+                    <button type="submit" class="button">Change My Password</button>
                 </form>
             </div>
         </div>

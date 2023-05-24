@@ -119,3 +119,12 @@ h3 {
 .profile_pic:hover {
     opacity: 0.3;
 }
+
+#roles {
+    border-radius: 8px;
+    border: none;
+    padding: 5px;
+    margin-bottom: 5%;
+    cursor: pointer;
+    margin: 0 60px 5px 60px;
+}
