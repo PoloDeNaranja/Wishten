@@ -40,6 +40,12 @@ class VideoController extends Controller
         }
     }
 
+    function adminVideos() {
+        $videos = Video::all();
+        return view('adminVideos')->with('videos', $videos);
+    }
+
+
     // Devuelve la vista de un vídeo
     function watch(Request $request) {
         $video = Video::find($request['video']);
@@ -86,10 +92,13 @@ class VideoController extends Controller
     }
 
     // Elimina la información de un video de la base de datos y el fichero asociado
-    function delete(Video $video) {
+    function delete(Video $video, bool $admin) {
         if(Auth::user()->isAdmin() || Auth::id() == $video->owner_id) {
             Storage::delete('public/'.$video->file_path);
             $video->delete();
+            if ($admin) {
+                return back()->with('success', 'Your video was deleted successfully!');
+            }
             return redirect(route('my-videos'))->with('success', 'Your video was deleted successfully!');
         }
         return back();

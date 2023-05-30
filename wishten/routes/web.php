@@ -74,7 +74,7 @@ Route::middleware('auth')->group(function () {
 
         Route::post('upload/{user}', 'upload')->name('video.upload');
 
-        Route::post('delete_vid/{video}', 'delete')->name('video.delete');
+        Route::post('delete_vid/{video}/{admin}', 'delete')->name('video.delete');
 
     });
 });
@@ -93,6 +93,19 @@ Route::middleware('auth', 'roles:admin')->group(function () {
     Route::controller(UserController::class)->group(function(){
 
         Route::get('adminUsers', 'adminUsers')->name('adminUsers');
+
+        Route::post('addUser', 'addUser')->name('adminUsers.addUser');
+
+        Route::post('ban/{user}', 'ban')->name('adminUsers.ban');
+
+        Route::post('changeRole/{user}', 'changeRole')->name('adminUsers.changeRole');
+
+    });
+
+    // Administración de videos
+    Route::controller(VideoController::class)->group(function(){
+
+        Route::get('adminVideos', 'adminVideos')->name('adminVideos');
 
         Route::post('addUser', 'addUser')->name('adminUsers.addUser');
 

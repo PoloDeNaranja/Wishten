@@ -14,6 +14,7 @@
 
     <h1>Administration</h1>
     <a class="admin-element" href="{{ route('adminUsers') }}">Users Administration</a>
+    <a class="admin-element" href="{{ route('adminVideos') }}">Videos Administration</a>
 
 
 
