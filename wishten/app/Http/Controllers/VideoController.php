@@ -74,7 +74,19 @@ class VideoController extends Controller
         if(!$request->hasFile('video')) {
             return back()->with('error', 'No file provided');
         }
-        $path = $request->file('video')->store('videos', 'public');
+        // Escapamos el titulo y el tema del video para darle nombre al fichero y a la carpeta
+        $escaped_title = preg_replace('/[^A-Za-z0-9_\-]/', '_', $request->title);
+        $escaped_subject = preg_replace('/[^A-Za-z0-9_\-]/', '_', $request->subject_name);
+        $video = $request->file('video');
+        $format = strtolower($video->getClientOriginalExtension());
+        $allowed_formats = array('mp4', 'mov', 'wmv', 'flv', 'avi');
+        if (!in_array($format, $allowed_formats)) {
+            return back()->with('error', 'Invalid file format, the formats allowed are: .MP4, .MOV, .WMV, .FLV or .AVI');
+        }
+        $date = date('YmdHis');
+        $filename = 'wishten-'.$date.'_'.$escaped_title.'.'.$format;
+        $folder = 'videos/'.$escaped_subject.'/'.$escaped_title.'_'.$date;
+        $path = $request->file('video')->storeAs($folder, $filename, 'public');
 
         $video = $user->videos()->create([
             'title' =>  $request->title,

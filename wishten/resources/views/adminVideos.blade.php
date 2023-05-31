@@ -27,6 +27,7 @@
                 <th>Description</th>
                 <th>Subject</th>
                 <th>Owner</th>
+                <th>File path</th>
                 <th>Created at</th>
                 <th>Updated at</th>
                 <th>Status</th>
@@ -39,6 +40,7 @@
                     <td>{{ $video->description }}</td>
                     <td>{{ $video->subject->name }}</td>
                     <td>{{ $video->user->name }}</td>
+                    <td><a id="filepath" href="{{ url('storage/'.$video->file_path) }}">{{ $video->file_path }}</a></td>
                     <td>{{ $video->created_at }}</td>
                     <td>{{ $video->updated_at }}</td>
                     <td>{{ Str::upper($video->status) }}</td>
