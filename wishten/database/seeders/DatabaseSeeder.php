@@ -26,13 +26,17 @@ class DatabaseSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin',
             'password' => Hash::make('admin'),
-            'role'  =>  'admin'
+            'role'  =>  'admin',
+            'created_at'  =>  \Carbon\Carbon::now(),
+            'updated_at'  =>  \Carbon\Carbon::now()
         ]);
 
         DB::table('users')->insert([
             'name' => 'user',
             'email' => 'user@user.user',
             'password' => Hash::make('user'),
+            'created_at'  =>  \Carbon\Carbon::now(),
+            'updated_at'  =>  \Carbon\Carbon::now()
         ]);
 
         DB::table('subjects')->insert([

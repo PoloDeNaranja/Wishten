@@ -17,10 +17,11 @@
 <form action="{{ route('video.upload', Auth::id()) }}" method="POST" enctype="multipart/form-data">
     @csrf
 
-    <label for="video">
+    <label for="video" title="Select your video file">
         <i for="video" class="fa-solid fa-file-video fa-bounce fa-10x"></i>
         <input type="file" name="video" id="video" accept="video/*" required>
     </label>
+
     <label for="title">
         <input type="text" placeholder="Title of your video" name="title" required>
     </label>
@@ -34,6 +35,10 @@
                 <option value="{{ $subject->name }}"></option>
             @endforeach
         </datalist>
+    </label>
+    <label for="thumbnail">
+        <i for="thumbnail" class="fa-sharp fa-solid fa-images fa-5x" title="Select an image for a thumbnail"></i>
+        <input type="file" name="thumbnail" id="thumbnail" accept=".jpg,.jpeg,.png" required>
     </label>
     <button type="submit" class="button-upload">Upload Video</button>
 

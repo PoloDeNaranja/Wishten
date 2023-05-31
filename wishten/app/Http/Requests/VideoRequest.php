@@ -26,6 +26,8 @@ class VideoRequest extends FormRequest
         return [
             'title' =>  ['required', 'string', 'max:255'],
             'description'   =>  ['required', 'string', 'max:255'],
+            'video' =>  ['required', 'mimes:mp4,x-flv,quicktime,x-msvideo,x-ms-wmv'],
+            'thumbnail' =>  ['required', 'mimes:jpg,jpeg,png']
         ];
     }
 }

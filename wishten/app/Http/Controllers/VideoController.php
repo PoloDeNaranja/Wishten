@@ -71,27 +71,32 @@ class VideoController extends Controller
 
     // Crea un nuevo vídeo, asignándoselo al usuario que lo crea
     function upload(User $user, VideoRequest $request) {
-        if(!$request->hasFile('video')) {
-            return back()->with('error', 'No file provided');
+        if(!$request->hasFile('video') || !$request->hasFile('thumbnail')) {
+            return back()->with('error', 'No file provided for video or thumbnail');
         }
         // Escapamos el titulo y el tema del video para darle nombre al fichero y a la carpeta
         $escaped_title = preg_replace('/[^A-Za-z0-9_\-]/', '_', $request->title);
         $escaped_subject = preg_replace('/[^A-Za-z0-9_\-]/', '_', $request->subject_name);
+
         $video = $request->file('video');
-        $format = strtolower($video->getClientOriginalExtension());
-        $allowed_formats = array('mp4', 'mov', 'wmv', 'flv', 'avi');
-        if (!in_array($format, $allowed_formats)) {
-            return back()->with('error', 'Invalid file format, the formats allowed are: .MP4, .MOV, .WMV, .FLV or .AVI');
-        }
+        $thumb = $request->file('thumbnail');
+
+        $video_extension = strtolower($video->getClientOriginalExtension());
+        $thumb_extension = strtolower($thumb->getClientOriginalExtension());
         $date = date('YmdHis');
-        $filename = 'wishten-'.$date.'_'.$escaped_title.'.'.$format;
+        //Asignamos un nombre a la carpeta que contiene el video y la miniatura
         $folder = 'videos/'.$escaped_subject.'/'.$escaped_title.'_'.$date;
-        $path = $request->file('video')->storeAs($folder, $filename, 'public');
+        // Asignamos un nombre a los ficheros de video y de miniatura
+        $video_name = 'wishten-'.$date.'-'.$escaped_title.'.'.$video_extension;
+        $thumb_name = 'wishten-'.$date.'-'.$escaped_title.'-thumbnail.'.$thumb_extension;
+        $video_path = $video->storeAs($folder, $video_name, 'public');
+        $thumb_path = $thumb->storeAs($folder, $thumb_name, 'public');
 
         $video = $user->videos()->create([
             'title' =>  $request->title,
             'description'   =>  $request->description,
-            'file_path' =>  $path,
+            'video_path' =>  $video_path,
+            'thumb_path' =>  $thumb_path
         ]);
 
         $subject = Subject::firstOrCreate([

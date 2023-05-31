@@ -2,6 +2,10 @@
 
 @section('title', 'Videos')
 
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/videoListStyle.css') }}" />
+@endsection
+
 @section('content')
 @include('layouts.messages')
 
@@ -21,10 +25,16 @@
     @if (!$videos || $videos->isEmpty())
         <h1>No videos</h1>
     @else
-        @foreach ($videos as $video)
-            <a href="{{ route('video.watch', ['video'=>$video->id]) }}">{{ $video->title }}</a>
-        @endforeach
-
+        <div class="video-list">
+            @foreach ($videos as $video)
+                <div class="video-card">
+                    <img src="{{ url('storage/' . $video->thumb_path) }}" alt="{{ $video->title }}">
+                    <a href="{{ route('video.watch', ['video'=>$video->id]) }}"></a>
+                    <h3>{{ $video->title }}</h3>
+                    <p>{{ $video->user->name }}</p>
+                </div>
+            @endforeach
+        </div>
     @endif
 
 

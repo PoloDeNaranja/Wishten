@@ -19,7 +19,8 @@ return new class extends Migration
             $table->foreignId('subject_id')->default(1)->constrained('subjects')->onDelete('cascade');
             $table->string('title');
             $table->string('description');
-            $table->string('file_path');
+            $table->string('video_path');
+            $table->string('thumb_path');
             $table->enum('status', ['valid', 'pending', 'bloqued'])->default('valid');
             $table->timestamps();
         });
