@@ -31,6 +31,11 @@
     padding: 5px;
     cursor: pointer;
 }
+
+.button:hover {
+    color:  black;
+}
+
 .button.red {
     background-color: #CB5763;
 }
@@ -47,18 +52,15 @@
 }
 
 .userInfo {
-    border-collapse: collapse;
     border: 1px solid #ddd;
+    border-radius: 8px;
+    border-spacing: 0;
     margin-bottom: 5%;
 }
 
 .userInfo th, .userInfo td {
     text-align: center;
     padding: 12px;
-}
-
-.userInfo tr {
-    border-bottom: 1px solid #ddd;
 }
 
 .userInfo tr.header, .userInfo tr:hover {
@@ -81,3 +83,18 @@
     margin-bottom: 1%;
 }
 
+#filepath {
+    color: black;
+}
+
+#filepath:hover {
+    color: #57CC99;
+}
+
+#filepath:visited {
+    color:  black;
+}
+
+#filepath:visited:hover {
+    color:  #57CC99;
+}
