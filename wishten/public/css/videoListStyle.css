@@ -1,6 +1,7 @@
 .container {
     min-height: 100%;
     height: auto;
+    overflow: scroll;
 }
 
 .video-list {
@@ -62,6 +63,7 @@
     border-radius: 8px;
     position: relative;
     transition: 0.2s ease-in-out;
+    height: 275px;
 }
 
 .video-card:hover  {
