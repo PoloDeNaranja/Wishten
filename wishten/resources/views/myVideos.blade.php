@@ -13,7 +13,7 @@
         @csrf
         <div>
             <label for="video_title">
-                <input class="search-input" type="text" placeholder="Filter by title" title="video_title" list="video_titles" @isset($video_title) value="{{ $video_title }}"@endif>
+                <input class="search-input" type="text" placeholder="Filter by title" name="video_title" list="video_titles" @isset($video_title) value="{{ $video_title }}"@endif>
                 <datalist id="video_titles">
                     @foreach ($videos as $video)
                         <option value="{{ $video->title }}"></option>

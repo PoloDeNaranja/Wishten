@@ -22,7 +22,7 @@
 .my-video-list > .video-card{
     display: flex;
     flex-direction: row;
-
+    height: 200px;
 }
 
 .my-video-list > .video-card > img {
@@ -32,20 +32,27 @@
     border-radius: 8px;
 }
 
+.video-info {
+    width: 90%;
+}
+
 .video-info > h3 {
-    margin: 2%;
+    margin-left: 2%;
     font-weight: bold;
     font-size: 20px;
 }
 
 .video-info > h4 {
-    margin: 2%;
+    margin-left: 2%;
+    margin-top: -10px;
+    margin-bottom: 2%;
     font-size: 12px;
     font-weight: normal;
     color: gray;
 }
 
 .video-info > p {
+    margin-left: 2%;
     color: black;
 }
 
