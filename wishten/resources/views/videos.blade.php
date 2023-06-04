@@ -9,17 +9,21 @@
 @section('content')
 @include('layouts.messages')
 
-    <form action="{{ route('videos')}}" method="get">
+    <form class="search-bar" action="{{ route('videos')}}" method="get">
         @csrf
-        <label for="subject_name">
-            <input type="text" placeholder="Filter by subject" name="subject_name" list="subject_names" @isset($subject_name) value="{{ $subject_name }}"@endif>
-            <datalist id="subject_names">
-                @foreach ($subjects as $subject)
-                    <option value="{{ $subject->name }}"></option>
-                @endforeach
-            </datalist>
-            <button type="submit">Filter</button>
-        </label>
+        <div>
+            <label for="subject_name">
+                <input class="search-input" type="text" placeholder="Filter by subject" name="subject_name" list="subject_names" @isset($subject_name) value="{{ $subject_name }}"@endif>
+                <datalist id="subject_names">
+                    @foreach ($subjects as $subject)
+                        <option value="{{ $subject->name }}"></option>
+                    @endforeach
+                </datalist>
+                <button class="search-button" type="submit">
+                    <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                </button>
+            </label>
+        </div>
     </form>
 
     @if (!$videos || $videos->isEmpty())

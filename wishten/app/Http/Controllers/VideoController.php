@@ -65,8 +65,26 @@ class VideoController extends Controller
     }
 
     // Devuelve la vista de todos los vídeos de un usuario
-    function myVideos() {
-        return view('myVideos')->with('videos', Auth::user()->videos()->get());
+    function myVideos(Request $request) {
+        $videos = Auth::user()->videos()->get();
+        if($request->filled('video_title')) {
+            $video = $videos->where('name', $request->video_title);
+            if(!$video) {
+                return view('myVideos')->with([
+                    'videos'    =>  null,
+                    'video_title'  =>  $request->video_title
+                ]);
+            }
+            return view('myVideos')->with([
+                'videos'    =>  $video,
+                'video_title'  =>  $video->title
+            ]);
+        }
+        else {
+            return view('myVideos')->with([
+                'videos'    =>  $videos,
+            ]);
+        }
     }
 
     // Crea un nuevo vídeo, asignándoselo al usuario que lo crea
