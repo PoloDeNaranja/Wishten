@@ -55,7 +55,11 @@ class VideoController extends Controller
     // Devuelve la vista para editar un vídeo
     function edit(Request $request) {
         $video = Video::find($request['video']);
-        return view('videoEdit')->with('video', $video);
+        $subjects = Subject::all()->sortBy('name');
+        return view('videoEdit')->with([
+            'video'     =>  $video,
+            'subjects'   =>  $subjects
+        ]);
     }
 
     // Devuelve la vista para crear un nuevo vídeo
@@ -131,6 +135,7 @@ class VideoController extends Controller
         if(Auth::user()->isAdmin() || Auth::id() == $video->owner_id) {
             Storage::delete('public/'.$video->file_path);
             $video->delete();
+            // Si viene de la pagina de administración, le devolvemos a la misma
             if ($admin) {
                 return back()->with('success', 'Your video was deleted successfully!');
             }
