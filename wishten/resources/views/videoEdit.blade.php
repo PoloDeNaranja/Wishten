@@ -20,7 +20,9 @@
                 <label for="title">Title:
                     <input type="text" placeholder="Title of your video" name="title" value="{{ $video->title }}" required>
                 </label>
-                <button class="button" type="submit">Apply</button>
+                <button class="button apply" type="submit">
+                    <i class="fa-regular fa-circle-check fa-lg"></i>
+                </button>
             </form>
 
             <form action="{{ route('video.set_desc', $video->id) }}" method="post">
@@ -28,7 +30,9 @@
                 <label for="description">Description:
                     <textarea type="text" placeholder="Description of your video" name="description" rows="4" cols="50" required>{{ $video->description }}</textarea>
                 </label>
-                <button class="button" type="submit">Apply</button>
+                <button class="button apply" type="submit">
+                    <i class="fa-regular fa-circle-check fa-lg"></i>
+                </button>
             </form>
 
             <form action="{{ route('video.set_subject', $video->id) }}" method="post">
@@ -41,16 +45,20 @@
                         @endforeach
                     </datalist>
                 </label>
-                <button class="button" type="submit">Apply</button>
+                <button class="button apply" type="submit">
+                    <i class="fa-regular fa-circle-check fa-lg"></i>
+                </button>
             </form>
 
-            <form action="{{ route('video.set_thumbnail', $video->id) }}" method="post" enctype="multipart/form-data">
+            <form class="thumb-form" action="{{ route('video.set_thumbnail', $video->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <label for="thumbnail" title="Select an image for a thumbnail">
                     <img src="{{ url('storage/' . $video->thumb_path) }}" alt="{{ $video->title }}">
                     <input type="file" name="thumbnail" id="thumbnail" accept=".jpg,.jpeg,.png" required>
                 </label>
-                <button class="button" type="submit">Apply</button>
+                <button class="button apply" type="submit">
+                    <i class="fa-regular fa-circle-check fa-lg"></i>
+                </button>
             </form>
             <form action="{{ route('video.delete', ['video' => $video->id, 'admin' => 0]) }}" method="post">
                 @csrf

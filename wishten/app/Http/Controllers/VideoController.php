@@ -138,6 +138,28 @@ class VideoController extends Controller
     // Actualiza el título de un video
     function setTitle(Video $video, Request $request) {
         $request->validate(['title' =>  ['required', 'string', 'max:255']]);
+
+        // Si se cambia el título del video, se reubican los ficheros asociados
+        if($request->title !== $video->title) {
+            // Separamos el string que contiene la ruta para poder mover los ficheros a la nueva ruta
+            list($videos, $subject, $old_title, $video_file) = explode('/', $video->video_path);
+            $thumb_file = explode('/', $video->thumb_path)[3];
+
+            $escaped_title = preg_replace('/[^A-Za-z0-9_\-]/', '_', $request->title);
+
+            $new_video_path = $videos.'/'.$subject.'/'.$escaped_title.'/'.$video_file;
+            $new_thumb_path = $videos.'/'.$subject.'/'.$escaped_title.'/'.$thumb_file;
+            // Movemos los ficheros a la nueva ruta y eliminamos la carpeta anterior
+            Storage::move('public/'.$video->video_path, 'public/'.$new_video_path);
+            Storage::move('public/'.$video->thumb_path, 'public/'.$new_thumb_path);
+            Storage::deleteDirectory('public/'.$videos.'/'.$subject.'/'.$old_title);
+            $video->update([
+                'video_path'    =>  $new_video_path,
+                'thumb_path'    =>  $new_thumb_path
+            ]);
+
+        }
+
         $video->update(['title' =>  $request->title]);
         $video->updateTimestamps();
         $video->save();
@@ -190,10 +212,14 @@ class VideoController extends Controller
             return back()->with('error', 'No file provided for the thumbnail');
         }
         $request->validate(['thumbnail' =>  ['required', 'mimes:jpg,jpeg,png']]);
-        $thumb = $request->file('thumbnail');
+
+        // Eliminamos el fichero anterior
         Storage::delete('public/'.$video->thumb_path);
+
+        list($videos, $subject, $title, $thumb_file) = explode('/', $video->thumb_path);
+        $thumb = $request->file('thumbnail');
         // Guardamos el nuevo fichero con el mismo nombre que tenía el anterior
-        $thumb->storeAs($video->thumb_path);
+        $thumb->storeAs($videos.'/'.$subject.'/'.$title, $thumb_file, 'public');
         $video->updateTimestamps();
         return back()->with('success', 'The thumbnail was changed');
     }

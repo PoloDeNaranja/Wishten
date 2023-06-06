@@ -15,10 +15,30 @@
     margin-left: 2%;
 }
 
+form {
+    display: flex;
+    flex-direction: row;
+}
+
+.thumb-form {
+    flex-direction: column;
+}
+
 .button.red {
     background-color: #CB5763;
     margin-left: 10%;
 }
+
+.button.apply {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
+
+/* .button.apply i {
+    position: absolute;
+    margin-left: -11px;
+} */
 
 input {
     border-radius: 8px;
@@ -50,12 +70,11 @@ label[for="thumbnail"]:hover {
 
 label[for="thumbnail"] img {
     border-radius: 8px;
-    width: 100%;
+    width: 300px;
     height: 200px;
     object-fit: cover;
-
 }
 
 input[type="file"] {
-    /* display: none; */
+    display: none;
 }
