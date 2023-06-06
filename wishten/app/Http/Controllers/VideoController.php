@@ -96,30 +96,35 @@ class VideoController extends Controller
         if(!$request->hasFile('video') || !$request->hasFile('thumbnail')) {
             return back()->with('error', 'No file provided for video or thumbnail');
         }
-        // Escapamos el titulo y el tema del video para darle nombre al fichero y a la carpeta
+
+        // Creamos el video primero ya que usaremos su ID para identificar los ficheros asociados
+        $video = $user->videos()->create([
+            'title' =>  $request->title,
+            'description'   =>  $request->description,
+            'video_path' =>  '',
+            'thumb_path' =>  ''
+        ]);
+
+        // Escapamos el titulo y el tema del video para darle nombre a las carpetas
         $escaped_title = preg_replace('/[^A-Za-z0-9_\-]/', '_', $request->title);
         $escaped_subject = preg_replace('/[^A-Za-z0-9_\-]/', '_', $request->subject_name);
 
-        $video = $request->file('video');
+        $video_file = $request->file('video');
         $thumb = $request->file('thumbnail');
 
-        $video_extension = strtolower($video->getClientOriginalExtension());
+        $video_extension = strtolower($video_file->getClientOriginalExtension());
         $thumb_extension = strtolower($thumb->getClientOriginalExtension());
         $date = date('YmdHis');
         //Asignamos un nombre a la carpeta que contiene el video y la miniatura
         $folder = 'videos/'.$escaped_subject.'/'.$escaped_title.'_'.$date;
         // Asignamos un nombre a los ficheros de video y de miniatura
-        $video_name = 'wishten-'.$date.'-'.$escaped_title.'.'.$video_extension;
-        $thumb_name = 'wishten-'.$date.'-'.$escaped_title.'-thumbnail.'.$thumb_extension;
-        $video_path = $video->storeAs($folder, $video_name, 'public');
+        $video_name = 'wishten-'.$date.'-'.$video->id.'.'.$video_extension;
+        $thumb_name = 'wishten-'.$date.'-'.$video->id.'-thumbnail.'.$thumb_extension;
+        $video_path = $video_file->storeAs($folder, $video_name, 'public');
         $thumb_path = $thumb->storeAs($folder, $thumb_name, 'public');
 
-        $video = $user->videos()->create([
-            'title' =>  $request->title,
-            'description'   =>  $request->description,
-            'video_path' =>  $video_path,
-            'thumb_path' =>  $thumb_path
-        ]);
+        $video->video_path = $video_path;
+        $video->thumb_path = $thumb_path;
 
         $subject = Subject::firstOrCreate([
             'name'  =>  $request->subject_name
@@ -130,10 +135,77 @@ class VideoController extends Controller
         return back()->with('success', 'Your video was uploaded successfully!');
     }
 
+    // Actualiza el título de un video
+    function setTitle(Video $video, Request $request) {
+        $request->validate(['title' =>  ['required', 'string', 'max:255']]);
+        $video->update(['title' =>  $request->title]);
+        $video->updateTimestamps();
+        $video->save();
+        return back()->with('success', 'The video title was changed');
+    }
+
+    // Actualiza la descripción del video
+    function setDesc(Video $video, Request $request) {
+        $request->validate(['description'   =>  ['required', 'string', 'max:255']]);
+        $video->update(['description'   =>  $request->description]);
+        $video->updateTimestamps();
+        $video->save();
+        return back()->with('success', 'The video description was changed');
+    }
+
+    // Actualiza el tema del vídeo
+    function setSubject(Video $video, Request $request) {
+        $subject = Subject::firstOrCreate([
+            'name'  =>  $request->subject_name
+        ]);
+        // Si se cambia el tema del video, se reubican los ficheros asociados
+        if($subject->id !== $video->subject) {
+            // Separamos el string que contiene la ruta para poder mover los ficheros a la nueva ruta
+            list($videos, $old_subject, $title, $video_file) = explode('/', $video->video_path);
+            $thumb_file = explode('/', $video->thumb_path)[3];
+
+            $escaped_subject = preg_replace('/[^A-Za-z0-9_\-]/', '_', $request->subject_name);
+
+            $new_video_path = $videos.'/'.$escaped_subject.'/'.$title.'/'.$video_file;
+            $new_thumb_path = $videos.'/'.$escaped_subject.'/'.$title.'/'.$thumb_file;
+            // Movemos los ficheros a la nueva ruta y eliminamos la carpeta anterior
+            Storage::move('public/'.$video->video_path, 'public/'.$new_video_path);
+            Storage::move('public/'.$video->thumb_path, 'public/'.$new_thumb_path);
+            Storage::deleteDirectory('public/'.$videos.'/'.$old_subject.'/'.$title);
+            $video->update([
+                'video_path'    =>  $new_video_path,
+                'thumb_path'    =>  $new_thumb_path
+            ]);
+
+        }
+        $video->subject()->associate($subject);
+        $video->updateTimestamps();
+        $video->save();
+        return back()->with('success', 'The video subject was changed');
+    }
+
+    // Actualiza la miniatura del video
+    function setThumbnail(Video $video, Request $request) {
+        if(!$request->hasFile('thumbnail')) {
+            return back()->with('error', 'No file provided for the thumbnail');
+        }
+        $request->validate(['thumbnail' =>  ['required', 'mimes:jpg,jpeg,png']]);
+        $thumb = $request->file('thumbnail');
+        Storage::delete('public/'.$video->thumb_path);
+        // Guardamos el nuevo fichero con el mismo nombre que tenía el anterior
+        $thumb->storeAs($video->thumb_path);
+        $video->updateTimestamps();
+        return back()->with('success', 'The thumbnail was changed');
+    }
+
     // Elimina la información de un video de la base de datos y el fichero asociado
     function delete(Video $video, bool $admin) {
         if(Auth::user()->isAdmin() || Auth::id() == $video->owner_id) {
-            Storage::delete('public/'.$video->file_path);
+            Storage::delete('public/'.$video->video_path);
+            Storage::delete('public/'.$video->thumb_path);
+            // Eliminamos la carpeta que contenía los ficheros de ese video
+            list($videos, $subject, $title, $_) = explode('/', $video->video_path);
+            Storage::deleteDirectory('public/'.$videos.'/'.$subject.'/'.$title);
             $video->delete();
             // Si viene de la pagina de administración, le devolvemos a la misma
             if ($admin) {

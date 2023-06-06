@@ -76,6 +76,14 @@ Route::middleware('auth')->group(function () {
 
         Route::post('delete_vid/{video}/{admin}', 'delete')->name('video.delete');
 
+        Route::post('set_title/{video}', 'setTitle')->name('video.set_title');
+
+        Route::post('set_desc/{video}', 'setDesc')->name('video.set_desc');
+
+        Route::post('set_subject/{video}', 'setSubject')->name('video.set_subject');
+
+        Route::post('set_thumbnail/{video}', 'setThumbnail')->name('video.set_thumbnail');
+
     });
 });
 
