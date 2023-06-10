@@ -21,6 +21,7 @@
             <h3 class="video-title">{{ $video->title }}</h3>
             <a class="video-subject" href="videos?subject_name={{ $video->subject->name }}">{{ $video->subject->name }}</a>
             <p class="video-desc">{{ $video->description }}</p>
+            <p>{{ $video->views()->count() }} views</p>
         </div>
     </div>
     <div class="related-videos">

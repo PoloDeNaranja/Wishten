@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('visualized_videos', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('video_id')->constrained('videos')->onUpdate('cascade')->onDelete('cascade');
-            $table->boolean('fav');
+            $table->boolean('fav')->default(0);
+            $table->dateTime('date')->nullable();
         });
     }
 

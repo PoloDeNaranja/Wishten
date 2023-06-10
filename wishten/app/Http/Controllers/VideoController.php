@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Video;
 use App\Models\User;
+use App\Models\Visualized_videos;
 use App\Models\Subject;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\VideoRequest;
@@ -49,6 +50,11 @@ class VideoController extends Controller
     // Devuelve la vista de un vídeo
     function watch(Request $request) {
         $video = Video::find($request['video']);
+        // Se guarda la visualización
+        Auth::user()->visualized_videos()->create([
+            'video_id'  =>  $video->id,
+            'date'      =>  date("Y-m-d H:i:s")
+        ]);
         return view('videoWatch')->with('video', $video);
     }
 

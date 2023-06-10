@@ -55,6 +55,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the videos a user has viewed.
+     */
+    public function visualized_videos(): HasMany
+    {
+        return $this->hasMany(Visualized_videos::class, 'user_id');
+    }
+
+    /**
      * Check if the user role is admin
      */
     public function isAdmin()
