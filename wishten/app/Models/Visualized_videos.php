@@ -17,8 +17,10 @@ class Visualized_videos extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'user_id',
         'video_id',
-        'date'
+        'date',
+        'fav'
     ];
 
     /**

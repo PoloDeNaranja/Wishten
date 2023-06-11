@@ -84,6 +84,8 @@ Route::middleware('auth')->group(function () {
 
         Route::post('set_thumbnail/{video}', 'setThumbnail')->name('video.set_thumbnail');
 
+        Route::post('fav/{video}/{user}', 'fav')->name('video.fav');
+
     });
 });
 
@@ -114,12 +116,6 @@ Route::middleware('auth', 'roles:admin')->group(function () {
     Route::controller(VideoController::class)->group(function(){
 
         Route::get('adminVideos', 'adminVideos')->name('adminVideos');
-
-        Route::post('addUser', 'addUser')->name('adminUsers.addUser');
-
-        Route::post('ban/{user}', 'ban')->name('adminUsers.ban');
-
-        Route::post('changeRole/{user}', 'changeRole')->name('adminUsers.changeRole');
 
     });
 });

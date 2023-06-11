@@ -51,11 +51,14 @@ class VideoController extends Controller
     function watch(Request $request) {
         $video = Video::find($request['video']);
         // Se guarda la visualización
-        Auth::user()->visualized_videos()->create([
-            'video_id'  =>  $video->id,
-            'date'      =>  date("Y-m-d H:i:s")
+        $view = Visualized_videos::firstOrCreate([
+            'user_id'   =>  Auth::id(),
+            'video_id'  =>  $video->id
         ]);
-        return view('videoWatch')->with('video', $video);
+        return view('videoWatch')->with([
+            'video' =>  $video,
+            'view'  =>  $view
+        ]);
     }
 
     // Devuelve la vista para editar un vídeo
@@ -228,6 +231,28 @@ class VideoController extends Controller
         $thumb->storeAs($videos.'/'.$subject.'/'.$title, $thumb_file, 'public');
         $video->updateTimestamps();
         return back()->with('success', 'The thumbnail was changed');
+    }
+
+    // Marca el video como favorito para que sea más accesible para el usuario
+    function fav(Video $video, User $user) {
+        $view = Visualized_videos::where([
+            'user_id'   =>  $user->id,
+            'video_id'  =>  $video->id
+        ])->first();
+        if($view->fav) {
+            $view->where([
+                'user_id'   =>  $user->id,
+                'video_id'  =>  $video->id
+            ])->update(['fav' => 0]);
+            $view->save();
+            return back()->with('success', 'This video was removed from your favourite videos');
+        }
+        $view->where([
+            'user_id'   =>  $user->id,
+            'video_id'  =>  $video->id
+        ])->update(['fav' => 1]);
+        $view->save();
+        return back()->with('success', 'This video was added to your favourite videos');
     }
 
     // Elimina la información de un video de la base de datos y el fichero asociado

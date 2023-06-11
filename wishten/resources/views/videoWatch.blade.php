@@ -8,14 +8,31 @@
 
 @section('content')
 
+@include('layouts.messages')
+
 <div class="video-display">
     <div class="video-view">
-        @if (Auth::id() == $video->owner_id)
-            <a class="button" href="{{ route('video.edit', ['video'=>$video->id]) }}">
-                <i class="fa-regular fa-pen-to-square"></i>
-                Edit
-            </a>
-        @endif
+        <div class="action-buttons">
+            @if (Auth::id() == $video->owner_id)
+                <a class="button" href="{{ route('video.edit', ['video'=>$video->id]) }}">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    Edit
+                </a>
+            @endif
+            <form action="{{ route('video.fav', ['video'=>$video->id, 'user'=>Auth::id()]) }}" method="post">
+                @csrf
+                <button class="button" type="submit"
+                    @if ($view->fav)
+                        title="Remove from your favourite videos">
+                        <i class="fa-solid fa-bookmark"></i>
+                    @else
+                        title="Add to your favourite videos">
+                        <i class="fa-regular fa-bookmark"></i>
+                    @endif
+                </button>
+            </form>
+        </div>
+
         <video controls src="{{ url('storage/'.$video->video_path) }}"></video>
         <div class="video-info">
             <h3 class="video-title">{{ $video->title }}</h3>
