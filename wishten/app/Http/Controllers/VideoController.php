@@ -65,6 +65,12 @@ class VideoController extends Controller
     // Devuelve la vista para editar un vídeo
     function edit(Request $request) {
         $video = Video::find($request['video']);
+
+        // Si el usuario no está autorizado para editar el video, se le deniega el acceso
+        if(Auth::user()->cannot('update', $video)) {
+            abort(403);
+        }
+
         $subjects = Subject::all()->sortBy('name');
         return view('videoEdit')->with([
             'video'     =>  $video,
@@ -147,6 +153,10 @@ class VideoController extends Controller
 
     // Actualiza el título de un video
     function setTitle(Video $video, Request $request) {
+        if(Auth::user()->cannot('update', $video)) {
+            abort(403);
+        }
+
         $request->validate(['title' =>  ['required', 'string', 'max:255']]);
 
         // Si se cambia el título del video, se reubican los ficheros asociados
@@ -178,6 +188,10 @@ class VideoController extends Controller
 
     // Actualiza la descripción del video
     function setDesc(Video $video, Request $request) {
+        if(Auth::user()->cannot('update', $video)) {
+            abort(403);
+        }
+
         $request->validate(['description'   =>  ['required', 'string', 'max:255']]);
         $video->update(['description'   =>  $request->description]);
         $video->updateTimestamps();
@@ -187,6 +201,10 @@ class VideoController extends Controller
 
     // Actualiza el tema del vídeo
     function setSubject(Video $video, Request $request) {
+        if(Auth::user()->cannot('update', $video)) {
+            abort(403);
+        }
+
         $subject = Subject::firstOrCreate([
             'name'  =>  $request->subject_name
         ]);
@@ -218,6 +236,10 @@ class VideoController extends Controller
 
     // Actualiza la miniatura del video
     function setThumbnail(Video $video, Request $request) {
+        if(Auth::user()->cannot('update', $video)) {
+            abort(403);
+        }
+
         if(!$request->hasFile('thumbnail')) {
             return back()->with('error', 'No file provided for the thumbnail');
         }
@@ -258,19 +280,19 @@ class VideoController extends Controller
 
     // Elimina la información de un video de la base de datos y el fichero asociado
     function delete(Video $video, bool $admin) {
-        if(Auth::user()->isAdmin() || Auth::id() == $video->owner_id) {
-            Storage::delete('public/'.$video->video_path);
-            Storage::delete('public/'.$video->thumb_path);
-            // Eliminamos la carpeta que contenía los ficheros de ese video
-            list($videos, $subject, $title, $_) = explode('/', $video->video_path);
-            Storage::deleteDirectory('public/'.$videos.'/'.$subject.'/'.$title);
-            $video->delete();
-            // Si viene de la pagina de administración, le devolvemos a la misma
-            if ($admin) {
-                return back()->with('success', 'Your video was deleted successfully!');
-            }
-            return redirect(route('my-videos'))->with('success', 'Your video was deleted successfully!');
+        if(Auth::user()->cannot('delete', $video)) {
+            abort(403);
         }
-        return back();
+        Storage::delete('public/'.$video->video_path);
+        Storage::delete('public/'.$video->thumb_path);
+        // Eliminamos la carpeta que contenía los ficheros de ese video
+        list($videos, $subject, $title, $_) = explode('/', $video->video_path);
+        Storage::deleteDirectory('public/'.$videos.'/'.$subject.'/'.$title);
+        $video->delete();
+        // Si viene de la pagina de administración, le devolvemos a la misma
+        if ($admin) {
+            return back()->with('success', 'Your video was deleted successfully!');
+        }
+        return redirect(route('my-videos'))->with('success', 'Your video was deleted successfully!');
     }
 }

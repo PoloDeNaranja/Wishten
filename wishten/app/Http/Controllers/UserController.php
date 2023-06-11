@@ -39,6 +39,10 @@ class UserController extends Controller
 
     // Cambia la foto de perfil y elimina la anterior
     function updatePic(User $user, Request $request) {
+        if(Auth::user()->cannot('update', $user)) {
+            abort(403);
+        }
+
         if(!$request->hasFile('new_pic')) {
             return back()->with('error', 'No file provided');
         }
@@ -58,6 +62,10 @@ class UserController extends Controller
 
     // Elimina la foto de perfil
     function deletePic(User $user, Request $request) {
+        if(Auth::user()->cannot('update', $user)) {
+            abort(403);
+        }
+
         if ($user->profile_pic != 'None') {
             Storage::delete('public/'.$user->profile_pic);
         }
@@ -72,6 +80,10 @@ class UserController extends Controller
 
     // Actualiza el nombre y el correo del usuario
     function updateInfo(User $user, Request $request) {
+        if(Auth::user()->cannot('update', $user)) {
+            abort(403);
+        }
+
         $modification = $user->name !== $request->name || $user->email !== $request->email;
         // si se ha modificado el nombre o el email, validamos los datos y actualizamos la base de datos
         if($user->name !== $request->name) {
@@ -95,6 +107,10 @@ class UserController extends Controller
 
     // Cambia la contraseña del usuario (logeado)
     function changePassword(User $user, Request $request) {
+        if(Auth::user()->cannot('update', $user)) {
+            abort(403);
+        }
+
         $request->validate([
             'old_password'  =>  'required',
             'new_password'  =>  ['required', 'confirmed', Rules\Password::defaults()]
@@ -139,10 +155,10 @@ class UserController extends Controller
 
     // Elimina el usuario de la base de datos
     function delete(User $user) {
-        if(Auth::user()->isAdmin() || Auth::id() == $user->id) {
-            $user->delete();
-            return back()->with('success', 'The account was deleted successfully!');
+        if(Auth::user()->cannot('delete', $user)) {
+            abort(403);
         }
-        return back();
+        $user->delete();
+        return back()->with('success', 'The account was deleted successfully!');
     }
 }
