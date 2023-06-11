@@ -51,10 +51,11 @@ class VideoController extends Controller
     function watch(Request $request) {
         $video = Video::find($request['video']);
         // Se guarda la visualización
-        $view = Visualized_videos::firstOrCreate([
-            'user_id'   =>  Auth::id(),
-            'video_id'  =>  $video->id
-        ]);
+        $view = Visualized_videos::firstOrCreate(
+            ['user_id'  =>  Auth::id(),
+            'video_id'  =>  $video->id],
+            ['date'     =>  date("Y-m-d H:i:s")]
+        );
         return view('videoWatch')->with([
             'video' =>  $video,
             'view'  =>  $view
