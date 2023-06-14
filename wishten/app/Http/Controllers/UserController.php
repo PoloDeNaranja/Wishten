@@ -147,10 +147,18 @@ class UserController extends Controller
         $user->update(['role' =>  $request->roles]);
         if($user == Auth::user() && !$user->isAdmin()) {
             return route('/');
-            //return back()->with('success', 'The user '.$user->name.' has now the role \''.$user->role.'\'');
         }
         return back()->with('success', 'The user '.$user->name.' has now the role \''.$user->role.'\'');
-        //return route('/');
+    }
+
+    function follow(User $user) {
+        if(Auth::user()->isFollowing($user)) {
+            Auth::user()->followed_users()->attach($user->id);
+            return back()->with('success', 'You started to follow '.$user->name);
+        }
+        Auth::user()->followed_users()->detach($user->id);
+        return back()->with('success', 'You unfollowed '.$user->name);
+
     }
 
     // Elimina el usuario de la base de datos

@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 
 class User extends Authenticatable
 {
@@ -60,6 +62,26 @@ class User extends Authenticatable
     public function visualized_videos(): HasMany
     {
         return $this->hasMany(Visualized_videos::class, 'user_id');
+    }
+
+    /**
+     * Get the followers of a user.
+     */
+    public function followers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'follows', 'followed_id', 'follower_id');
+    }
+
+    /**
+     * Get the followers of a user.
+     */
+    public function followed_users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'follows', 'follower_id', 'followed_id');
+    }
+
+    public function isFollowing(User $user) {
+        return $this->followed_users()->where('followed_id', $user->id)->count() === 0;
     }
 
     /**

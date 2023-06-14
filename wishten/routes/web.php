@@ -57,6 +57,8 @@ Route::middleware('auth')->group(function () {
 
         Route::post('delete_user/{user}', 'delete')->name('user.delete');
 
+        Route::post('follow/{user}', 'follow')->name('user.follow');
+
     });
 
     // Rutas de gestión de vídeos
