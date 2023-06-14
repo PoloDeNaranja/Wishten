@@ -6,7 +6,6 @@ header{
     min-width: 100%;
     background-color: #22577A;
     align-items: center;
-    position: fixed;
     z-index: 1;
 }
 a{

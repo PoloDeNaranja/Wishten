@@ -77,7 +77,7 @@
 
     @show
 
-    @yield('home');
+    @yield('home')
 
     <div class="container">
         @yield('content')
