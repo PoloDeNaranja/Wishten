@@ -153,11 +153,12 @@ class UserController extends Controller
 
     function follow(User $user) {
         if(Auth::user()->isFollowing($user)) {
-            Auth::user()->followed_users()->attach($user->id);
-            return back()->with('success', 'You started to follow '.$user->name);
+            Auth::user()->followed_users()->detach($user->id);
+            return back()->with('success', 'You unfollowed '.$user->name);
+
         }
-        Auth::user()->followed_users()->detach($user->id);
-        return back()->with('success', 'You unfollowed '.$user->name);
+        Auth::user()->followed_users()->attach($user->id);
+        return back()->with('success', 'You started to follow '.$user->name);
 
     }
 

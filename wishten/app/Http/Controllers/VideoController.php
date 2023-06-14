@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Video;
 use App\Models\User;
-use App\Models\Visualized_videos;
 use App\Models\Subject;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\VideoRequest;
@@ -50,16 +49,10 @@ class VideoController extends Controller
     // Devuelve la vista de un vídeo
     function watch(Request $request) {
         $video = Video::find($request['video']);
-        // Se guarda la visualización
-        $view = Visualized_videos::firstOrCreate(
-            ['user_id'  =>  Auth::id(),
-            'video_id'  =>  $video->id],
-            ['date'     =>  date("Y-m-d H:i:s")]
-        );
-        return view('videoWatch')->with([
-            'video' =>  $video,
-            'view'  =>  $view
-        ]);
+        if(!Auth::user()->hasViewed($video)) {
+            Auth::user()->visualized_videos()->attach($video, ['date'=>date("Y-m-d H:i:s")]);
+        }
+        return view('videoWatch')->with(['video' =>  $video]);
     }
 
     // Devuelve la vista para editar un vídeo
@@ -258,23 +251,13 @@ class VideoController extends Controller
 
     // Marca el video como favorito para que sea más accesible para el usuario
     function fav(Video $video, User $user) {
-        $view = Visualized_videos::where([
-            'user_id'   =>  $user->id,
-            'video_id'  =>  $video->id
-        ])->first();
-        if($view->fav) {
-            $view->where([
-                'user_id'   =>  $user->id,
-                'video_id'  =>  $video->id
-            ])->update(['fav' => 0]);
-            $view->save();
+        if($video->isFav($user)) {
+            $video->views()->where('user_id', $user->id)->update(['fav'=>0]);
+            $video->save();
             return back()->with('success', 'This video was removed from your favourite videos');
         }
-        $view->where([
-            'user_id'   =>  $user->id,
-            'video_id'  =>  $video->id
-        ])->update(['fav' => 1]);
-        $view->save();
+        $video->views()->where('user_id', $user->id)->update(['fav'=>1]);
+        $video->save();
         return back()->with('success', 'This video was added to your favourite videos');
     }
 

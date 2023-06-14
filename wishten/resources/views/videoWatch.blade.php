@@ -22,7 +22,7 @@
             <form action="{{ route('video.fav', ['video'=>$video->id, 'user'=>Auth::id()]) }}" method="post">
                 @csrf
                 <button class="button" type="submit"
-                    @if ($view->fav)
+                    @if ($video->isFav(Auth::user()))
                         title="Remove from your favourite videos">
                         <i class="fa-solid fa-bookmark"></i>
                     @else
