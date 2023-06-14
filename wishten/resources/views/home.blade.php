@@ -2,41 +2,39 @@
 
 @section('title', 'Home')
 
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/homeStyle.css') }}" />
+@endsection
 
-@section('content')
-    @for ($i = 0; $i < 10; $i++)
-        <h1>HOME</h1>
-    @endfor
-    {{-- <div class="container">
-
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            @for ($i = 0; $i < 10; $i++)
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                            preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%"
-                                fill="#eceeef" dy=".3em">Thumbnail</text>
-                        </svg>
-
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                </div>
-                                <small class="text-muted">9 mins</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endfor
+@section('home')
+    <div class="home-view">
+        <video id="back-video" preload="true" autoplay loop muted>
+            <source src="{{ asset('background/background.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="home-content">
+            <h1>WISHTEN</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempora necessitatibus suscipit placeat, autem voluptas ducimus eos. Atque illo odit excepturi tempore velit in, architecto aspernatur pariatur repellat autem unde.
+            Error, eius delectus! Reprehenderit corporis voluptates ipsa quo eaque? Commodi deleniti dicta, voluptatem unde labore, ea vitae odio accusantium non saepe numquam architecto omnis ipsam adipisci consequatur minus ratione vero.
+            Obcaecati quaerat dolor non dolores et, omnis odio enim, minima nam est eos soluta quasi eligendi reprehenderit unde sunt eaque modi atque aliquam nisi blanditiis. Amet aliquam doloremque ut fuga.
+            Omnis, aliquid. Nulla ullam mollitia sunt rem temporibus error aliquid nisi numquam, natus possimus harum odit quam cupiditate autem distinctio labore magnam esse maxime, non ea nostrum neque? Eveniet, quod!
+            Perferendis vel itaque quaerat error! Ipsa laborum ex laudantium nisi tempora porro libero praesentium pariatur. Laudantium nisi commodi nemo a deleniti est corrupti eligendi eum? Impedit quibusdam odio temporibus accusantium.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempora necessitatibus suscipit placeat, autem voluptas ducimus eos. Atque illo odit excepturi tempore velit in, architecto aspernatur pariatur repellat autem unde.
+            Error, eius delectus! Reprehenderit corporis voluptates ipsa quo eaque? Commodi deleniti dicta, voluptatem unde labore, ea vitae odio accusantium non saepe numquam architecto omnis ipsam adipisci consequatur minus ratione vero.
+            Obcaecati quaerat dolor non dolores et, omnis odio enim, minima nam est eos soluta quasi eligendi reprehenderit unde sunt eaque modi atque aliquam nisi blanditiis. Amet aliquam doloremque ut fuga.
+            Omnis, aliquid. Nulla ullam mollitia sunt rem temporibus error aliquid nisi numquam, natus possimus harum odit quam cupiditate autem distinctio labore magnam esse maxime, non ea nostrum neque? Eveniet, quod!
+            Perferendis vel itaque quaerat error! Ipsa laborum ex laudantium nisi tempora porro libero praesentium pariatur. Laudantium nisi commodi nemo a deleniti est corrupti eligendi eum? Impedit quibusdam odio temporibus accusantium.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempora necessitatibus suscipit placeat, autem voluptas ducimus eos. Atque illo odit excepturi tempore velit in, architecto aspernatur pariatur repellat autem unde.
+            Error, eius delectus! Reprehenderit corporis voluptates ipsa quo eaque? Commodi deleniti dicta, voluptatem unde labore, ea vitae odio accusantium non saepe numquam architecto omnis ipsam adipisci consequatur minus ratione vero.
+            Obcaecati quaerat dolor non dolores et, omnis odio enim, minima nam est eos soluta quasi eligendi reprehenderit unde sunt eaque modi atque aliquam nisi blanditiis. Amet aliquam doloremque ut fuga.
+            Omnis, aliquid. Nulla ullam mollitia sunt rem temporibus error aliquid nisi numquam, natus possimus harum odit quam cupiditate autem distinctio labore magnam esse maxime, non ea nostrum neque? Eveniet, quod!
+            Perferendis vel itaque quaerat error! Ipsa laborum ex laudantium nisi tempora porro libero praesentium pariatur. Laudantium nisi commodi nemo a deleniti est corrupti eligendi eum? Impedit quibusdam odio temporibus accusantium.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempora necessitatibus suscipit placeat, autem voluptas ducimus eos. Atque illo odit excepturi tempore velit in, architecto aspernatur pariatur repellat autem unde.
+            Error, eius delectus! Reprehenderit corporis voluptates ipsa quo eaque? Commodi deleniti dicta, voluptatem unde labore, ea vitae odio accusantium non saepe numquam architecto omnis ipsam adipisci consequatur minus ratione vero.
+            Obcaecati quaerat dolor non dolores et, omnis odio enim, minima nam est eos soluta quasi eligendi reprehenderit unde sunt eaque modi atque aliquam nisi blanditiis. Amet aliquam doloremque ut fuga.
+            Omnis, aliquid. Nulla ullam mollitia sunt rem temporibus error aliquid nisi numquam, natus possimus harum odit quam cupiditate autem distinctio labore magnam esse maxime, non ea nostrum neque? Eveniet, quod!
+            Perferendis vel itaque quaerat error! Ipsa laborum ex laudantium nisi tempora porro libero praesentium pariatur. Laudantium nisi commodi nemo a deleniti est corrupti eligendi eum? Impedit quibusdam odio temporibus accusantium.</p>
         </div>
-    </div> --}}
-
+    </div>
 @endsection
 

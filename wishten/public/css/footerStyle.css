@@ -12,16 +12,35 @@ footer{
 } */
 footer .cop{
     display:flex;
-    color: violet;
+    color: white;
     justify-content: end;
     align-items: end;
+    padding-right: 50px;
 }
 footer .info{
     color:white;
+    padding-left: 50px;
+    display:flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: start;
 }
+
+.info a {
+    color: white;
+    padding-bottom: 5px;
+}
+
+footer a:hover, a > i:hover{
+    color: #38A3A5;
+    transition: 0.2s ease-in-out;
+
+}
+
 footer .redes{
     display:flex;
     justify-content: end;
+    padding-right: 50px;
 }
 .redes i{
     font-size: 30px;
@@ -35,9 +54,8 @@ footer .redes{
     border-radius: 50px;
     align-items: center;
 }
-.info{
-    display:flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: start;
+
+.logo.foot img {
+    height: 200px;
 }
+
