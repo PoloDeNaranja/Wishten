@@ -3,8 +3,8 @@
 @section('title', $video->title)
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ url('/css/videoWatchStyle.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('/css/videoEditStyle.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/videoWatchStyle.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/videoEditStyle.css') }}">
 @endsection
 
 @section('content')
@@ -18,7 +18,7 @@
             <form action="{{ route('video.set_title', $video->id) }}" method="post">
                 @csrf
                 <label for="title">Title:
-                    <input type="text" placeholder="Title of your video" name="title" value="{{ $video->title }}" required>
+                    <input type="text" placeholder="Title of your video" name="title" value="{{ $video->title }}" id="title" required>
                 </label>
                 <button class="button apply" type="submit">
                     <i class="fa-regular fa-circle-check fa-lg"></i>
@@ -28,7 +28,7 @@
             <form action="{{ route('video.set_desc', $video->id) }}" method="post">
                 @csrf
                 <label for="description">Description:
-                    <textarea type="text" placeholder="Description of your video" name="description" rows="4" cols="50" required>{{ $video->description }}</textarea>
+                    <textarea id="description" placeholder="Description of your video" name="description" rows="4" cols="50" required>{{ $video->description }}</textarea>
                 </label>
                 <button class="button apply" type="submit">
                     <i class="fa-regular fa-circle-check fa-lg"></i>
@@ -38,7 +38,7 @@
             <form action="{{ route('video.set_subject', $video->id) }}" method="post">
                 @csrf
                 <label for="subject_name">Subject:
-                    <input type="text" placeholder="Subject of your video" name="subject_name" list="subject_names" value="{{ $video->subject->name }}">
+                    <input type="text" id="subject_name" placeholder="Subject of your video" name="subject_name" list="subject_names" value="{{ $video->subject->name }}">
                     <datalist id="subject_names">
                         @foreach ($subjects as $subject)
                             <option value="{{ $subject->name }}"></option>
