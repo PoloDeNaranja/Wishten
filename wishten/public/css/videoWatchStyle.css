@@ -29,6 +29,8 @@
 
 .video-info {
     margin: 1%;
+    display: flex;
+    flex-direction: column;
 }
 
 .video-title {
@@ -36,12 +38,12 @@
     margin-bottom: 0;
 }
 
-.video-subject {
+.video-link {
     color: gray;
     font-size: 14px;
 }
 
-.video-subject:hover {
+.video-link:hover {
     color:  black;
 }
 

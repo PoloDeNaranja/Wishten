@@ -62,7 +62,7 @@
                         <a href="{{ route('new-video') }}">New video...</a>
                         <a href="#">Settings</a>
                         <a href="{{ route('my-videos') }}">My Videos</a>
-                        <a href="{{ route('profile') }}">Profile</a>
+                        <a href="{{ route('profile', ['user'=>Auth::user()]) }}">Profile</a>
                         <a href="{{ route('privacy-security') }}">Privacy and Security</a>
                         @if (Auth::user()->role == 'admin')
                             <a class="dropdown-item" href="{{ '/admin' }}">Administration</a>

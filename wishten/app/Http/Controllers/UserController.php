@@ -12,8 +12,9 @@ use Hash;
 
 class UserController extends Controller
 {
-    function index() {
-        return view('profile');
+    function index(Request $request) {
+        $user = User::find($request['user']);
+        return view('profile')->with('user', $user);
     }
 
     function privacySecurity() {
