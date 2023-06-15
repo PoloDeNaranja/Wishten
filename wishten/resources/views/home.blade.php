@@ -3,12 +3,12 @@
 @section('title', 'Home')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ url('/css/homeStyle.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url('/css/homeStyle.css') }}">
 @endsection
 
 @section('home')
     <div class="home-view">
-        <video id="back-video" preload="true" autoplay loop muted>
+        <video id="back-video" preload="auto" autoplay loop muted>
             <source src="{{ asset('background/background.mp4') }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>

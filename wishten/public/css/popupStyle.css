@@ -54,7 +54,7 @@ form .titulo{
 form label{
     margin-bottom: 10px;
 }
-form label input{
+form input{
     border:none;
     border-bottom: solid 1px black;
     font-size: 15px;
@@ -62,12 +62,17 @@ form label input{
     outline:none;/*Quitar que salga el borde cuando escribes*/
 }
 
-form label .fa-solid{
+form .fa-solid{
     margin-right: 10px;
     font-size: 20px;
     color: #57CC99;
 }
-#PopupWindow button{
+
+form div {
+    margin-bottom: 2%;
+}
+
+.PopupWindow button{
     margin: 0 60px 0 60px;/* Añade margen izquierdo y derecho para que el boton cuadre*/
 }
 
@@ -104,11 +109,11 @@ input[type="file"] {
     display: none;
 }
 
-label[for="new_pic"]:hover {
+label > i:hover {
     cursor: pointer;
 }
 
-label[for="new_pic"] img {
+label > i img {
     border-radius: 50px;
 }
 
@@ -120,7 +125,7 @@ h3 {
     opacity: 0.3;
 }
 
-#roles {
+.roles {
     border-radius: 8px;
     border: none;
     padding: 5px;

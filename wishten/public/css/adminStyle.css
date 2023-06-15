@@ -67,7 +67,7 @@
     background-color: #f1f1f1;
 }
 
-#action-buttons {
+.action-buttons {
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -83,18 +83,18 @@
     margin-bottom: 1%;
 }
 
-#filepath {
+.filepath {
     color: black;
 }
 
-#filepath:hover {
+.filepath:hover {
     color: #57CC99;
 }
 
-#filepath:visited {
+.filepath:visited {
     color:  black;
 }
 
-#filepath:visited:hover {
+.filepath:visited:hover {
     color:  #57CC99;
 }

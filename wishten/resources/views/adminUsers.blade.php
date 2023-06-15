@@ -3,15 +3,14 @@
 @section('title', 'Admin Users')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ url('/css/adminStyle.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('/css/popupStyle.css') }}" />
-
+<link rel="stylesheet" type="text/css" href="{{ url('/css/adminStyle.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/popupStyle.css') }}">
 @endsection
 
 @section('js')
-    <script async type="text/javascript" src="{{ url('/js/popup.js') }}"></script>
-    <script async type="text/javascript" src="{{ url('/js/showPassword.js') }}"></script>
-    <script async type="text/javascript" src="{{ url('/js/filterTable.js') }}"></script>
+<script async src="{{ url('/js/popup.js') }}"></script>
+    <script async src="{{ url('/js/showPassword.js') }}"></script>
+    <script async src="{{ url('/js/filterTable.js') }}"></script>
 @endsection
 
 @section('content')
@@ -39,7 +38,7 @@
                     <td>{{ $user->updated_at }}</td>
 
                     <td>
-                        <form id="action-buttons" action="{{ route('user.delete', $user->id) }}" method="post">
+                        <form class="action-buttons" action="{{ route('user.delete', $user->id) }}" method="post">
                             @csrf
                             <button class="openPopup button" type="button"
                                 @if (Auth::user()->id == $user->id) disabled @endif>Modify</button>
@@ -54,14 +53,14 @@
         </table>
     </div>
     @foreach ($users as $user)
-        <div id="PopupWindow" class="popup">
+        <div class="popup PopupWindow">
             <div class="popupContent">
                 <span class="closePopup">&times;</span>
                 <h3>Modify user "{{ $user->name }}" data</h3>
                 <form action="{{ route('profile.update_pic', $user->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <label for="new_pic" class="profile_pic">
-                        <input class="form-control" type="file" name="new_pic" id="new_pic" accept=".jpg,.jpeg,.png">
+                    <label for="new_pic{{$user->id}}" class="profile_pic">
+                        <input class="form-control" type="file" name="new_pic" id="new_pic{{$user->id}}" accept=".jpg,.jpeg,.png">
                         @if ($user->profile_pic != 'None')
                             <img src="{{ url('storage/' . $user->profile_pic) }}" alt="mdo" width="60"
                                 height="60">
@@ -88,7 +87,7 @@
                     </label>
                     <label>
                         <i class="fa-solid fa-envelope"></i>
-                        <input type="email" name="email" aria-describedby="emailHelp" value="{{ $user->email }}">
+                        <input type="email" name="email" value="{{ $user->email }}">
                         @if ($errors->has('email'))
                             <span class="error-text">{{ $errors->first('email') }}</span>
                         @endif
@@ -97,7 +96,7 @@
                 </form>
                 <form action="{{ route('adminUsers.changeRole', $user->id) }}" method="post">
                     @csrf
-                    <select name="roles" id="roles">
+                    <select name="roles" class="roles">
                         <option value="admin" @if ($user->isAdmin()) selected @endif>admin</option>
                         <option value="standard" @if ($user->role == 'standard') selected @endif>standard</option>
                         <option value="company" @if ($user->role == 'company') selected @endif>company</option>
@@ -114,30 +113,30 @@
                 </form>
             </div>
         </div>
-        <div id="PopupWindow" class="popup">
+        <div class="popup PopupWindow">
             <div class="popupContent">
                 <span class="closePopup">&times;</span>
                 <form action="{{ route('profile.change_password', $user->id) }}" method="POST">
                     @csrf
                     <label>
-                        <i class="fa-solid fa-lock" for="password"></i>
-                        <input type="password" name="old_password" id="InputOldPassword"
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="old_password" class="InputOldPassword"
                             placeholder="Enter your old password" required>
                         @if ($errors->has('old_password'))
                             <span class="error-text">{{ $errors->first('old_password') }}</span>
                         @endif
                     </label>
                     <label>
-                        <i class="fa-solid fa-lock" for="password"></i>
-                        <input type="password" name="new_password" id="InputNewPassword" placeholder="Enter a new password"
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="new_password" class="InputNewPassword" placeholder="Enter a new password"
                             required>
                         @if ($errors->has('new_password'))
                             <span class="error-text">{{ $errors->first('new_password') }}</span>
                         @endif
                     </label>
                     <label>
-                        <i class="fa-solid fa-lock" for="confirm"></i>
-                        <input type="password" name="new_password_confirmation" id="InputPasswordConfirmation"
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="new_password_confirmation" class="InputPasswordConfirmation"
                             placeholder="Repeat password" required>
                         @if ($errors->has('new_password_confirmation'))
                             <span class="error-text">{{ $errors->first('new_password_confirmation') }}</span>
@@ -156,21 +155,21 @@
                 @csrf
                 <h1 class="titulo">Create your account!</h1>
                 <label>
-                    <i class="fa-solid fa-user" for="name"></i>
+                    <i class="fa-solid fa-user"></i>
                     <input placeholder="Enter your username" type="text" name="name" id="name" required>
                     @if ($errors->has('name'))
                         <span class="error-text">{{ $errors->first('name') }}</span>
                     @endif
                 </label>
                 <label>
-                    <i class="fa-solid fa-envelope" for="email"></i>
+                    <i class="fa-solid fa-envelope"></i>
                     <input placeholder="Enter your e-mail" type="email" name="email" id="email" required>
                     @if ($errors->has('email'))
                         <span class="error-text">{{ $errors->first('email') }}</span>
                     @endif
                 </label>
-                <label>
-                    <i class="fa-solid fa-lock" for="password"></i>
+                <div>
+                    <i class="fa-solid fa-lock"></i>
                     <input type="password" placeholder="Enter your password" name="password" id="password" required>
                     <button type="button" style="margin-left: 10px" id="show-password">
                         <i class="fa fa-eye" aria-hidden="true"></i>
@@ -178,9 +177,9 @@
                     @if ($errors->has('password'))
                         <span class="error-text">{{ $errors->first('password') }}</span>
                     @endif
-                </label>
-                <label>
-                    <i class="fa-solid fa-lock" for="confirm"></i>
+                </div>
+                <div>
+                    <i class="fa-solid fa-lock"></i>
                     <input placeholder="Confirm password" type="password" name="password_confirmation" id="confirm"
                         required>
                     <button type="button" style="margin-left: 10px" id="show">
@@ -189,7 +188,7 @@
                     @if ($errors->has('password_confirmation'))
                         <span class="error-text">{{ $errors->first('password_confirmation') }}</span>
                     @endif
-                </label>
+                </div>
                 <button class="button reg">Add user</button>
 
             </form>
