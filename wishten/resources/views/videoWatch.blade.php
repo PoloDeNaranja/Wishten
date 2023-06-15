@@ -13,7 +13,7 @@
 <div class="video-display">
     <div class="video-view">
         <div class="action-buttons">
-            @if (Auth::id() == $video->owner_id)
+            @if (Auth::user()->can('update', $video))
                 <a class="button" href="{{ route('video.edit', ['video'=>$video->id]) }}">
                     <i class="fa-regular fa-pen-to-square"></i>
                     Edit
