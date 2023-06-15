@@ -3,11 +3,11 @@
 @section('title', 'Login')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ url('/css/loginStyle.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url('/css/loginStyle.css') }}">
 @endsection
 
 @section('js')
-    <script async type="text/javascript" src="{{ url('/js/showPassword.js') }}"></script>
+<script async src="{{ url('/js/showPassword.js') }}"></script>
 @endsection
 
 @section('header')
@@ -36,7 +36,7 @@
             <span class="error-text">{{ $errors->first('email') }}</span>
         @endif
     </label>
-    <label>
+    <div>
         <i class="fa-solid fa-lock"></i>
         <input placeholder="password" type="password" name="password" id="password">
         <button type="button" style="margin-left: 10px" id="show-password">
@@ -45,7 +45,7 @@
         @if ($errors->has('password'))
             <span class="error-text">{{ $errors->first('password') }}</span>
         @endif
-    </label>
+    </div>
 
     <a href="#" class="forgot">Password forgotten?</a>
 

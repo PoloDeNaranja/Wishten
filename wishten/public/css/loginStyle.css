@@ -35,18 +35,18 @@ form .title{
     margin-top: 25px;
 
 }
-form label{
+form label, form div{
     margin-bottom: 25px;
 
 }
 
-form label .fa-solid{
+form .fa-solid{
     margin-right: 10px;
     font-size: 20px;
     color: #57CC99;
 }
 
-form label input{
+form input{
     border:none;
     outline: none;
     border-bottom: solid 1px black;

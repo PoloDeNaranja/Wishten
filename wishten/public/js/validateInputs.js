@@ -8,12 +8,12 @@ inputs.forEach(function(input) {
   input.addEventListener("input", function() {
     if (this.validity.valid) {
       // Obtenemos el icono asociado al input
-      var icon = document.querySelector("i[for='" + this.id + "']");
+      var icon = document.querySelector("i[id='" + this.id + "-icon']");
       // Añadimos la clase .valid-color al icono para cambiarlo de color
       icon.classList.add("valid-color");
       icon.classList.remove("fa-bounce");
     } else {
-      var icon = document.querySelector("i[for='" + this.id + "']");
+      var icon = document.querySelector("i[id='" + this.id + "-icon']");
       icon.classList.remove("valid-color");
     }
   });
