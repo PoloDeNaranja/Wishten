@@ -13,6 +13,15 @@ body{
     padding-top: 0%;
 }
 
+.logo-login {
+    align-items: center;
+    height: 50px;
+}
+
+.logo-login img {
+    height:70px;
+}
+
 form{
     display: flex;
     flex-direction: column;

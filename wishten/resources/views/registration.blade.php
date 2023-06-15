@@ -17,6 +17,11 @@
 @section('content')
 
 <form action="{{ route('auth.validate_registration') }}" method="POST">
+    <div class="logo-register">
+        <a href="/">
+            <img src="{{ asset('logo/logo.png') }}" alt = "logo">
+        </a>
+    </div>
     @csrf
     <h1 class="titulo">Create your account!</h1>
     <label>

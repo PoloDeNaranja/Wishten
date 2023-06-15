@@ -16,6 +16,15 @@ body{
     padding-top: 0%;
 }
 
+.logo-register {
+    align-items: center;
+    height: 50px;
+}
+
+.logo-register img {
+    height:70px;
+}
+
 form{
     display: flex;
     flex-direction: column;
