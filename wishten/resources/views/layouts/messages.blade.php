@@ -13,3 +13,13 @@
 </div>
 
 @endif
+
+
+@isset($video)
+    @if ($video->status != 'valid')
+        <div class="alert error">
+            Your video is {{ strtoupper($video->status) }}, which means it's not publicly accessible. Please contact the administrators.
+        </div>
+    @endif
+
+@endisset

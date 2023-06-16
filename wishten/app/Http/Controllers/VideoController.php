@@ -32,7 +32,7 @@ class VideoController extends Controller
             ]);
         }
         else {
-            $videos = Video::all()->take(10);
+            $videos = Video::all()->where('status', 'valid')->take(10);
             return view('videos')->with([
                 'videos'    =>  $videos,
                 'subjects'  =>  $subjects
@@ -42,13 +42,21 @@ class VideoController extends Controller
 
     function adminVideos() {
         $videos = Video::all();
-        return view('adminVideos')->with('videos', $videos);
+        $subjects = Subject::all()->sortBy('name');
+        return view('adminVideos')->with([
+            'videos'    =>  $videos,
+            'subjects'  =>  $subjects
+        ]);
     }
 
 
     // Devuelve la vista de un vídeo
     function watch(Request $request) {
         $video = Video::find($request['video']);
+        // Los videos bloqueados solo los puede ver su dueño
+        if(Auth::user()->cannot('view', $video)) {
+            abort(404);
+        }
         if(!Auth::user()->hasViewed($video)) {
             Auth::user()->visualized_videos()->attach($video, ['date'=>date("Y-m-d H:i:s")]);
         }
@@ -202,7 +210,7 @@ class VideoController extends Controller
             'name'  =>  $request->subject_name
         ]);
         // Si se cambia el tema del video, se reubican los ficheros asociados
-        if($subject->id !== $video->subject) {
+        if($subject->id != $video->subject_id) {
             // Separamos el string que contiene la ruta para poder mover los ficheros a la nueva ruta
             list($videos, $old_subject, $title, $video_file) = explode('/', $video->video_path);
             $thumb_file = explode('/', $video->thumb_path)[3];
@@ -247,6 +255,15 @@ class VideoController extends Controller
         $thumb->storeAs($videos.'/'.$subject.'/'.$title, $thumb_file, 'public');
         $video->updateTimestamps();
         return back()->with('success', 'The thumbnail was changed');
+    }
+
+    // Actualiza el estado del video (valid, pending, blocked)
+    function setStatus(Video $video, Request $request) {
+        if($video->status == $request->status) {
+            return back()->with('success', 'No data was modified');
+        }
+        $video->update(['status' =>  $request->status]);
+        return back()->with('success', 'The video '.$video->title.' is in '.strtoupper($video->status).' status');
     }
 
     // Marca el video como favorito para que sea más accesible para el usuario

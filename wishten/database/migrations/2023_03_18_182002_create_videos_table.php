@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('video_path');
             $table->string('thumb_path');
-            $table->enum('status', ['valid', 'pending', 'bloqued'])->default('valid');
+            $table->enum('status', ['valid', 'pending', 'blocked'])->default('valid');
             $table->timestamps();
         });
     }

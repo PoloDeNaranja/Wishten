@@ -30,7 +30,7 @@ class VideoPolicy
      */
     public function view(User $user, Video $video)
     {
-        //
+        return $video->status == 'valid' || $video->owner_id == $user->id;
     }
 
     /**

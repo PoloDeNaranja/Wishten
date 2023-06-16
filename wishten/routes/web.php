@@ -119,6 +119,8 @@ Route::middleware('auth', 'roles:admin')->group(function () {
 
         Route::get('adminVideos', 'adminVideos')->name('adminVideos');
 
+        Route::post('set_status/{video}', 'setStatus')->name('video.set_status');
+
     });
 });
 

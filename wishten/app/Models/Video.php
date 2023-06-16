@@ -22,7 +22,8 @@ class Video extends Model
         'title',
         'description',
         'video_path',
-        'thumb_path'
+        'thumb_path',
+        'status'
     ];
 
     /**

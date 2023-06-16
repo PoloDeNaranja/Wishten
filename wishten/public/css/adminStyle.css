@@ -87,14 +87,29 @@
     color: black;
 }
 
-.filepath:hover {
+.filepath > i:hover {
     color: #57CC99;
 }
 
-.filepath:visited {
+/* .filepath:visited {
     color:  black;
 }
 
 .filepath:visited:hover {
     color:  #57CC99;
+} */
+
+td.status-valid {
+    color: #57CC99;
+    font-weight: bold;
+}
+
+td.status-pending {
+    color: #CB9957;
+    font-weight: bold;
+}
+
+td.status-blocked {
+    color: #CB5763;
+    font-weight: bold;
 }
