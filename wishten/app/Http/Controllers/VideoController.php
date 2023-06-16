@@ -26,7 +26,7 @@ class VideoController extends Controller
                 ]);
             }
             return view('videos')->with([
-                'videos'    =>  $subject->videos()->get(),
+                'videos'    =>  $subject->videos()->where('status', 'valid')->get(),
                 'subjects'  =>  $subjects,
                 'subject_name'  =>  $subject->name
             ]);
