@@ -56,4 +56,12 @@ class Video extends Model
     {
         return $this->belongsTo(Subject::class, 'subject_id');
     }
+
+    /**
+     * Get the questions of a video.
+     */
+    public function questions(): HasMany
+    {
+        return $this->hasMany(Question::class, 'video_id');
+    }
 }
