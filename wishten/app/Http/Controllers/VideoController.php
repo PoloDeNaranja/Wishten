@@ -167,9 +167,10 @@ class VideoController extends Controller
             $thumb_file = explode('/', $video->thumb_path)[3];
 
             $escaped_title = preg_replace('/[^A-Za-z0-9_\-]/', '_', $request->title);
+            $date = date('YmdHis');
 
-            $new_video_path = $videos.'/'.$subject.'/'.$escaped_title.'/'.$video_file;
-            $new_thumb_path = $videos.'/'.$subject.'/'.$escaped_title.'/'.$thumb_file;
+            $new_video_path = $videos.'/'.$subject.'/'.$escaped_title.'_'.$date.'/'.$video_file;
+            $new_thumb_path = $videos.'/'.$subject.'/'.$escaped_title.'_'.$date.'/'.$thumb_file;
             // Movemos los ficheros a la nueva ruta y eliminamos la carpeta anterior
             Storage::move('public/'.$video->video_path, 'public/'.$new_video_path);
             Storage::move('public/'.$video->thumb_path, 'public/'.$new_thumb_path);
