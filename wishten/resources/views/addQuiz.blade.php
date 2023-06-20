@@ -22,12 +22,12 @@
             <video controls src="{{ url('storage/' . $video->video_path) }}" id="video-element"></video>
         </div>
         <div class="questions-list">
-            @foreach ($video->questions as $question)
-                <h4 class="question-text">{{ $question->text }} ({{ $min = intval($question->question_time/60) }} : {{ $question->question_time - $min*60 }})</h4>
+            @foreach ($video->questions->sortBy('question_time') as $question)
+                <h4 class="question-text">({{ $min = intval($question->question_time/60) }} : {{ $question->question_time - $min*60 }}) {{ $question->text }}</h4>
                 @foreach ($question->answers as $answer)
                     <p class="answer-text">{{ $answer->text }}</p>
                 @endforeach
-                <form action="{{ route('quiz.add_answer', $answer->id) }}" method="post" class="add-answer">
+                <form action="{{ route('quiz.add_answer', $question->id) }}" method="post" class="add-answer">
                     @csrf
                     <button class="button add-answer-btn" type="button">New answer</button>
                 </form>
