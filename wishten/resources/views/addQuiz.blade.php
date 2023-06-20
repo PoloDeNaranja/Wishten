@@ -29,7 +29,7 @@
                 @endforeach
                 <form action="{{ route('quiz.add_answer', $answer->id) }}" method="post" class="add-answer">
                     @csrf
-                    <button class="button" id="add-answer-btn" type="button">New answer</button>
+                    <button class="button add-answer-btn" type="button">New answer</button>
                 </form>
             @endforeach
             <button class="button openPopup" id="add-question">New question</button>
