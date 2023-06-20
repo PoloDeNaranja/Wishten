@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\QuizController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +88,21 @@ Route::middleware('auth')->group(function () {
         Route::post('set_thumbnail/{video}', 'setThumbnail')->name('video.set_thumbnail');
 
         Route::post('fav/{video}/{user}', 'fav')->name('video.fav');
+
+    });
+
+    // Rutas de gestión de cuestionarios
+    Route::controller(QuizController::class)->group(function(){
+
+        Route::get('add-quiz/', 'addQuiz')->name('quiz.add_quiz');
+
+        Route::post('add-question/{video}', 'addQuestion')->name('quiz.add_question');
+
+        Route::post('add-answer/{question}', 'addAnswer')->name('quiz.add_answer');
+
+        Route::post('remove-question/{question}', 'removeQuestion')->name('quiz.remove_question');
+
+        Route::post('remove-answer/{answer}', 'removeAnswer')->name('quiz.remove_answer');
 
     });
 });

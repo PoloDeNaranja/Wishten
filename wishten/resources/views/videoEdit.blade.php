@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $video->title)
+@section('title', 'Edit: '.$video->title)
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ url('/css/videoWatchStyle.css') }}">
@@ -60,6 +60,7 @@
                     <i class="fa-regular fa-circle-check fa-lg"></i>
                 </button>
             </form>
+            <a href="{{ route('quiz.add_quiz', ['video' =>  $video->id]) }}" class="button">Add quiz</a>
             <form action="{{ route('video.delete', ['video' => $video->id, 'admin' => 0]) }}" method="post">
                 @csrf
                 <button class="button red" type="submit">Delete</button>

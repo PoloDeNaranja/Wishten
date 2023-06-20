@@ -39,22 +39,22 @@
     color:black;
     cursor: pointer;
 }
-form{
+.PopupWindow form{
     display: flex;
     flex-direction: column;
     text-align: center;
     padding: 20px 60px;
 }
-form .titulo{
+.PopupWindow form .titulo{
     color: black;
     margin-bottom: 25px;
     font-size:20px;
 
 }
-form label{
+.PopupWindow form label{
     margin-bottom: 10px;
 }
-form input{
+.PopupWindow form input{
     border:none;
     border-bottom: solid 1px black;
     font-size: 15px;
@@ -62,13 +62,13 @@ form input{
     outline:none;/*Quitar que salga el borde cuando escribes*/
 }
 
-form .fa-solid{
+.PopupWindow form .fa-solid{
     margin-right: 10px;
     font-size: 20px;
     color: #57CC99;
 }
 
-form div {
+.PopupWindow form div {
     margin-bottom: 2%;
 }
 
