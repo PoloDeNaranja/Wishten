@@ -27,7 +27,11 @@ class QuizController extends Controller
         if(Auth::user()->cannot('update', $video)) {
             abort(403);
         }
-        //
+        $video->questions()->create([
+            'text'          =>  $request->question_text,
+            'question_time' =>  $request->minute
+        ]);
+        return back()->with('success', 'The new question was added to your video successfully');
     }
 
     // Añade una opción de respuesta para una pregunta

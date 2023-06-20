@@ -1,13 +1,13 @@
 
 //Boton de abrir popup
-var abrir = document.getElementsByClassName("openPopup");
+var open = document.getElementsByClassName("openPopup");
 //Ventana del popup
 var content = document.getElementsByClassName("popup");
 //Cerar con x
 var x = document.getElementsByClassName("closePopup");
 
-for (let i = 0; i < abrir.length; i++) {
-    abrir[i].addEventListener("click", function() {
+for (let i = 0; i < open.length; i++) {
+    open[i].addEventListener("click", function() {
         content[i].style.display = "block";
     });
 

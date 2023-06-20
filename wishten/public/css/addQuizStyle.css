@@ -63,6 +63,16 @@ form.add-answer textarea {
     width: 100px;
 }
 
+.button-popup{
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    background-color: #57CC99;
+    padding: 5px;
+    cursor: pointer;
+}
+
 .button.add {
     width: 50px;
 }
