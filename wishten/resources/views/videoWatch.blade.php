@@ -10,27 +10,28 @@
 @include('layouts.messages')
 
 <div class="video-display">
+    <div class="action-buttons">
+        @if (Auth::user()->can('update', $video))
+            <a class="button" href="{{ route('video.edit', ['video'=>$video->id]) }}">
+                <i class="fa-regular fa-pen-to-square"></i>
+                Edit
+            </a>
+        @endif
+        <form action="{{ route('video.fav', ['video'=>$video->id, 'user'=>Auth::id()]) }}" method="post">
+            @csrf
+            <button class="button" type="submit"
+                @if ($video->isFav(Auth::user()))
+                    title="Remove from your favourite videos">
+                    <i class="fa-solid fa-bookmark"></i>
+                @else
+                    title="Add to your favourite videos">
+                    <i class="fa-regular fa-bookmark"></i>
+                @endif
+            </button>
+        </form>
+    </div>
     <div class="video-view">
-        <div class="action-buttons">
-            @if (Auth::user()->can('update', $video))
-                <a class="button" href="{{ route('video.edit', ['video'=>$video->id]) }}">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                    Edit
-                </a>
-            @endif
-            <form action="{{ route('video.fav', ['video'=>$video->id, 'user'=>Auth::id()]) }}" method="post">
-                @csrf
-                <button class="button" type="submit"
-                    @if ($video->isFav(Auth::user()))
-                        title="Remove from your favourite videos">
-                        <i class="fa-solid fa-bookmark"></i>
-                    @else
-                        title="Add to your favourite videos">
-                        <i class="fa-regular fa-bookmark"></i>
-                    @endif
-                </button>
-            </form>
-        </div>
+
 
         <video controls src="{{ url('storage/'.$video->video_path) }}"></video>
         <div class="video-info">
@@ -40,6 +41,8 @@
             <p class="video-desc">{{ $video->description }}</p>
             <p>{{ $video->views()->count() }} views</p>
         </div>
+
+
     </div>
     <div class="related-videos">
         @foreach ($video->subject->videos as $related_video)
