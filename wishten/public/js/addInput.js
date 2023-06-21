@@ -8,10 +8,13 @@ for(let i = 0; i < forms.length; i++) {
     let button = forms[i].querySelector(".add-answer-btn");
     button.addEventListener("click", function () {
       var input = document.createElement("textarea");
+      input.placeholder = "Enter an answer for this question";
+      input.name = "answer_text";
       var addButton = document.createElement("button");
       addButton.type = "submit";
       addButton.className = "button add";
-      addButton.textContent = "Add";
+      addButton.title = "Add";
+      addButton.innerHTML = '<i class="fa-solid fa-check"></i>';
       forms[i].appendChild(input);
       forms[i].appendChild(addButton);
       button.remove();

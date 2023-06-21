@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class QuestionRequest extends FormRequest
+class AnswerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,7 @@ class QuestionRequest extends FormRequest
     public function rules()
     {
         return [
-            'question_text' =>  ['required', 'string', 'max:255'],
-            'minute'        =>  ['regex:/^\d*\.?\d*/']
+            'answer_text' =>  ['required', 'string', 'max:255']
         ];
     }
 }

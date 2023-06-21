@@ -22,14 +22,29 @@
             <video controls src="{{ url('storage/' . $video->video_path) }}" id="video-element"></video>
         </div>
         <div class="questions-list">
+            @if ($video->questions->isEmpty())
+                <p>Add some quiz questions to your video to make it even more useful for your viewers!</p>
+            @endif
             @foreach ($video->questions->sortBy('question_time') as $question)
-                <h4 class="question-text">({{ $min = intval($question->question_time/60) }} : {{ $question->question_time - $min*60 }}) {{ $question->text }}</h4>
-                @foreach ($question->answers as $answer)
-                    <p class="answer-text">{{ $answer->text }}</p>
-                @endforeach
+                <div class="quiz-header">
+                    <h4 class="question-text">({{ $min = intval($question->question_time/60) }} : {{ $question->question_time - $min*60 }}) {{ $question->text }}</h4>
+                    <form action="{{ route('quiz.remove_question', $question->id) }}" method="post">
+                        @csrf
+                        <button type="submit" class="remove-question" title="Remove this question">
+                            <i class="fa-solid fa-circle-minus fa-xl"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="answers-list">
+                    @foreach ($question->answers as $answer)
+                        <p class="answer-text">{{ $answer->text }}</p>
+                    @endforeach
+                </div>
                 <form action="{{ route('quiz.add_answer', $question->id) }}" method="post" class="add-answer">
                     @csrf
-                    <button class="button add-answer-btn" type="button">New answer</button>
+                    <button class="button add-answer-btn" type="button" title="Add a new answer">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
                 </form>
             @endforeach
             <button class="button openPopup" id="add-question">New question</button>

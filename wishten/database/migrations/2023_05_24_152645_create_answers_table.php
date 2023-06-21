@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
             $table->string('text');
-            $table->boolean('is_correct');
+            $table->boolean('is_correct')->default(0);
             $table->foreignId('question_id')->constrained('questions')->onUpdate('cascade')->onDelete('cascade');
         });
     }

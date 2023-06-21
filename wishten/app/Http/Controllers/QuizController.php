@@ -7,6 +7,9 @@ use App\Models\Video;
 use App\Models\Question;
 use App\Models\Answer;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\QuestionRequest;
+use App\Http\Requests\AnswerRequest;
+
 
 
 class QuizController extends Controller
@@ -23,7 +26,7 @@ class QuizController extends Controller
     }
 
     // Crea una pregunta dentro de un video
-    function addQuestion(Video $video, Request $request) {
+    function addQuestion(Video $video, QuestionRequest $request) {
         if(Auth::user()->cannot('update', $video)) {
             abort(403);
         }
@@ -35,11 +38,14 @@ class QuizController extends Controller
     }
 
     // Añade una opción de respuesta para una pregunta
-    function addAnswer(Question $question, Request $request) {
+    function addAnswer(Question $question, AnswerRequest $request) {
         if(Auth::user()->cannot('update', $question->video)) {
             abort(403);
         }
-        //
+        $question->answers()->create([
+            'text'  =>  $request->answer_text
+        ]);
+        return back()->with('success', 'The new answer was added to your video successfully');
     }
 
     // Elimina una pregunta dentro de un video
@@ -47,7 +53,8 @@ class QuizController extends Controller
         if(Auth::user()->cannot('delete', $question->video)) {
             abort(403);
         }
-        //
+        $question->delete();
+        return back()->with('success', 'Question deleted successfully');
     }
 
     // Elimina una opción de respuesta para una pregunta

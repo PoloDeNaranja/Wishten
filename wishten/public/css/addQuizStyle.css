@@ -33,6 +33,36 @@
     width: 600px;
 }
 
+.quiz-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.quiz-header .remove-question {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    border: none;
+    background-color: transparent;
+    color: #CB5763;
+    margin-top: 50%;
+}
+
+.remove-question:hover {
+    cursor: pointer;
+    color: #cb576334;
+}
+
+.answers-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.answers-list p {
+    margin-bottom: 0px;
+}
+
 form.add-answer {
     display: flex;
     flex-direction: row;
@@ -75,6 +105,7 @@ form.add-answer textarea {
 
 .button.add {
     width: 50px;
+    margin-top:5%;
 }
 
 .button:hover {
