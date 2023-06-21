@@ -39,7 +39,7 @@
     justify-content: space-between;
 }
 
-.quiz-header .remove-question {
+.quiz-header .remove-question, .remove-answer {
     width: 30px;
     height: 30px;
     border-radius: 50px;
@@ -49,7 +49,7 @@
     margin-top: 50%;
 }
 
-.remove-question:hover {
+.remove-question:hover, .remove-answer:hover {
     cursor: pointer;
     color: #cb576334;
 }
@@ -59,8 +59,30 @@
     flex-direction: column;
 }
 
-.answers-list p {
+.answers-list input {
+    border: none;
+    font-size: 16px;
+    text-align: start;
+    background-color: transparent;
     margin-bottom: 0px;
+}
+
+.answers-list input:hover {
+    cursor: pointer;
+    color: #57CC99;
+}
+
+.answer-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.answer-row button {
+    margin-top: -10px;
+}
+
+.answer-text.correct{
+    color: #57CC99;
 }
 
 form.add-answer {

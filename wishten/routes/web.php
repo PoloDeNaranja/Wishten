@@ -100,6 +100,8 @@ Route::middleware('auth')->group(function () {
 
         Route::post('add-answer/{question}', 'addAnswer')->name('quiz.add_answer');
 
+        Route::post('set-correct/{answer}', 'setCorrect')->name('quiz.set_correct');
+
         Route::post('remove-question/{question}', 'removeQuestion')->name('quiz.remove_question');
 
         Route::post('remove-answer/{answer}', 'removeAnswer')->name('quiz.remove_answer');

@@ -42,10 +42,37 @@ class QuizController extends Controller
         if(Auth::user()->cannot('update', $question->video)) {
             abort(403);
         }
-        $question->answers()->create([
-            'text'  =>  $request->answer_text
-        ]);
+        if($question->answers->isEmpty()) {
+            // la primera respuesta añadida se pone correcta por defecto
+            $question->answers()->create([
+                'text'          =>  $request->answer_text,
+                'is_correct'    =>  1
+            ]);
+        }
+        else {
+            $question->answers()->create([
+                'text'  =>  $request->answer_text
+            ]);
+        }
         return back()->with('success', 'The new answer was added to your video successfully');
+    }
+
+    // Marca una respuesta como correcta, desmarcando la anterior
+    function setCorrect(Answer $answer) {
+        if(Auth::user()->cannot('update', $answer->question->video)) {
+            abort(403);
+        }
+        if($answer->is_correct) {
+            return back();
+        }
+        $old_correct = $answer->question->answers->where('is_correct', 1)->first();
+        $old_correct->update([
+            'is_correct'    =>  0
+        ]);
+        $answer->update([
+            'is_correct'    =>  1
+        ]);
+        return back()->with('success', 'The answer was marked as correct');
     }
 
     // Elimina una pregunta dentro de un video
@@ -62,6 +89,13 @@ class QuizController extends Controller
         if(Auth::user()->cannot('delete', $answer->question->video)) {
             abort(403);
         }
-        //
+        // Si la respuesta era correcta, se marca como correcta otra cualquiera dentro de las respuestas para esa pregunta
+        if($answer->is_correct) {
+            $answer->question->answers->first()->update([
+                'is_correct'    =>  1
+            ]);
+        }
+        $answer->delete();
+        return back()->with('success', 'Answer deleted successfully');
     }
 }

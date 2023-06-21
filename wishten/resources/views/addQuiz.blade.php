@@ -37,7 +37,18 @@
                 </div>
                 <div class="answers-list">
                     @foreach ($question->answers as $answer)
-                        <p class="answer-text">{{ $answer->text }}</p>
+                    <div class="answer-row">
+                            <form action="{{ route('quiz.remove_answer', $answer->id) }}" method="post">
+                                @csrf
+                                <button type="submit" class="remove-answer" title="Remove this answer">
+                                    <i class="fa-solid fa-circle-minus"></i>
+                                </button>
+                            </form>
+                            <form action="{{ route('quiz.set_correct', $answer->id) }}" method="post">
+                                @csrf
+                                <input type="submit" class="answer-text @if($answer->is_correct) correct @endif" name="answer_status" value="{{ $answer->text }}" title="Mark this answer as correct">
+                            </form>
+                        </div>
                     @endforeach
                 </div>
                 <form action="{{ route('quiz.add_answer', $question->id) }}" method="post" class="add-answer">
