@@ -12,6 +12,12 @@
     padding-top: 1%;
 }
 
+@media (max-width: 1200px) {
+    .video-display {
+      flex-direction: column;
+    }
+}
+
 .video-view {
     display: flex;
     flex-direction: column;
@@ -59,7 +65,7 @@
     flex-direction: column;
 }
 
-.answers-list input {
+.answers-list label, .answers-list input {
     border: none;
     font-size: 16px;
     text-align: start;
@@ -67,7 +73,7 @@
     margin-bottom: 0px;
 }
 
-.answers-list input:hover {
+.answers-list label:hover {
     cursor: pointer;
     color: #57CC99;
 }

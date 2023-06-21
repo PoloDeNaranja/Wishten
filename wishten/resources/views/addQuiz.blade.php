@@ -46,7 +46,10 @@
                             </form>
                             <form action="{{ route('quiz.set_correct', $answer->id) }}" method="post">
                                 @csrf
-                                <input type="submit" class="answer-text @if($answer->is_correct) correct @endif" name="answer_status" value="{{ $answer->text }}" title="Mark this answer as correct">
+                                <label class="answer-text @if($answer->is_correct) correct @endif" for="answer-{{ $answer->id }}" title="Mark this answer as correct">
+                                    {{ $answer->text }}
+                                </label>
+                                <input type="submit" id="answer-{{ $answer->id }}" value="">
                             </form>
                         </div>
                     @endforeach
