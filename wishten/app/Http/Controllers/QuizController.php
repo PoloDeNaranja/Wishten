@@ -91,7 +91,7 @@ class QuizController extends Controller
         }
         // Si la respuesta era correcta, se marca como correcta otra cualquiera dentro de las respuestas para esa pregunta
         if($answer->is_correct) {
-            $answer->question->answers->first()->update([
+            $answer->question->answers->where('id','!=', $answer->id)->first()->update([
                 'is_correct'    =>  1
             ]);
         }
