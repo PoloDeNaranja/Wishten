@@ -128,3 +128,29 @@
 .button:hover {
     color:  black;
 }
+
+/* Estilo para los cuestionarios dentro del video */
+
+/* #video-element {
+    width: 1000px;
+} */
+
+#video-wrapper {
+    position: relative;
+    width: 1000px;
+}
+
+#video-wrapper video {
+    position: relative;
+    z-index: 100;
+}
+
+#video-wrapper .question-wrapper {
+    position: absolute;
+    display: none;
+    color: white;
+    z-index: 150;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

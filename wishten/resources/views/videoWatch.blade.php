@@ -3,7 +3,11 @@
 @section('title', $video->title)
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ url('/css/videoWatchStyle.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url('/css/videoWatchStyle.css') }}">
+@endsection
+
+@section('js')
+<script async src="{{ url('/js/showQuiz.js') }}"></script>
 @endsection
 
 @section('content')
@@ -32,8 +36,22 @@
     </div>
     <div class="video-view">
 
-
-        <video controls src="{{ url('storage/'.$video->video_path) }}"></video>
+        <div id="video-wrapper">
+            <video controls src="{{ url('storage/'.$video->video_path) }}" id="video-element"></video>
+            <div id="questions">
+                @foreach ($video->questions as $question)
+                    <div id="question-{{ $question->id }}" class="question-wrapper" data-minute="{{ $question->question_time }}">
+                        <p>{{ $question->text }}</p>
+                        @foreach ($question->answers as $answer)
+                            <label for="radio-{{ $answer->id }}">
+                                <input type="radio" name="answer" id="radio-{{ $answer->id }}">{{ $answer->text }}
+                            </label>
+                        @endforeach
+                        <button class="button answer-btn">Answer</button>
+                    </div>
+                @endforeach
+            </div>
+        </div>
         <div class="video-info">
             <h3 class="video-title">{{ $video->title }}</h3>
             <a class="video-link" href="videos?subject_name={{ preg_replace('/[^A-Za-z0-9_\-]/', '+', $video->subject->name) }}">{{ $video->subject->name }}</a>
