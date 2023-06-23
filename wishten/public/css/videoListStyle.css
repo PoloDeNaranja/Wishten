@@ -1,7 +1,7 @@
 .container {
     min-height: 100%;
     height: auto;
-    overflow: scroll;
+
 }
 
 .video-list {
@@ -10,6 +10,7 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1%;
+
 }
 
 .my-video-list {
@@ -17,13 +18,13 @@
     width: 90%;
     display: flex;
     flex-direction: column;
-    gap: 10%;
+    gap: 1%;
+    height: auto;
 }
 
 .my-video-list > .video-card{
     display: flex;
     flex-direction: row;
-    height: 200px;
 }
 
 .my-video-list > .video-card > img {
@@ -31,6 +32,7 @@
     width: 20%;
     height: 90%;
     border-radius: 8px;
+    height: 200px;
 }
 
 .video-info {
