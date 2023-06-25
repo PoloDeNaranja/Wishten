@@ -63,7 +63,7 @@
 
     </div>
     <div class="related-videos">
-        @foreach ($video->subject->videos as $related_video)
+        @foreach ($video->subject->videos->where('status', 'valid') as $related_video)
             @if ($related_video->id != $video->id)
                 <div class="video-card">
                     <img src="{{ url('storage/' . $related_video->thumb_path) }}" alt="{{ $related_video->title }}">
