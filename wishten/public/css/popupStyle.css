@@ -72,7 +72,7 @@
     margin-bottom: 2%;
 }
 
-.PopupWindow button{
+.PopupWindow .button{
     margin: 0 60px 0 60px;/* Añade margen izquierdo y derecho para que el boton cuadre*/
 }
 
@@ -131,7 +131,7 @@ h3 {
     padding: 5px;
     margin-bottom: 5%;
     cursor: pointer;
-    margin: 0 60px 5px 60px;
+    margin: 5px 60px 5px 60px;
 }
 
 textarea {

@@ -69,7 +69,7 @@
             <div class="popupContent">
                 <span class="closePopup">&times;</span>
                 <h3>Modify video "{{ $video->title }}" data</h3>
-                <form action="{{ route('video.set_title', $video->id) }}" method="post">
+                {{-- <form action="{{ route('video.set_title', $video->id) }}" method="post">
                     @csrf
                     <label for="title">Title:
                         <input type="text" placeholder="Title of your video" name="title" value="{{ $video->title }}" id="title" required>
@@ -113,15 +113,18 @@
                     <button class="button apply" type="submit">
                         <i class="fa-regular fa-circle-check fa-lg"></i>
                     </button>
-                </form>
+                </form> --}}
+
                 <form action="{{ route('video.set_status', $video->id) }}" method="post">
                     @csrf
+                    <a href="{{ route('video.edit', ['video' => $video->id]) }}" class="button" title="Edit video information">Edit</a>
+                    <h4>Set status</h4>
                     <select name="status" class="status">
                         <option value="valid" @if ($video->status == 'valid') selected @endif>valid</option>
                         <option value="pending" @if ($video->status == 'pending') selected @endif>pending</option>
                         <option value="blocked" @if ($video->status == 'blocked') selected @endif>blocked</option>
                     </select>
-                    <button type="submit" class="button">
+                    <button type="submit" class="button" title="Apply status">
                         <i class="fa-regular fa-circle-check fa-lg"></i>
                     </button>
                 </form>
