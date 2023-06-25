@@ -69,52 +69,6 @@
             <div class="popupContent">
                 <span class="closePopup">&times;</span>
                 <h3>Modify video "{{ $video->title }}" data</h3>
-                {{-- <form action="{{ route('video.set_title', $video->id) }}" method="post">
-                    @csrf
-                    <label for="title">Title:
-                        <input type="text" placeholder="Title of your video" name="title" value="{{ $video->title }}" id="title" required>
-                    </label>
-                    <button class="button apply" type="submit">
-                        <i class="fa-regular fa-circle-check fa-lg"></i>
-                    </button>
-                </form>
-
-                <form action="{{ route('video.set_desc', $video->id) }}" method="post">
-                    @csrf
-                    <label for="description">Description:
-                        <textarea id="description" placeholder="Description of your video" name="description" rows="4" cols="50" required>{{ $video->description }}</textarea>
-                    </label>
-                    <button class="button apply" type="submit">
-                        <i class="fa-regular fa-circle-check fa-lg"></i>
-                    </button>
-                </form>
-
-                <form action="{{ route('video.set_subject', $video->id) }}" method="post">
-                    @csrf
-                    <label for="subject_name">Subject:
-                        <input type="text" id="subject_name" placeholder="Subject of your video" name="subject_name" list="subject_names" value="{{ $video->subject->name }}">
-                        <datalist id="subject_names">
-                            @foreach ($subjects as $subject)
-                                <option value="{{ $subject->name }}"></option>
-                            @endforeach
-                        </datalist>
-                    </label>
-                    <button class="button apply" type="submit">
-                        <i class="fa-regular fa-circle-check fa-lg"></i>
-                    </button>
-                </form>
-
-                <form class="thumb-form" action="{{ route('video.set_thumbnail', $video->id) }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <label for="thumbnail" title="Select an image for a thumbnail">
-                        <img src="{{ url('storage/' . $video->thumb_path) }}" alt="{{ $video->title }}">
-                        <input type="file" name="thumbnail" id="thumbnail" accept=".jpg,.jpeg,.png" required>
-                    </label>
-                    <button class="button apply" type="submit">
-                        <i class="fa-regular fa-circle-check fa-lg"></i>
-                    </button>
-                </form> --}}
-
                 <form action="{{ route('video.set_status', $video->id) }}" method="post">
                     @csrf
                     <a href="{{ route('video.edit', ['video' => $video->id]) }}" class="button" title="Edit video information">Edit</a>
