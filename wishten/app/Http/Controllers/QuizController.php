@@ -76,8 +76,7 @@ class QuizController extends Controller
     }
 
     function storeResults(Video $video, Request $request) {
-        $answers = $request->except('_token');
-        foreach($answers as $answer) {
+        foreach($request->get('selected_answer')  as $answer) {
             Auth::user()->answers_given()->attach($answer, ['date'=>date("Y-m-d H:i:s")]);
         }
         return back()->with('success', 'Your results were stored correctly');
