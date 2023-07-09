@@ -29,4 +29,13 @@ class Answer extends Model
     {
         return $this->belongsTo(Question::class, 'question_id');
     }
+
+    /**
+     * Get all the users that have given this answer to a quiz.
+     */
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'user_answer', 'answer_id', 'user_id');
+    }
+
 }

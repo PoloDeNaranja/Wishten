@@ -64,6 +64,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Video::class, 'visualized_videos', 'user_id', 'video_id')->withPivot('fav');
     }
 
+    /**
+     * Checks if a user has viewed the video given.
+     */
     public function hasViewed(Video $video) {
         return $this->visualized_videos()->where('video_id', $video->id)->count() != 0;
     }
@@ -82,6 +85,14 @@ class User extends Authenticatable
     public function followed_users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'follows', 'follower_id', 'followed_id');
+    }
+
+    /**
+     * Get all the answers that a user has given to quizzes.
+     */
+    public function answers_given(): BelongsToMany
+    {
+        return $this->belongsToMany(Answer::class, 'user_answer', 'user_id', 'answer_id');
     }
 
     /**

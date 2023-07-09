@@ -2,7 +2,7 @@
 
 var questions = document.getElementsByClassName("question-wrapper");
 var video = document.getElementById("video-element");
-var buttons = document.getElementsByClassName("answer-btn");
+var buttons = document.getElementsByClassName("continue");
 
 
 /**
@@ -25,7 +25,7 @@ for (let i = 0; i < questions.length; i++) {
 }
 
 /**
- * Añadimos otro eventListener a cada botón para responder la pregunta para que
+ * Añadimos otro eventListener a cada botón de continuar para que
  * esconda dicha pregunta y reanude el video
  */
 

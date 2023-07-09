@@ -8,6 +8,7 @@
 
 @section('js')
 <script async src="{{ url('/js/showQuiz.js') }}"></script>
+    <script async src="{{ url('/js/answerQuiz.js') }}"></script>
 @endsection
 
 @section('content')
@@ -39,18 +40,21 @@
         <div id="video-wrapper">
             <video controls src="{{ url('storage/'.$video->video_path) }}" id="video-element"></video>
             <div id="questions">
+                @php($count = 0)
                 @foreach ($video->questions as $question)
                     <div id="question-{{ $question->id }}" class="question-wrapper" data-minute="{{ $question->question_time }}">
                         <p>{{ $question->text }}</p>
                         <div class="answer-list">
                             @foreach ($question->answers as $answer)
                                 <label for="radio-{{ $answer->id }}">
-                                    <input type="radio" name="answer" id="radio-{{ $answer->id }}">{{ $answer->text }}
+                                    <input type="radio" class="answer-input" name="answer-{{ $count }}" id="radio-{{ $answer->id }}" value="{{ $answer->id }}" data-correct="{{ $answer->is_correct }}">{{ $answer->text }}
                                 </label>
                             @endforeach
                         </div>
                         <button class="button answer-btn">Answer</button>
+                        <button class="button continue">Continue</button>
                     </div>
+                    @php($count++)
                 @endforeach
             </div>
         </div>
@@ -64,6 +68,9 @@
 
 
     </div>
+    <form id="submit-answers" action="" method="post">
+        <button type="submit">Store results</button>
+    </form>
     <div class="related-videos">
         @foreach ($video->subject->videos->where('status', 'valid') as $related_video)
             @if ($related_video->id != $video->id)
