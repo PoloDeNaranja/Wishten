@@ -42,11 +42,13 @@
                 @foreach ($video->questions as $question)
                     <div id="question-{{ $question->id }}" class="question-wrapper" data-minute="{{ $question->question_time }}">
                         <p>{{ $question->text }}</p>
-                        @foreach ($question->answers as $answer)
-                            <label for="radio-{{ $answer->id }}">
-                                <input type="radio" name="answer" id="radio-{{ $answer->id }}">{{ $answer->text }}
-                            </label>
-                        @endforeach
+                        <div class="answer-list">
+                            @foreach ($question->answers as $answer)
+                                <label for="radio-{{ $answer->id }}">
+                                    <input type="radio" name="answer" id="radio-{{ $answer->id }}">{{ $answer->text }}
+                                </label>
+                            @endforeach
+                        </div>
                         <button class="button answer-btn">Answer</button>
                     </div>
                 @endforeach

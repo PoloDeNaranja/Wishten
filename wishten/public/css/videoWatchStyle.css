@@ -154,3 +154,24 @@
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
+.question-wrapper {
+    background-color: white;
+    padding-bottom: 100px;
+    padding-left: 10px;
+    padding-right: 100px;
+    border-radius: 8px;
+}
+
+.question-wrapper p, label {
+    color: black;
+}
+
+.question-wrapper label {
+    padding: 5px;
+}
+
+.answer-list {
+    display: flex;
+    flex-direction: column;
+}
