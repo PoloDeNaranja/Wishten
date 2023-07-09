@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\DB;
 
 
 class User extends Authenticatable
@@ -88,6 +89,13 @@ class User extends Authenticatable
     }
 
     /**
+     * Checks if a user is following another
+     */
+    public function isFollowing(User $user) {
+        return $this->followed_users()->where('followed_id', $user->id)->count() != 0;
+    }
+
+    /**
      * Get all the answers that a user has given to quizzes.
      */
     public function answers_given(): BelongsToMany
@@ -95,11 +103,17 @@ class User extends Authenticatable
         return $this->belongsToMany(Answer::class, 'user_answer', 'user_id', 'answer_id');
     }
 
-    /**
-     * Checks if a user is following another
+     /**
+     * Get the answer a user has given to a question
      */
-    public function isFollowing(User $user) {
-        return $this->followed_users()->where('followed_id', $user->id)->count() != 0;
+    public function hasAnswered(Question $question) {
+
+        foreach($this->answers_given()->get() as $answer) {
+            if($answer->question->id == $question->id) {
+                return $answer;
+            }
+        }
+        return false;
     }
 
     /**

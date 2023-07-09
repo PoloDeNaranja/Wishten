@@ -76,7 +76,13 @@ class QuizController extends Controller
     }
 
     function storeResults(Video $video, Request $request) {
-        foreach($request->get('selected_answer')  as $answer) {
+        foreach($request->get('selected_answer')  as $answer_id) {
+            $answer = Answer::find($answer_id);
+            $old_answer = Auth::user()->hasAnswered($answer->question);
+            // Se reemplaza la respuesta dada por el usuario en caso de haber respondido previamente
+            if($old_answer != false) {
+                Auth::user()->answers_given()->detach($old_answer->id);
+            }
             Auth::user()->answers_given()->attach($answer, ['date'=>date("Y-m-d H:i:s")]);
         }
         return back()->with('success', 'Your results were stored correctly');
