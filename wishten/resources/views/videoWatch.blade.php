@@ -68,8 +68,9 @@
 
 
     </div>
-    <form id="submit-answers" action="" method="post">
-        <button type="submit">Store results</button>
+    <form id="submit-answers" action="{{ route('quiz.store_results', $video->id) }}" method="post">
+        @csrf
+        <button class="button" type="submit">Store results</button>
     </form>
     <div class="related-videos">
         @foreach ($video->subject->videos->where('status', 'valid') as $related_video)

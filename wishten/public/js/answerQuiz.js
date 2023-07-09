@@ -11,6 +11,7 @@ for (let i = 0; i < answerButtons.length; i++) {
         // Añadimos al formulario de envío de resultados el id de la respuesta seleccionada
         var input = document.createElement("input");
         input.type = "hidden";
+        input.name = "selected_answer";
         input.value = document.querySelector('input[name="answer-' + i + '"]:checked').value;
         submitForm.appendChild(input);
 

@@ -75,6 +75,15 @@ class QuizController extends Controller
         return back()->with('success', 'The answer was marked as correct');
     }
 
+    function storeResults(Video $video, Request $request) {
+        $answers = $request->except('_token');
+        foreach($answers as $answer) {
+            Auth::user()->answers_given()->attach($answer, ['date'=>date("Y-m-d H:i:s")]);
+        }
+        return back()->with('success', 'Your results were stored correctly');
+
+    }
+
     // Elimina una pregunta dentro de un video
     function removeQuestion(Question $question) {
         if(Auth::user()->cannot('delete', $question->video)) {

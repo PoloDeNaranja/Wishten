@@ -106,6 +106,8 @@ Route::middleware('auth')->group(function () {
 
         Route::post('remove-answer/{answer}', 'removeAnswer')->name('quiz.remove_answer');
 
+        Route::post('store-results/{video}', 'storeResults')->name('quiz.store_results');
+
     });
 });
 
