@@ -6,10 +6,12 @@
 <link rel="stylesheet" type="text/css" href="{{ url('/css/videoWatchStyle.css') }}">
 @endsection
 
+@if ($video->questions->count()>0)
 @section('js')
 <script async src="{{ url('/js/showQuiz.js') }}"></script>
     <script async src="{{ url('/js/answerQuiz.js') }}"></script>
 @endsection
+@endif
 
 @section('content')
 @include('layouts.messages')
@@ -64,14 +66,19 @@
             <a class="video-link" href="profile?user={{ $video->owner_id }}">{{ $video->user->name }}</a>
             <p class="video-desc">{{ $video->description }}</p>
             <p>{{ $video->views()->count() }} views</p>
+            @if ($video->questions->count()>0)
+                <p>Last score: {{ $video->userScore(Auth::user()) }}% ( {{ $video->correctAnswers(Auth::user()) }}/{{ $video->questions->count() }} )</p>
+            @endif
         </div>
 
 
     </div>
-    <form id="submit-answers" action="{{ route('quiz.store_results', $video->id) }}" method="post">
-        @csrf
-        <button class="button" type="submit">Store results</button>
-    </form>
+    @if ($video->questions->count()>0)
+        <form id="submit-answers" action="{{ route('quiz.store_results', $video->id) }}" method="post">
+            @csrf
+            <button class="button store" type="submit" title="Store your results">Store results</button>
+        </form>
+    @endif
     <div class="related-videos">
         @foreach ($video->subject->videos->where('status', 'valid') as $related_video)
             @if ($related_video->id != $video->id)

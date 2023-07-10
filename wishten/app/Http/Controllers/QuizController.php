@@ -76,6 +76,10 @@ class QuizController extends Controller
     }
 
     function storeResults(Video $video, Request $request) {
+        if(!$request->get('selected_answer')) {
+            return back();
+        }
+        $correct_answers = 0;
         foreach($request->get('selected_answer')  as $answer_id) {
             $answer = Answer::find($answer_id);
             $old_answer = Auth::user()->hasAnswered($answer->question);
@@ -84,7 +88,13 @@ class QuizController extends Controller
                 Auth::user()->answers_given()->detach($old_answer->id);
             }
             Auth::user()->answers_given()->attach($answer, ['date'=>date("Y-m-d H:i:s")]);
+            // Almacenamos el número de respuestas correctas en la tabla de visualizaciones
+            if($answer->is_correct == 1) {
+                $correct_answers++;
+            }
         }
+        $video->views()->where('user_id', Auth::user()->id)->update(['correct_answers'=>$correct_answers]);
+        $video->save();
         return back()->with('success', 'Your results were stored correctly');
 
     }

@@ -148,7 +148,7 @@
         </div>
     @endforeach
     <button id="addUser" class="openPopup button">Add user</button>
-    <div id="PopupWindow" class="popup">
+    <div class="popup PopupWindow">
         <div class="popupContent">
             <span class="closePopup">&times;</span>
             <form action="{{ route('adminUsers.addUser') }}" method="POST">
