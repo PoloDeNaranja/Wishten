@@ -270,11 +270,11 @@ class VideoController extends Controller
     // Marca el video como favorito para que sea más accesible para el usuario
     function fav(Video $video, User $user) {
         if($video->isFav($user)) {
-            $video->views()->where('user_id', $user->id)->update(['fav'=>0]);
+            $video->views()->where('user_id', $user->id)->update(['fav'=>0, 'date'=>date("Y-m-d H:i:s")]);
             $video->save();
             return back()->with('success', 'This video was removed from your favourite videos');
         }
-        $video->views()->where('user_id', $user->id)->update(['fav'=>1]);
+        $video->views()->where('user_id', $user->id)->update(['fav'=>1, 'date'=>date("Y-m-d H:i:s")]);
         $video->save();
         return back()->with('success', 'This video was added to your favourite videos');
     }

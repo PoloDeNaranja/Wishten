@@ -93,7 +93,7 @@ class QuizController extends Controller
                 $correct_answers++;
             }
         }
-        $video->views()->where('user_id', Auth::user()->id)->update(['correct_answers'=>$correct_answers]);
+        $video->views()->where('user_id', Auth::user()->id)->update(['correct_answers'=>$correct_answers, 'date'=>date("Y-m-d H:i:s")]);
         $video->save();
         return back()->with('success', 'Your results were stored correctly');
 

@@ -158,7 +158,7 @@ class UserController extends Controller
             return back()->with('success', 'You unfollowed '.$user->name);
 
         }
-        Auth::user()->followed_users()->attach($user->id);
+        Auth::user()->followed_users()->attach($user->id, ['followed_at'=>date("Y-m-d H:i:s")]);
         return back()->with('success', 'You started to follow '.$user->name);
 
     }
