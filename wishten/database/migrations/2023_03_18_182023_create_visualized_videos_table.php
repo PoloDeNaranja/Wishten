@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('video_id')->constrained('videos')->onUpdate('cascade')->onDelete('cascade');
             $table->boolean('fav')->default(0);
+            $table->integer('correct_answers')->default(0);
             $table->dateTime('date')->nullable();
         });
     }
