@@ -6,9 +6,6 @@
 <link rel="stylesheet" type="text/css" href="{{ url('/css/videoStatsStyle.css') }}">
 @endsection
 
-@section('js')
-<script  src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-@endsection
 
 @section('content')
 @include('layouts.messages')
@@ -24,6 +21,7 @@
         <div style="width:100%;max-width:600px">
             <canvas id="answers-{{ $question->id }}" ></canvas>
         </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script>
         // script basado en https://www.w3schools.com/js/js_graphics_chartjs.asp
         const answers{{ $question->id }} = [
