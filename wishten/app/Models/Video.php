@@ -50,6 +50,13 @@ class Video extends Model
     }
 
     /**
+     * Get the number of users that marked this video as fav
+     */
+    public function numberOfFavs() {
+        return $this->views()->where('fav', 1)->count();
+    }
+
+    /**
      * Get the number of correct answers for a user
      */
     public function correctAnswers(User $user) {

@@ -117,6 +117,17 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the total number of favs among all the user's videos
+     */
+    public function totalFavs() {
+        $total_favs = 0;
+        foreach($this->videos as $video) {
+            $total_favs += $video->numberOfFavs();
+        }
+        return $total_favs;
+    }
+
+    /**
      * Check if the user role is admin
      */
     public function isAdmin()

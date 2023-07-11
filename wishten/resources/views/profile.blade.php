@@ -47,7 +47,7 @@
     </div>
 
     <ul class="follows-info">
-        <!-- Lista donde se meten los numeros de subs seguidos y likes -->
+        <!-- Lista donde se meten los numeros de subs seguidos y favoritos -->
 
 
 
@@ -61,8 +61,8 @@
             <p>Following</p>
         </li>
         <li>
-            <h2>2222</h2>
-            <p>Likes</p>
+            <h2>{{ $user->totalFavs() }}</h2>
+            <p>Favs</p>
         </li>
         <li>
             <i class="fa-solid fa-heart"></i>

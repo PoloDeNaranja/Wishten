@@ -29,10 +29,10 @@
             <button class="button" type="submit"
                 @if ($video->isFav(Auth::user()))
                     title="Remove from your favourite videos">
-                    <i class="fa-solid fa-bookmark"></i>
+                    <i class="fa-solid fa-heart"></i>
                 @else
                     title="Add to your favourite videos">
-                    <i class="fa-regular fa-bookmark"></i>
+                    <i class="fa-regular fa-heart"></i>
                 @endif
             </button>
         </form>
