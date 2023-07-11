@@ -47,7 +47,7 @@
     display: inline-block;
  }
 
- .follows-info a, h2{
+ .follows-info a, .follows-info h2{
      text-decoration: none;
      color: black;
      font-size: 30px;

@@ -30,7 +30,7 @@ nav img{
       border-radius: 50px;
 }
 
-nav > a:hover{
+nav > a:hover, nav a > i:hover {
     color:  #38A3A5;
     transition: 0.2s ease-in-out;
 

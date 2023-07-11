@@ -71,6 +71,8 @@ Route::middleware('auth')->group(function () {
 
         Route::get('edit', 'edit')->name('video.edit');
 
+        Route::get('stats', 'stats')->name('video.stats');
+
         Route::get('new-video', 'newVideo')->name('new-video');
 
         Route::get('my-videos', 'myVideos')->name('my-videos');

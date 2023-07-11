@@ -40,6 +40,7 @@ class VideoController extends Controller
         }
     }
 
+    // Devuelve la vista de la página de administración de vídeos
     function adminVideos() {
         $videos = Video::all();
         $subjects = Subject::all()->sortBy('name');
@@ -77,6 +78,18 @@ class VideoController extends Controller
             'video'     =>  $video,
             'subjects'   =>  $subjects
         ]);
+    }
+
+    // Devuelve la vista de estadísticas del vídeo
+    function stats(Request $request) {
+        $video = Video::find($request['video']);
+
+        // Si el usuario no está autorizado para editar el video, se le deniega el acceso
+        if(Auth::user()->cannot('update', $video)) {
+            abort(403);
+        }
+
+        return view('videoStats')->with('video', $video);
     }
 
     // Devuelve la vista para crear un nuevo vídeo

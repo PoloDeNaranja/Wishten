@@ -24,6 +24,12 @@
                 Edit
             </a>
         @endif
+        @if (Auth::user()->can('update', $video))
+            <a class="button" href="{{ route('video.stats', ['video'=>$video->id]) }}">
+                <i class="fa-solid fa-chart-line"></i>
+                Stats
+            </a>
+        @endif
         <form action="{{ route('video.fav', ['video'=>$video->id, 'user'=>Auth::id()]) }}" method="post">
             @csrf
             <button class="button" type="submit"
