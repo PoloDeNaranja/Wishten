@@ -14,7 +14,28 @@ class UserController extends Controller
 {
     function index(Request $request) {
         $user = User::find($request['user']);
-        return view('profile')->with('user', $user);
+        if($request->filled('video_title')) {
+            $filtered_videos = $user->videos()->where('title', $request->video_title)->get();
+            if(!$filtered_videos) {
+                return view('profile')->with([
+                    'user'         =>  $user,
+                    'videos'       =>  null,
+                    'video_title'  =>  $request->video_title
+                ]);
+            }
+            return view('profile')->with([
+                'user'         =>  $user,
+                'videos'       =>  $filtered_videos,
+                'video_title'  =>  $request->video_title
+            ]);
+        }
+        else {
+            $videos = $user->videos()->get();
+            return view('profile')->with([
+                'user'      =>  $user,
+                'videos'    =>  $videos
+            ]);
+        }
     }
 
     function privacySecurity() {

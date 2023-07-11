@@ -1,0 +1,120 @@
+
+ .user-info{
+     text-align: center;
+     height: 300px;
+     padding: 15px;
+
+ }
+
+ .circle{
+     width: 150px;
+     height: 150px;
+     border-radius: 50%;
+      border-color: aquamarine;
+ }
+
+ .name{
+     font-size: 18px;
+     margin-top: 10px;
+     color: black;
+ }
+ .user-info button{
+    margin-top:15px;
+ }
+
+ .follows-info{
+     text-align: center;
+
+
+ }
+
+ .follows-info li:nth-child(-n + 3){
+     display: inline-block;
+     margin:5px;
+     border-right: 2px solid #9B9A9A;
+     padding-left: 10px;
+     padding-right: 10px;
+     width: auto;
+
+ }
+
+ .follows-info li:nth-child(3){
+    border-right:none;
+ }
+
+ .follows-info li:last-child{
+    border-right:none;
+    display: inline-block;
+ }
+
+ .follows-info a, h2{
+     text-decoration: none;
+     color: black;
+     font-size: 30px;
+     font-weight: normal;
+ }
+
+ .follows-info li p{
+    font-size: 20px;
+    font-weight: normal;
+ }
+
+ .follows-info a {
+    border-radius: 8px;
+
+    padding: 10px 20px 10px 20px;
+    top: 0;
+    left: 0;
+    position: relative;
+ }
+
+ .follows-info li a:hover{
+    background-color: rgba(211, 211, 211, 0.459);
+    cursor: pointer;
+ }
+
+ ul .fa-solid{
+
+     font-size: 30px;
+     color: #CB5763;
+
+ }
+ .uploaded-videos{
+    padding: 30px;
+ }
+ .uploaded-videos h1{
+    font-size:30px;
+ }
+
+ .edit-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+    align-items: center;
+ }
+
+ .button{
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    background-color: #57CC99;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    color:  black;
+}
+
+.button.red {
+    background-color: #CB5763;
+}
+
+.search-bar {
+    width: 208px;
+}
+
+
+
+
