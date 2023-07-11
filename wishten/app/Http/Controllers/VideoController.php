@@ -89,7 +89,7 @@ class VideoController extends Controller
             abort(403);
         }
 
-        return view('videoStats')->with('video', $video);
+        return view('videoInfo')->with('video', $video);
     }
 
     // Devuelve la vista para crear un nuevo vídeo
