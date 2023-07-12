@@ -7,3 +7,17 @@
     width:100%;
     max-width:600px;
 }
+
+.general-stats {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+}
+
+.general-stats > label {
+    font-size: 20px;
+}
+
+.general-stats .fa-heart{
+    color: #CB5763;
+}

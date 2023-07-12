@@ -11,9 +11,15 @@
 @include('layouts.messages')
 
 <h1>Stats for video '{{ $video->title }}'</h1>
+<div class="general-stats">
+    <label title="Views">
+        <i class="fa-solid fa-eye fa-xl"></i> {{ $video->views->count() }}
+    </label>
+    <label title="Favs">
+        <i class="fa-solid fa-heart fa-xl"></i> {{ $video->numberOfFavs() }}
+    </label>
+</div>
 
-<p>Views: {{ $video->views->count() }}</p>
-<p>Favs: {{ $video->numberOfFavs() }}</p>
 @if ($video->questions->count()>0)
     <h2>Quiz stats:</h2>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
