@@ -15,6 +15,9 @@ class UserController extends Controller
     // Devuelve la vista del perfil del usuario
     function index(Request $request) {
         $user = User::find($request['user']);
+        if(!$user) {
+            abort(404);
+        }
         if($request->filled('video_title')) {
             $filtered_videos = $user->videos()->where('title', $request->video_title)->get();
             if(!$filtered_videos) {
