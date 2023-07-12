@@ -16,44 +16,39 @@
 <p>Favs: {{ $video->numberOfFavs() }}</p>
 @if ($video->questions->count()>0)
     <h2>Quiz stats:</h2>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     @foreach ($video->questions->sortBy('question_time') as $question)
         <h3>{{ $question->text }}</h3>
-        <div style="width:100%;max-width:600px">
-            <canvas id="answers-{{ $question->id }}" ></canvas>
+        <div class="answers-chart" >
+            <canvas id="{{ $question_charts[$question->id]->id }}" ></canvas>
         </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script>
-        // script basado en https://www.w3schools.com/js/js_graphics_chartjs.asp
-        const answers{{ $question->id }} = [
-            @foreach ($question->answers as $answer)
-            "{{ preg_replace('/[\']/', '', $answer->text)}} @if($answer->is_correct)[CORRECT] @endif",
-            @endforeach];
-        const users{{ $question->id }} = [@foreach ($question->answers as $answer)"{{ $answer->users->count() }}",@endforeach];
-        const colors{{ $question->id }} = [
-          "#b91d47",
-          "#00aba9",
-          "#2b5797",
-          "#e8c3b9",
-          "#1e7145"
-        ];
 
-        new Chart("answers-{{ $question->id }}", {
-          type: "doughnut",
-          data: {
-            labels: answers{{ $question->id }},
-            datasets: [{
-              backgroundColor: colors{{ $question->id }},
-              data: users{{ $question->id }}
-            }]
-          },
-          options: {
-            title: {
-              display: true,
-              text: "Answers for question: {{ preg_replace('/[\']/', '', $question->text) }}"
+
+    <script>
+        // script basado en https://www.codesolutionstuff.com/how-to-use-chart-js-in-laravel?expand_article=1
+        var ctx = document.getElementById("{{ $question_charts[$question->id]->id }}").getContext('2d');
+        var chart = new Chart("{{ $question_charts[$question->id]->id }}", {
+            // Tipo de chart
+            type: "doughnut",
+            // Datos
+            data: {
+                labels:  {!!json_encode($question_charts[$question->id]->labels)!!} ,
+                datasets: [
+                    {
+                        backgroundColor: {!! json_encode($question_charts[$question->id]->colors)!!} ,
+                        data:  {!! json_encode($question_charts[$question->id]->dataset)!!}
+                    }]
+            },
+            // Opciones
+            options: {
+                title: {
+                    display: true,
+                    text: "Answers for question: {{ preg_replace('/[\']/', '', $question->text) }}"
+                }
             }
-          }
         });
-        </script>
+
+    </script>
 
     @endforeach
 
