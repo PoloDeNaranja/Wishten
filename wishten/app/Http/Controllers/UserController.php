@@ -12,6 +12,7 @@ use Hash;
 
 class UserController extends Controller
 {
+    // Devuelve la vista del perfil del usuario
     function index(Request $request) {
         $user = User::find($request['user']);
         if($request->filled('video_title')) {
@@ -38,15 +39,13 @@ class UserController extends Controller
         }
     }
 
-    function privacySecurity() {
-        return view('privacy-security');
-    }
-
+    // Devuelve la vista de administración de usuarios
     function adminUsers() {
         $users = User::all();
         return view('adminUsers')->with('users', $users);
     }
 
+    // Añade un usuario nuevo
     function addUser(RegistrationRequest $request) {
         $data = $request->all();
 

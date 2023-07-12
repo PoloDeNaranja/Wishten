@@ -33,18 +33,8 @@
             <a href="/" class="nav-link">Home</a>
             <a href="videos" class="nav-link">Videos</a>
             <a href="#" class="nav-link">Offers</a>
-            <!-- <ul>
-                    <li><a href="">1º Cuatrimestre</li>
-                    <li><a href="">2º Cuatrimestre</li>
-                    <li><a href="">Extracurriculares</li>
-            </ul> -->
             {{-- <a href="#" class="nav-link">Noticias</a> --}}
-            {{-- <a href=""> --}}
-            {{-- <img class="notificacion"src="notificacion.png" alt = "notificacion">
-            </a>
-            <a href="">
-            <img class="perfil"src="perfil.png" alt = "logo">
-            </a> --}}
+            {{-- <img class="notificacion"src="notificacion.png" alt = "notificacion"></a>--}}
             @guest
               <a class="nav-link" href="{{ route('login') }}">Login</a>
               <a class="nav-link" href="{{ route('registration') }}">Register</a>
@@ -59,10 +49,8 @@
                     </a>
                     <div id="myDropdown" class="dropdown-content">
                         <a href="{{ route('new-video') }}">New video...</a>
-                        <a href="#">Settings</a>
                         <a href="{{ route('my-videos') }}">My Videos</a>
                         <a href="{{ route('profile', ['user'=>Auth::user()]) }}">Profile</a>
-                        <a href="{{ route('privacy-security') }}">Privacy and Security</a>
                         @if (Auth::user()->role == 'admin')
                             <a class="dropdown-item" href="{{ '/admin' }}">Administration</a>
                         @endif

@@ -46,8 +46,6 @@ Route::middleware('auth')->group(function () {
 
         Route::get('profile', 'index')->name('profile');
 
-        Route::get('privacy-security', 'privacySecurity')->name('privacy-security');
-
         Route::post('update_pic/{user}', 'updatePic')->name('profile.update_pic');
 
         Route::post('update_info/{user}', 'updateInfo')->name('profile.update_info');
