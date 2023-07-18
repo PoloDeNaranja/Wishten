@@ -65,7 +65,6 @@
                 @csrf
                 <button class="button red" type="submit">Delete</button>
             </form>
-            {{-- Add questions en caso de no tener e iría en un popup para no sobrecargar la vista --}}
         </div>
     </div>
 </div>

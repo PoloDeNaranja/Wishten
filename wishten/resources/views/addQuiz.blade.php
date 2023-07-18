@@ -61,13 +61,14 @@
                     </button>
                 </form>
             @endforeach
-            <button class="button openPopup" id="add-question">New question</button>
+            <button class="button openPopup" id="add-question" title="You may first select the minute in the video">New question</button>
             <div class="popup PopupWindow">
                 <div class="popupContent">
                     <span class="closePopup">&times;</span>
                     <h3>Add a new question</h3>
                     <form action="{{ route('quiz.add_question', $video->id) }}" method="post" id="add-question-form">
                         @csrf
+                        <p>Make sure you selected correctly the minute in the video!</p>
                         <textarea name="question_text"  cols="10" rows="3" required></textarea>
                         <button class="button-popup" type="submit">Add question</button>
                     </form>
