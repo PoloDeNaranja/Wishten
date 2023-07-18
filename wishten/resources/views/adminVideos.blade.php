@@ -20,7 +20,7 @@
 
     <h1>Admin Videos</h1>
     <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search video by title">
-    <div id="userList">
+    <div id="adminTable">
         <table id="filteredTable" class="userInfo">
             <tr class="header">
                 <th>ID</th>

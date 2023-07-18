@@ -1,6 +1,8 @@
 .container {
     min-height: 100%;
     height: auto;
+    /* overflow-x: auto; */
+
 }
 
 
@@ -18,7 +20,7 @@
 
 }
 
-#userList label {
+#adminTable label {
     flex-grow: 1;
 }
 
@@ -98,6 +100,17 @@
 .filepath:visited:hover {
     color:  #57CC99;
 } */
+
+#adminTable {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+}
+
+#adminTable table {
+    margin-left: auto;
+    margin-right: auto;
+}
 
 td.status-valid {
     color: #57CC99;

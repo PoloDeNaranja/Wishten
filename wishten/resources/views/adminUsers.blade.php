@@ -19,7 +19,7 @@
 
     <h1>Admin Users</h1>
     <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search user name">
-    <div id="userList">
+    <div id="adminTable">
         <table id="filteredTable" class="userInfo">
             <tr class="header">
                 <th>ID</th>
