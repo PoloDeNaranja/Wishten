@@ -30,6 +30,10 @@ class QuizController extends Controller
         if(Auth::user()->cannot('update', $video)) {
             abort(403);
         }
+        // En caso de subir una pregunta en el mismo minuto
+        if($video->questions()->where('question_time', '=', intval($request->minute))->count() > 0) {
+            return back()->with('error', 'There is already a question in that minute!');
+        }
         $video->questions()->create([
             'text'          =>  $request->question_text,
             'question_time' =>  $request->minute
