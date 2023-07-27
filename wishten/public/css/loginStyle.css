@@ -70,7 +70,7 @@ form a{
 }
 
 .button-log:hover{
-    background-color: #80ED99;
+    background-color: #5cdba4;
 }
 
 .button-reg{
@@ -83,7 +83,7 @@ form a{
 }
 
 .button-reg:hover{
-    background-color: #80ED998a;
+    background-color: #f1f1f1;
 }
 
 .log{
@@ -101,5 +101,5 @@ form a{
 }
 
 #show-password:hover {
-    background-color: #80ED99;
+    background-color: #5cdba4;
 }
