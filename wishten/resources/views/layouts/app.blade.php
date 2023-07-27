@@ -36,8 +36,8 @@
             {{-- <a href="#" class="nav-link">Noticias</a> --}}
             {{-- <img class="notificacion"src="notificacion.png" alt = "notificacion"></a>--}}
             @guest
-              <a class="nav-link" href="{{ route('login') }}">Login</a>
-              <a class="nav-link" href="{{ route('registration') }}">Register</a>
+              <a class="nav-link" href="{{ route('login') }}">Log in</a>
+              <a class="nav-link" href="{{ route('registration') }}">Sign up</a>
             @else
                 <div class="dropdown">
                     <a href="#" onclick="toggleDropdown()" class="dropbtn" aria-expanded="false">
@@ -55,7 +55,7 @@
                             <a class="dropdown-item" href="{{ '/admin' }}">Administration</a>
                         @endif
                         <hr>
-                        <a href="{{ '/logout' }}">Logout</a>
+                        <a href="{{ '/logout' }}">Log out</a>
                     </div>
                 </div>
             @endguest

@@ -28,7 +28,7 @@
         </a>
     </div>
     @csrf
-    <h1 class="title">Login</h1>
+    <h1 class="title">Wishten</h1>
     <label>
         <i class="fa-solid fa-envelope"></i>
         <input placeholder="e-mail" type="text" name="email">
@@ -47,9 +47,7 @@
         @endif
     </div>
 
-    <a href="#" class="forgot">Password forgotten?</a>
-
-    <button type="submit" class="button-log">Sign in</button>
+    <button type="submit" class="button-log">Log in</button>
     <a class="button-reg" href="{{ route('registration') }}">Sign up</a>
 
 
