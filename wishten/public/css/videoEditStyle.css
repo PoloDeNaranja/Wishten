@@ -8,21 +8,38 @@
     width: 60%;
 }
 
+@media (max-width: 1200px) {
+    .video-view {
+        flex-direction: column;
+    }
+}
+
 .edit-info {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-left: 2%;
+    gap: 20px;
 }
+
 
 form {
     display: flex;
     flex-direction: row;
 }
 
-.thumb-form {
-    flex-direction: column;
+form label input {
+    margin-top: 5%;
 }
+
+.thumb-form {
+    gap: 20%;
+}
+
+.thumb-form button {
+    margin-top: 25%;
+}
+
 
 .button.red {
     background-color: #CB5763;

@@ -89,24 +89,28 @@ class VideoController extends Controller
         if(Auth::user()->cannot('update', $video)) {
             abort(403);
         }
-        if ($video->questions->count() == 0) {
+        if ($video->numberOfQuestions() == 0) {
             return view('videoStats')->with('video', $video);
         }
         $questions = $video->questions->sortBy('question_time');
         foreach ($questions as $question) {
             $answers_labels = [];
             $answers_values = [];
-            // Añadimos el texto de cada respuesta como labels y en caso de respuestas correctas le añadimos [CORRECT]
-            foreach($question->answers as $answer) {
-                $escaped = preg_replace('/[\']/', '', $answer->text);
-                $answers_labels[] = $answer->is_correct ? $escaped."[CORRECT]" : $escaped;
-                $answers_values[] = $answer->users->count();
+            // Si la pregunta no tiene respuestas, es una anotación, por lo que no se muestra en las estadísticas
+            if($question->answers->count() > 0) {
+                // Añadimos el texto de cada respuesta como labels y en caso de respuestas correctas le añadimos [CORRECT]
+                foreach($question->answers as $answer) {
+                    $escaped = preg_replace('/[\']/', '', $answer->text);
+                    $answers_labels[] = $answer->is_correct ? $escaped."[CORRECT]" : $escaped;
+                    $answers_values[] = $answer->users->count();
+                }
+                // Colores aleatorios
+                for ($i=0; $i<=$question->answers->count(); $i++) {
+                    $colors[] = '#' . substr(str_shuffle('BCD3579'), 0, 6);
+                }
+                $question_charts[$question->id] = new Chart("answers-".$question->id, $answers_labels, $answers_values, $colors);
             }
-            // Colores aleatorios
-            for ($i=0; $i<=$question->answers->count(); $i++) {
-                $colors[] = '#' . substr(str_shuffle('BCD3579'), 0, 6);
-            }
-            $question_charts[$question->id] = new Chart("answers-".$question->id, $answers_labels, $answers_values, $colors);
+
 
         }
         return view('videoStats')->with([

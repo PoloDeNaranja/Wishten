@@ -20,10 +20,13 @@
     </label>
 </div>
 
-@if ($video->questions->count()>0)
+@if ($video->numberOfQuestions()>0)
     <h2>Quiz stats:</h2>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     @foreach ($video->questions->sortBy('question_time') as $question)
+        @if ($question->answers->count() > 0)
+
+
         <h3>{{ $question->text }}</h3>
         <div class="answers-chart" >
             <canvas id="{{ $question_charts[$question->id]->id }}" ></canvas>
@@ -55,7 +58,7 @@
         });
 
     </script>
-
+    @endif
     @endforeach
 
 @endif
