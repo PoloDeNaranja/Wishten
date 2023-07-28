@@ -52,6 +52,7 @@
                 @foreach ($video->questions as $question)
                     <div id="question-{{ $question->id }}" class="question-wrapper" data-minute="{{ $question->question_time }}">
                         <p>{{ $question->text }}</p>
+                        @if ($question->answers->count() > 0)
                         <div class="answer-list">
                             @foreach ($question->answers as $answer)
                                 <label for="radio-{{ $answer->id }}">
@@ -61,6 +62,10 @@
                         </div>
                         <button class="button answer-btn">Answer</button>
                         <button class="button continue">Continue</button>
+                        @else
+                        <button class="button continue show">Continue</button>
+                        @endif
+
                     </div>
                     @php($count++)
                 @endforeach
@@ -72,8 +77,10 @@
             <a class="video-link" href="profile?user={{ $video->owner_id }}">{{ $video->user->name }}</a>
             <p class="video-desc">{{ $video->description }}</p>
             <p>{{ $video->views()->count() }} views</p>
-            @if ($video->questions->count()>0)
-                <p>Last score: {{ $video->userScore(Auth::user()) }}% ( {{ $video->correctAnswers(Auth::user()) }}/{{ $video->questions->count() }} )</p>
+
+            @php($questions_count = $video->numberOfQuestions())
+            @if ($questions_count > 0)
+                <p>Last score: {{ $video->userScore(Auth::user()) }}% ({{ $video->correctAnswers(Auth::user()) }}/{{ $questions_count }})</p>
             @endif
         </div>
 

@@ -24,6 +24,7 @@
         <div class="questions-list">
             @if ($video->questions->isEmpty())
                 <p>Add some quiz questions to your video to make it even more useful for your viewers!</p>
+                <p>First, you may select the minute where you want to show the question in the progress bar. Then, you can add the answers or leave it blank to use that question as an annotation.</p>
             @endif
             @foreach ($video->questions->sortBy('question_time') as $question)
                 <div class="quiz-header">

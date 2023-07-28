@@ -184,3 +184,7 @@
 .continue {
     display: none;
 }
+
+.continue.show {
+    display: block;
+}

@@ -64,10 +64,23 @@ class Video extends Model
     }
 
     /**
+     * Get the number of questions that are not annotations
+     */
+    public function numberOfQuestions() {
+        $questions_count = 0;
+        foreach ($this->questions as $question) {
+            if($question->answers->count() > 0) {
+                $questions_count++;
+            }
+        }
+        return $questions_count;
+    }
+
+    /**
      * Get the score of a user
      */
     public function userScore(User $user) {
-        return $this->correctAnswers($user)/$this->questions->count()*100;
+        return $this->correctAnswers($user)/$this->numberOfQuestions()*100;
     }
 
     /**

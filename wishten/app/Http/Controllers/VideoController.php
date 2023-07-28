@@ -185,7 +185,7 @@ class VideoController extends Controller
 
         $video->subject()->associate($subject);
         $video->save();
-        return back()->with('success', 'Your video was uploaded successfully!');
+        return redirect()->route("quiz.add_quiz", ['video' =>  $video])->with('success', 'Your video was uploaded successfully! Now you can try to add some quizzes to make it even more useful!');
     }
 
     // Actualiza el título de un video
