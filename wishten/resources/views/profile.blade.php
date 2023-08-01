@@ -3,14 +3,13 @@
 @section('title', Auth::user()->name . '\'s Profile')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ url('/css/profileStyle.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url('/css/profileStyle.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/css/popupStyle.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/css/videoListStyle.css') }}" />
 @endsection
 
 @section('js')
-    <script async src="{{ url('/js/showPassword.js') }}"></script>
-    <script async src="{{ url('/js/popup.js') }}"></script>
+<script async src="{{ url('/js/popup.js') }}"></script>
 @endsection
 
 
@@ -33,6 +32,7 @@
                 <div class="edit-buttons">
                     <button class="openPopup button">Edit profile</button>
                     <button class="openPopup button">Change password</button>
+                    <button class="openPopup button red">Delete account</button>
                 </div>
             @endif
             @if (Auth::id() != $user->id)
@@ -185,6 +185,19 @@
                         @endif
                     </label>
                     <button type="submit" class="button">Change My Password</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="popup PopupWindow"><!-- popup eliminar cuenta -->
+            <div class="popupContent">
+                <span class="closePopup">&times;</span>
+                <h3>Are you sure you want to delete your account?</h3>
+                <p>This action is permanent and cannot be undone, all your content will be deleted and you will lose access to Wishten. Please confirm this action by clicking the button below.</p>
+
+                <form class="delete-account" action="{{ route('user.delete', $user->id) }}" method="post">
+                    @csrf
+                    <button class="delete-user button red" type="submit">Confirm</button>
                 </form>
             </div>
         </div>

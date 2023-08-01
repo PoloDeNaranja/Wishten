@@ -77,6 +77,7 @@
             <a class="video-link" href="profile?user={{ $video->owner_id }}">{{ $video->user->name }}</a>
             <p class="video-desc">{{ $video->description }}</p>
             <p>{{ $video->views()->count() }} views</p>
+            <p>{{ date( "F d, Y", strtotime($video->created_at)) }}</p>
 
             @php($questions_count = $video->numberOfQuestions())
             @if ($questions_count > 0)
