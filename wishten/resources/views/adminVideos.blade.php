@@ -87,7 +87,7 @@
             </div>
         </div>
     @endforeach
-    <button id="addUser" class="openPopup button">Add Video</button>
+    <button id="addVideo" class="openPopup button">Add Video</button>
     <div class="popup PopupWindow">
         <div class="popupContent">
             <span class="closePopup">&times;</span>
