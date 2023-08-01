@@ -50,6 +50,7 @@
                     <div id="myDropdown" class="dropdown-content">
                         <a href="{{ route('new-video') }}">New video...</a>
                         <a href="{{ route('my-videos') }}">My Videos</a>
+                        <a href="{{ route('fav-videos') }}">Favourite Videos</a>
                         <a href="{{ route('profile', ['user'=>Auth::user()]) }}">Profile</a>
                         @if (Auth::user()->role == 'admin')
                             <a class="dropdown-item" href="{{ '/admin' }}">Administration</a>

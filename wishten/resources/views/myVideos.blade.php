@@ -8,6 +8,7 @@
 
 @section('content')
     @include('layouts.messages')
+    <h1>My Videos</h1>
 
     <form class="search-bar" action="{{ route('my-videos')}}" method="get">
         @csrf

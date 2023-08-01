@@ -75,6 +75,8 @@ Route::middleware('auth')->group(function () {
 
         Route::get('my-videos', 'myVideos')->name('my-videos');
 
+        Route::get('fav-videos', 'favVideos')->name('fav-videos');
+
         Route::post('upload/{user}', 'upload')->name('video.upload');
 
         Route::post('delete_vid/{video}/{admin}', 'delete')->name('video.delete');
