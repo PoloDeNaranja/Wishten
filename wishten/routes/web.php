@@ -134,6 +134,8 @@ Route::middleware('auth', 'roles:admin')->group(function () {
 
         Route::post('changeRole/{user}', 'changeRole')->name('adminUsers.changeRole');
 
+        Route::post('setPassword/{user}', 'setPassword')->name('adminUsers.setPassword');
+
     });
 
     // Administración de videos

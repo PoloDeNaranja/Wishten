@@ -129,6 +129,18 @@ class UserController extends Controller
 
     }
 
+    // Cambia la contraseña del usuario desde administración, por lo que no requiere la contraseña antigua
+    function setPassword(User $user, Request $request) {
+        if(Auth::user()->cannot('update', $user)) {
+            abort(403);
+        }
+        $request->validate(['new_password'  =>  ['required', 'confirmed', Rules\Password::defaults()]]);
+        $user->update(['password' =>  Hash::make($request->new_password)]);
+        $user->updateTimestamps();
+
+        return back()->with('success', 'User '.$user->name.'\'s password was changed correctly');
+    }
+
     // Cambia la contraseña del usuario (logeado)
     function changePassword(User $user, Request $request) {
         if(Auth::user()->cannot('update', $user)) {

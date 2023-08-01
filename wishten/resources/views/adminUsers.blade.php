@@ -116,16 +116,8 @@
         <div class="popup PopupWindow">
             <div class="popupContent">
                 <span class="closePopup">&times;</span>
-                <form action="{{ route('profile.change_password', $user->id) }}" method="POST">
+                <form action="{{ route('adminUsers.setPassword', $user->id) }}" method="POST">
                     @csrf
-                    <label>
-                        <i class="fa-solid fa-lock"></i>
-                        <input type="password" name="old_password" class="InputOldPassword"
-                            placeholder="Enter your old password" required>
-                        @if ($errors->has('old_password'))
-                            <span class="error-text">{{ $errors->first('old_password') }}</span>
-                        @endif
-                    </label>
                     <label>
                         <i class="fa-solid fa-lock"></i>
                         <input type="password" name="new_password" class="InputNewPassword" placeholder="Enter a new password"
@@ -142,7 +134,7 @@
                             <span class="error-text">{{ $errors->first('new_password_confirmation') }}</span>
                         @endif
                     </label>
-                    <button type="submit" class="button">Change My Password</button>
+                    <button type="submit" class="button">Change Password</button>
                 </form>
             </div>
         </div>
