@@ -19,7 +19,10 @@ class UserController extends Controller
             abort(404);
         }
         if($request->filled('video_title')) {
-            $filtered_videos = $user->videos()->where('title', $request->video_title)->get();
+            $filtered_videos = $user->videos()->where([
+                'title'     =>  $request->video_title,
+                'status'    =>  'valid'
+            ])->get();
             if(!$filtered_videos) {
                 return view('profile')->with([
                     'user'         =>  $user,
@@ -34,7 +37,7 @@ class UserController extends Controller
             ]);
         }
         else {
-            $videos = $user->videos()->get();
+            $videos = $user->videos()->where('status', 'valid')->get();
             return view('profile')->with([
                 'user'      =>  $user,
                 'videos'    =>  $videos

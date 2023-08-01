@@ -37,12 +37,23 @@
                     <img src="{{ url('storage/' . $video->thumb_path) }}" alt="{{ $video->title }}">
                     <a href="{{ route('video.edit', ['video'=>$video->id]) }}"></a>
                     <div class="video-info">
-                        <h3>{{ $video->title }}</h3>
+
+                        <h3>{{ $video->title }}
+                            @if ($video->status === 'pending')
+                                <i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #CB9957;" title="This video is being revised"></i>
+                            @elseif ($video->status === 'blocked')
+                                <i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #CB5763;" title="This video is blocked"></i>
+                            @endif
+                        </h3>
                         <h4>{{ $video->subject->name }}</h4>
                         <p>{{ $video->description }}</p>
+
+
                     </div>
 
+
                 </div>
+
             @endforeach
         </div>
     @endif
