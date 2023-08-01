@@ -38,15 +38,13 @@
                     <td>{{ $user->updated_at }}</td>
 
                     <td>
-                        <form class="action-buttons" action="{{ route('user.delete', $user->id) }}" method="post">
-                            @csrf
-                            <button class="openPopup button" type="button"
-                                @if (Auth::user()->id == $user->id) disabled @endif>Modify</button>
-                            <button class="openPopup button" type="button"
-                                @if (Auth::user()->id == $user->id) disabled @endif>Password</button>
-                            <button class="delete-user button red" type="submit"
-                                @if (Auth::user()->id == $user->id) disabled @endif>Delete</button>
-                        </form>
+                        <button class="openPopup button" type="button"
+                            @if (Auth::user()->id == $user->id) disabled @endif>Modify</button>
+                        <button class="openPopup button" type="button"
+                            @if (Auth::user()->id == $user->id) disabled @endif>Password</button>
+                        <button class="openPopup button red" type="submit"
+                            @if (Auth::user()->id == $user->id) disabled @endif>Delete</button>
+
                     </td>
                 </tr>
             @endforeach
@@ -135,6 +133,19 @@
                         @endif
                     </label>
                     <button type="submit" class="button">Change Password</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="popup PopupWindow">
+            <div class="popupContent">
+                <span class="closePopup">&times;</span>
+                <h3>Are you sure you want to delete this account?</h3>
+                <p>This action is permanent and cannot be undone. Please confirm this action by clicking the button below.</p>
+
+                <form class="delete-account" action="{{ route('user.delete', $user->id) }}" method="post">
+                    @csrf
+                    <button class="delete-user button red" type="submit">Confirm</button>
                 </form>
             </div>
         </div>
