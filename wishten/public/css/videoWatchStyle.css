@@ -23,30 +23,14 @@
     .video-view {
         flex-direction: column;
     }
-    /* .video-view video {
-        max-width: 300px;
-    } */
 }
 
-/* @media (min-width: 400px) {
-    .video-view video {
-        max-width: 600px;
-    }
-}
-
-@media (min-width: 700px) {
-    .video-view video {
-        max-width: 800px;
-    }
-} */
 
 @media (min-width: 1000px) {
     .video-view {
         flex-direction: row;
     }
-    .video-view video {
-        max-width: 98%;
-    }
+
 }
 
 .video-view video {
@@ -172,7 +156,7 @@
 
 #video-wrapper {
     position: relative;
-    width: 1000px;
+    width: 90%;
 }
 
 #video-wrapper video {
@@ -182,6 +166,7 @@
 
 #video-wrapper .question-wrapper {
     position: absolute;
+    width: 30%;
     display: none;
     color: white;
     z-index: 150;

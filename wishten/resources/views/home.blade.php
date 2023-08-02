@@ -89,9 +89,9 @@
 @endif
 {{-- Por cada usuario al que sigue, se muestran sus últimos vídeos subidos --}}
 @foreach (Auth::user()->followed_users()->get() as $followed_user)
-    <h3>{{ $followed_user->name }}'s latest videos</h3>
     @php($videos = $followed_user->videos()->latest()->get())
     @if ($videos->count() > 0)
+    <h3>{{ $followed_user->name }}'s latest videos</h3>
     <div class="video-list">
         @foreach ($videos as $video)
             <div class="video-card">
