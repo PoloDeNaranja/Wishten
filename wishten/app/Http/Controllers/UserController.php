@@ -201,6 +201,24 @@ class UserController extends Controller
 
     }
 
+    // Devuelve la vista con la lista de seguidores de un usuario
+    function listFollowers(Request $request) {
+        $user = User::find($request['user']);
+        return view('follows')->with([
+            'title'     =>  $user->name.'\'s Followers',
+            'userlist' =>  $user->followers()->get()
+        ]);
+    }
+
+    // Devuelve la vista con la lista de seguidos de un usuario
+    function listFollowed(Request $request) {
+        $user = User::find($request['user']);
+        return view('follows')->with([
+            'title'     =>  $user->name.'\'s Followed Users',
+            'userlist' =>  $user->followed_users()->get()
+        ]);
+    }
+
     // Elimina el usuario de la base de datos
     function delete(User $user) {
         if(Auth::user()->cannot('delete', $user)) {

@@ -53,11 +53,11 @@
 
         <li>
             <!-- en el numero meter variable de followers following y likes -->
-            <a href="followers.php">{{ $user->followers()->count() }}</a>
+            <a href="{{ route('followers', ['user'  =>  $user->id]) }}">{{ $user->followers()->count() }}</a>
             <p>Followers</p>
         </li>
         <li>
-            <a href="following.php">{{ $user->followed_users()->count() }}</a>
+            <a href="{{ route('followed', ['user'  =>  $user->id]) }}">{{ $user->followed_users()->count() }}</a>
             <p>Following</p>
         </li>
         <li>
