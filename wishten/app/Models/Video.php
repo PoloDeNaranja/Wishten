@@ -27,7 +27,7 @@ class Video extends Model
     ];
 
     /**
-     * Get the user that owns the video.
+     * Obtiene el usuario que creó el vídeo
      */
     public function user(): BelongsTo
     {
@@ -35,7 +35,7 @@ class Video extends Model
     }
 
     /**
-     * Get the views of the video.
+     * Obtiene las visitas al vídeo
      */
     public function views(): BelongsToMany
     {
@@ -43,28 +43,28 @@ class Video extends Model
     }
 
     /**
-     * Checks if the user marked this video as fav
+     * Comprueba si el usuario '$user' marcó este vídeo como favorito
      */
     public function isFav(User $user) {
         return $this->views()->where('user_id', $user->id)->first()->pivot->fav;
     }
 
     /**
-     * Get the number of users that marked this video as fav
+     * Obtiene el número de usuarios que marcaron este vídeo como favorito
      */
     public function numberOfFavs() {
         return $this->views()->where('fav', 1)->count();
     }
 
     /**
-     * Get the number of correct answers for a user
+     * Obtiene el número de respuestas correctas que un usuario ha dado al vídeo
      */
     public function correctAnswers(User $user) {
         return $this->views()->where('user_id', $user->id)->first()->pivot->correct_answers;
     }
 
     /**
-     * Get the number of questions that are not annotations
+     * Obtiene el número de preguntas (sin contar las anotaciones, es decir, las preguntas sin respuestas)
      */
     public function numberOfQuestions() {
         $questions_count = 0;
@@ -77,14 +77,14 @@ class Video extends Model
     }
 
     /**
-     * Get the score of a user
+     * Obtiene la última puntuación de un usuario, en porcentaje
      */
     public function userScore(User $user) {
         return $this->correctAnswers($user)/$this->numberOfQuestions()*100;
     }
 
     /**
-     * Get the subject of the video.
+     * Obtiene el tema del vídeo
      */
     public function subject(): BelongsTo
     {
@@ -92,7 +92,7 @@ class Video extends Model
     }
 
     /**
-     * Get the questions of a video.
+     * Obtiene las preguntas correspondientes a este vídeo (contando las anotaciones)
      */
     public function questions(): HasMany
     {

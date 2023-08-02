@@ -24,7 +24,7 @@ class Question extends Model
     ];
 
     /**
-     * Get the video that contains the question.
+     * Obtiene el vídeo al que pertenece esta pregunta
      */
     public function video(): BelongsTo
     {
@@ -32,7 +32,7 @@ class Question extends Model
     }
 
     /**
-     * Get the answers of a question.
+     * Obtiene las respuestas a esta pregunta
      */
     public function answers(): HasMany
     {

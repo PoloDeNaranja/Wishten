@@ -25,7 +25,7 @@ class Answer extends Model
     ];
 
     /**
-     * Get the corresponding question.
+     * Devuelve la pregunta correspondiente a esta respuesta
      */
     public function question(): BelongsTo
     {
@@ -33,7 +33,7 @@ class Answer extends Model
     }
 
     /**
-     * Get all the users that have given this answer to a quiz.
+     * Devuelve todos los usuarios que seleccionaron esta respuesta al cuestionario
      */
     public function users(): BelongsToMany
     {

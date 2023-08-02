@@ -22,7 +22,7 @@ class Subject extends Model
     ];
 
     /**
-     * Get the videos of the same subject.
+     * Obtiene los vídeos que traten de este tema
      */
     public function videos(): HasMany
     {

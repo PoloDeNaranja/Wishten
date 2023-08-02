@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Esta clase sirve para crear objetos que contienen los parámetros necesarios para crear gráficos usando la librería Chart.js
+ */
+
 class Chart extends Model
 {
     use HasFactory;

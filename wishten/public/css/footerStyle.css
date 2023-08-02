@@ -3,13 +3,7 @@ footer{
     padding: 40px 0 ;
     background-color: #22577A;
 }
-/* .cont_footer{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content: space-between;
-    margin:auto;
-    margin-top:100px;
-} */
+
 footer .cop{
     display:flex;
     color: white;

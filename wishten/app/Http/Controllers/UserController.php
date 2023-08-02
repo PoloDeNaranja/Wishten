@@ -190,7 +190,9 @@ class UserController extends Controller
         return back()->with('success', 'The user '.$user->name.' has now the role \''.$user->role.'\'');
     }
 
+    // Función para seguir o dejar de seguir a un usuario
     function follow(User $user) {
+        // Si ya le seguía, le deja de seguir y viceversa
         if(Auth::user()->isFollowing($user)) {
             Auth::user()->followed_users()->detach($user->id);
             return back()->with('success', 'You unfollowed '.$user->name);
@@ -208,7 +210,7 @@ class UserController extends Controller
     // Devuelve la vista con la lista de seguidores de un usuario
     function listFollowers(Request $request) {
         $user = User::find($request['user']);
-        // Filtro para buscar usuarios por noimbre
+        // Filtro para buscar usuarios por nombre
         if($request->filled('user_name')) {
             $filtered_users = $user->followers()->where('name', 'LIKE',"%{$request->user_name}%")->get();
             if(!$filtered_users) {
@@ -244,7 +246,7 @@ class UserController extends Controller
     function listFollowed(Request $request) {
         $user = User::find($request['user']);
 
-        // Filtro para buscar usuarios por noimbre
+        // Filtro para buscar usuarios por nombre
         if($request->filled('user_name')) {
             $filtered_users = $user->followed_users()->where('name', 'LIKE',"%{$request->user_name}%")->get();
             if(!$filtered_users) {

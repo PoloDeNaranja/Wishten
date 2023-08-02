@@ -50,7 +50,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the videos of a user.
+     * Obtiene los vídeos de un usuario
      */
     public function videos(): HasMany
     {
@@ -58,7 +58,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the videos a user has viewed.
+     * Obtiene los vídeos que ha visto un usuario
      */
     public function visualized_videos(): BelongsToMany
     {
@@ -66,14 +66,14 @@ class User extends Authenticatable
     }
 
     /**
-     * Checks if a user has viewed the video given.
+     * Comprueba si el usuario ha visto el vídeo que se pasa como parámetro
      */
     public function hasViewed(Video $video) {
         return $this->visualized_videos()->where('video_id', $video->id)->count() != 0;
     }
 
     /**
-     * Get the followers of a user.
+     * Obtiene los seguidores del usuario
      */
     public function followers(): BelongsToMany
     {
@@ -81,7 +81,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the users followed by a user.
+     * Obtiene los usuarios a los que sigue este usuario
      */
     public function followed_users(): BelongsToMany
     {
@@ -89,14 +89,14 @@ class User extends Authenticatable
     }
 
     /**
-     * Checks if a user is following another
+     * Comprueba si el usuario está siguiendo al que se pasa como parámetro
      */
     public function isFollowing(User $user) {
         return $this->followed_users()->where('followed_id', $user->id)->count() != 0;
     }
 
     /**
-     * Get all the answers that a user has given to quizzes.
+     * Obtiene todas las respuestas que ha dado el usuario a los cuestionarios que ha realizado
      */
     public function answers_given(): BelongsToMany
     {
@@ -104,7 +104,7 @@ class User extends Authenticatable
     }
 
      /**
-     * Get the answer a user has given to a question
+     * Obtiene la respuesta que un usuario ha dado a una pregunta concreta
      */
     public function hasAnswered(Question $question) {
 
@@ -117,7 +117,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the total number of favs among all the user's videos
+     * Obtiene el número total de favoritos sumando todos los vídeos del usuario
      */
     public function totalFavs() {
         $total_favs = 0;
@@ -128,7 +128,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Check if the user role is admin
+     * Comprueba si el usuario tiene el rol de administrador
      */
     public function isAdmin()
     {
