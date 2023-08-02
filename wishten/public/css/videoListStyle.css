@@ -15,17 +15,27 @@
     .video-list {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .my-video-list > .video-card {
+        flex-direction: column;
+    }
 }
 
 @media (min-width: 900px) {
     .video-list {
         grid-template-columns: repeat(3, 1fr);
     }
+    .my-video-list > .video-card {
+        flex-direction: row;
+    }
 }
 
 @media (min-width: 1500px) {
     .video-list {
         grid-template-columns: repeat(5, 1fr);
+    }
+    .my-video-list > .video-card {
+        flex-direction: row;
     }
 }
 
@@ -42,13 +52,11 @@
 
 .my-video-list > .video-card{
     display: flex;
-    flex-direction: row;
 }
 
 .my-video-list > .video-card > img {
     margin: 1%;
-    width: 20%;
-    height: 90%;
+    width: 300px;
     border-radius: 8px;
     height: 200px;
 }
