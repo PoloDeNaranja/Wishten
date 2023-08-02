@@ -4,37 +4,109 @@
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ url('/css/homeStyle.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/videoListStyle.css') }}">
 @endsection
 
-@section('home')
-    <div class="home-view">
-        <video id="back-video" preload="auto" autoplay loop muted>
-            <source src="{{ asset('background/background.mp4') }}" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="home-content">
-            <h1>WISHTEN</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempora necessitatibus suscipit placeat, autem voluptas ducimus eos. Atque illo odit excepturi tempore velit in, architecto aspernatur pariatur repellat autem unde.
-            Error, eius delectus! Reprehenderit corporis voluptates ipsa quo eaque? Commodi deleniti dicta, voluptatem unde labore, ea vitae odio accusantium non saepe numquam architecto omnis ipsam adipisci consequatur minus ratione vero.
-            Obcaecati quaerat dolor non dolores et, omnis odio enim, minima nam est eos soluta quasi eligendi reprehenderit unde sunt eaque modi atque aliquam nisi blanditiis. Amet aliquam doloremque ut fuga.
-            Omnis, aliquid. Nulla ullam mollitia sunt rem temporibus error aliquid nisi numquam, natus possimus harum odit quam cupiditate autem distinctio labore magnam esse maxime, non ea nostrum neque? Eveniet, quod!
-            Perferendis vel itaque quaerat error! Ipsa laborum ex laudantium nisi tempora porro libero praesentium pariatur. Laudantium nisi commodi nemo a deleniti est corrupti eligendi eum? Impedit quibusdam odio temporibus accusantium.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempora necessitatibus suscipit placeat, autem voluptas ducimus eos. Atque illo odit excepturi tempore velit in, architecto aspernatur pariatur repellat autem unde.
-            Error, eius delectus! Reprehenderit corporis voluptates ipsa quo eaque? Commodi deleniti dicta, voluptatem unde labore, ea vitae odio accusantium non saepe numquam architecto omnis ipsam adipisci consequatur minus ratione vero.
-            Obcaecati quaerat dolor non dolores et, omnis odio enim, minima nam est eos soluta quasi eligendi reprehenderit unde sunt eaque modi atque aliquam nisi blanditiis. Amet aliquam doloremque ut fuga.
-            Omnis, aliquid. Nulla ullam mollitia sunt rem temporibus error aliquid nisi numquam, natus possimus harum odit quam cupiditate autem distinctio labore magnam esse maxime, non ea nostrum neque? Eveniet, quod!
-            Perferendis vel itaque quaerat error! Ipsa laborum ex laudantium nisi tempora porro libero praesentium pariatur. Laudantium nisi commodi nemo a deleniti est corrupti eligendi eum? Impedit quibusdam odio temporibus accusantium.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempora necessitatibus suscipit placeat, autem voluptas ducimus eos. Atque illo odit excepturi tempore velit in, architecto aspernatur pariatur repellat autem unde.
-            Error, eius delectus! Reprehenderit corporis voluptates ipsa quo eaque? Commodi deleniti dicta, voluptatem unde labore, ea vitae odio accusantium non saepe numquam architecto omnis ipsam adipisci consequatur minus ratione vero.
-            Obcaecati quaerat dolor non dolores et, omnis odio enim, minima nam est eos soluta quasi eligendi reprehenderit unde sunt eaque modi atque aliquam nisi blanditiis. Amet aliquam doloremque ut fuga.
-            Omnis, aliquid. Nulla ullam mollitia sunt rem temporibus error aliquid nisi numquam, natus possimus harum odit quam cupiditate autem distinctio labore magnam esse maxime, non ea nostrum neque? Eveniet, quod!
-            Perferendis vel itaque quaerat error! Ipsa laborum ex laudantium nisi tempora porro libero praesentium pariatur. Laudantium nisi commodi nemo a deleniti est corrupti eligendi eum? Impedit quibusdam odio temporibus accusantium.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempora necessitatibus suscipit placeat, autem voluptas ducimus eos. Atque illo odit excepturi tempore velit in, architecto aspernatur pariatur repellat autem unde.
-            Error, eius delectus! Reprehenderit corporis voluptates ipsa quo eaque? Commodi deleniti dicta, voluptatem unde labore, ea vitae odio accusantium non saepe numquam architecto omnis ipsam adipisci consequatur minus ratione vero.
-            Obcaecati quaerat dolor non dolores et, omnis odio enim, minima nam est eos soluta quasi eligendi reprehenderit unde sunt eaque modi atque aliquam nisi blanditiis. Amet aliquam doloremque ut fuga.
-            Omnis, aliquid. Nulla ullam mollitia sunt rem temporibus error aliquid nisi numquam, natus possimus harum odit quam cupiditate autem distinctio labore magnam esse maxime, non ea nostrum neque? Eveniet, quod!
-            Perferendis vel itaque quaerat error! Ipsa laborum ex laudantium nisi tempora porro libero praesentium pariatur. Laudantium nisi commodi nemo a deleniti est corrupti eligendi eum? Impedit quibusdam odio temporibus accusantium.</p>
+@section('content')
+    @include('layouts.messages')
+
+    <form class="search-bar" action="{{ route('videos') }}" method="get">
+        @csrf
+        <div>
+            <div>
+                <input class="search-input" id="subject_name" type="text" placeholder="Filter by subject" name="subject_name"
+                    list="subject_names"
+                    @isset($subject_name) value="{{ $subject_name }}"@endif>
+            <datalist id="subject_names">
+                @foreach ($subjects as $subject)
+                    <option value="{{ $subject->name }}"></option>
+                @endforeach
+            </datalist>
+            <button class="search-button" type="submit">
+                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+            </button>
         </div>
     </div>
-@endsection
+</form>
 
+<h3>Most viewed videos</h3>
+@if (!$videos_by_views || $videos_by_views->isEmpty())
+    <h1>No videos</h1>
+@else
+    <div class="video-list">
+        @foreach ($videos_by_views as $video)
+            <div class="video-card">
+                <img src="{{ url('storage/' . $video->thumb_path) }}" alt="{{ $video->title }}">
+                <a href="{{ route('video.watch', ['video' => $video->id]) }}"></a>
+                <h3>{{ $video->title }}</h3>
+                <p>{{ $video->user->name }}</p>
+                <p> <i class="fa-solid fa-eye "></i> {{ $video->views->count() }}
+                    <i class="fa-solid fa-heart "></i> {{ $video->numberOfFavs() }}
+                </p>
+
+            </div>
+        @endforeach
+    </div>
+@endif
+
+<h3>Users favourite videos</h3>
+
+@if (!$videos_by_favs || $videos_by_favs->isEmpty())
+    <h1>No videos</h1>
+@else
+    <div class="video-list">
+        @foreach ($videos_by_favs as $video)
+            <div class="video-card">
+                <img src="{{ url('storage/' . $video->thumb_path) }}" alt="{{ $video->title }}">
+                <a href="{{ route('video.watch', ['video' => $video->id]) }}"></a>
+                <h3>{{ $video->title }}</h3>
+                <p>{{ $video->user->name }}</p>
+                <p> <i class="fa-solid fa-eye "></i> {{ $video->views->count() }}
+                    <i class="fa-solid fa-heart "></i> {{ $video->numberOfFavs() }}
+                </p>
+            </div>
+        @endforeach
+    </div>
+@endif
+
+<h3>Interactive videos</h3>
+@if (!$video_quizzes || $video_quizzes->isEmpty())
+    <h1>No videos</h1>
+@else
+    <div class="video-list">
+        @foreach ($video_quizzes as $video)
+            <div class="video-card">
+                <img src="{{ url('storage/' . $video->thumb_path) }}" alt="{{ $video->title }}">
+                <a href="{{ route('video.watch', ['video' => $video->id]) }}"></a>
+                <h3>{{ $video->title }}</h3>
+                <p>{{ $video->user->name }}</p>
+                <p> <i class="fa-solid fa-eye "></i> {{ $video->views->count() }}
+                    <i class="fa-solid fa-heart "></i> {{ $video->numberOfFavs() }}
+                </p>
+            </div>
+        @endforeach
+    </div>
+@endif
+{{-- Por cada usuario al que sigue, se muestran sus últimos vídeos subidos --}}
+@foreach (Auth::user()->followed_users()->get() as $followed_user)
+    <h3>{{ $followed_user->name }}'s latest videos</h3>
+    @php($videos = $followed_user->videos()->latest()->get())
+    @if ($videos->count() > 0)
+    <div class="video-list">
+        @foreach ($videos as $video)
+            <div class="video-card">
+                <img src="{{ url('storage/' . $video->thumb_path) }}" alt="{{ $video->title }}">
+                <a href="{{ route('video.watch', ['video' => $video->id]) }}"></a>
+                <h3>{{ $video->title }}</h3>
+                <p>{{ $video->user->name }}</p>
+                <p> <i class="fa-solid fa-eye "></i> {{ $video->views->count() }}
+                    <i class="fa-solid fa-heart "></i> {{ $video->numberOfFavs() }}
+                </p>
+            </div>
+        @endforeach
+    </div>
+    @endif
+@endforeach
+
+
+@endsection

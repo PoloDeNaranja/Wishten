@@ -19,17 +19,40 @@
     border-radius: 8px;
 }
 
-@media (max-width: 1200px) {
+@media (min-width: 100px) {
     .video-view {
         flex-direction: column;
     }
+    /* .video-view video {
+        max-width: 300px;
+    } */
 }
 
+/* @media (min-width: 400px) {
+    .video-view video {
+        max-width: 600px;
+    }
+}
+
+@media (min-width: 700px) {
+    .video-view video {
+        max-width: 800px;
+    }
+} */
+
+@media (min-width: 1000px) {
+    .video-view {
+        flex-direction: row;
+    }
+    .video-view video {
+        max-width: 98%;
+    }
+}
 
 .video-view video {
     margin: 1%;
-    width: 98%;
     height: auto;
+    width: 98%;
     border-radius: 8px;
 }
 
