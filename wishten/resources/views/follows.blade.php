@@ -10,14 +10,15 @@
     @include('layouts.messages')
     <h1>{{ $title }}</h1>
 
-    {{-- <form class="search-bar" action="{{ route('my-videos')}}" method="get">
+    <form class="search-bar" action="{{ route($route)}}" method="get">
         @csrf
         <div>
-            <label for="video_title">
-                <input class="search-input" type="text" placeholder="Filter by title" name="video_title" list="video_titles" @isset($video_title) value="{{ $video_title }}"@endif>
-                <datalist id="video_titles">
-                    @foreach ($videos as $video)
-                        <option value="{{ $video->title }}"></option>
+            <label for="user_name">
+                <input type="hidden" name="user" value="{{ $user->id }}">
+                <input class="search-input" type="text" placeholder="Search user" name="user_name" list="user_names" @isset($user_name) value="{{ $user_name }}"@endif>
+                <datalist id="user_names">
+                    @foreach ($userlist as $listed_user)
+                        <option value="{{ $listed_user->name }}"></option>
                     @endforeach
                 </datalist>
                 <button class="search-button" type="submit">
@@ -25,7 +26,7 @@
                 </button>
             </label>
         </div>
-    </form> --}}
+    </form>
 
 
     @if (!$userlist || $userlist->isEmpty())

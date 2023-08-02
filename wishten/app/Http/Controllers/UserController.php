@@ -201,22 +201,77 @@ class UserController extends Controller
 
     }
 
+    private function filterUsers() {
+
+    }
+
     // Devuelve la vista con la lista de seguidores de un usuario
     function listFollowers(Request $request) {
         $user = User::find($request['user']);
-        return view('follows')->with([
-            'title'     =>  $user->name.'\'s Followers',
-            'userlist' =>  $user->followers()->get()
-        ]);
+        // Filtro para buscar usuarios por noimbre
+        if($request->filled('user_name')) {
+            $filtered_users = $user->followers()->where('name', 'LIKE',"%{$request->user_name}%")->get();
+            if(!$filtered_users) {
+                return view('follows')->with([
+                    'title'     =>  $user->name.'\'s Followers',
+                    'userlist'  =>  null,
+                    'user'      =>  $user,
+                    'user_name' =>  $request->user_name,
+                    'route'     =>  'followers'
+                ]);
+            }
+            return view('follows')->with([
+                'title'     =>  $user->name.'\'s Followers',
+                'userlist'  =>  $filtered_users,
+                'user'      =>  $user,
+                'user_name' =>  $request->user_name,
+                'route'     =>  'followers'
+            ]);
+        }
+        else {
+            return view('follows')->with([
+                'title'     =>  $user->name.'\'s Followers',
+                'userlist'  =>  $user->followers()->get(),
+                'user'      =>  $user,
+                'route'     =>  'followers'
+            ]);
+        }
+
+
     }
 
     // Devuelve la vista con la lista de seguidos de un usuario
     function listFollowed(Request $request) {
         $user = User::find($request['user']);
-        return view('follows')->with([
-            'title'     =>  $user->name.'\'s Followed Users',
-            'userlist' =>  $user->followed_users()->get()
-        ]);
+
+        // Filtro para buscar usuarios por noimbre
+        if($request->filled('user_name')) {
+            $filtered_users = $user->followed_users()->where('name', 'LIKE',"%{$request->user_name}%")->get();
+            if(!$filtered_users) {
+                return view('follows')->with([
+                    'title'     =>  $user->name.'\'s Followed Users',
+                    'userlist'  =>  null,
+                    'user'      =>  $user,
+                    'user_name' =>  $request->user_name,
+                    'route'     =>  'followed'
+                ]);
+            }
+            return view('follows')->with([
+                'title'     =>  $user->name.'\'s Followed Users',
+                'userlist'  =>  $filtered_users,
+                'user'      =>  $user,
+                'user_name' =>  $request->user_name,
+                'route'     =>  'followed'
+            ]);
+        }
+        else {
+            return view('follows')->with([
+                'title'     =>  $user->name.'\'s Followed Users',
+                'userlist'  =>  $user->followed_users()->get(),
+                'user'      =>  $user,
+                'route'     =>  'followed'
+            ]);
+        }
     }
 
     // Elimina el usuario de la base de datos

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', Auth::user()->name . '\'s Profile')
+@section('title', $user->name . '\'s Profile')
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ url('/css/profileStyle.css') }}">
