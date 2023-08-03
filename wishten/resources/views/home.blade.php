@@ -10,7 +10,7 @@
 @section('content')
     @include('layouts.messages')
 
-    <form class="search-bar" action="{{ route('videos') }}" method="get">
+    <form class="search-bar" action="{{ route('video.results') }}" method="get">
         @csrf
         <div>
             <div>

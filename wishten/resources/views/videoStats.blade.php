@@ -60,6 +60,7 @@
     </script>
     @endif
     @endforeach
-
+@else
+<p>If you add some quiz questions in your video, you will see here the answers that users gave to your questions!</p>
 @endif
 @endsection

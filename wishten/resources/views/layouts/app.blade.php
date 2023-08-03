@@ -30,8 +30,8 @@
         <img src="{{ asset('logo/logo.png') }}" alt = "logo">
         </a>
         <nav>
-            <a href="/" class="nav-link">Home</a>
-            <a href="videos" class="nav-link">Videos</a>
+            <a href="/" class="nav-link" title="Home"><i class="fa-solid fa-house"></i></a>
+            {{-- <a href="videos" class="nav-link">Videos</a> --}}
             <a href="#" class="nav-link">Offers</a>
             {{-- <a href="#" class="nav-link">Noticias</a> --}}
             {{-- <img class="notificacion"src="notificacion.png" alt = "notificacion"></a>--}}

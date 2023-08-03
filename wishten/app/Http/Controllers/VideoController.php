@@ -14,30 +14,59 @@ use Illuminate\Support\Facades\Storage;
 
 class VideoController extends Controller
 {
-    // Devuelve la vista con todos los videos o aplicando el filtro por temas
-    function index(Request $request) {
+    // // Devuelve la vista con todos los videos o aplicando el filtro por temas
+    // function index(Request $request) {
+    //     $subjects = Subject::all()->sortBy('name');
+    //     if($request->filled('subject_name')) {
+    //         $subject = Subject::firstWhere('name', $request->subject_name);
+    //         if(!$subject) {
+    //             return view('videos')->with([
+    //                 'videos'    =>  null,
+    //                 'subjects'  =>  $subjects,
+    //                 'subject_name'  =>  $request->subject_name
+    //             ]);
+    //         }
+    //         return view('videos')->with([
+    //             'videos'    =>  $subject->videos()->where('status', 'valid')->get(),
+    //             'subjects'  =>  $subjects,
+    //             'subject_name'  =>  $subject->name
+    //         ]);
+    //     }
+    //     else {
+    //         $videos = Video::all()->where('status', 'valid')->take(10);
+    //         return view('videos')->with([
+    //             'videos'    =>  $videos,
+    //             'subjects'  =>  $subjects
+    //         ]);
+    //     }
+    // }
+
+    // Devuelve la vista con los resultados de búsqueda
+    function results(Request $request) {
         $subjects = Subject::all()->sortBy('name');
         if($request->filled('subject_name')) {
-            $subject = Subject::firstWhere('name', $request->subject_name);
+            $subject = Subject::firstWhere('name', 'LIKE', "%{$request->subject_name}%");
+            // Se devuelve la vista con los vídeos que pertenezcan al tema buscado, si éste existe
             if(!$subject) {
-                return view('videos')->with([
+                return view('videoList')->with([
                     'videos'    =>  null,
                     'subjects'  =>  $subjects,
-                    'subject_name'  =>  $request->subject_name
+                    'subject_name'  =>  $request->subject_name,
+                    'title'     =>  $request->subject_name,
+                    'route'     =>  'video.results'
                 ]);
             }
-            return view('videos')->with([
-                'videos'    =>  $subject->videos()->where('status', 'valid')->get(),
+            return view('videoList')->with([
+                'videos'    =>  $subject->videos()->where('status', 'valid')->latest()->get(),
                 'subjects'  =>  $subjects,
-                'subject_name'  =>  $subject->name
+                'subject_name'  =>  $request->subject_name,
+                'title'     =>  $request->subject_name,
+                'route'     =>  'video.results'
             ]);
         }
         else {
-            $videos = Video::all()->where('status', 'valid')->take(10);
-            return view('videos')->with([
-                'videos'    =>  $videos,
-                'subjects'  =>  $subjects
-            ]);
+            // Si no se ha buscado nada, se vuelve a la vista home
+            return redirect()->route("home");
         }
     }
 
