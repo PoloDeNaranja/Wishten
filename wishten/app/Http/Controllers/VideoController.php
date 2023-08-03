@@ -70,6 +70,46 @@ class VideoController extends Controller
         }
     }
 
+    // Devuelve la vista con los vídeos favoritos del usuario
+    function favVideos(Request $request) {
+        $subjects = Subject::all()->sortBy('name');
+        if($request->filled('subject_name')) {
+            $subject = Subject::firstWhere('name', 'LIKE', "%{$request->subject_name}%");
+            if(!$subject) {
+                return view('videoList')->with([
+                    'videos'    =>  null,
+                    'subjects'  =>  $subjects,
+                    'subject_name'  =>  $request->subject_name,
+                    'title'     =>  'Favourite Videos - '.$request->subject_name,
+                    'route'     =>  'fav-videos'
+                ]);
+            }
+            return view('videoList')->with([
+                'videos'    =>  Auth::user()->visualized_videos()->where([
+                                                            'status'        => 'valid',
+                                                            'fav'           =>  1,
+                                                            'subject_id'    =>  $subject->id
+                                                            ])->get(),
+                'subjects'  =>  $subjects,
+                'subject_name'  =>  $request->subject_name,
+                'title'     =>  'Favourite Videos - '.$request->subject_name,
+                'route'     =>  'fav-videos'
+            ]);
+        }
+        else {
+            $videos =  Auth::user()->visualized_videos()->where([
+                                                    'status'        => 'valid',
+                                                    'fav'           =>  1,
+                                                    ])->get();
+            return view('videoList')->with([
+                'videos'    =>  $videos,
+                'subjects'  =>  $subjects,
+                'title'     =>  'Favourite Videos',
+                'route'     =>  'fav-videos'
+            ]);
+        }
+    }
+
     // Devuelve la vista de la página de administración de vídeos
     function adminVideos() {
         $videos = Video::all();
@@ -177,38 +217,7 @@ class VideoController extends Controller
         }
     }
 
-    function favVideos(Request $request) {
-        $subjects = Subject::all()->sortBy('name');
-        if($request->filled('subject_name')) {
-            $subject = Subject::firstWhere('name', $request->subject_name);
-            if(!$subject) {
-                return view('favVideos')->with([
-                    'videos'    =>  null,
-                    'subjects'  =>  $subjects,
-                    'subject_name'  =>  $request->subject_name
-                ]);
-            }
-            return view('favVideos')->with([
-                'videos'    =>  Auth::user()->visualized_videos()->where([
-                                                            'status'        => 'valid',
-                                                            'fav'           =>  1,
-                                                            'subject_id'    =>  $subject->id
-                                                            ])->get(),
-                'subjects'  =>  $subjects,
-                'subject_name'  =>  $subject->name
-            ]);
-        }
-        else {
-            $videos =  Auth::user()->visualized_videos()->where([
-                                                    'status'        => 'valid',
-                                                    'fav'           =>  1,
-                                                    ])->get();
-            return view('favVideos')->with([
-                'videos'    =>  $videos,
-                'subjects'  =>  $subjects
-            ]);
-        }
-    }
+
 
     // Crea un nuevo vídeo, asignándoselo al usuario que lo crea
     function upload(User $user, VideoRequest $request) {

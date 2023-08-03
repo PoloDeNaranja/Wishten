@@ -73,7 +73,7 @@
         </div>
         <div class="video-info">
             <h3 class="video-title">{{ $video->title }}</h3>
-            <a class="video-link" href="videos?subject_name={{ preg_replace('/[^A-Za-z0-9_\-]/', '+', $video->subject->name) }}">{{ $video->subject->name }}</a>
+            <a class="video-link" href="results?subject_name={{ preg_replace('/[^A-Za-z0-9_\-]/', '+', $video->subject->name) }}">{{ $video->subject->name }}</a>
             <a class="video-link" href="profile?user={{ $video->owner_id }}">{{ $video->user->name }}</a>
             <p class="video-desc">{{ $video->description }}</p>
             <p>{{ $video->views()->count() }} views</p>

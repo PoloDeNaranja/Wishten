@@ -37,7 +37,7 @@
         @foreach ($videos_by_views as $video)
             <div class="video-card">
                 <img src="{{ url('storage/' . $video->thumb_path) }}" alt="{{ $video->title }}">
-                <a href="{{ route('video.watch', ['video' => $video->id]) }}"></a>
+                <a href="{{ route('video.watch', ['video' => $video->id]) }}" title="Uploaded on {{ date( "F d, Y", strtotime($video->created_at)) }}"></a>
                 <h3>{{ $video->title }}</h3>
                 <p>{{ $video->user->name }}</p>
                 <p> <i class="fa-solid fa-eye "></i> {{ $video->views->count() }}
@@ -58,7 +58,7 @@
         @foreach ($videos_by_favs as $video)
             <div class="video-card">
                 <img src="{{ url('storage/' . $video->thumb_path) }}" alt="{{ $video->title }}">
-                <a href="{{ route('video.watch', ['video' => $video->id]) }}"></a>
+                <a href="{{ route('video.watch', ['video' => $video->id]) }}" title="Uploaded on {{ date( "F d, Y", strtotime($video->created_at)) }}"></a>
                 <h3>{{ $video->title }}</h3>
                 <p>{{ $video->user->name }}</p>
                 <p> <i class="fa-solid fa-eye "></i> {{ $video->views->count() }}
@@ -77,7 +77,7 @@
         @foreach ($video_quizzes as $video)
             <div class="video-card">
                 <img src="{{ url('storage/' . $video->thumb_path) }}" alt="{{ $video->title }}">
-                <a href="{{ route('video.watch', ['video' => $video->id]) }}"></a>
+                <a href="{{ route('video.watch', ['video' => $video->id]) }}" title="Uploaded on {{ date( "F d, Y", strtotime($video->created_at)) }}"></a>
                 <h3>{{ $video->title }}</h3>
                 <p>{{ $video->user->name }}</p>
                 <p> <i class="fa-solid fa-eye "></i> {{ $video->views->count() }}
@@ -96,7 +96,7 @@
         @foreach ($videos as $video)
             <div class="video-card">
                 <img src="{{ url('storage/' . $video->thumb_path) }}" alt="{{ $video->title }}">
-                <a href="{{ route('video.watch', ['video' => $video->id]) }}"></a>
+                <a href="{{ route('video.watch', ['video' => $video->id]) }}" title="Uploaded on {{ date( "F d, Y", strtotime($video->created_at)) }}"></a>
                 <h3>{{ $video->title }}</h3>
                 <p>{{ $video->user->name }}</p>
                 <p> <i class="fa-solid fa-eye "></i> {{ $video->views->count() }}
