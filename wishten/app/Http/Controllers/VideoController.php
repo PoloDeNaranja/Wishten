@@ -10,6 +10,8 @@ use App\Models\Chart;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\VideoRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Builder;
+
 
 
 class VideoController extends Controller
@@ -52,22 +54,79 @@ class VideoController extends Controller
                     'videos'    =>  null,
                     'subjects'  =>  $subjects,
                     'subject_name'  =>  $request->subject_name,
-                    'title'     =>  $request->subject_name,
-                    'route'     =>  'video.results'
+                    'title'     =>  $request->subject_name
                 ]);
             }
             return view('videoList')->with([
                 'videos'    =>  $subject->videos()->where('status', 'valid')->latest()->get(),
                 'subjects'  =>  $subjects,
                 'subject_name'  =>  $request->subject_name,
-                'title'     =>  $request->subject_name,
-                'route'     =>  'video.results'
+                'title'     =>  $request->subject_name
             ]);
         }
         else {
             // Si no se ha buscado nada, se vuelve a la vista home
             return redirect()->route("home");
         }
+    }
+
+    // Devuelve la vista con los vídeos más vistos
+    function mostViewed() {
+        $subjects = Subject::all()->sortBy('name');
+        // Vídeos ordenados por número de visitas
+        $videos = Video::withCount('views')
+                                ->orderBy('views_count', 'DESC')
+                                ->latest()->get();
+        return view('videoList')->with([
+            'videos'    =>  $videos,
+            'subjects'  =>  $subjects,
+            'title'     =>  'Most Viewed Videos'
+        ]);
+    }
+
+    // Devuelve la vista con los vídeos con más favs
+    function mostFavs() {
+        $subjects = Subject::all()->sortBy('name');
+        // Vídeos ordenados por número de favoritos
+        $videos = Video::withCount(['views'  => function (Builder $query) {
+                                                $query->where('fav', 1);
+                                    }])->orderBy('views_count', 'DESC')
+                                    ->latest()->take(10)->get();
+        return view('videoList')->with([
+            'videos'    =>  $videos,
+            'subjects'  =>  $subjects,
+            'title'     =>  'Users\' Favourite Videos'
+        ]);
+    }
+
+    // Devuelve la vista con los vídeos que contienen preguntas/anotaciones
+    function interactive() {
+        $subjects = Subject::all()->sortBy('name');
+        // Vídeos ordenados por número de favoritos
+        $videos = Video::withCount('questions')
+                        ->having('questions_count', '>', 0)
+                        ->latest()->take(10)->get();
+        return view('videoList')->with([
+            'videos'    =>  $videos,
+            'subjects'  =>  $subjects,
+            'title'     =>  'Interactive Videos'
+        ]);
+    }
+
+    // Devuelve la vista con los vídeos de un usuario
+    function userVideos(Request $request) {
+        $user = User::find($request['user']);
+        if(!$user) {
+            abort(404);
+        }
+        $subjects = Subject::all()->sortBy('name');
+        // Vídeos ordenados por número de favoritos
+        $videos = $user->videos()->latest()->get();
+        return view('videoList')->with([
+            'videos'    =>  $videos,
+            'subjects'  =>  $subjects,
+            'title'     =>  $user->name.'\' Videos'
+        ]);
     }
 
     // Devuelve la vista con los vídeos favoritos del usuario

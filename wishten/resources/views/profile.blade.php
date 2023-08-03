@@ -105,6 +105,8 @@
                 </div>
             @endforeach
         </div>
+        <a href="{{ route('video.user-videos', ['user' =>  $user]) }}" class="button-more">See more...</a>
+
     @endif
 
 

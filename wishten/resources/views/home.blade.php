@@ -14,7 +14,7 @@
         @csrf
         <div>
             <div>
-                <input class="search-input" id="subject_name" type="text" placeholder="Filter by subject" name="subject_name"
+                <input class="search-input" id="subject_name" type="text" placeholder="Search" name="subject_name"
                     list="subject_names"
                     @isset($subject_name) value="{{ $subject_name }}"@endif>
             <datalist id="subject_names">
@@ -47,9 +47,10 @@
             </div>
         @endforeach
     </div>
+    <a href="{{ route('video.most-viewed') }}" class="button-more">See more...</a>
 @endif
 
-<h3>Users favourite videos</h3>
+<h3>Users' favourite videos</h3>
 
 @if (!$videos_by_favs || $videos_by_favs->isEmpty())
     <h1>No videos</h1>
@@ -67,6 +68,8 @@
             </div>
         @endforeach
     </div>
+    <a href="{{ route('video.most-favs') }}" class="button-more">See more...</a>
+
 @endif
 
 <h3>Interactive videos</h3>
@@ -86,6 +89,8 @@
             </div>
         @endforeach
     </div>
+    <a href="{{ route('video.interactive') }}" class="button-more">See more...</a>
+
 @endif
 {{-- Por cada usuario al que sigue, se muestran sus últimos vídeos subidos --}}
 @foreach (Auth::user()->followed_users()->get() as $followed_user)
@@ -105,6 +110,7 @@
             </div>
         @endforeach
     </div>
+    <a href="{{ route('video.user-videos', ['user' =>  $followed_user]) }}" class="button-more">See more...</a>
     @endif
 @endforeach
 

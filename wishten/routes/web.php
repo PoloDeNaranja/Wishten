@@ -73,6 +73,14 @@ Route::middleware('auth')->group(function () {
         // Route::get('videos', 'index')->name('videos');
         Route::get('results', 'results')->name('video.results');
 
+        Route::get('most-viewed', 'mostViewed')->name('video.most-viewed');
+
+        Route::get('most-favs', 'mostFavs')->name('video.most-favs');
+
+        Route::get('interactive', 'interactive')->name('video.interactive');
+
+        Route::get('user-videos', 'userVideos')->name('video.user-videos');
+
         Route::get('watch', 'watch')->name('video.watch');
 
         Route::get('edit', 'edit')->name('video.edit');

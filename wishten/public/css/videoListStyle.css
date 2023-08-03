@@ -134,6 +134,22 @@
     margin-top: -2px;
 }
 
+.button-more {
+    text-decoration: none;
+    color: white;
+    background-color: #57CC99;
+    border-radius: 0px 0px 10px 10px;
+    padding: 5px;
+    margin-top: 2%;
+    position: relative;
+    top: 0;
+    transition: top ease 0.3s;
+}
+
+.button-more:hover {
+    top: -5px;
+}
+
 .search-input {
     padding-left: 10px;
     border-radius: 40px 0px 0px 40px;

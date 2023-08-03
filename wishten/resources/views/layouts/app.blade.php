@@ -82,13 +82,16 @@
                 <a href="#">Services</a>
             </div>
             <div class="redes">
-            <a href="https://twitter.com" class="nav-link">
+            <a href="https://github.com/PoloDeNaranja/Wishten" class="nav-link" title="Github">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="#" class="nav-link">
                 <i class="fa-brands fa-facebook"></i>
             </a>
-            <a href="https://www.instagram.com" class="nav-link">
+            <a href="#" class="nav-link">
                 <i class="fa-brands fa-instagram"></i>
             </a>
-            <a href="https://facebook.com" class="nav-link">
+            <a href="#" class="nav-link">
                 <i class="fa-brands fa-twitter"></i>
             </a>
             </div>

@@ -9,11 +9,11 @@
 @section('content')
 @include('layouts.messages')
 
-    <form class="search-bar" action="{{ route($route)}}" method="get">
+    <form class="search-bar" action="{{ route('video.results')}}" method="get">
         @csrf
         <div>
             <div>
-                <input class="search-input" id="subject_name" type="text" placeholder="Filter by subject" name="subject_name" list="subject_names" @isset($subject_name) value="{{ $subject_name }}"@endif>
+                <input class="search-input" id="subject_name" type="text" placeholder="Search" name="subject_name" list="subject_names" @isset($subject_name) value="{{ $subject_name }}"@endif>
                 <datalist id="subject_names">
                     @foreach ($subjects as $subject)
                         <option value="{{ $subject->name }}"></option>
