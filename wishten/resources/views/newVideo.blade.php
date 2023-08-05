@@ -13,12 +13,13 @@
 @section('content')
 
 @include('layouts.messages')
+<h1>Upload your video!</h1>
 
 <form action="{{ route('video.upload', Auth::id()) }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <label for="video" title="Select your video file">
-        <i id="video-icon" class="fa-solid fa-file-video fa-bounce fa-10x"></i>
+        <i id="video-icon" class="fa-solid fa-file-video fa-bounce fa-5x"></i>
         <input type="file" name="video" id="video" accept="video/*" required>
     </label>
 
