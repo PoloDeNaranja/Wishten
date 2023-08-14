@@ -22,16 +22,16 @@ class HomeController extends Controller
         // Vídeos ordenados por número de visitas
         $videos_by_views = Video::withCount('views')
                                 ->orderBy('views_count', 'DESC')
-                                ->latest()->take(10)->get();
+                                ->latest()->take(5)->get();
         // Vídeos ordenados por número de favoritos
         $videos_by_favs = Video::withCount(['views'  => function (Builder $query) {
                                             $query->where('fav', 1);
                                 }])->orderBy('views_count', 'DESC')
-                                ->latest()->take(10)->get();
+                                ->latest()->take(5)->get();
         // Vídeos que contienen por lo menos un cuestionario/anotación
         $video_quizzes = Video::withCount('questions')
                                 ->having('questions_count', '>', 0)
-                                ->latest()->take(10)->get();
+                                ->latest()->take(5)->get();
 
         return view('home')->with([
             'videos_by_views'    =>  $videos_by_views,
