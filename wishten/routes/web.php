@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\OfferController;
 
 /*
 |--------------------------------------------------------------------------
@@ -162,5 +163,63 @@ Route::middleware('auth', 'roles:admin')->group(function () {
         Route::post('set_status/{video}', 'setStatus')->name('video.set_status');
 
     });
+
+    //Administración de ofertas
+    Route::controller(OfferController::class)->group(function(){
+
+        Route::get('adminOffers', 'adminOffers')->name('adminOfferss');
+
+
+    });
 });
+
+
+// Rutas de ofertas, para ello debes ser company
+Route::middleware('auth', 'roles:company')->group(function () {
+
+    // Página de offers si eres company que muestra el boton de aniadir offer
+    Route::get('offer_company', function(){
+        return view('offer_company');
+    });
+
+    // rutas de offers
+    Route::controller(OfferController::class)->group(function(){
+
+        Route::post('delete_of/{offer}/{admin}', 'delete')->name('offer.delete');
+
+        Route::post('uploadOffer/{user}', 'upload')->name('offer.upload');
+
+        Route::post('set_title_offer/{offer}', 'setTitle')->name('offer.set_title');
+
+        Route::post('set_salary_offer/{offer}', 'setSalary')->name('offer.set_salary');
+
+        Route::post('set_desc_offer/{offer}', 'setDesc')->name('offer.set_desc');
+
+        Route::post('set_vacants_offer/{offer}', 'setVacants')->name('offer.set_vacants');
+
+        
+
+
+    });
+
+    
+});
+
+Route::controller(OfferController::class)->group(function(){
+
+    Route::get('/download-document/{document}', 'DocumentController@download')->name('download.document');
+
+    Route::get('my-offers', 'myOffers')->name('my-offers');
+
+});
+
+
+Route::controller(ChatController::class)->group(function(){
+    Route::get('/chat', 'ChatController@index');
+    Route::post('/send-message', 'ChatController@sendMessage');
+    Route::get('/get-messages', 'ChatController@getMessages');
+
+});
+
+
 

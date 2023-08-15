@@ -134,4 +134,12 @@ class User extends Authenticatable
     {
         return $this->role == 'admin';
     }
+
+    /**
+     * Relaciona tabla user con messages permitiendome sacar los mensajes que ha enviado un usuario $user = User::find(id) $sentMessages = $user->sentMessages;
+     */
+    public function sentMessages()
+    {
+        return $this->hasMany(Message::class, 'id_sender');
+    }
 }

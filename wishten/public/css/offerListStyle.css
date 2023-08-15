@@ -1,0 +1,237 @@
+.container {
+    min-height: 100%;
+    height: auto;
+
+}
+
+.offer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 900px;
+    width: 90%;
+    height: 90vh;
+    
+}
+
+@media (min-width: 600px) {
+    .offer-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .my-offer-list > .offer-card {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 900px) {
+    .offer-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .my-offer-list > .offer-card {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 1500px) {
+    .offer-list {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .my-offer-list > .video-card {
+        flex-direction: row;
+    }
+}
+
+.my-offer-list {
+    margin: 2%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 1%;
+    height: auto;
+}
+
+.offer-card {
+    width: 90%;
+    height: 200px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+    
+}
+
+.offer-card:hover {
+    transform: scale(1.05);
+    z-index: 1;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.stats {
+    font-size: 16px;
+    display: flex; 
+    align-items: center;
+}
+
+.stats span {
+    margin: 0 8px; /* Margen entre los elementos span (barras |) */
+}
+
+.stats span:not(:first-child):before {
+    content: "|"; /* Agrega la barra | antes de todos los span, excepto el primero */
+    color: #ccc; /* Color de las barras */
+}
+
+.buttons {
+    display: flex;
+    gap: 10px; /*Se puede tambien poner el margin en el .button pero este te pone el hueco entre cada uno de los elementos del div buttons*/
+}
+
+.button-download body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.offer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 900px;
+    width: 90%;
+    height: 90vh;
+    
+}
+
+.offer-card {
+    width: 90%;
+    height: 200px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.3s ease;/*Aumento gradual al pasar el raton sobre el recuadro*/
+    
+}
+
+.offer-card:hover {
+    transform: scale(1.05);/*Escala en la que se realiza en aumento*/
+    z-index: 1;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.stats {
+    font-size: 20px;
+    display: flex; 
+    align-items: center; 
+}
+
+.stats span {
+    margin: 0 8px 8px 0; /*Separacion entre las barras*/
+}
+
+.stats span:not(:first-child):before {
+    content: "|"; 
+    margin: 0 8px 8px 0;/*Separacion entre las barras para la primera*/
+}
+
+
+.buttons {
+    display: flex;
+    gap: 10px; /*Se puede tambien poner el margin en el .button pero este te pone el hueco entre cada uno de los elementos del div buttons*/
+}
+
+.button-download {
+    font-size: 14px;
+    padding: 5px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    background-color: #57CC99;
+    cursor: pointer;
+    background-color: #22577A;
+    text-decoration: none;
+}
+
+ .button-chat {
+    font-size: 14px;
+    padding: 5px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    background-color: #57CC99;
+    cursor: pointer;
+    background-color: #80ED99;
+}
+    
+
+ .button-chat {
+    font-size: 14px;
+    padding: 5px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    background-color: #57CC99;
+    cursor: pointer;
+    background-color: #80ED99;
+}
+
+.button-more {
+    text-decoration: none;
+    color: white;
+    background-color: #57CC99;
+    border-radius: 0px 0px 10px 10px;
+    padding: 5px;
+    margin-top: 2%;
+    position: relative;
+    top: 0;
+    transition: top ease 0.3s;
+}
+
+.button-more:hover {
+    top: -5px;
+}
+
+.search-input {
+    padding-left: 10px;
+    border-radius: 40px 0px 0px 40px;
+    height: 30px;
+    border: solid #cfcfcf 1px;
+    outline:none;
+}
+
+.search-button {
+    font-size: 14px;
+    border-radius: 0px 40px 40px 0px;
+    border: none;
+    color: white;
+    background-color: #57CC99;
+    height: 34px;
+    width: 30px;
+    padding: 5px;
+    cursor: pointer;
+    float: right;
+}
