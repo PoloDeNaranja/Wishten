@@ -1,0 +1,320 @@
+3.1.2 Análisis descriptivo de la muestra
+Lo que se va a comentar a continuación es aplicable a ambos cuestionarios ya que es una explicación común a ambos.
+El proceso de muestreo realizado ha sido intencionado, lo que significa que se han seleccionado aquellos individuos que son afectados directamente por los problemas que se quieren abordar mediante la realización de este proyecto. En este caso, dicho grupo de individuos relevantes han sido estudiantes universitarios de diferentes facultades.
+Los estudiantes universitarios seleccionados para participar en el estado han sido identificados en función de su relación previa con los encuestados y su afinidad con el tema en cuestión (método de estudio y prácticas en empresas). Además, a dichos estudiantes se les pidió que compartieran la encuesta con dos o tres estudiantes de su mismo grado para así poder lograr una comprensión más completa de la situación. 
+Hay que tener en cuenta, que estas encuestas han sido realizadas usando la herramienta de Google Forms, la cual es gratuita y ofrece la posibilidad de crear cuestionarios de cero y poder posteriormente ver las respuestas. Como se quería que las respuestas de los usuarios fueran anónimas se decidió no registrar el correo. Tampoco se puede seguir las respuestas que una persona en específico ha dado a las preguntas, si no que solo se puede ver el resultado global.
+Esto no supone un problema ya que lo que se busca es obtener una visión general de una muestra intencionada pero variada.
+La muestra utilizada en ambos cuestionarios fue idéntica, ya que, durante el proceso de envío, se distribuyeron ambos cuestionarios conjuntamente y se solicitó a los participantes que completaran ambos. Debido a esto, las respuestas a las tres primeras preguntas de ambos cuestionarios coinciden, dado que estas preguntas corresponden a aspectos demográficos y se repiten en ambos cuestionarios. 
+Aunque sean las mismas preguntas, con la finalidad de mantener la estructura del documento, dichas preguntas se volverán a colocar en el análisis descriptivo y de resultados del cuestionario relacionado con las prácticas en empresas.
+Antes de comenzar con el análisis descriptivo de la muestra hay que tener en cuenta que las encuestas han sido respondidas por 24 estudiantes universitarios.
+De la primera pregunta demográfica relacionada con la edad se observa la siguiente distribución:
+1.Distribución de respuestas
+Menor de 18: 0 personas.
+Entre 18 y 24 años: 23 personas.
+Entre 25 y 34 años: 1 persona.
+Entre 35 y 44 años: 0 personas.
+Más de 45 años: 0 personas.
+
+2. Porcentaje de respuestas:
+Menor de 18: 0%.
+Entre 18 y 24 años: 95.8%.
+Entre 25 y 34 años: 4.2%.
+Entre 35 y 44 años: 0%.
+Más de 45 años: 0%
+
+3. Promedio de edad.
+Para calcular el promedio vamos a asignar valores numéricos a cada opción. Para la primera opción vamos a tomar el 16 (Para coger un número cercano a 18 y menor que sea representativo), para la segunda el 21, para la tercera el 30, para la cuarta 40 y para la quinta 50 (Para coger un número mayor que 45 y que se separe un poco de él).
+Gracias a la asignación de estos valores numéricos podemos calcular el promedio obteniendo un valor de 21.375 años, es decir unos 22 años.
+(El promedio se ha calculado ((0*16) + (23*21) + (1*30) + (0*40) + (0*50)) / (0+23+1+0+0)).
+El valor promedio era muy esperable ya que la mayoría de las respuestas estaban entre 18 y 24 años.
+4. Análisis de distribución
+Se observa que la mayoría de los encuestados (95.8%) tienen entre 18 y 24 años y el encuestado restante (4.2%) entre 25 y 34 por lo que la encuesta está predominada por gente joven.
+
+De la segunda pregunta demográfica relacionada con el sexo se obtiene la siguiente distribución:
+1.Distribución de respuestas
+Hombre: 20 personas.
+Mujer: 4 personas.
+
+2. Porcentaje de respuestas:
+Hombre: 83.3%.
+Mujer: 16.7%.
+
+3.	Análisis de la distribución:
+Respuesta “Hombre” (83.3%): Aquí se refleja el número de estudiantes universitarios encuestados.
+Respuesta “Mujer” (16.7%): Representa la cantidad de estudiantes universitarias encuestadas.
+
+
+
+La pregunta relacionada con la carrera que se estudia parece tener numerosas respuestas diferentes, sin embargo, si se observa detenidamente, se puede ver como en su mayoría son la misma carrera escrita de diferente forma, ya sea porque faltan tildes, porque unos la escriben con mayúsculas otros con minúscula o porque otros usan directamente la abreviatura (ADE de Administración y dirección de empresas).
+Una vez se tiene esto en cuenta, se puede observar la distribución de la muestra por áreas de estudio en la pregunta relacionada con la carrera que se estudia:
+
+Ingeniería informática: 11 personas (45.83%).
+Administración y Dirección de empresas: 3 personas (12.50%).
+Ingeniería Química: 3 personas (12.50%).
+Doble Grado en ADE e Informática: 2 personas (8.33%).
+Ingeniería de Computadores: 2 personas (8.33%).
+Grado de Videojuegos: 1 persona (4.17%).
+Ingeniería del Software: 1 persona (4.17%).
+Fabricación de Productos Farmacéuticos: 1 persona (4.17%).
+
+1.Distribución de respuestas
+Ingeniería informática: 11 personas.
+Administración y Dirección de empresas: 3 personas.
+Ingeniería Química: 3 personas.
+Doble Grado en ADE e Informática: 2 personas.
+Ingeniería de Computadores: 2 personas.
+Grado de Videojuegos: 1 persona.
+Ingeniería del Software: 1 persona.
+Fabricación de Productos Farmacéuticos: 1 persona.
+
+
+2. Porcentaje de respuestas:
+Ingeniería informática: 45.83%.
+Administración y Dirección de empresas: 12.50%.
+Ingeniería Química: 12.50%.
+Doble Grado en ADE e Informática: 8.33%.
+Ingeniería de Computadores: 8.33%
+Grado de Videojuegos: 4.17%.
+Ingeniería del Software: 4.17%.
+Fabricación de Productos Farmacéuticos: 4.17%.
+.
+3. Análisis de distribución
+Al tratarse de una pregunta abierta, sacar valores como el promedio o la mediana no va a resultar útil de cara a realizar un análisis y, aun sacando la moda y viendo que Ingeniería Informática es la carrera más cursada entre nuestros encuestados tampoco se obtiene un buen análisis de la muestra.
+Lo que sí se puede observar y que junto al valor de la moda es interesante es que el 70.83% de los encuestados están cursando carreras relacionadas con la informática. A su vez que el 79.16% están cursando una ingeniería por lo que el porcentaje de estudiantes que a priori, pueden ser objetivo de nuestro proyecto es bastante elevado.
+
+
+
+En relación con la primera pregunta ya exclusiva de este cuestionario y relacionada con distribución de las horas de estudio se obtuvieron los siguientes resultados:
+
+Análisis Descriptivo:
+1.	Distribución de las respuestas:
+
+Entre 1 y 3 horas al día: 12 personas.
+Entre 3 y 5 horas al día: 7 personas.
+Más de 5 horas al día: 5 personas.
+
+2.	Porcentaje de las respuestas:
+
+Entre 1 y 3 horas al día: 50%.
+Entre 3 y 5 horas al día: 29.2%.
+Más de 5 horas al día: 20.8 %.
+3.	Promedio de horas estudiadas:
+
+Para calcular el promedio se van a asignar valores numéricos a cada opción. Para la primera opción se va a tomar el 2 (punto medio entre 1 y 3), para la segunda el 4 (punto medio entre 3 y 5) y para la tercera el 6 (Para no coger el propio 5). 
+Gracias a la asignación de estos valores numéricos se puede calcular el promedio obteniendo un valor de 3.41 horas.
+(El promedio se ha calculado ((12*2) + (7*4) + (5*6)) / (12+7+5)).
+4.	Análisis de la Distribución:
+Se observa que la mayoría (50%) de los encuestados estudian entre 1 y 3 horas al día. Un porcentaje significativo (29.2%) dedica entre 3 y 5 horas al día al estudio. El porcentaje restante (20.8%) invierte más de 5 horas al día. Este análisis muestra una variedad de enfoques a la hora de estudiar, pero gracias al promedio podemos ver cómo el tiempo medio está entre el rango de 1 a 3 y de 3 a 5 ya que es donde están concentradas el mayor número de respuestas.
+
+La siguiente pregunta actúa como screener por lo que en función de la respuesta se mostraran unas preguntas u otras. De ella se ha obtenido la siguiente distribución. 
+1.	Distribución de las respuestas:
+
+Estudio ejercicios similares: 18 personas.
+Estudio el temario entero: 6 personas.
+2.	Porcentaje de las respuestas:
+
+Estudio ejercicios similares: 75%.
+Estudio el temario entero: 25%.
+3.	Análisis de la distribución:
+
+Respuesta “Estudio ejercicios similares” (75%): Aquí se refleja el número de estudiantes universitarios encuestados que se enfocan en la realización de ejercicios similares o parecidos a los que han salido en exámenes anteriores. Estos son los estudiantes objetivos de nuestra encuesta ya que representan a aquellos estudiantes que se busca ayudar mediante la realización de la aplicación de vídeos de nuestro proyecto.
+Respuesta “Estudio el temario entero” (25%): Representa a los estudiantes universitarios encuestados que prefieren estudiar de manera general el temario. Si bien estos no son los estudiantes objetivo de nuestra encuesta, es interesante conocer si aún realizando este método de estudio, se han planteado alguna vez utilizar el otro, por ello se les realizará una pregunta más antes de finalizar con su cuestionario.
+
+
+Primero se va a analizar la pregunta realizada a los encuestados que estudian el temario entero. Hay que tener en cuenta que esta pregunta ha sido respondida solo por 6 personas (25% de los encuestados), ya que son esas 6 personas que han dicho que estudian el temario entero en la pregunta anterior.
+Teniendo esto en cuenta se ha podido observar lo siguiente referente a si alguna vez se han planteado estudiar solo ejercicios similares a los que han caído en exámenes anteriores:
+1.	Distribución de las respuestas:
+Sí: 5 personas.
+No: 1 personas.
+2.	Porcentaje de las respuestas:
+
+Sí: 83.3%.
+No: 16.7%.
+3.	Análisis de la distribución:
+Respuesta “Sí” (83.3%): Aquí se refleja el número de estudiantes universitarios encuestados que se han planteado cambiar su método de estudio y adquirir el de estudiar solo preguntas relacionadas con las que caen en los exámenes. Es decir, la mayoría podría haber pertenecido al otro grupo de encuestados.
+
+Respuesta “No” (16.7%): Representa a los estudiantes universitarios (en este caso 1) encuestados que no se han planteado dejar de estudiar el temario entero.
+
+
+
+
+Una vez terminado con dicho grupo de encuestados volvemos con el grupo objetivo. De este grupo lo que se busca saber a continuación es si en alguna ocasión han visto perjudicados por haber aplicado dicho método de estudio.
+Sabiendo esto, se ha podido observar lo siguiente:
+
+1.	Distribución de las respuestas:
+Sí: 12 personas.
+No: 6 personas.
+2.	Porcentaje de las respuestas:
+
+Sí: 66.7%.
+No: 33.3%.
+3.	Análisis de la distribución:
+
+Respuesta “Sí” (66.7%): Aquí se refleja el número de estudiantes universitarios encuestados que se han visto perjudicados por la utilización de dicho método. Dos tercios de dichos estudiantes sí se han visto perjudicados, lo que representa una gran cantidad.
+
+Respuesta “No” (33.3%): Representa a los estudiantes universitarios encuestados que no se han visto perjudicados por dicho método.
+Un tercio de dichos estudiantes aseguran que no se han visto perjudicados por dicho método de estudio, sin embargo, esta opinión puede cambiar en el futuro.
+Ahora que se sabe la cantidad de universitarios que utilizan dicho método que se han visto perjudicados, s quiere saber si a pesar de ello volverían a utilizarlo.
+Para ello se les plantea dicha pregunta de la cual se han obtenido los siguientes resultados:
+
+1.	Distribución de las respuestas:
+Sí: 16 personas.
+No: 2 personas.
+2.	Porcentaje de las respuestas:
+
+Sí: 88.9%.
+No: 11.1%.
+3.	Análisis de la distribución:
+
+Respuesta “Sí” (88.9%): Aquí se refleja el número de estudiantes universitarios encuestados que sí volverían a utilizar dicho método de estudio. Un porcentaje muy elevado teniendo en cuenta la gran cantidad de encuestados que sí se habían visto perjudicados por su utilización.
+
+Respuesta “No” (11.1%): Representa a los estudiantes universitarios encuestados que volverían a utilizar dicho método de estudio. Si se tiene en cuenta la gran cantidad de encuestados que se habían visto perjudicados por dicho método de estudio, este porcentaje es bastante bajo.
+		
+
+
+
+
+3.1.3Análisis de resultados
+
+De las primeras 2 preguntas demográficas, se puede observar que la gran mayoría de los encuestados tiene entre 18 y 24 años, habiendo solo uno de ellos que tiene entre 25 y 34. También podemos observar que, en su mayoría son hombres habiendo solo 4 mujeres.
+De la pregunta relacionada con la carrera que se estudia se puede ver cómo el 79.16% están cursando una ingeniería. Dichos estudiantes están más que acostumbrados a la realización de exámenes con un gran número de preguntas tanto teóricas como prácticas, por lo que son muy interesantes a la hora de evaluar su método de estudio y por tanto confirmar si estudian o no solo las preguntas que pueden entrar en un examen o por el contrario estudian el temario entero.
+Las respuestas a estas tres primeras preguntas comunes a ambos cuestionarios eran esperables, esto se debe a la relación que presentan los encuestados con el origen de la muestra. 
+Esta relación se hace más que evidente en la pregunta relacionada con la carrera que se estudia ya que en la Facultad de Informática de la UCM coinciden las carreras de Ingeniería Informática, Ingeniería de Computadores, Ingeniería del Software, Doble grado de ADE e Informática y el Grado de Videojuegos además de otras carreras. De ahí que el porcentaje de estudiantes encuestados que cursen una carrera relacionada con la informática sea del 70.83% ya que, si bien en ese porcentaje habrá también estudiantes de otras universidades, muchos de ellos serán de la UCM por su relación con el origen de la muestra.
+Con relación a la cantidad de horas que estudian al día se puede observar cómo las respuestas están bastante repartidas, sin embargo, la mayoría le suele dedicar solo entre 1 y 3 horas al día. Esto puede deberse a que en las carreras de ingeniería se suele ir avanzando a lo largo del curso mediante la realización de proyectos o practicas mientras que en el resto de las que han proporcionado los encuestados se suele tener que estudiar un groso de temario mayor y por tanto dedicarle más tiempo en momentos puntuales. Mientras una es menos tiempo al día, pero más días, otra es menos días, pero mucho más tiempo al día.
+
+Al observar el análisis descriptivo referente a la pregunta del método de estudio utilizado, se puede ver cómo la gran mayoría estudia realizando ejercicios similares, enfocándose en realizar una preparación más específica y dejando de lado la asimilación de temario. Por otro lado, el resto de los estudiantes que representan a la minoría estudian el temario entero sugiriendo la búsqueda de una compresión más profunda sobre los conceptos impartidos. Basándonos en las carreras estudiadas, lo más probable es que esta minoría represente aquellas carreras que no son ingenierías en las que no hay tantas preguntas prácticas que se repitan año tras año. Esto también se relaciona con la cantidad de horas estudiadas, si los estudiantes deciden centrarse en ciertas partes del temario realizando solo ejercicios similares a los de exámenes anteriores, están disminuyendo su tiempo de estudio con respecto a aquellos que se estudian todo el temario.
+Tomando lo respondido por aquellos estudiantes que se estudian el temario entero, se puede concluir que la práctica de estudio que consiste en estudiar solo ejercicios similares es muy común entre los estudiantes ya que, 23 de los 24 encuestados han utilizado o se han planteado utilizar dicho método de estudio.
+Ahora que se sabe que la gran mayoría ha usado o se ha planteado usar dicho método, lo que se busca saber es si la idea que tiene el proyecto para realizarse basada en los problemas que acarrea la utilización de dicho método de estudio a futuro es o no correcta. Para ello es interesante ver los resultados obtenidos en las dos últimas preguntas y estudiarlos en conjunto. 
+Lo interesante es ver cómo, a pesar de que hay una gran mayoría que se ha visto perjudicada por la utilización de este método (ya sea por la no asimilación de conceptos importantes que se siguen utilizando o por otros motivos), solo 2 personas decidirían no volver a utilizar este método, mientras que las otras 16 no tendrían ningún problema. 
+Esto sumado a los resultados obtenidos en la pregunta realizada aquellas personas que se estudiaban el temario entero nos ayuda a ver como efectivamente existe un problema con el método de estudio de los estudiantes universitarios ya que, a pesar de estar viéndose en ocasiones perjudicados, estos no ven la necesidad de cambiar. Por ello, el presente proyecto busca proporcionarles una alternativa orientada para ellos y que les ayuda a intentar interiorizar mejor los conceptos generales aun utilizando su propio método de estudio.
+Se busca que no tengan que dedicarle una gran cantidad de tiempo con respecto al que le dedicaban antes y que les sea cómoda la asimilación de dichos conceptos para que se den cuenta del problema que puede surgir por la utilización de dicho método.
+
+.
+
+
+
+
+
+
+
+
+CUESTIONARIO EMPRESA
+Para esta encuesta los estudiantes objetivo son aquellos que sí han realizado prácticas en empresas o que al menos las han buscado. Aquellos que no han hecho ninguna de las dos cosas no pueden proporcionar información relevante para nuestro estudio.
+En esta pregunta obtenemos la siguiente distribución:
+1.Distribución de respuestas
+Sí:  19 personas.
+No: 5 personas.
+
+
+2. Porcentaje de respuestas:
+Sí: 79.2%.
+No: 20.8%.
+3.Análisis de la distribución:
+Respuesta “Sí” 79.2%.): Aquí se refleja el número de estudiantes universitarios encuestados que sí han realizado o al menos buscado prácticas en empresas. 
+Respuesta “No” (16.7%): Representa a los estudiantes universitarios encuestados que ni han realizado prácticas en empresas ni las han buscado. Dado que no han realizado ninguna de las dos no pueden proporcionar información relevante para el estudio relacionado con la accesibilidad y utilidad de los portales web de búsqueda de prácticas.
+En relación ha esta pregunta hay poco que comentar ya que es un screener, sim embargo a diferencia del cuestionario anterior que a los que no eran los estudiantes objetivos sí se les planteaba una pregunta, en esta ocasión se les da por finalizado el cuestionario por lo que de los 24 estudiantes encuestados solo 19 son objeto de nuestro estudio.
+A la hora de saber la facilidad que ha tenido los encuestados a la hora de encontrar un portal web para la búsqueda de prácticas se ha observado la siguiente distribución (LA escala va de muy difícil a muy fácil siendo el 1 muy difícil y el 5 muy fácil):
+
+1.Distribución de respuestas
+1 (Muy difícil):  0 personas.
+2 (Difícil): 8 personas.
+3 (Neutro): 6 personas.
+4 (Fácil): 4 personas.
+5 (Muy fácil): ‘1 personas.
+
+
+
+2. Porcentaje de respuestas:
+1 (Muy difícil):  0%.
+2 (Difícil): 42.1%.
+3 (Neutro): 31.6%.
+4	(Fácil): 21.1%.
+5(Muy fácil): 5.3%.
+3.Análisis de la distribución
+Para este tipo de preguntas en las que los valores son categóricos, resulta más apropiado sacar valores como la mediana y la moda antes que un promedio.
+La mediana es la opción 3 “Neutro” ya que si se ordenan los datos de las 19 respuestas (0 + 8 + 6 + 4 + 1) el décimo valor pertenece al grupo 3.
+La moda es la opción 2 “Difícil” ya que es el valor que aparece con más frecuencia en esa colección de datos.
+
+Viendo las respuestas e el diagrama de barras y observando los valores de la mediana y la moda podemos observar cómo a la mayoría de gente le ha resultado difícil encontrar un lugar para buscar prácticas. Si bien también hay encuestados que les ha resultado fácil, si se mira en conjunto se puede concluir que no ha sido una tarea fácil, esto no significa que haya tenido que ser difícil, pero sí que al menos dicha tarea se puede mejorar y hacer más fácil, de ahí la idea inicial de realizar un portal web para proporcionar una alternativa a los ya existentes.
+A continuación, se busca saber si la Universidad en la que estudias te ha proporcionado un portal para dicha búsqueda de prácticas o no. Hay que tener en cuenta que si no te han facilitado dicho portal el cuestionario finaliza. Mirando las respuestas obtenemos la siguiente distribución:
+1.	Distribución de las respuestas:
+Sí: 17 personas.
+No: 2 personas.
+2.	Porcentaje de las respuestas:
+
+Sí: 89.5%.
+No: 10.5%.
+3.	Análisis de la distribución:
+
+Respuesta “Sí” (89.5%): Aquí se refleja el número de estudiantes universitarios encuestados a los que su universidad les ha proporcionado un portal para la búsqueda de prácticas.
+Respuesta “No” (10.5%): Representa a los estudiantes universitarios encuestados a los que su universidad no les ha proporcionado un portal para la búsqueda de prácticas y por tanto han tenido ellos que buscar uno o tomar otra alternativa.
+En esta pregunta podemos ver cómo, a pesar de la gran cantidad de estudiantes a los que sí se les ha proporcionado un portal para dicha búsqueda de prácticas, la gran mayoría ha tenido una experiencia mejorable con dicho portal como se ha podido ver en la pregunta anterior. Esto refuerza también la idea inicial de crear un nuevo portal web para dicha búsqueda ya que si bien existen varios y son accesibles para los estudiantes estos consideran que no son tan fáciles de manejar. Sin embargo, cómo se quiere saber un poco más sobre la opinión que tienen los encuestados sobre dicho portal se realizan 2 preguntas más.
+Una primera pregunta con el fin de observar que tan útil les ha resultado dicho portal y de la cual se ha obtenido la siguiente distribución:
+1.Distribución de respuestas
+1 (Muy poco útil):  1 personas.
+2 (Poco útil): 6 personas.
+3 (Neutro): 6 personas.
+4 (Útil): 1 personas.
+5 (Muy útil): 3 personas.
+
+
+
+2. Porcentaje de respuestas:
+1 (Muy poco útil):  5.9%.
+2 (Poco útil): 35.3%.
+3 (Neutro): 35.3%.
+4	(Útil): 5.9%.
+5(Muy útil): 17.6%.
+3.Análisis de la distribución
+Como se ha comentado antes, para este tipo de preguntas en las que los valores son categóricos, resulta más apropiado sacar valores como la mediana y la moda antes que un promedio.
+La mediana es la opción 3 neutro ya que el valor que se encuentra en el medio cuando los datos se ordenan. Hay 17 respuestas (1 + 6 + 6 + 1 + 3) por lo que el valor que vamos a tomar es el que se situará en la novena posición, lo que hace que la mediana en este caso corresponda a la opción 3 “Neutro”.
+La moda es bimodal ya puede ser tanto la opción 2 “Poco útil” como la opción 3 “Neutro”.
+Una segunda pregunta y última que busca saber qué tan fácil les ha sido encontrar y utilizar a los estudiantes universitario dicho portal. De esta pregunta se ha obtenido la siguiente distribución.
+
+Viendo el diagrama de barras, así como la mediana y la moda tanto de esta pregunta como de la anterior, se puede observar cómo, efectivamente, si bien no es que los portales no sean útiles, difíciles de encontrar o utilizar, sí tiene bastante margen de mejora por lo que si los estudiantes contaran con un portal que fuera más útil, accesible y fácil de utilizar podrían utilizarlo. De ahí que el portal que busca crear este proyecto sea lo más simple posible intentado buscar ser los más intuitivo posible.
+
+1.Distribución de respuestas
+1 (Muy difícil):  4 personas.
+2 (Difícil): 6 personas.
+3 (Neutro): 4 personas.
+4 (Fácil): 0 personas.
+5 (Muy fácil): ‘3 personas.
+
+
+
+2. Porcentaje de respuestas:
+1 (Muy difícil): 23.5%.
+2 (Difícil): 35.3%.
+3 (Neutro): 23.5%.
+4	(Fácil): 0%.
+5(Muy fácil): 17.6%.
+3.Análisis de la distribución
+Como ya se ha comentado anteriormente, para este tipo de preguntas en las que los valores son categóricos, resulta más apropiado sacar valores como la mediana y la moda antes que un promedio.
+La mediana es la opción 2 “Díficil” ya que si se ordenan los datos de las 17 respuestas (4 + 6 + 4 + 0 + 3) el noveno valor pertenece al grupo 2.
+La moda es la opción 2 “Difícil” ya que es el valor que aparece con más frecuencia en esa colección de datos.
+
+Viendo el diagrama de barras, así como la mediana y la moda tanto de esta pregunta como de la anterior, se puede observar cómo, efectivamente, si bien no es que los portales no sean útiles, o muy difíciles de encontrar o utilizar, sí tiene bastante margen de mejora por lo que si los estudiantes contaran con un portal que fuera más útil, accesible y fácil de utilizar podrían utilizarlo. De ahí que el portal que busca crear este proyecto sea lo más simple posible intentado buscar ser los más intuitivo posible.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
