@@ -24,6 +24,7 @@ use App\Http\Controllers\OfferController;
 Route::controller(HomeController::class)->group(function(){
 
     Route::get('/', 'home')->name('home');
+    
 
 });
 
@@ -167,7 +168,7 @@ Route::middleware('auth', 'roles:admin')->group(function () {
     //Administración de ofertas
     Route::controller(OfferController::class)->group(function(){
 
-        Route::get('adminOffers', 'adminOffers')->name('adminOfferss');
+        Route::get('adminOffers', 'adminOffers')->name('adminOffers');
 
 
     });
@@ -185,7 +186,7 @@ Route::middleware('auth', 'roles:company')->group(function () {
     // rutas de offers
     Route::controller(OfferController::class)->group(function(){
 
-
+        Route::get('OfferResults', 'OfferResults')->name('offer.results');
 
         Route::get('new-offer', 'newOffer')->name('new-offer');
 
@@ -213,10 +214,13 @@ Route::middleware('auth', 'roles:company')->group(function () {
 });
 
 Route::controller(OfferController::class)->group(function(){
+    Route::get('/OfferHome', 'home2')->name('home-2');
 
     Route::get('/download-document/{document}', 'DocumentController@download')->name('download.document');
 
     Route::get('my-offers', 'myOffers')->name('my-offers');
+
+    Route::post('uploadOffer/{user}', 'uploadOffer')->name('offer.upload');
 
 });
 

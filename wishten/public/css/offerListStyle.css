@@ -97,6 +97,15 @@
     gap: 10px; /*Se puede tambien poner el margin en el .button pero este te pone el hueco entre cada uno de los elementos del div buttons*/
 }
 
+.top-right-buttons {
+    
+    top: 20px; 
+    right: 20px;
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    }
+
 .button-download body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -187,18 +196,6 @@
     background-color: #80ED99;
 }
     
-
- .button-chat {
-    font-size: 14px;
-    padding: 5px;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    background-color: #57CC99;
-    cursor: pointer;
-    background-color: #80ED99;
-}
-
 .button-more {
     text-decoration: none;
     color: white;

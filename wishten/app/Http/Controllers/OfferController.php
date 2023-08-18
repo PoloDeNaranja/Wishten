@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Offer;
 use App\Models\User;
-use App\Models\Chart;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\OfferRequest;
 use Illuminate\Support\Facades\Storage;
@@ -15,33 +14,37 @@ use Illuminate\Database\Eloquent\Builder;
 
 class OfferController extends Controller
 {
+    function home2() {
+      
+        
+        // Obtener todas las ofertas
+        $offers = Offer::all()->sortBy('title');
+
+        if(Auth::guest()) {
+            return view('homeGuest');
+        }
+       
+        return view('homeOffer')->with([
+            'offers' => $offers
+            
+        ]);
+    }
+
+    //Devuelve la vista con los resultados de buscar por título
+    function OfferResults(Request $request) {
+        if ($request->filled('offer_title')) {
+            $offers = Offer::where('title', 'LIKE', "%{$request->offer_title}%")//con el like y % miro titulos parciales
+                ->latest()
+                ->get();
     
-    // Devuelve la vista con los resultados de búsqueda
-    // function results(Request $request) {
-    //     $subjects = Subject::all()->sortBy('name');
-    //     if($request->filled('subject_name')) {
-    //         $subject = Subject::firstWhere('name', 'LIKE', "%{$request->subject_name}%");
-    //         // Se devuelve la vista con los vídeos que pertenezcan al tema buscado, si éste existe
-    //         if(!$subject) {
-    //             return view('videoList')->with([
-    //                 'videos'    =>  null,
-    //                 'subjects'  =>  $subjects,
-    //                 'subject_name'  =>  $request->subject_name,
-    //                 'title'     =>  $request->subject_name
-    //             ]);
-    //         }
-    //         return view('videoList')->with([
-    //             'videos'    =>  $subject->videos()->where('status', 'valid')->latest()->get(),
-    //             'subjects'  =>  $subjects,
-    //             'subject_name'  =>  $request->subject_name,
-    //             'title'     =>  $request->subject_name
-    //         ]);
-    //     }
-    //     else {
-    //         // Si no se ha buscado nada, se vuelve a la vista home
-    //         return redirect()->route("home");
-    //     }
-    // }
+            return view('offerList')->with([
+                'offers'    =>  $offers,
+                'title'     =>  $request->offer_title
+            ]);
+        } else {
+            return redirect()->route("home2");
+        }
+    }
 
     function download($document){
         $filePath = storage_path('app/public/' . $document);
@@ -74,10 +77,9 @@ class OfferController extends Controller
     function adminOffers() {
         $offers = Offer::all();
         
-        return view('adminOffers')->with([
-            'offers'    =>  $offers,
-        ]);
+        return view('adminOffers')->with('offers',$offers);
     }
+
 
     // Devuelve la vista para crear una nueva oferta
     function newOffer() {
@@ -122,7 +124,7 @@ class OfferController extends Controller
             'salary'   =>  $request->salary,
             'description'   =>  $request->description,
             'vacants'   =>  $request->vacants,
-            'offer_path' =>  ''
+            'document_path' =>  ''
         ]);
 
         // Escapamos el titulo de la oferta de cara a guardarlo en carpetas
@@ -131,15 +133,15 @@ class OfferController extends Controller
 
         $offer_file = $request->file('offer');
 
-        $offer_extension = strtolower($video_file->getClientOriginalExtension());
+        $offer_extension = strtolower($offer_file->getClientOriginalExtension());
         
         $date = date('YmdHis');
         //Asignamos un nombre a la carpeta que contiene la oferta
         $folder = 'offers/'.$escaped_title.'_'.$date;
         // Asignamos un nombre al fichero de offer
         $offer_name = 'wishten-'.$date.'-'.$offer->id.'.'.$offer_extension;
-        $offer_path = $offer_file->storeAs($folder, $offer_name, 'public');
-        $offer->offer_path = $offer_path;
+        $document_path = $offer_file->storeAs($folder, $offer_name, 'public');
+        $offer->document_path = $document_path;
         $offer->save();
         return back()->with('success', 'Your offer was uploaded successfully!' );
     }
@@ -152,7 +154,7 @@ class OfferController extends Controller
 
         $request->validate(['title' =>  ['required', 'string', 'max:255']]);
 
-        // Si se cambia el título del video, se reubican los ficheros asociados
+        // Si se cambia el título del oferta, se reubican los ficheros asociados
         if($request->title !== $offer->title) {
             list($offer,$old_title, $offer_file) = explode('/', $offer->offer_path);
 
@@ -164,7 +166,7 @@ class OfferController extends Controller
             //actualizamos ficheros cambiandolos de carpeta y borramos
             Storage::move('public/'.$offer->offer_path, 'public/'.$new_offer_path);
             Storage::deleteDirectory('public/'.$offers.'/'.$old_title);
-            $video->update([
+            $offer->update([
                 'offer_path'    =>  $new_offer_path
             ]);
 
@@ -199,7 +201,7 @@ class OfferController extends Controller
         return back()->with('success', 'The offer salary was changed');
     }
 
-    // Actualiza la descripción del video
+    // Actualiza la descripción de laa oferta
     function setVacantsOffer(Offer $offer, Request $request) {
         if(Auth::user()->cannot('update', $offer)) {
             abort(403);
