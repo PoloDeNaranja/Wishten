@@ -56,7 +56,7 @@ class OfferController extends Controller
     }
 
     // Devuelve la vista con las ofertas de un usuario
-    function useroffers(Request $request) {
+    function userOffers(Request $request) {
         $user = User::find($request['user']);
         if(!$user) {
             abort(404);
@@ -64,7 +64,7 @@ class OfferController extends Controller
         $offers = $user->offers()->latest()->get();
         return view('offerLista')->with([
             'offers'    =>  $offers,
-            'title'     =>  $user->name.'\' Videos'
+            'title'     =>  $user->name.'\' Offers'
         ]);
     }
 
@@ -72,7 +72,7 @@ class OfferController extends Controller
 
     // Devuelve la vista de la página de administración de vídeos
     function adminOffers() {
-        $videos = Offer::all();
+        $offers = Offer::all();
         
         return view('adminOffers')->with([
             'offers'    =>  $offers,
@@ -83,6 +83,7 @@ class OfferController extends Controller
     function newOffer() {
         return view('newOffer');
     }
+    
 
     // Devuelve la vista de todas las ofertas de un usuario
     function myOffers(Request $request) {
@@ -110,7 +111,7 @@ class OfferController extends Controller
 
 
     // Crea una nueva oferta
-    function upload(User $user, OfferRequest $request) {
+    function uploadOffer(User $user, OfferRequest $request) {
         if(!$request->hasFile('offer')) {
             return back()->with('error', 'No file provided for offer');
         }
@@ -133,8 +134,8 @@ class OfferController extends Controller
         $offer_extension = strtolower($video_file->getClientOriginalExtension());
         
         $date = date('YmdHis');
-        //Asignamos un nombre a la carpeta que contiene el video y la miniatura
-        $folder = 'videos/'.$escaped_title.'_'.$date;
+        //Asignamos un nombre a la carpeta que contiene la oferta
+        $folder = 'offers/'.$escaped_title.'_'.$date;
         // Asignamos un nombre al fichero de offer
         $offer_name = 'wishten-'.$date.'-'.$offer->id.'.'.$offer_extension;
         $offer_path = $offer_file->storeAs($folder, $offer_name, 'public');
@@ -144,7 +145,7 @@ class OfferController extends Controller
     }
 
     // Actualiza el título de una oferta
-    function setTitle(Offer $offer, Request $request) {
+    function setTitleOffer(Offer $offer, Request $request) {
         if(Auth::user()->cannot('update', $offer)) {
             abort(403);
         }
@@ -175,7 +176,7 @@ class OfferController extends Controller
     }
 
     // Actualiza la descripción de la oferta
-    function setDesc(Offer $offer, Request $request) {
+    function setDescOffer(Offer $offer, Request $request) {
         if(Auth::user()->cannot('update', $offer)) {
             abort(403);
         }
@@ -187,7 +188,7 @@ class OfferController extends Controller
     }
 
     // Actualiza el salario de la oferta
-    function setSalary(Offer $offer, Request $request) {
+    function setSalaryOffer(Offer $offer, Request $request) {
         if(Auth::user()->cannot('update', $offer)) {
             abort(403);
         }
@@ -199,7 +200,7 @@ class OfferController extends Controller
     }
 
     // Actualiza la descripción del video
-    function setVacants(Offer $offer, Request $request) {
+    function setVacantsOffer(Offer $offer, Request $request) {
         if(Auth::user()->cannot('update', $offer)) {
             abort(403);
         }
@@ -213,7 +214,7 @@ class OfferController extends Controller
 
     
     // Elimina la información de una oferta
-    function delete(Offer $offer, bool $admin) {
+    function deleteOffer(Offer $offer, bool $admin) {
         if(Auth::user()->cannot('delete', $offer)) {
             abort(403);
         }
@@ -229,4 +230,18 @@ class OfferController extends Controller
         }
         return redirect(route('my-offers'))->with('success', 'Your offer was deleted successfully!');
     }
+}
+
+// Devuelve la vista para editar una offer
+function editOffer(Request $request) {
+    $offer = Offer::find($request['offer']);
+
+    // Si el usuario no está autorizado para editar la oferta(no es company), se le deniega el acceso
+    if(Auth::user()->cannot('update', $offer)) {
+        abort(403);
+    }
+
+    return view('offerEdit')->with([
+        'offer'     =>  $offer
+    ]);
 }

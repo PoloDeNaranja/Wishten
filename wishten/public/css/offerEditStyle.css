@@ -1,0 +1,54 @@
+
+
+@media (min-width: 100px) {
+    .edit-info {
+        align-items: center;
+    }
+}
+
+@media (min-width: 1200px) {
+    .edit-info {
+        align-items: flex-start;
+    }
+}
+
+
+.edit-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+    gap: 20px;
+}
+
+
+form {
+    display: flex;
+    flex-direction: row;
+}
+
+form label input {
+    margin-top: 5%;
+}
+
+
+
+.button.red {
+    background-color: #CB5763;
+    margin-left: 10%;
+}
+
+.button.apply {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
+
+input {
+    border-radius: 8px;
+    margin-left: 5%;
+    font-size: 16px;
+    border: solid black 1px;
+    outline: none;
+}
+
+

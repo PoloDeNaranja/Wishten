@@ -185,17 +185,24 @@ Route::middleware('auth', 'roles:company')->group(function () {
     // rutas de offers
     Route::controller(OfferController::class)->group(function(){
 
-        Route::post('delete_of/{offer}/{admin}', 'delete')->name('offer.delete');
 
-        Route::post('uploadOffer/{user}', 'upload')->name('offer.upload');
 
-        Route::post('set_title_offer/{offer}', 'setTitle')->name('offer.set_title');
+        Route::get('new-offer', 'newOffer')->name('new-offer');
 
-        Route::post('set_salary_offer/{offer}', 'setSalary')->name('offer.set_salary');
+        Route::post('delete_of/{offer}/{admin}', 'deleteOffer')->name('offer.delete');
 
-        Route::post('set_desc_offer/{offer}', 'setDesc')->name('offer.set_desc');
+        Route::post('uploadOffer/{user}', 'uploadOffer')->name('offer.upload');
 
-        Route::post('set_vacants_offer/{offer}', 'setVacants')->name('offer.set_vacants');
+        Route::post('set_title_offer/{offer}', 'setTitleOffer')->name('offer.set_title');
+
+        Route::post('set_salary_offer/{offer}', 'setSalaryOffer')->name('offer.set_salary');
+
+        Route::post('set_desc_offer/{offer}', 'setDescOffer')->name('offer.set_desc');
+
+        Route::post('set_vacants_offer/{offer}', 'setVacantsOffer')->name('offer.set_vacants');
+        
+        Route::get('editOffer', 'editOffer')->name('offer.edit');
+
 
         
 
