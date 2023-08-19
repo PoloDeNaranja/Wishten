@@ -45,7 +45,7 @@
                     <td>{{ $offer->user->name }}</td>
                     <td>{{ $offer->vacants }}</td>
                     <td>{{ $offer->salary }}</td>
-                    <td><a class="filepath" href="{{ url('storage/'.$offer->offer_path) }}">
+                    <td><a class="filepath" href="{{ url('storage/'.$offer->document_path) }}">
                         <i class="fa-solid fa-file  fa-xl fa-xl"></i>
                     </a></td>
                     <td>{{ $offer->created_at }}</td>
@@ -70,7 +70,7 @@
 
                 <label for="offer" title="Select your offer file">
                     <i id="offer-icon" class="fa-solid fa-file fa-bounce fa-10x"></i>
-                    <input type="file" name="offer" id="offer" accept="offer/*" required>
+                    <input type="file" name="offer" id="offer" accept=".pdf,.txt,.doc,.jpg,.jpeg,.png,.docx" required>
                 </label>
 
                 <label for="title">

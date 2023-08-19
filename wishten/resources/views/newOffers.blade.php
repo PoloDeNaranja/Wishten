@@ -21,7 +21,7 @@
     <label for="offer" title="Select your offer file">
     
         <i id="offer-icon" class="fa-solid fa-file fa-bounce fa-5x"></i> <!-- El fa-bounce fa-5x es para que de ese efecto de rebote hacia arriba -->
-        <input type="file" name="offer" id="offer" accept="offer/*" required>
+        <input type="file" name="offer" id="offer" accept=".pdf,.txt,.doc,.jpg,.jpeg,.png,.docx" required>
     </label>
 
     <label for="title">

@@ -129,6 +129,20 @@ Route::middleware('auth')->group(function () {
         Route::post('store-results/{video}', 'storeResults')->name('quiz.store_results');
 
     });
+
+    Route::controller(OfferController::class)->group(function(){
+
+        Route::get('Offer-Results', 'OfferResults')->name('offer.results');
+    
+        Route::get('/OfferHome', 'home2')->name('home-2');
+    
+        // Route::get('/download-document/{document}', 'DocumentController@download')->name('download.document');
+    
+        Route::get('my-offers', 'myOffers')->name('my-offers');
+    
+        Route::post('uploadOffer/{user}', 'uploadOffer')->name('offer.upload');
+    
+    });
 });
 
 
@@ -176,7 +190,7 @@ Route::middleware('auth', 'roles:admin')->group(function () {
 
 
 // Rutas de ofertas, para ello debes ser company
-Route::middleware('auth', 'roles:company')->group(function () {
+Route::middleware('auth', 'roles:admin')->group(function () {
 
     // Página de offers si eres company que muestra el boton de aniadir offer
     Route::get('offer_company', function(){
@@ -185,8 +199,6 @@ Route::middleware('auth', 'roles:company')->group(function () {
 
     // rutas de offers
     Route::controller(OfferController::class)->group(function(){
-
-        Route::get('OfferResults', 'OfferResults')->name('offer.results');
 
         Route::get('new-offer', 'newOffer')->name('new-offer');
 
@@ -213,16 +225,7 @@ Route::middleware('auth', 'roles:company')->group(function () {
     
 });
 
-Route::controller(OfferController::class)->group(function(){
-    Route::get('/OfferHome', 'home2')->name('home-2');
 
-    Route::get('/download-document/{document}', 'DocumentController@download')->name('download.document');
-
-    Route::get('my-offers', 'myOffers')->name('my-offers');
-
-    Route::post('uploadOffer/{user}', 'uploadOffer')->name('offer.upload');
-
-});
 
 
 Route::controller(ChatController::class)->group(function(){

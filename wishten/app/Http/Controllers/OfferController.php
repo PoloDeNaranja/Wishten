@@ -32,22 +32,25 @@ class OfferController extends Controller
 
     //Devuelve la vista con los resultados de buscar por título
     function OfferResults(Request $request) {
+        
         if ($request->filled('offer_title')) {
-            $offers = Offer::where('title', 'LIKE', "%{$request->offer_title}%")//con el like y % miro titulos parciales
+            $offers = Offer::where('title', 'LIKE', "%{$request->offer_title}%")
                 ->latest()
                 ->get();
     
-            return view('offerList')->with([
+            return view('homeOffer')->with([
                 'offers'    =>  $offers,
-                'title'     =>  $request->offer_title
+                'offer_title'     =>  $request->offer_title
             ]);
         } else {
-            return redirect()->route("home2");
+            return redirect()->route("home-2");
         }
     }
 
+   
+
     function download($document){
-        $filePath = storage_path('app/public/' . $document);
+        $filePath = storage_path('app/public/offers' . $document);
         if (file_exists($filePath)) {
             return response()->download($filePath);
         } else {
@@ -83,7 +86,7 @@ class OfferController extends Controller
 
     // Devuelve la vista para crear una nueva oferta
     function newOffer() {
-        return view('newOffer');
+        return view('newOffers');
     }
     
 
@@ -137,7 +140,7 @@ class OfferController extends Controller
         
         $date = date('YmdHis');
         //Asignamos un nombre a la carpeta que contiene la oferta
-        $folder = 'offers/'.$escaped_title.'_'.$date;
+        $folder = 'offers/';
         // Asignamos un nombre al fichero de offer
         $offer_name = 'wishten-'.$date.'-'.$offer->id.'.'.$offer_extension;
         $document_path = $offer_file->storeAs($folder, $offer_name, 'public');

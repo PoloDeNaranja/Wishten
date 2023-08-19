@@ -10,11 +10,14 @@
     @include('layouts.messages')
 
     <div class="top-buttons">
-        @if (Auth::user()->role == 'company')
+
+        @if (Auth::user()->role == 'company' || Auth::user()->role == 'admin' )
         <a href="{{ route('my-offers') }}" class="button-offers">My offers</a>   
         @endif
+        @if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
         <a href="{{ route('new-offer') }}" class="button-add">Upload Offer</a>
-        
+        @endif
+
     </div>
     
 
@@ -53,7 +56,7 @@
                 <span>{{ $offer->salary }}</span>
             </div>
             <div class="buttons">
-                <a class="button-download" href="{{ route('download.document', ['document' => $offer->document_path]) }}" download>Download</a>
+                
                 <button class="button-chat" onclick>Chat</button>
             </div>
         </div>

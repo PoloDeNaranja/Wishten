@@ -30,7 +30,7 @@ class VideoPolicy
      */
     public function view(User $user, Offer $offer)
     {
-        return $video->owner_id == $user->id || $user->isAdmin();
+        return $offer->owner_id == $user->id || $user->isAdmin();
     }
 
     /**
