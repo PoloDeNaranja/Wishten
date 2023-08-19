@@ -50,7 +50,7 @@ class OfferController extends Controller
    
 
     function download($document){
-        $filePath = storage_path('app/public/offers' . $document);
+        $filePath = storage_path('app/public/' . $document);
         if (file_exists($filePath)) {
             return response()->download($filePath);
         } else {
