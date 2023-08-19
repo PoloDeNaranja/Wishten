@@ -52,12 +52,21 @@
         <div class="offer-card">
             <div class="name">{{ $offer->title }}</div>
             <div class="stats">
+                <span class="description-label">Description:</span>
+                <span>{{ $offer->description }}</span>
+                <span class="salary-label">Vacants:</span>
                 <span>{{ $offer->vacants }}</span>
-                <span>{{ $offer->salary }}</span>
+                <span class="salary-label">Salary:</span>
+                <span>{{ $offer->salary }}€</span>
+                
             </div>
             <div class="buttons">
-                
-                <button class="button-chat" onclick>Chat</button>
+            @if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
+            <a href="{{ route('offer.edit', ['offer'=>$offer->id]) }}"class="edit-button"> Edit Offer</a>
+            @endif
+            <a href="{{ url('storage/' . $offer->document_path) }}" class="view-button"> View Offer</a>
+            <a href="{{ url('storage/' . $offer->document_path) }}" class="download-button" download>Download</a>
+            <button class="button-chat" onclick>Chat</button>
             </div>
         </div>
        

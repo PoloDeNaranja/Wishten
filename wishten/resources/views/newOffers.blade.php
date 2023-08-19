@@ -36,7 +36,7 @@
     </label>
     <label for="salary">
         Salary:
-        <input type="number" name="salary" id="salary" min="0" step="100" required>
+        <input type="number" name="salary" id="salary" min="0"  required>
         <span>&euro;</span>
     </label>
     <button type="submit" class="button-upload">Upload Offer</button>

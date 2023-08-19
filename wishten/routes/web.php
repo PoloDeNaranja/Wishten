@@ -136,7 +136,7 @@ Route::middleware('auth')->group(function () {
     
         Route::get('/OfferHome', 'home2')->name('home-2');
     
-        // Route::get('/download-document/{document}', 'DocumentController@download')->name('download.document');
+        Route::get('/download-document/{document}', 'downloadOffer')->name('offer.download');
     
         Route::get('my-offers', 'myOffers')->name('my-offers');
     
