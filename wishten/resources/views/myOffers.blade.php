@@ -3,10 +3,10 @@
         
 @extends('layouts.app')
 
-@section('title', Offers)
+@section('title', 'My Offers')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{ url('/css/offersListStyle.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url('/css/offerListStyle.css') }}">
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
 
 <h1>My Offers</h1>
 
-<form class="search-bar" action="{{ route('my-offers')}}" method="get">
+<!-- <form class="search-bar" action="{{ route('my-offers')}}" method="get">
         @csrf
         <div>
             <label for="offer_title">
@@ -32,26 +32,50 @@
                 </button>
             </label>
         </div>
-</form>
+</form> -->
 
-
+<form class="search-bar" action="{{ route('my-offers')}}" method="get">
+        @csrf
+        <div>
+            <label for="offer_title">
+                <input class="search-input" type="text" placeholder="Filter by title" name="offer_title" list="offer_titles" @isset($offer_title) value="{{ $offer_title }}"@endif>
+                <datalist id="offer_titles">
+                    @foreach ($offers as $offer)
+                        <option value="{{ $offer->title }}"></option>
+                    @endforeach
+                </datalist>
+                <button class="search-button" type="submit">
+                    <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                </button>
+            </label>
+        </div>
+    </form>
 
 @if (!$offers || $offers->isEmpty())
 <h1>No offers</h1>
 
 @else
 
-    <div class="my-offer-list">
+<div class="my-offer-list">
     @foreach ($offers as $offer)
         <div class="offer-card">
             <div class="name">{{ $offer->title }}</div>
             <div class="stats">
+                <span class="description-label">Description:</span>
+                <span>{{ $offer->description }}</span>
+                <span class="salary-label">Vacants:</span>
                 <span>{{ $offer->vacants }}</span>
-                <span>{{ $offer->salary }}</span>
+                <span class="salary-label">Salary:</span>
+                <span>{{ $offer->salary }}€</span>
+                
             </div>
             <div class="buttons">
-                <a class="button-download" href="{{ route('download.document', ['document' => $offer->document_path]) }}" download>Download</a>
-                <button class="button-chat" onclick>Chat</button>
+            @if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
+            <a href="{{ route('offer.edit', ['offer'=>$offer->id]) }}"class="edit-button"> Edit Offer</a>
+            @endif
+            <a href="{{ url('storage/' . $offer->document_path) }}" class="view-button"> View Offer</a>
+            <a href="{{ url('storage/' . $offer->document_path) }}" class="download-button" download>Download</a>
+            <button class="button-chat" onclick>Chat</button>
             </div>
         </div>
        

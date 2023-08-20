@@ -126,3 +126,46 @@ td.status-blocked {
     color: #CB5763;
     font-weight: bold;
 }
+/* Admin offers */
+.action-buttons {
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: flex-end; 
+    gap: 10px;
+}
+
+.view-button{
+    border-radius: 8px;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    text-decoration: none; 
+}
+
+.download-button {
+    border-radius: 8px;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    text-decoration: none; 
+}
+
+.view-button {
+    background-color: #57CC99;
+    color: white;
+}
+
+.download-button {
+    background-color: #57CC99;
+    color: white;
+}
+
+.view-button:hover{
+    color: black;
+}
+
+.download-button:hover {
+    color: black;
+}

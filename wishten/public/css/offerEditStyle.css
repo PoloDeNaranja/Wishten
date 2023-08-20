@@ -1,12 +1,20 @@
 
 
 @media (min-width: 100px) {
+    .video-view {
+        flex-direction: column;
+
+    }
     .edit-info {
         align-items: center;
     }
 }
 
 @media (min-width: 1200px) {
+    .video-view {
+        flex-direction: row;
+        align-items: center;
+    }
     .edit-info {
         align-items: flex-start;
     }
@@ -15,9 +23,11 @@
 
 .edit-info {
     display: flex;
-    flex-direction: column;
-    margin-left: 2%;
+    flex-direction: column;  
     gap: 20px;
+    background-color: #f3f3f3; 
+    padding: 20px; 
+    border-radius: 10px;
 }
 
 
@@ -30,22 +40,36 @@ form label input {
     margin-top: 5%;
 }
 
-
-
 .button.red {
     background-color: #CB5763;
     margin-left: 10%;
+    border-radius: 8px;
 }
 
 .button.apply {
     width: 40px;
     height: 40px;
     border-radius: 50px;
+    border: none;
+    background-color: #57CC99; 
+    color: white; 
+    cursor: pointer;
 }
-
+.button.apply:hover{
+    color: black;
+}
 input {
     border-radius: 8px;
     margin-left: 5%;
+    font-size: 16px;
+    border: solid black 1px;
+    outline: none;
+}
+
+textarea {
+    border-radius: 8px;
+    margin: 2%;
+    resize: none;
     font-size: 16px;
     border: solid black 1px;
     outline: none;

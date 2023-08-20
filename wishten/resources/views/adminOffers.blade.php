@@ -51,10 +51,15 @@
                     <td>{{ $offer->created_at }}</td>
                     <td>{{ $offer->updated_at }}</td>
                     <td>
-                        <form class="action-buttons" action="{{ route('offer.delete', ['offer' => $offer->id, 'admin' => true]) }}" method="post">
-                            @csrf
-                            <button class="delete-offer button red" type="submit">Delete</button>
-                        </form>
+                        <div class="action-buttons">
+                            
+                            <form action="{{ route('offer.delete', ['offer' => $offer->id, 'admin' => true]) }}" method="post">
+                            <a href="{{ url('storage/' . $offer->document_path) }}" class="view-button"> View Offer</a>
+                            <a href="{{ url('storage/' . $offer->document_path) }}" class="download-button" download>Download</a>
+                                @csrf
+                                <button class="button red" type="submit">Delete</button>
+                            </form>
+                        </div>
                     </td>     
                 </tr>
             @endforeach

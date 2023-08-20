@@ -36,7 +36,7 @@
             @csrf
             <label for="salary">
                 Salary:
-                <input type="number" placeholder="Salary" name="salary" value="{{ $offer->salary }}" id="salary" min="0" step="100" required>
+                <input type="number" placeholder="Salary" name="salary" value="{{ $offer->salary }}" id="salary" min="0"  required>
             </label>
             <button class="button apply" type="submit">
                 <i class="fa-regular fa-circle-check fa-lg"></i>
