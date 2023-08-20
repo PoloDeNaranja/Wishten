@@ -4,6 +4,7 @@
 
 
 }
+
 .popup{
     display:none;
     position: fixed;
@@ -161,3 +162,6 @@ label[for="thumbnail"] img {
     height: 100px;
     object-fit: cover;
 }
+
+
+

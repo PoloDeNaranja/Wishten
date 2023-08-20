@@ -8,6 +8,9 @@
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ url('/css/offerListStyle.css') }}">
 @endsection
+@section('js')
+    <script async src="{{ url('/js/popup.js') }}"></script>
+@endsection
 
 @section('content')
 @include('layouts.messages')
@@ -62,7 +65,13 @@
             <div class="name">{{ $offer->title }}</div>
             <div class="stats">
                 <span class="description-label">Description:</span>
-                <span>{{ $offer->description }}</span>
+                <span class="openPopup link">click to show</span>
+                <div class="popup">
+                    <span class="closePopup">&times;</span>
+                    <label for="description">
+                        <textarea id="description" placeholder="Description of your offer" name="description" rows="4" cols="50" required>{{ $offer->description }}</textarea>
+                    </label>
+                </div>
                 <span class="salary-label">Vacants:</span>
                 <span>{{ $offer->vacants }}</span>
                 <span class="salary-label">Salary:</span>
@@ -78,6 +87,7 @@
             <button class="button-chat" onclick>Chat</button>
             </div>
         </div>
+       
        
        
        

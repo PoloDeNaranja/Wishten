@@ -1,4 +1,3 @@
-
 //Boton de abrir popup
 var open = document.getElementsByClassName("openPopup");
 //Ventana del popup
@@ -21,5 +20,3 @@ for (let i = 0; i < open.length; i++) {
         }
     });
 }
-
-
