@@ -24,9 +24,12 @@ use App\Http\Controllers\OfferController;
 Route::controller(HomeController::class)->group(function(){
 
     Route::get('/', 'home')->name('home');
-    
+
 
 });
+
+//Ruta de tutoriales
+Route::view('/tutorials', 'homeGuest');
 
 // Rutas de Login y Registro
 Route::controller(AuthController::class)->group(function(){
@@ -130,18 +133,19 @@ Route::middleware('auth')->group(function () {
 
     });
 
+    // Rutas de gestión de ofertas
     Route::controller(OfferController::class)->group(function(){
 
         Route::get('Offer-Results', 'OfferResults')->name('offer.results');
-    
+
         Route::get('/OfferHome', 'home2')->name('home-2');
-    
+
         Route::get('/download-document/{document}', 'downloadOffer')->name('offer.download');
-    
+
         Route::get('my-offers', 'myOffers')->name('my-offers');
-    
+
         Route::post('uploadOffer/{user}', 'uploadOffer')->name('offer.upload');
-    
+
     });
 });
 
@@ -213,16 +217,16 @@ Route::middleware('auth', 'roles:admin')->group(function () {
         Route::post('set_desc_offer/{offer}', 'setDescOffer')->name('offer.set_desc');
 
         Route::post('set_vacants_offer/{offer}', 'setVacantsOffer')->name('offer.set_vacants');
-        
+
         Route::get('editOffer', 'editOffer')->name('offer.edit');
 
 
-        
+
 
 
     });
 
-    
+
 });
 
 
