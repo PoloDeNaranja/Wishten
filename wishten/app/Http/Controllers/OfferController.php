@@ -231,11 +231,6 @@ class OfferController extends Controller
             abort(403);
         }
         Storage::delete('public/'.$offer->document_path);
-        
-        // Eliminamos la carpeta que contenía los ficheros de esa oferta tomando la ruta del archivo
-        $folderPath = pathinfo($offer->document_path)['dirname'];
-        Storage::deleteDirectory('public/' . $folderPath);
-        
         $offer->delete();
         // Si viene de la pagina de administración, le devolvemos a la misma
         if ($admin) {
