@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use App\Models\Offer;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class VideoPolicy
+class OfferPolicy
 {
     use HandlesAuthorization;
 
@@ -30,7 +30,7 @@ class VideoPolicy
      */
     public function view(User $user, Offer $offer)
     {
-        return $offer->owner_id == $user->id || $user->isAdmin();
+
     }
 
     /**
@@ -53,7 +53,7 @@ class VideoPolicy
      */
     public function update(User $user, Offer $offer)
     {
-        return $user->isAdmin() || $user->id === $video->owner_id;
+        return $user->isAdmin() || $user->id === $offer->owner_id;
     }
 
     /**
@@ -65,7 +65,7 @@ class VideoPolicy
      */
     public function delete(User $user, Offer $offer)
     {
-        return $user->isAdmin() || $user->id === $video->owner_id;
+        return $user->isAdmin() || $user->id === $offer->owner_id;
     }
 
     /**
@@ -84,7 +84,7 @@ class VideoPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \\App\Models\Offer  $offer
+     * @param  \App\Models\Offer  $offer
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user, Offer $offer)
@@ -92,3 +92,4 @@ class VideoPolicy
         //
     }
 }
+

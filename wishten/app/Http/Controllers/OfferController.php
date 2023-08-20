@@ -15,29 +15,29 @@ use Illuminate\Database\Eloquent\Builder;
 class OfferController extends Controller
 {
     function home2() {
-      
-        
+
+
         // Obtener todas las ofertas
         $offers = Offer::all()->sortBy('title');
 
         if(Auth::guest()) {
             return view('homeGuest');
         }
-       
+
         return view('homeOffer')->with([
             'offers' => $offers
-            
+
         ]);
     }
 
     //Devuelve la vista con los resultados de buscar por título
     function OfferResults(Request $request) {
-        
+
         if ($request->filled('offer_title')) {
             $offers = Offer::where('title', 'LIKE', "%{$request->offer_title}%")
                 ->latest()
                 ->get();
-    
+
             return view('homeOffer')->with([
                 'offers'    =>  $offers,
                 'offer_title'     =>  $request->offer_title
@@ -47,7 +47,7 @@ class OfferController extends Controller
         }
     }
 
-   
+
 
     function download($document){
         $filePath = storage_path('app/public/' . $document);
@@ -57,7 +57,7 @@ class OfferController extends Controller
         abort(404, 'El documento no existe.');
         }
         // <a href="{{ route('download.document', ['document' => $offer->document_path]) }}" class="btn btn-primary">
-        
+
         // </a>
     }
 
@@ -74,12 +74,12 @@ class OfferController extends Controller
         ]);
     }
 
-    
+
 
     // Devuelve la vista de la página de administración de vídeos
     function adminOffers() {
         $offers = Offer::all();
-        
+
         return view('adminOffers')->with('offers',$offers);
     }
 
@@ -88,7 +88,7 @@ class OfferController extends Controller
     function newOffer() {
         return view('newOffers');
     }
-    
+
 
     // Devuelve la vista de todas las ofertas de un usuario
     function myOffers(Request $request) {
@@ -132,12 +132,12 @@ class OfferController extends Controller
 
         // Escapamos el titulo de la oferta de cara a guardarlo en carpetas
         $escaped_title = preg_replace('/[^A-Za-z0-9_\-]/', '_', $request->title);
-        
+
 
         $offer_file = $request->file('offer');
 
         $offer_extension = strtolower($offer_file->getClientOriginalExtension());
-        
+
         $date = date('YmdHis');
         //Asignamos un nombre a la carpeta que contiene la oferta
         $folder = 'offers/';
@@ -165,7 +165,7 @@ class OfferController extends Controller
             $date = date('YmdHis');
 
             $new_docu_path = $offers.'/'.$escaped_title.'_'.$date.'/'.$offer_file;
-            
+
             //actualizamos ficheros cambiandolos de carpeta y borramos
             Storage::move('public/'.$offer->offer_path, 'public/'.$new_offer_path);
             Storage::deleteDirectory('public/'.$offers.'/'.$old_title);
@@ -217,14 +217,14 @@ class OfferController extends Controller
         return back()->with('success', 'The offer vacants was changed');
     }
 
-    
+
     // Elimina la información de una oferta
     function deleteOffer(Offer $offer, bool $admin) {
         if(Auth::user()->cannot('delete', $offer)) {
             abort(403);
         }
         Storage::delete('public/'.$offer->offer_path);
-        
+
         // Eliminamos la carpeta que contenía los ficheros de esa oferta
         list($offer, $title, $_) = explode('/', $offer->offer_path);
         Storage::deleteDirectory('public/'.$offers.'/'.$title);
@@ -235,18 +235,19 @@ class OfferController extends Controller
         }
         return redirect(route('my-offers'))->with('success', 'Your offer was deleted successfully!');
     }
-}
 
-// Devuelve la vista para editar una offer
-function editOffer(Request $request) {
-    $offer = Offer::find($request['offer']);
+    // Devuelve la vista para editar una offer
+    function editOffer(Request $request) {
+        $offer = Offer::find($request['offer']);
 
-    // Si el usuario no está autorizado para editar la oferta(no es company), se le deniega el acceso
-    if(Auth::user()->cannot('update', $offer)) {
-        abort(403);
+        // Si el usuario no está autorizado para editar la oferta(no es company), se le deniega el acceso
+        if(Auth::user()->cannot('update', $offer)) {
+            abort(403);
+        }
+
+        return view('offerEdit')->with([
+            'offer'     =>  $offer
+        ]);
     }
-
-    return view('offerEdit')->with([
-        'offer'     =>  $offer
-    ]);
 }
+
