@@ -55,8 +55,8 @@
                         @if ($question->answers->count() > 0)
                         <div class="answer-list">
                             @foreach ($question->answers as $answer)
-                                <label for="radio-{{ $answer->id }}">
-                                    <input type="radio" class="answer-input" name="answer-{{ $count }}" id="radio-{{ $answer->id }}" value="{{ $answer->id }}" data-correct="{{ $answer->is_correct }}">{{ $answer->text }}
+                                <label for="checkbox-{{ $answer->id }}">
+                                    <input type="checkbox" class="answer-input" name="answer-{{ $count }}" id="checkbox-{{ $answer->id }}" value="{{ $answer->id }}" data-correct="{{ $answer->is_correct }}">{{ $answer->text }}
                                 </label>
                             @endforeach
                         </div>
@@ -81,7 +81,7 @@
 
             @php($questions_count = $video->numberOfQuestions())
             @if ($questions_count > 0)
-                <p>Last score: {{ $video->userScore(Auth::user()) }}% ({{ $video->correctAnswers(Auth::user()) }}/{{ $questions_count }})</p>
+                <p>Last score: {{ $video->userScore(Auth::user()) }}% ({{ $video->score(Auth::user()) }}/{{ $questions_count }}) <i class="fa-solid fa-circle-info" title="The question will be correct only if ALL correct answers are given and NO incorrect answers are given"></i></p>
             @endif
         </div>
 

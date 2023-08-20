@@ -39,4 +39,17 @@ class Question extends Model
         return $this->hasMany(Answer::class, 'question_id');
     }
 
+    /**
+     * Obtiene el número de respuestas correctas a esta pregunta
+     */
+    public function correctAnswers() {
+        $correct_count = 0;
+        foreach($this->answers as $answer) {
+            if($answer->is_correct === 1) {
+                $correct_count++;
+            }
+        }
+        return $correct_count;
+    }
+
 }

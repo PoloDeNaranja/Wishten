@@ -47,6 +47,14 @@
     width: 40%;
 }
 
+.fa-circle-info {
+    cursor: pointer;
+}
+
+.fa-circle-info:hover {
+    color: #57CC99;
+}
+
 .video-title {
     font-size: 24px;
     margin-bottom: 0;

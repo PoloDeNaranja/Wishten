@@ -66,13 +66,17 @@ class QuizController extends Controller
         if(Auth::user()->cannot('update', $answer->question->video)) {
             abort(403);
         }
+        // si era correcta la marcamos como incorrecta y viceversa
         if($answer->is_correct) {
-            return back();
+            if($answer->question->correctAnswers() == 1) {
+                return back()->with('error', 'There must be at least one correct answer');
+            }
+            $answer->update([
+                'is_correct'    =>  0
+            ]);
+            return back()->with('success', 'The answer was marked as incorrect');
+
         }
-        $old_correct = $answer->question->answers->where('is_correct', 1)->first();
-        $old_correct->update([
-            'is_correct'    =>  0
-        ]);
         $answer->update([
             'is_correct'    =>  1
         ]);
@@ -83,21 +87,33 @@ class QuizController extends Controller
         if(!$request->get('selected_answer')) {
             return back();
         }
-        $correct_answers = 0;
+        //$correct_answers = 0;
+        $score = 0;// nº de preguntas correctas
+        // inicializamos a 0 el nº de respuestas correctas e incorrectas de todas las preguntas
+        foreach($video->questions as $question) {
+            $correct_answers[$question->id] = 0;
+            $incorrect_answers[$question->id] = 0;
+        }
         foreach($request->get('selected_answer')  as $answer_id) {
             $answer = Answer::find($answer_id);
-            $old_answer = Auth::user()->hasAnswered($answer->question);
-            // Se reemplaza la respuesta dada por el usuario en caso de haber respondido previamente
-            if($old_answer != false) {
-                Auth::user()->answers_given()->detach($old_answer->id);
-            }
             Auth::user()->answers_given()->attach($answer, ['date'=>date("Y-m-d H:i:s")]);
-            // Almacenamos el número de respuestas correctas en la tabla de visualizaciones
+            // si es correcta, incrementamos el número de respuestas correctas para esa pregunta, sino, incrementamos el de preguntas incorrectas
             if($answer->is_correct == 1) {
-                $correct_answers++;
+                $correct_answers[$answer->question->id]++;
+            }
+            else {
+                $incorrect_answers[$answer->question->id]++;
             }
         }
-        $video->views()->where('user_id', Auth::user()->id)->update(['correct_answers'=>$correct_answers, 'date'=>date("Y-m-d H:i:s")]);
+
+        foreach($video->questions as $question) {
+            $score_question = ($correct_answers[$question->id] - $incorrect_answers[$question->id])/$question->correctAnswers();
+            // si se han dado todas las respuestas correctas y ninguna incorrecta, se ha respondido correctamente a la pregunta
+            if($score_question === 1) {
+                $score++;
+            }
+        }
+        $video->views()->where('user_id', Auth::user()->id)->update(['score'=>$score, 'date'=>date("Y-m-d H:i:s")]);
         $video->save();
         return back()->with('success', 'Your results were stored correctly');
 

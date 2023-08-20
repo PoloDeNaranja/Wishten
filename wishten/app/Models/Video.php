@@ -39,7 +39,7 @@ class Video extends Model
      */
     public function views(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'visualized_videos', 'video_id', 'user_id')->withPivot('fav', 'correct_answers');
+        return $this->belongsToMany(User::class, 'visualized_videos', 'video_id', 'user_id')->withPivot('fav', 'score');
     }
 
     /**
@@ -59,8 +59,8 @@ class Video extends Model
     /**
      * Obtiene el número de respuestas correctas que un usuario ha dado al vídeo
      */
-    public function correctAnswers(User $user) {
-        return $this->views()->where('user_id', $user->id)->first()->pivot->correct_answers;
+    public function score(User $user) {
+        return $this->views()->where('user_id', $user->id)->first()->pivot->score;
     }
 
     /**
@@ -80,7 +80,7 @@ class Video extends Model
      * Obtiene la última puntuación de un usuario, en porcentaje
      */
     public function userScore(User $user) {
-        return $this->correctAnswers($user)/$this->numberOfQuestions()*100;
+        return $this->score($user)/$this->numberOfQuestions()*100;
     }
 
     /**

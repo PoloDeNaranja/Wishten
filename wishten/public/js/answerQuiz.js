@@ -9,11 +9,14 @@ for (let i = 0; i < answerButtons.length; i++) {
     answerButtons[i].addEventListener("click", function() {
 
         // Añadimos al formulario de envío de resultados el id de la respuesta seleccionada
-        var input = document.createElement("input");
-        input.type = "hidden";
-        input.name = "selected_answer[]";
-        input.value = document.querySelector('input[name="answer-' + i + '"]:checked').value;
-        submitForm.appendChild(input);
+        var checkedAnswers = document.querySelectorAll('input[name="answer-' + i + '"]:checked');
+        for(var j = 0; j < checkedAnswers.length; j++) {
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = "selected_answer[]";
+            input.value = checkedAnswers[j].value;
+            submitForm.appendChild(input);
+        }
 
         // Mostramos la respuesta correcta al usuario y si ha acertado
         var labels = questionWrappers[i].getElementsByTagName("label");
