@@ -16,14 +16,14 @@
     <div class="top-buttons">
 
         @if (Auth::user()->role == 'company' || Auth::user()->role == 'admin' )
-        <a href="{{ route('my-offers') }}" class="button-offers">My offers</a>   
+        <a href="{{ route('my-offers') }}" class="button-offers">My offers</a>
         @endif
         @if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
         <a href="{{ route('new-offer') }}" class="button-add">Upload Offer</a>
         @endif
 
     </div>
-    
+
 
 
     <form class="search-bar" action="{{ route('offer.results')}}" method="get">
@@ -55,20 +55,15 @@
     @foreach ($offers as $offer)
         <div class="offer-card">
             <div class="name">{{ $offer->title }}</div>
-            <div class="stats">
+            <div class="offer-info">
                 <span class="description-label">Description:</span>
-                <span class="openPopup link">click to show</span>
-                <div class="popup">
-                    <span class="closePopup">&times;</span>
-                    <label for="description">
-                        <textarea id="description" placeholder="Description of your offer" name="description" rows="4" cols="50" required>{{ $offer->description }}</textarea>
-                    </label>
-                </div>
+                <span class="openPopup link" title="View description"><i class="fa-regular fa-eye"></i> View</span>
+
                 <span class="salary-label">Vacants:</span>
                 <span>{{ $offer->vacants }}</span>
                 <span class="salary-label">Salary:</span>
                 <span>{{ $offer->salary }}€</span>
-                
+
             </div>
             <div class="buttons">
             @if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
@@ -79,12 +74,16 @@
             <button class="button-chat" onclick>Chat</button>
             </div>
         </div>
-       
-       
-       
-       
-       
-    @endforeach  
+
+
+
+        <div class="popup">
+            <span class="closePopup">&times;</span>
+            <h3>{{ $offer->title }}</h3>
+            <p readonly class="description">{{ $offer->description }}</p>
+        </div>
+
+    @endforeach
     </div>
 @endif
 

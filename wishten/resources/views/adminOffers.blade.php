@@ -10,9 +10,7 @@
 
 @section('js')
     <script async src="{{ url('/js/popup.js') }}"></script>
-    <script async src="{{ url('/a.js') }}"></script>
     <script async src="{{ url('/js/filterTable.js') }}"></script>
-    <script async src="{{ url('/js/popup.js') }}"></script>
     <script async src="{{ url('/js/validateInputs.js') }}"></script>
 
 @endsection
@@ -41,7 +39,7 @@
                 <tr>
                     <td>{{ $offer->id }}</td>
                     <td>{{ $offer->title }}</td>
-                    <td>{{ $offer->description }}</td>
+                    <td><span class="openPopup link" title="View description"><i class="fa-regular fa-eye"></i> View</span></td>
                     <td>{{ $offer->user->name }}</td>
                     <td>{{ $offer->vacants }}</td>
                     <td>{{ $offer->salary }}</td>
@@ -52,7 +50,7 @@
                     <td>{{ $offer->updated_at }}</td>
                     <td>
                         <div class="action-buttons">
-                            
+
                             <form action="{{ route('offer.delete', ['offer' => $offer->id, 'admin' => true]) }}" method="post">
                             <a href="{{ url('storage/' . $offer->document_path) }}" class="view-button"> View Offer</a>
                             <a href="{{ url('storage/' . $offer->document_path) }}" class="download-button" download>Download</a>
@@ -60,12 +58,23 @@
                                 <button class="button red" type="submit">Delete</button>
                             </form>
                         </div>
-                    </td>     
+                    </td>
                 </tr>
+
             @endforeach
         </table>
     </div>
-   
+    @foreach ($offers as $offer)
+
+    <div class="popup offer-desc">
+        {{-- <div class="popupContent"> --}}
+        <span class="closePopup">&times;</span>
+        <h3>{{ $offer->title }}</h3>
+        <p readonly id="description" placeholder="Description of your offer" name="description" rows="4" cols="50" required>{{ $offer->description }}</p>
+        {{-- </div> --}}
+    </div>
+    @endforeach
+
     <button id="addOffer" class="openPopup button">Add Offer</button>
     <div class="popup PopupWindow">
         <div class="popupContent">
@@ -89,7 +98,7 @@
                     <input type="number" name="vacants" id="vacants" min="0" required>
                 </label>
                 <label for="salary">
-                    Salary <span>&euro;</span>:  
+                    Salary <span>&euro;</span>:
                     <input type="number" name="salary" id="salary" min="0" required>
                 </label>
                 <button type="submit" class="button">Upload Offer</button>
@@ -97,5 +106,7 @@
             </form>
         </div>
     </div>
+
+
 
 @endsection

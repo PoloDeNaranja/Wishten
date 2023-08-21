@@ -131,17 +131,23 @@ td.status-blocked {
     font-size: 14px;
     display: flex;
     flex-direction: row;
-    align-items: center; 
-    justify-content: flex-end; 
+    align-items: center;
+    justify-content: flex-end;
     gap: 10px;
 }
+
+span.openPopup:hover {
+    cursor:pointer;
+    color: #57CC99;
+}
+
 
 .view-button{
     border-radius: 8px;
     border: none;
     padding: 5px;
     cursor: pointer;
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 .download-button {
@@ -149,7 +155,7 @@ td.status-blocked {
     border: none;
     padding: 5px;
     cursor: pointer;
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 .view-button {

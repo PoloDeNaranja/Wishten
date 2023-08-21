@@ -194,7 +194,7 @@ Route::middleware('auth', 'roles:admin')->group(function () {
 
 
 // Rutas de ofertas, para ello debes ser company
-Route::middleware('auth', 'roles:admin')->group(function () {
+Route::middleware('auth', 'roles:admin,company')->group(function () {
 
     // Página de offers si eres company que muestra el boton de aniadir offer
     Route::get('offer_company', function(){

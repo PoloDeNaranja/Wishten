@@ -163,5 +163,21 @@ label[for="thumbnail"] img {
     object-fit: cover;
 }
 
+/* Popup de descripción de oferta */
+.popup.offer-desc {
+    display: none;
+    position: fixed;
+    width: 20%;
+    height: 20%;
+
+    top: 40%;
+    left: 40%;
+    border-radius: 8px;
+    /* transform: translate(-50%, -50%); */
+    background-color:  #f3f3f3;
+    padding: 25px;
+    z-index: 1000;
+
+}
 
 
