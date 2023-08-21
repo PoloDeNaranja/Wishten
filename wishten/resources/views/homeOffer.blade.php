@@ -16,10 +16,10 @@
     <div class="top-buttons">
 
         @if (Auth::user()->role == 'company' || Auth::user()->role == 'admin' )
-        <a href="{{ route('my-offers') }}" class="button-offers">My offers</a>
+        <a href="{{ route('my-offers') }}" class="button">My offers</a>
         @endif
         @if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
-        <a href="{{ route('new-offer') }}" class="button-add">Upload Offer</a>
+        <a href="{{ route('new-offer') }}" class="button">Upload Offer</a>
         @endif
 
     </div>
@@ -67,11 +67,11 @@
             </div>
             <div class="buttons">
             @if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
-            <a href="{{ route('offer.edit', ['offer'=>$offer->id]) }}"class="edit-button"> Edit Offer</a>
+            <a href="{{ route('offer.edit', ['offer'=>$offer->id]) }}"class="button"> Edit Offer</a>
             @endif
-            <a href="{{ url('storage/' . $offer->document_path) }}" class="view-button"> View Offer</a>
-            <a href="{{ url('storage/' . $offer->document_path) }}" class="download-button" download>Download</a>
-            <button class="button-chat" onclick>Chat</button>
+            <a href="{{ url('storage/' . $offer->document_path) }}" class="button"> View Offer</a>
+            <a href="{{ url('storage/' . $offer->document_path) }}" class="button" download>Download</a>
+            <button class="button" onclick>Chat</button>
             </div>
         </div>
 

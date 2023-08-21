@@ -95,7 +95,7 @@
                 @csrf
 
                 <label for="video" title="Select your video file">
-                    <i id="video-icon" class="fa-solid fa-file-video fa-bounce fa-10x"></i>
+                    <i id="video-icon" class="fa-regular fa-file-video fa-bounce fa-4x"></i>
                     <input type="file" name="video" id="video" accept="video/*" required>
                 </label>
 
@@ -114,7 +114,7 @@
                     </datalist>
                 </label>
                 <label for="thumbnail">
-                    <i id="thumbnail-icon" class="fa-sharp fa-solid fa-images fa-5x" title="Select an image for a thumbnail"></i>
+                    <i id="thumbnail-icon" class="fa-sharp fa-regular fa-images fa-5x" title="Select an image for a thumbnail"></i>
                     <input type="file" name="thumbnail" id="thumbnail" accept=".jpg,.jpeg,.png" required>
                 </label>
                 <button type="submit" class="button">Upload Video</button>

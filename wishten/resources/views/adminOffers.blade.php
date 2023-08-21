@@ -52,8 +52,8 @@
                         <div class="action-buttons">
 
                             <form action="{{ route('offer.delete', ['offer' => $offer->id, 'admin' => true]) }}" method="post">
-                            <a href="{{ url('storage/' . $offer->document_path) }}" class="view-button"> View Offer</a>
-                            <a href="{{ url('storage/' . $offer->document_path) }}" class="download-button" download>Download</a>
+                            <a href="{{ url('storage/' . $offer->document_path) }}" class="button"> View Offer</a>
+                            <a href="{{ url('storage/' . $offer->document_path) }}" class="button" download>Download</a>
                                 @csrf
                                 <button class="button red" type="submit">Delete</button>
                             </form>
@@ -83,7 +83,7 @@
                 @csrf
 
                 <label for="offer" title="Select your offer file">
-                    <i id="offer-icon" class="fa-solid fa-file fa-bounce fa-10x"></i>
+                    <i id="offer-icon" class="fa-regular fa-file fa-bounce fa-4x"></i>
                     <input type="file" name="offer" id="offer" accept=".pdf,.txt,.doc,.jpg,.jpeg,.png,.docx" required>
                 </label>
 
