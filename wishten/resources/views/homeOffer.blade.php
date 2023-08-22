@@ -67,7 +67,7 @@
             </div>
             <div class="buttons">
             <!-- Tengo que poner lo del update para el owner-->
-            @if (Auth::user()->role == 'admin' || Auth::user()->role == 'company') 
+            @if (Auth::user()->can('update', $offer))
             <a href="{{ route('offer.edit', ['offer'=>$offer->id]) }}"class="button"> Edit Offer</a>
             @endif
             <a href="{{ url('storage/' . $offer->document_path) }}" class="button"> View Offer</a>

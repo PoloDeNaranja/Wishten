@@ -16,8 +16,17 @@
 @include('layouts.messages')
 
 <h1>My Offers</h1>
+<div class="top-buttons">
 
- {{-- <form class="search-bar" action="{{ route('my-offers')}}" method="get">
+        @if (Auth::user()->role == 'company' || Auth::user()->role == 'admin' )
+        <a href="{{ route('my-offers') }}" class="button">My offers</a>
+        @endif
+        @if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
+        <a href="{{ route('new-offer') }}" class="button">Upload Offer</a>
+        @endif
+
+    </div>
+ <!-- {{-- <form class="search-bar" action="{{ route('my-offers')}}" method="get">
         @csrf
         <div>
             <label for="offer_title">
@@ -35,7 +44,7 @@
                 </button>
             </label>
         </div>
-</form>  --}}
+</form>  --}} -->
 
 <form class="search-bar" action="{{ route('my-offers')}}" method="get">
         @csrf
@@ -63,7 +72,7 @@
     @foreach ($offers as $offer)
         <div class="offer-card">
             <div class="name">{{ $offer->title }}</div>
-            <div class="stats">
+            <div class="offer-info">
                 <span class="description-label">Description:</span>
                 <span class="openPopup link" title="View description"><i class="fa-regular fa-eye"></i> View</span>
                 {{--<span class="openPopup link">click to show</span>
@@ -80,12 +89,13 @@
 
             </div>
             <div class="buttons">
-            @if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
-            <a href="{{ route('offer.edit', ['offer'=>$offer->id]) }}"class="edit-button"> Edit Offer</a>
+            
+            @if (Auth::user()->can('update', $offer))
+            <a href="{{ route('offer.edit', ['offer'=>$offer->id]) }}"class="button"> Edit Offer</a>
             @endif
-            <a href="{{ url('storage/' . $offer->document_path) }}" class="view-button"> View Offer</a>
-            <a href="{{ url('storage/' . $offer->document_path) }}" class="download-button" download>Download</a>
-            <button class="button-chat" onclick>Chat</button>
+            <a href="{{ url('storage/' . $offer->document_path) }}" class="button"> View Offer</a>
+            <a href="{{ url('storage/' . $offer->document_path) }}" class="button" download>Download</a>
+            <button class="button" onclick>Chat</button>
             </div>
         </div>
 
