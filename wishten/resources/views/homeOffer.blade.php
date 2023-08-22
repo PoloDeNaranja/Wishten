@@ -43,13 +43,17 @@
         </div>
     </form>
 
+    
 
 
 
-<h3>Internship offers</h3>
+
+
 @if (!$offers || $offers->isEmpty())
-<h1>No offers available</h1>
+<h2>No offers available</h2>
 @else
+
+<h2>Internship offers</h2>
 
     <div class="my-offer-list">
     @foreach ($offers as $offer)
@@ -66,7 +70,7 @@
 
             </div>
             <div class="buttons">
-            <!-- Tengo que poner lo del update para el owner-->
+            
             @if (Auth::user()->can('update', $offer))
             <a href="{{ route('offer.edit', ['offer'=>$offer->id]) }}"class="button"> Edit Offer</a>
             @endif

@@ -18,9 +18,7 @@
 <h1>My Offers</h1>
 <div class="top-buttons">
 
-        @if (Auth::user()->role == 'company' || Auth::user()->role == 'admin' )
-        <a href="{{ route('my-offers') }}" class="button">My offers</a>
-        @endif
+       
         @if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
         <a href="{{ route('new-offer') }}" class="button">Upload Offer</a>
         @endif

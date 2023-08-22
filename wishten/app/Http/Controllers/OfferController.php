@@ -47,8 +47,6 @@ class OfferController extends Controller
         }
     }
 
-   
-
     function downloadOffer($document){
         $filePath = storage_path('app/public/' . $document);
         if (file_exists($filePath)) {
@@ -56,9 +54,7 @@ class OfferController extends Controller
         } else {
         abort(404, 'El documento no existe.');
         }
-        // <a href="{{ route('download.document', ['document' => $offer->document_path]) }}" class="btn btn-primary">
         
-        // </a>
     }
 
     // Devuelve la vista con las ofertas de un usuario
