@@ -30,6 +30,16 @@ class OfferController extends Controller
         ]);
     }
 
+    function downloadOffer($document){
+        $filePath = storage_path('app/public/' . $document);
+        if (file_exists($filePath)) {
+            return response()->download($filePath);
+        } else {
+        abort(404, 'El documento no existe.');
+        }
+        
+    }
+
     //Devuelve la vista con los resultados de buscar por título
     function OfferResults(Request $request) {
         
@@ -47,14 +57,22 @@ class OfferController extends Controller
         }
     }
 
-    function downloadOffer($document){
-        $filePath = storage_path('app/public/' . $document);
-        if (file_exists($filePath)) {
-            return response()->download($filePath);
-        } else {
-        abort(404, 'El documento no existe.');
+    
+
+    function resultsBy(Request $request){
+        $offerSalary = $request->input('offer_salary');
+        $query = Offer::query();
+    
+        if ($offerSalary) {
+            $query->where('salary', '>=', $offerSalary);
         }
-        
+    
+        $offers = $query->latest()->get();
+    
+        return view('homeOffer')->with([
+            'offers'        => $offers,
+            'offer_salary'  => $offerSalary,
+        ]);
     }
 
     // Devuelve la vista con las ofertas de un usuario
@@ -89,7 +107,7 @@ class OfferController extends Controller
     // Devuelve la vista de todas las ofertas de un usuario
     function myOffers(Request $request) {
         if($request->filled('offer_title')) {
-            $filtered_offers = Auth::user()->offers()->where('title', $request->offer_title)->get();
+            $filtered_offers = Auth::user()->offers()->where('title', 'LIKE', "%{$request->offer_title}%")->get();
             if(!$filtered_offers) {
                 return view('myOffers')->with([
                     'offers'    =>  null,

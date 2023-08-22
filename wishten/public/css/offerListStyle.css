@@ -197,7 +197,12 @@ p.description {
     color: #57CC99;
 }
 
-
+/* .search-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    margin-top: 5%;
+} */
 
 
 

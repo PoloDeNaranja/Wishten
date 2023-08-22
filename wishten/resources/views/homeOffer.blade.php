@@ -10,6 +10,22 @@
     <script async src="{{ url('/js/popup.js') }}"></script>
 @endsection
 
+@section('js')
+    <script async src="{{ url('/js/popup.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const titleSearchForm = document.getElementById('title-search-form');
+            const salarySearchForm = document.getElementById('salary-search-form');
+
+            titleSearchForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                // Realiza la búsqueda por título
+                // Luego, muestra el formulario de búsqueda por salario
+                salarySearchForm.style.display = 'block';
+            });
+        });
+    </script>
+@endsection
 @section('content')
     @include('layouts.messages')
 
@@ -25,7 +41,7 @@
     </div>
 
 
-
+    <div class="search-container">
     <form class="search-bar" action="{{ route('offer.results')}}" method="get">
         @csrf
         <div>
@@ -42,6 +58,19 @@
             </label>
         </div>
     </form>
+    <form class="search-bar" action="{{ route('offer.resultsBy') }}" method="get">
+    @csrf
+    <div>
+        <label for="offer_salary">
+            <input class="search-input" type="number" placeholder="Filter by minimum salary" name="offer_salary" @isset($offer_salary) value="{{ $offer_salary }}" @endif>
+            <button class="search-button" type="submit">
+                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+            </button>
+        </label>
+    </div>
+</form>
+</form>
+</div>
 
     
 
