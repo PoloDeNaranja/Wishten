@@ -136,10 +136,8 @@ Route::middleware('auth')->group(function () {
     // Rutas de gestión de ofertas
     Route::controller(OfferController::class)->group(function(){
 
-        
-        Route::get('Offer-Results', 'OfferResults')->name('offer.results');
 
-        Route::get('Offer-Results-By', 'resultsBy')->name('offer.resultsBy');
+        Route::get('Offer-Results', 'OfferResults')->name('offer.results');
 
         Route::get('/OfferHome', 'home2')->name('home-2');
 

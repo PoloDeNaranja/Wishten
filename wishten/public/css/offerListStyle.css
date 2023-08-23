@@ -93,9 +93,9 @@
     font-size: 20px;
     display: flex;
     align-items: center;
-    
-   
-    
+
+
+
 }
 
 .offer-info span:nth-child(3)::before {
@@ -140,6 +140,10 @@ p.description {
     margin-top: 2%;
 }
 
+.search-bar div {
+    margin-top: 2%;
+}
+
 
 .search-input {
     padding-left: 10px;
@@ -160,6 +164,10 @@ p.description {
     padding: 5px;
     cursor: pointer;
     float: right;
+}
+
+.search-button.offer {
+    background-color: #38A3A5;
 }
 
 .salary-label {
@@ -199,8 +207,8 @@ p.description {
 
 /* .search-container {
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
     margin-top: 5%;
 } */
 

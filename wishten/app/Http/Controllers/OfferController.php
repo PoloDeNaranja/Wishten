@@ -15,18 +15,18 @@ use Illuminate\Database\Eloquent\Builder;
 class OfferController extends Controller
 {
     function home2() {
-      
-        
+
+
         // Obtener todas las ofertas
         $offers = Offer::all()->sortBy('title');
 
         if(Auth::guest()) {
             return view('homeGuest');
         }
-       
+
         return view('homeOffer')->with([
             'offers' => $offers
-            
+
         ]);
     }
 
@@ -37,42 +37,41 @@ class OfferController extends Controller
         } else {
         abort(404, 'El documento no existe.');
         }
-        
+
     }
 
     //Devuelve la vista con los resultados de buscar por título
     function OfferResults(Request $request) {
-        
+        $offer_salary = 0;
+
         if ($request->filled('offer_title')) {
+            if($request->filled('offer_salary')) {
+                $offer_salary = $request->input('offer_salary');
+            }
             $offers = Offer::where('title', 'LIKE', "%{$request->offer_title}%")
+                ->where('salary', '>=', $offer_salary)
                 ->latest()
                 ->get();
-    
+
             return view('homeOffer')->with([
                 'offers'    =>  $offers,
-                'offer_title'     =>  $request->offer_title
+                'offer_title'     =>  $request->offer_title,
+                'offer_salary'     =>  $request->offer_salary
             ]);
         } else {
+            if($request->filled('offer_salary')) {
+                $offer_salary = $request->input('offer_salary');
+                $offers = Offer::where('salary', '>=', $offer_salary)
+                ->latest()
+                ->get();
+
+                return view('homeOffer')->with([
+                    'offers'    =>  $offers,
+                    'offer_salary'     =>  $request->offer_salary
+                ]);
+            }
             return redirect()->route("home-2");
         }
-    }
-
-    
-
-    function resultsBy(Request $request){
-        $offerSalary = $request->input('offer_salary');
-        $query = Offer::query();
-    
-        if ($offerSalary) {
-            $query->where('salary', '>=', $offerSalary);
-        }
-    
-        $offers = $query->latest()->get();
-    
-        return view('homeOffer')->with([
-            'offers'        => $offers,
-            'offer_salary'  => $offerSalary,
-        ]);
     }
 
     // Devuelve la vista con las ofertas de un usuario
@@ -88,12 +87,12 @@ class OfferController extends Controller
         ]);
     }
 
-    
+
 
     // Devuelve la vista de la página de administración de vídeos
     function adminOffers() {
         $offers = Offer::all();
-        
+
         return view('adminOffers')->with('offers',$offers);
     }
 
@@ -102,7 +101,7 @@ class OfferController extends Controller
     function newOffer() {
         return view('newOffers');
     }
-    
+
 
     // Devuelve la vista de todas las ofertas de un usuario
     function myOffers(Request $request) {
@@ -146,12 +145,12 @@ class OfferController extends Controller
 
         // Escapamos el titulo de la oferta de cara a guardarlo en carpetas
         $escaped_title = preg_replace('/[^A-Za-z0-9_\-]/', '_', $request->title);
-        
+
 
         $offer_file = $request->file('offer');
 
         $offer_extension = strtolower($offer_file->getClientOriginalExtension());
-        
+
         $date = date('YmdHis');
         //Asignamos un nombre a la carpeta que contiene la oferta
         $folder = 'offers/';
@@ -167,25 +166,25 @@ class OfferController extends Controller
         if(Auth::user()->cannot('update', $offer)) {
             abort(403);
         }
-    
+
         $request->validate(['title' => ['required', 'string', 'max:255']]);
-        
+
         $new_title = preg_replace('/[^A-Za-z0-9_\-]/', '_', $request->title);
-        
+
         if ($new_title !== $offer->title) {
             // Obtener la extensión del archivo original
             $extension = pathinfo($offer->document_path, PATHINFO_EXTENSION);
-    
+
             // Crear el nuevo nombre del archivo con el nuevo título y extensión
             $date = date('YmdHis');
             $new_offer_name = 'wishten-'.$date.'-'.$new_title.'.'.$extension;
-    
+
             // Obtener la ruta de la carpeta "offers"
             $offers_folder = pathinfo($offer->document_path, PATHINFO_DIRNAME);
-    
+
             // Crear la nueva ruta completa del archivo
             $new_offer_path = $offers_folder.'/'.$new_offer_name;
-    
+
             // Mover el archivo con el nuevo nombre y en la misma carpeta "offers"
             if (Storage::move('public/'.$offer->document_path, 'public/'.$new_offer_path)) {
                 // Actualizar el título y la ruta del documento en la base de datos
@@ -198,7 +197,7 @@ class OfferController extends Controller
             // Si no se cambió el título, solo actualiza el título en la base de datos
             $offer->update(['title' => $request->title]);
         }
-    
+
         return back()->with('success', 'The offer title was changed');
     }
     // Actualiza la descripción de la oferta
@@ -238,7 +237,7 @@ class OfferController extends Controller
         return back()->with('success', 'The offer vacants was changed');
     }
 
-    
+
     // Elimina la información de una oferta
     function deleteOffer(Offer $offer, bool $admin) {
         if(Auth::user()->cannot('delete', $offer)) {

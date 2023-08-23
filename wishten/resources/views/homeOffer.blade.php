@@ -57,22 +57,18 @@
                 </button>
             </label>
         </div>
+        <div>
+            <label for="offer_salary">
+                <input class="search-input" type="number" placeholder="Filter by minimum salary" name="offer_salary" @isset($offer_salary) value="{{ $offer_salary }}" @endif>
+                <button class="search-button offer" type="submit">
+                    <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                </button>
+            </label>
+        </div>
     </form>
-    <form class="search-bar" action="{{ route('offer.resultsBy') }}" method="get">
-    @csrf
-    <div>
-        <label for="offer_salary">
-            <input class="search-input" type="number" placeholder="Filter by minimum salary" name="offer_salary" @isset($offer_salary) value="{{ $offer_salary }}" @endif>
-            <button class="search-button" type="submit">
-                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-            </button>
-        </label>
-    </div>
-</form>
-</form>
 </div>
 
-    
+
 
 
 
@@ -99,7 +95,7 @@
 
             </div>
             <div class="buttons">
-            
+
             @if (Auth::user()->can('update', $offer))
             <a href="{{ route('offer.edit', ['offer'=>$offer->id]) }}"class="button"> Edit Offer</a>
             @endif
