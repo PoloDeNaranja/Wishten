@@ -30,10 +30,10 @@
         <img src="{{ asset('logo/logo.png') }}" alt = "logo">
         </a>
         <nav>
-            <a href="/" class="nav-link" title="Home"><i class="fa-solid fa-house"></i></a>
+            <a href="/" class="nav-link" title="Home"><i class="fa-solid fa-house"></i> Home</a>
             {{-- <a href="videos" class="nav-link">Videos</a> --}}
-            <a href="{{ route('home-2') }}" class="nav-link" title="Offers"><i class="fa-solid fa-briefcase"></i></a>
-            <a href="/tutorials" class="nav-link" title="Tutorials"><i class="fa-solid fa-circle-question"></i></a>
+            <a href="{{ route('home-2') }}" class="nav-link" title="Offers"><i class="fa-solid fa-briefcase"></i> Offers</a>
+            <a href="/tutorials" class="nav-link" title="Tutorials"><i class="fa-solid fa-circle-question"></i> Tutorials</a>
             {{-- <a href="#" class="nav-link">Noticias</a> --}}
             {{-- <img class="notificacion"src="notificacion.png" alt = "notificacion"></a>--}}
             @guest

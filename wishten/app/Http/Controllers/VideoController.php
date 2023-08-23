@@ -74,7 +74,8 @@ class VideoController extends Controller
     function mostViewed() {
         $subjects = Subject::all()->sortBy('name');
         // Vídeos ordenados por número de visitas
-        $videos = Video::withCount('views')
+        $videos = Video::where('status', 'valid')
+                                ->withCount('views')
                                 ->orderBy('views_count', 'DESC')
                                 ->latest()->get();
         return view('videoList')->with([
@@ -88,10 +89,12 @@ class VideoController extends Controller
     function mostFavs() {
         $subjects = Subject::all()->sortBy('name');
         // Vídeos ordenados por número de favoritos
-        $videos = Video::withCount(['views'  => function (Builder $query) {
-                                                $query->where('fav', 1);
-                                    }])->orderBy('views_count', 'DESC')
-                                    ->latest()->take(10)->get();
+        $videos = Video::where('status', 'valid')
+                        ->withCount(['views'  => function (Builder $query) {
+                                $query->where('fav', 1);
+                        }])
+                        ->orderBy('views_count', 'DESC')
+                        ->latest()->take(10)->get();
         return view('videoList')->with([
             'videos'    =>  $videos,
             'subjects'  =>  $subjects,
@@ -103,7 +106,8 @@ class VideoController extends Controller
     function interactive() {
         $subjects = Subject::all()->sortBy('name');
         // Vídeos ordenados por número de favoritos
-        $videos = Video::withCount('questions')
+        $videos = Video::where('status', 'valid')
+                        ->withCount('questions')
                         ->having('questions_count', '>', 0)
                         ->latest()->take(10)->get();
         return view('videoList')->with([

@@ -20,16 +20,19 @@ class HomeController extends Controller
         }
         $subjects = Subject::all()->sortBy('name');
         // Vídeos ordenados por número de visitas
-        $videos_by_views = Video::withCount('views')
+        $videos_by_views = Video::where('status', 'valid')
+                                ->withCount('views')
                                 ->orderBy('views_count', 'DESC')
                                 ->latest()->take(5)->get();
         // Vídeos ordenados por número de favoritos
-        $videos_by_favs = Video::withCount(['views'  => function (Builder $query) {
+        $videos_by_favs = Video::where('status', 'valid')
+                                ->withCount(['views'  => function (Builder $query) {
                                             $query->where('fav', 1);
                                 }])->orderBy('views_count', 'DESC')
                                 ->latest()->take(5)->get();
         // Vídeos que contienen por lo menos un cuestionario/anotación
-        $video_quizzes = Video::withCount('questions')
+        $video_quizzes = Video::where('status', 'valid')
+                                ->withCount('questions')
                                 ->having('questions_count', '>', 0)
                                 ->latest()->take(5)->get();
 
@@ -41,5 +44,5 @@ class HomeController extends Controller
         ]);
     }
 
-    
+
 }
