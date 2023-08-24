@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Admin Users')
+@section('title', 'Admin Offers')
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ url('/css/adminStyle.css') }}">

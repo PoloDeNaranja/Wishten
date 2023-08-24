@@ -99,7 +99,7 @@ class OfferController extends Controller
 
     // Devuelve la vista para crear una nueva oferta
     function newOffer() {
-        return view('newOffers');
+        return view('newOffer');
     }
 
 
