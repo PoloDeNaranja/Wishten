@@ -80,7 +80,7 @@
 .tutorial-videos {
     max-width: 90%;
     margin: 0 auto;
-    display: grid;
+    display: flex;
     gap: 1rem;
 }
 
@@ -96,19 +96,12 @@
 }
 
 @media (min-width: 600px) {
-    .tutorial-videos {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .feature-list {
+    .feature-list, .tutorial-videos {
         flex-direction: column;
     }
 }
 @media (min-width: 1200px) {
-    .tutorial-videos {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .feature-list {
+    .feature-list, .tutorial-videos {
         flex-direction: row;
     }
 }

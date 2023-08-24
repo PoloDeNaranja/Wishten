@@ -44,9 +44,16 @@
                     </video>
                 </div>
                 <div class="tutorial-video">
-                    <h4>How to upload a video</h4>
+                    <h4>How to add a quiz to a video</h4>
                     <video controls>
-                        <source src="{{ asset('tutorials/UploadVideoTutorial.mp4') }}" type="video/mp4">
+                        <source src="{{ asset('tutorials/addQuizTutorial.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="tutorial-video">
+                    <h4>How to upload an offer</h4>
+                    <video controls>
+                        <source src="{{ asset('tutorials/UploadOfferTutorial.mp4') }}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
