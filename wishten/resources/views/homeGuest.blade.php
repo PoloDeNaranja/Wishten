@@ -13,27 +13,45 @@
             Your browser does not support the video tag.
         </video>
         <div class="home-content">
-            <h1>WISHTEN</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempora necessitatibus suscipit placeat, autem voluptas ducimus eos. Atque illo odit excepturi tempore velit in, architecto aspernatur pariatur repellat autem unde.
-            Error, eius delectus! Reprehenderit corporis voluptates ipsa quo eaque? Commodi deleniti dicta, voluptatem unde labore, ea vitae odio accusantium non saepe numquam architecto omnis ipsam adipisci consequatur minus ratione vero.
-            Obcaecati quaerat dolor non dolores et, omnis odio enim, minima nam est eos soluta quasi eligendi reprehenderit unde sunt eaque modi atque aliquam nisi blanditiis. Amet aliquam doloremque ut fuga.
-            Omnis, aliquid. Nulla ullam mollitia sunt rem temporibus error aliquid nisi numquam, natus possimus harum odit quam cupiditate autem distinctio labore magnam esse maxime, non ea nostrum neque? Eveniet, quod!
-            Perferendis vel itaque quaerat error! Ipsa laborum ex laudantium nisi tempora porro libero praesentium pariatur. Laudantium nisi commodi nemo a deleniti est corrupti eligendi eum? Impedit quibusdam odio temporibus accusantium.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempora necessitatibus suscipit placeat, autem voluptas ducimus eos. Atque illo odit excepturi tempore velit in, architecto aspernatur pariatur repellat autem unde.
-            Error, eius delectus! Reprehenderit corporis voluptates ipsa quo eaque? Commodi deleniti dicta, voluptatem unde labore, ea vitae odio accusantium non saepe numquam architecto omnis ipsam adipisci consequatur minus ratione vero.
-            Obcaecati quaerat dolor non dolores et, omnis odio enim, minima nam est eos soluta quasi eligendi reprehenderit unde sunt eaque modi atque aliquam nisi blanditiis. Amet aliquam doloremque ut fuga.
-            Omnis, aliquid. Nulla ullam mollitia sunt rem temporibus error aliquid nisi numquam, natus possimus harum odit quam cupiditate autem distinctio labore magnam esse maxime, non ea nostrum neque? Eveniet, quod!
-            Perferendis vel itaque quaerat error! Ipsa laborum ex laudantium nisi tempora porro libero praesentium pariatur. Laudantium nisi commodi nemo a deleniti est corrupti eligendi eum? Impedit quibusdam odio temporibus accusantium.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempora necessitatibus suscipit placeat, autem voluptas ducimus eos. Atque illo odit excepturi tempore velit in, architecto aspernatur pariatur repellat autem unde.
-            Error, eius delectus! Reprehenderit corporis voluptates ipsa quo eaque? Commodi deleniti dicta, voluptatem unde labore, ea vitae odio accusantium non saepe numquam architecto omnis ipsam adipisci consequatur minus ratione vero.
-            Obcaecati quaerat dolor non dolores et, omnis odio enim, minima nam est eos soluta quasi eligendi reprehenderit unde sunt eaque modi atque aliquam nisi blanditiis. Amet aliquam doloremque ut fuga.
-            Omnis, aliquid. Nulla ullam mollitia sunt rem temporibus error aliquid nisi numquam, natus possimus harum odit quam cupiditate autem distinctio labore magnam esse maxime, non ea nostrum neque? Eveniet, quod!
-            Perferendis vel itaque quaerat error! Ipsa laborum ex laudantium nisi tempora porro libero praesentium pariatur. Laudantium nisi commodi nemo a deleniti est corrupti eligendi eum? Impedit quibusdam odio temporibus accusantium.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempora necessitatibus suscipit placeat, autem voluptas ducimus eos. Atque illo odit excepturi tempore velit in, architecto aspernatur pariatur repellat autem unde.
-            Error, eius delectus! Reprehenderit corporis voluptates ipsa quo eaque? Commodi deleniti dicta, voluptatem unde labore, ea vitae odio accusantium non saepe numquam architecto omnis ipsam adipisci consequatur minus ratione vero.
-            Obcaecati quaerat dolor non dolores et, omnis odio enim, minima nam est eos soluta quasi eligendi reprehenderit unde sunt eaque modi atque aliquam nisi blanditiis. Amet aliquam doloremque ut fuga.
-            Omnis, aliquid. Nulla ullam mollitia sunt rem temporibus error aliquid nisi numquam, natus possimus harum odit quam cupiditate autem distinctio labore magnam esse maxime, non ea nostrum neque? Eveniet, quod!
-            Perferendis vel itaque quaerat error! Ipsa laborum ex laudantium nisi tempora porro libero praesentium pariatur. Laudantium nisi commodi nemo a deleniti est corrupti eligendi eum? Impedit quibusdam odio temporibus accusantium.</p>
+            <h1>WELCOME TO WISHTEN!</h1>
+            <div class="feature-list">
+                <div class="feature">
+                    <i class="fa-regular fa-circle-play fa-4x"></i>
+                    <p>Here you will find videos to learn whatever you need and you will also be able to upload your own videos!</p>
+                </div>
+                <div class="feature">
+                    <i class="fa-regular fa-circle-question fa-4x"></i>
+                    <p>Bring your videos to the next level by adding interactive quizzes to make them even more useful!</p>
+                </div>
+                <div class="feature">
+                    <i class="fa-solid fa-briefcase fa-4x"></i>
+                    <p>In Wishten you will also find interesting internship and job offers to make your first contact with the labor market!</p>
+                </div>
+                <div class="feature">
+                    <i class="fa-solid fa-arrow-pointer fa-4x"></i>
+                    <p>Navigate through the web and discover all features! The first step is to create an account <a href="/registration">here</a></p>
+                </div>
+
+
+            </div>
+
+            <div class="tutorial-videos">
+                <div class="tutorial-video">
+                    <h4>How to upload a video</h4>
+                    <video controls>
+                        <source src="{{ asset('tutorials/UploadVideoTutorial.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="tutorial-video">
+                    <h4>How to upload a video</h4>
+                    <video controls>
+                        <source src="{{ asset('tutorials/UploadVideoTutorial.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+            </div>
         </div>
     </div>
 @endsection

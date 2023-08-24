@@ -7,7 +7,7 @@
     padding-top: 50px;
 }
 
-.home-view video {
+.home-view #back-video {
     min-width: 100%;
     height: 1000px;
     object-fit: cover;
@@ -20,7 +20,7 @@
     position: relative;
     background-color: white;
     border-radius: 20px;
-    top: 95%;
+    top: 80%;
     max-width: 95%;
     padding-bottom: 100px;
 }
@@ -31,10 +31,84 @@
     padding-bottom: 100px;
 }
 
+.home-content h3 {
+    text-align: center;
+}
+
 .home-content p {
     font-size: 16px;
-    text-align: justify;
+    text-align: center;
     padding-left: 100px;
     padding-right: 100px;
     padding-bottom: 10px;
+}
+
+.feature-list {
+    display: flex;
+}
+
+.feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.2s ease-in-out;
+}
+
+.feature i, .feature a {
+    transition: 0.2s ease-in-out;
+    text-decoration: none;
+
+}
+
+.feature a {
+    color: #38A3A5;
+}
+
+.feature a:hover {
+    color: #046e70;
+}
+
+.feature:hover {
+    transform: scale(1.05);
+}
+
+.feature i:hover {
+    cursor: pointer;
+    color: #38A3A5;
+}
+
+.tutorial-videos {
+    max-width: 90%;
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
+}
+
+.tutorial-video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tutorial-video video {
+    width: 90%;
+    border-radius: 10px;
+}
+
+@media (min-width: 600px) {
+    .tutorial-videos {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .feature-list {
+        flex-direction: column;
+    }
+}
+@media (min-width: 1200px) {
+    .tutorial-videos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .feature-list {
+        flex-direction: row;
+    }
 }
