@@ -23,7 +23,14 @@
     php artisan migrate
     ```
     Comprobar que las tablas se crearon correctamente.
-9. Ya está lista la configuración y únicamente faltaría desplegar la aplicación en local con el comando:
+
+9. Ejecutar el siguiente comando para que se muestren los ficheros almacenados en el servidor:
+    ```
+    php artisan storage:link
+    ```
+    Mediante este comando, se crea un enlace simbólico a la carpeta */storage* desde la carpeta */public*, lo que permite que se muestren en las vistas los ficheros almacenados en el servidor.
+
+10. Ya está lista la configuración y únicamente faltaría desplegar la aplicación en local con el comando:
     ```
     php artisan serve
     ```
