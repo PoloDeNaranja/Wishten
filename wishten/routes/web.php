@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\ChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,11 @@ Route::middleware('auth')->group(function () {
         Route::post('delete_user/{user}', 'delete')->name('user.delete');
 
         Route::post('follow/{user}', 'follow')->name('user.follow');
+
+        Route::get('/chat/{offerId}', 'ChatController@chatWithReceiver')->name('chat.with_receiver');
+
+        // Ruta para enviar mensajes
+        Route::post('/chat/send-message', 'ChatController@sendMessage')->name('chat.send_message');
 
     });
 
@@ -148,6 +154,18 @@ Route::middleware('auth')->group(function () {
         Route::post('uploadOffer/{user}', 'uploadOffer')->name('offer.upload');
 
     });
+
+    Route::controller(ChatController::class)->group(function(){
+
+        Route::get('/home3','home3')->name('home-3');
+
+        Route::post('/createChat/{offer}', 'createChat')->name('chat.createChat');
+
+        Route::post('/send-message/{conversation}', 'sendMessage')->name('chat.send_message');
+
+        Route::get('/chat-list','chatList')->name('chat.chat-list');
+    });
+    
 });
 
 
@@ -233,12 +251,6 @@ Route::middleware('auth', 'roles:admin,company')->group(function () {
 
 
 
-Route::controller(ChatController::class)->group(function(){
-    Route::get('/chat', 'ChatController@index');
-    Route::post('/send-message', 'ChatController@sendMessage');
-    Route::get('/get-messages', 'ChatController@getMessages');
-
-});
 
 
 

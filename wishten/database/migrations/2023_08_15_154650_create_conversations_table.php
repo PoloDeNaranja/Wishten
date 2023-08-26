@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('conversations', function (Blueprint $table) {
             $table->id();//con id laravel automaticamente sabe que es la clave primaria
-            $table->foreignId('id_user1')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('id_user2')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_user')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_company')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_offer')->constrained('offers')->onUpdate('cascade')->onDelete('cascade');
+
             // $table->timestamps(); crea automaticamnte 2 columnas, una de creaated_at y una de updated_at
-            
+            $table->timestamps();
         });
     }
 

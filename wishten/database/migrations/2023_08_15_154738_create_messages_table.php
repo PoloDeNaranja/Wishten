@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();//con id laravel automaticamente sabe que es la clave primaria
             $table->foreignId('id_conversation')->constrained('conversations')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('id_sender')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('id_receiver')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->text('content');
+            // $table->foreignId('id_receiver')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('content')->nullable();
             $table->timestamp('date&hour')->nullable();//laravel va a coger la fecha y hora en la que se ha metido en la tabla la entrada, si por 
             //si por algún laravel no es capaz de actualizar automaticamente esa columna a la hora de crear la entrada se deja a null
 

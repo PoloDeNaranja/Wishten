@@ -12,13 +12,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Message extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-
+    protected $fillable = [
+        'id_sender',
+        'content'
+        
+    ];
     /**
      * Da el id de la conversaicón a la que pertenece el mensaje
      */
@@ -33,11 +37,6 @@ class Message extends Model
     {
         return $this->belongsTo(User::class, 'id_sender');
     }
-    /**
-     * Da el usuario que ha recivido el mensaje
-     */
-    public function receiver(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'id_receiver');
-    }
+
+    
 }

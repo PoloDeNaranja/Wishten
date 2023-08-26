@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('vacants');
             $table->string('document_path');
             $table->timestamps(); //crea automaticamnte 2 columnas, una de created_at y una de updated_at
-
+            
         });
     }
 

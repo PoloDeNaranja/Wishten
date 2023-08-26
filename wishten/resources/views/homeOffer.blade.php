@@ -10,22 +10,6 @@
     <script async src="{{ url('/js/popup.js') }}"></script>
 @endsection
 
-@section('js')
-    <script async src="{{ url('/js/popup.js') }}"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const titleSearchForm = document.getElementById('title-search-form');
-            const salarySearchForm = document.getElementById('salary-search-form');
-
-            titleSearchForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                // Realiza la búsqueda por título
-                // Luego, muestra el formulario de búsqueda por salario
-                salarySearchForm.style.display = 'block';
-            });
-        });
-    </script>
-@endsection
 @section('content')
     @include('layouts.messages')
 
@@ -101,7 +85,18 @@
             @endif
             <a href="{{ url('storage/' . $offer->document_path) }}" class="button"> View Offer</a>
             <a href="{{ url('storage/' . $offer->document_path) }}" class="button" download>Download</a>
-            <button class="button" onclick>Chat</button>
+
+
+
+            @if (Auth::user()->role == 'standard')
+            <form class="A" action="{{ route('chat.createChat', ['offer' => $offer->id]) }}" method="post">
+            @csrf
+                <button class="button" type="submit">Chat</button>
+            </form>
+            @else
+            <a href="{{ route('chat.chat-list' , ['offer' => $offer->id]) }}" class="button">View Chats</a>
+             @endif
+
             </div>
         </div>
 
