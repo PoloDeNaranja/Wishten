@@ -23,7 +23,7 @@
         <a href="{{ route('new-offer') }}" class="button">Upload Offer</a>
         @endif
 
-    </div>
+</div>
  <!-- {{-- <form class="search-bar" action="{{ route('my-offers')}}" method="get">
         @csrf
         <div>
@@ -59,7 +59,7 @@
                 </button>
             </label>
         </div>
-    </form>
+</form>
 
 @if (!$offers || $offers->isEmpty())
 <h1>No offers</h1>

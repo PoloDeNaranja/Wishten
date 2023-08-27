@@ -209,6 +209,17 @@ Route::middleware('auth', 'roles:admin')->group(function () {
 
 
     });
+    //Administración de mensajes
+    Route::controller(ChatController::class)->group(function(){
+
+        Route::get('adminMessages', 'adminMessages')->name('adminMessages');
+
+        Route::post('delete_message/{message}', 'deleteMessage')->name('message.delete');
+
+
+    });
+
+    
 });
 
 

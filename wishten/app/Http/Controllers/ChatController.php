@@ -60,6 +60,21 @@ class ChatController extends Controller
         return view('home-4')->with(['chats' =>  $offer->chats]);;
     }
 
+
+    function adminMessages() {
+        $messages = Message::all();
+
+        return view('adminMessages')->with('messages',$messages);
+    }
+
+    function deleteMessage(Message $message) {
+        
+        $message->delete();
+        return back()->with('success', 'The message was deleted successfully!');
+        
+        
+    }
+
     
 
 }
