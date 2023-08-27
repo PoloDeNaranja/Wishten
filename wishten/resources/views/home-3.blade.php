@@ -3,11 +3,11 @@
 @section('title', 'Chat')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{ url('/css/offerListStyle.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url('/css/chatStyle.css') }}">
 @endsection
 
 @section('js')
-    <script async src="{{ url('/js/popup.js') }}"></script>
+    <script async src="{{ url('/js/scrollbar.js') }}"></script>
 @endsection
 
 @section('content')
@@ -19,23 +19,32 @@
         <ul id="message-list">
             @foreach($conversation->messages()->orderBy('date&hour')->get() as $message)
             
-                <li class="{{ ($message->id_sender === Auth::id())}}">
-                    {{ $message->content }}
-                </li>
+            <li class="{{ ($message->id_sender === Auth::id())}}">
+                <div class="message-header">
+                    <strong>{{ $message->sender->name }}</strong>
+                </div>
+                <div class="message-content">
+                        {{ $message->content }}
+                </div>
+            </li>
             @endforeach
         </ul>
     </div>
 
  
-        
-        <form class="A" action="{{ route('chat.send_message', ['conversation' => $conversation->id]) }}" method="post">
-        @csrf
-            <input type="text" name ="message" id="message-input" placeholder="Type your message...">
-            
-                <button class="button" type="submit">Send</button>
+        <div id="input-content">
+            <form class="A" action="{{ route('chat.send_message', ['conversation' => $conversation->id]) }}" method="post">
+            @csrf
+                <input type="text" name ="message" id="message-input" placeholder="Type your message">
+                
+                    <button class="button" type="submit">Send</button>
             </form>
+        </div>
         
     
 
     
 @endsection
+
+
+    

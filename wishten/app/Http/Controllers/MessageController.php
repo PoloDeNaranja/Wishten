@@ -14,13 +14,13 @@ use Illuminate\Database\Eloquent\Builder;
 
 class MessageController extends Controller
 {
-    
+    //mostrar la pagina de chat 
     function create()
     {
         $users =User::all();
         return view('sendMessage',compact('users'));
     }
-
+    //almcenar cuando se ha creado el chat y enviado algo
     function store(Request $request)
     {
         $id_sender = auth()->user()->id;

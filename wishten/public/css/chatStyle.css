@@ -1,0 +1,71 @@
+#chat-content {
+    width: 400px; 
+    height: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;/*Mete scrollbar si es necesario*/
+    scrollbar-width: thin;/*La hago fina*/
+    scrollbar-color: #888 #f5f5f5;/*La parte que se mueve es gris y la fija es blanca*/
+    
+}
+
+#message-list {
+    list-style-type: none;
+    padding: 0;
+
+}
+
+#message-list li {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+
+.message-container {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.message-header {
+    font-weight: bold;
+    color: #333;
+
+}
+
+.message-content {
+    margin-top: 5px;
+}
+
+#message-input {
+    border: none;
+    border-radius: 16px;
+    background-color: #f8f6f6;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    outline: none;
+    margin-top: 15px; 
+    height: 30px;
+}
+
+.button {
+    background-color: #57CC99;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 10px;
+    cursor: pointer;
+    height: 35px;
+   
+}
+
+.button:hover {
+    background-color: #62dfa9;
+}

@@ -91,10 +91,10 @@
             @if (Auth::user()->role == 'standard')
             <form class="A" action="{{ route('chat.createChat', ['offer' => $offer->id]) }}" method="post">
             @csrf
-                <button class="button" type="submit">Chat</button>
+            <button class="button chat-button" type="submit">Chat</button>
             </form>
             @else
-            <a href="{{ route('chat.chat-list' , ['offer' => $offer->id]) }}" class="button">View Chats</a>
+            <a href="{{ route('chat.chat-list' , ['offer' => $offer->id]) }}" class="button viewchat-button">View Chats</a>
              @endif
 
             </div>

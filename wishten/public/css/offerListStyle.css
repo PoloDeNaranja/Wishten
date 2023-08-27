@@ -130,11 +130,27 @@ p.description {
     cursor: pointer;
 
 }
+.chat-button{
+    font-size: 16px;
+    background-color: #38A3A5;
+}
 
+.viewchat-button{
+    background-color: #38A3A5;
+    
+}
 
 .button:hover {
     background-color: #5cdba4;
 }
+.chat-button:hover{
+background-color: #52c6c8;
+}
+
+.viewchat-button:hover{
+    background-color: #52c6c8;
+}
+    
 
 .search-bar {
     margin-top: 2%;
