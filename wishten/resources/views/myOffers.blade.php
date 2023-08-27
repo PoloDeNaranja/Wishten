@@ -87,13 +87,25 @@
 
             </div>
             <div class="buttons">
-            
+
             @if (Auth::user()->can('update', $offer))
             <a href="{{ route('offer.edit', ['offer'=>$offer->id]) }}"class="button"> Edit Offer</a>
             @endif
             <a href="{{ url('storage/' . $offer->document_path) }}" class="button"> View Offer</a>
             <a href="{{ url('storage/' . $offer->document_path) }}" class="button" download>Download</a>
-            <button class="button" onclick>Chat</button>
+
+
+
+            @if (Auth::user()->role == 'standard')
+            <form class="A" action="{{ route('chat.createChat', ['offer' => $offer->id]) }}" method="post">
+            @csrf
+            <button class="button chat-button" type="submit">Chat</button>
+            </form>
+            @endif
+            @if (Auth::user()->can('update', $offer))
+            <a href="{{ route('chat.chat-list' , ['offer' => $offer->id]) }}" class="button viewchat-button">View Chats</a>
+             @endif
+
             </div>
         </div>
 

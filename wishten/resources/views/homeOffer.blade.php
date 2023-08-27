@@ -93,7 +93,8 @@
             @csrf
             <button class="button chat-button" type="submit">Chat</button>
             </form>
-            @else
+            @endif
+            @if (Auth::user()->can('update', $offer))
             <a href="{{ route('chat.chat-list' , ['offer' => $offer->id]) }}" class="button viewchat-button">View Chats</a>
              @endif
 
