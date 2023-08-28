@@ -20,8 +20,9 @@ class Message extends Model
      */
     protected $fillable = [
         'id_sender',
-        'content'
-        
+        'content',
+        'date'
+
     ];
     /**
      * Da el id de la conversaicón a la que pertenece el mensaje
@@ -38,5 +39,5 @@ class Message extends Model
         return $this->belongsTo(User::class, 'id_sender');
     }
 
-    
+
 }

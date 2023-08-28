@@ -19,9 +19,9 @@ class ChatController extends Controller
         return view('home-3')->with(['conversation' =>  $conversation]);
     }
 
-    
+
     function createChat(Offer $offer){
-       
+
         $offer = Offer::findOrFail($offer->id);
         $chat = $offer->chats()->where('id_user', Auth::user()->id)->first();
 
@@ -48,11 +48,12 @@ class ChatController extends Controller
         ]);
 
         $conversation->messages()->create([
-            'id_sender' => Auth::id(),
-            'content' => $request->message
+            'id_sender' =>  Auth::id(),
+            'content'   =>  $request->message,
+            'date' =>  date("Y-m-d H:i:s")
         ]);
 
-        return back();  
+        return back();
     }
 
     function chatList(Request $request){
@@ -68,13 +69,13 @@ class ChatController extends Controller
     }
 
     function deleteMessage(Message $message) {
-        
+
         $message->delete();
         return back()->with('success', 'The message was deleted successfully!');
-        
-        
+
+
     }
 
-    
+
 
 }

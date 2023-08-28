@@ -19,10 +19,10 @@ return new class extends Migration
             $table->foreignId('id_sender')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             // $table->foreignId('id_receiver')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('content')->nullable();
-            $table->timestamp('date&hour')->nullable();//laravel va a coger la fecha y hora en la que se ha metido en la tabla la entrada, si por 
+            $table->timestamp('date')->nullable();//laravel va a coger la fecha y hora en la que se ha metido en la tabla la entrada, si por
             //si por algún laravel no es capaz de actualizar automaticamente esa columna a la hora de crear la entrada se deja a null
 
-            
+
         });
     }
 

@@ -1,5 +1,5 @@
 #chat-content {
-    width: 400px; 
+    width: 400px;
     height: 400px;
     margin: 0 auto;
     padding: 20px;
@@ -9,7 +9,7 @@
     overflow-y: auto;/*Mete scrollbar si es necesario*/
     scrollbar-width: thin;/*La hago fina*/
     scrollbar-color: #888 #f5f5f5;/*La parte que se mueve es gris y la fija es blanca*/
-    
+
 }
 
 #message-list {
@@ -45,13 +45,19 @@
     margin-top: 5px;
 }
 
+.message-date {
+    margin-left: 50%;
+    color: gray;
+    font-size: 12px;
+}
+
 #message-input {
     border: none;
     border-radius: 16px;
     background-color: #f8f6f6;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     outline: none;
-    margin-top: 15px; 
+    margin-top: 15px;
     height: 30px;
 }
 
@@ -63,7 +69,7 @@
     padding: 10px 10px;
     cursor: pointer;
     height: 35px;
-   
+
 }
 
 .button:hover {
