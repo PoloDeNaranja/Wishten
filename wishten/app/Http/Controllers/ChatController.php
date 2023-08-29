@@ -58,8 +58,11 @@ class ChatController extends Controller
 
     function chatList(Request $request){
         $offer = Offer::findOrFail($request->offer);
-        return view('chatList')->with(['chats' =>  $offer->chats]);;
+        return view('chatList')->with(['chats' =>  $offer->chats()->withCount('messages')->having('messages_count', '>', 0)->get()]);
     }
+
+    
+
 
     function userChatList(Request $request){
         $chats = Auth::user()->conversations()->withCount('messages')->having('messages_count', '>', 0)->get();
