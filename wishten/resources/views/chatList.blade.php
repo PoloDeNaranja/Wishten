@@ -13,14 +13,6 @@
 @section('content')
     @include('layouts.messages')
 
-    
-
-
-
-
-
-
-
     @if (!$chats || $chats->isEmpty())
     <h2>No chats</h2>
     @else
@@ -34,7 +26,7 @@
             
                 <div class="buttons">
                 
-                    <a href="{{ route('home-3' , ['conversation' => $chat->id]) }}" class="button">Open chat</a>
+                    <a href="{{ route('chat.index' , ['conversation' => $chat->id]) }}" class="button">Open chat</a>
                 
 
                 </div>

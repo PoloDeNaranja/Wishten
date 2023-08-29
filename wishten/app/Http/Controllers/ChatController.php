@@ -13,10 +13,10 @@ use Illuminate\Database\Eloquent\Builder;
 
 class ChatController extends Controller
 {
-    public function home3(Request $request)
+    public function index(Request $request)
     {
         $conversation = Conversation::findOrFail($request['conversation']);
-        return view('home-3')->with(['conversation' =>  $conversation]);
+        return view('chat')->with(['conversation' =>  $conversation]);
     }
 
 
@@ -26,7 +26,7 @@ class ChatController extends Controller
         $chat = $offer->chats()->where('id_user', Auth::user()->id)->first();
 
         if($chat){
-            return redirect()->route("home-3",['conversation' =>  $chat]);
+            return redirect()->route("chat.index",['conversation' =>  $chat]);
         }
 
         $user_id = Auth::user()->id;
@@ -36,7 +36,7 @@ class ChatController extends Controller
             'id_user' =>  $user_id,
             'id_company'   =>  $company_id
         ]);
-        return redirect()->route("home-3",['conversation' =>  $chat]);
+        return redirect()->route("chat.index",['conversation' =>  $chat]);
     }
 
     function sendMessage(Conversation $conversation,Request $request){
@@ -58,7 +58,7 @@ class ChatController extends Controller
 
     function chatList(Request $request){
         $offer = Offer::findOrFail($request->offer);
-        return view('home-4')->with(['chats' =>  $offer->chats]);;
+        return view('chatList')->with(['chats' =>  $offer->chats]);;
     }
 
     function userChatList(Request $request){

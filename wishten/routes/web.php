@@ -157,7 +157,7 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(ChatController::class)->group(function(){
 
-        Route::get('/home3','home3')->name('home-3');
+        Route::get('/chat','index')->name('chat.index');
 
         Route::post('/createChat/{offer}', 'createChat')->name('chat.createChat');
 
