@@ -21,6 +21,9 @@
         @if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
         <a href="{{ route('new-offer') }}" class="button">Upload Offer</a>
         @endif
+        @if (Auth::user()->role == 'standard')
+        <a href="{{ route('chat.user-chat-list') }}" class="button">My Chats</a>
+        @endif
 
     </div>
 

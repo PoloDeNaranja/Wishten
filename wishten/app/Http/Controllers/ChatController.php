@@ -61,6 +61,10 @@ class ChatController extends Controller
         return view('home-4')->with(['chats' =>  $offer->chats]);;
     }
 
+    function userChatList(Request $request){
+        $chats = Auth::user()->conversations()->withCount('messages')->having('messages_count', '>', 0)->get();
+        return view('myChats')->with(['chats' =>  $chats]);
+    }
 
     function adminMessages() {
         $messages = Message::all();

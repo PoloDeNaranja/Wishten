@@ -26,7 +26,7 @@
                 <th>Id_Conversation</th>
                 <th>Id_Sender</th>
                 <th>Content</th>
-                <!-- <th>Date&Hour</th> -->
+                <th>Date</th>
                 <th>Action</th>
             </tr>
             @foreach ($messages as $message)
@@ -35,7 +35,7 @@
                     <td>{{ $message->id_conversation }}</td>
                     <td>{{ $message->id_sender }}</td>
                     <td>{{ $message->content }}</td>
-                    
+                    <td>{{ $message->date }}</td>
                     <td>
                         <div class="action-buttons">
 
@@ -45,6 +45,8 @@
                             </form>
                         </div>
                     </td>
+
+                    
                 </tr>
 
             @endforeach

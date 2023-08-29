@@ -164,6 +164,9 @@ Route::middleware('auth')->group(function () {
         Route::post('/send-message/{conversation}', 'sendMessage')->name('chat.send_message');
 
         Route::get('/chat-list','chatList')->name('chat.chat-list');
+
+        Route::get('/user-chat-list','userChatList')->name('chat.user-chat-list');
+
     });
     
 });
