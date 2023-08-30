@@ -13,12 +13,10 @@
 @section('content')
     @include('layouts.messages')
 
-
-
     <div id="chat-content">
         <ul id="message-list">
             @foreach($conversation->messages()->orderBy('date')->get() as $message)
-
+               
             <li class="{{ ($message->id_sender === Auth::id())}}">
                 <div class="message-header">
                     <strong>{{ $message->sender->name }}</strong>
@@ -43,8 +41,6 @@
                     <button class="button" type="submit">Send</button>
             </form>
         </div>
-
-
 
 
 @endsection
