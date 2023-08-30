@@ -54,6 +54,7 @@
                             <form action="{{ route('offer.delete', ['offer' => $offer->id, 'admin' => true]) }}" method="post">
                             <a href="{{ url('storage/' . $offer->document_path) }}" class="button"> View Offer</a>
                             <a href="{{ url('storage/' . $offer->document_path) }}" class="button" download>Download</a>
+                            <a href="{{ route('offer.edit', ['offer'=>$offer->id]) }}"class="button"> Edit</a>
                                 @csrf
                                 <button class="button red" type="submit">Delete</button>
                             </form>
