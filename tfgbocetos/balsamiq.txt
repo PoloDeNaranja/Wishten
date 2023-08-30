@@ -1,9 +1,0 @@
-Para la realización de los bocetos de este proyecto se ha decidido usar la herramienta Balsamiq Wireframes.
-Esta herramienta nos permite realizar mockups, wireframes y prototipos de aplicaciones entre otras funcionalidades ofreciéndonos una fidelidad media. Se decidió usar esta herramienta debido a que se tenían conocimientos previos sobre su funcionamiento y a que, la forma en que permite representar las diferentes vistas de una aplicación web, es suficiente para pasar a digital los bocetos a papel sin tener que realizar modificaciones a los prototipos. 
-Balsamiq Wireframes es una herramienta de pago, pero ofrece la posibilidad de obtener una prueba en la nube durante un mes.
-Existen números herramientas de prototipado además de Balsamiq Wireframes. Un ejemplo puede ser Figma, una de las más utilizadas a la hora de representar interfaces gráficas. Sin embargo, como para representar los bocetos no era necesario plasmar el flujo de acciones, se consideró que sería mejor no utilizarla ya que Balsamiq sería más adecuada para ello.
-Otro ejemplo podría ser Just in Mind pero es una herramienta que ofrece una gran fidelidad y está pensada para utilizarse en la representación de prototipos más avanzados.
-También existen algunas herramientas muy similares a Balsamiq Wireframes como puede ser Pencil, pero no se utilizaron debido a que no aportaban ninguna mejora a la hora de realizar los respecto a Balsamiq.
-
-
-https://balsamiq.com/wireframes/?gad=1&gclid=Cj0KCQjw_O2lBhCFARIsAB0E8B-KYSxak2ZbQWpFKAGWMTha8Uo7eSkxTiLPWtvmhK4QK4scJhyqniUaAoT6EALw_wcB
