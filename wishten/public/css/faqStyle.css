@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    justify-content: center;
+    
+    
+}
+
+.videos{
+    background-color: lightblue;   
+    padding: 35px;
+    width: 350px;
+    text-align: center;
+    
+}
+
+.videos h2{
+    margin-bottom: 15px;
+}
+
+.offers {
+    background-color: lightblue;   
+    padding: 35px;
+    width: 350px;
+    text-align: center;
+    margin-left:100px;
+
+}
+
+.offers h2{
+    margin-bottom: 15px;
+}
+
+.card {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.card p {
+    margin: 10px 0 0;
+}
+
