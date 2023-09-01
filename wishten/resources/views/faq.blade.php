@@ -9,7 +9,7 @@
 @section('content')
     @include('layouts.messages')
 
-    <div class="container">
+    <div class="cont">
 
         <div class="videos">
             <h2>Videos</h2>

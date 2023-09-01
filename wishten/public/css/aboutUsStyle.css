@@ -1,7 +1,10 @@
 .image-rectangle{
     position: relative;
-    /* overflow:hidden; */
+    overflow:hidden; 
     text-align: center;
+    /* margin-top: -95px;  */
+    width: 100%;
+    
 }
 
 
@@ -11,7 +14,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: black;
+    color: rgb(27, 27, 29);
 } 
 
 .image-overtext h2{
@@ -28,6 +31,8 @@
 .about-us {
     text-align: center;
     padding: 20px;
+    margin-top: 10px;
+    
 }
 
 .about-info {
@@ -46,3 +51,4 @@
     max-width: 100%;
     height: auto;
 }
+

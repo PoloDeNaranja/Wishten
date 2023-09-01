@@ -32,6 +32,11 @@ Route::controller(HomeController::class)->group(function(){
 //Ruta de tutoriales
 Route::view('/tutorials', 'homeGuest');
 
+//Rutas de footer
+Route::view('/aboutUs', 'aboutUs');
+
+Route::view('/FAQ', 'faq');
+
 // Rutas de Login y Registro
 Route::controller(AuthController::class)->group(function(){
 

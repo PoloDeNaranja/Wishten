@@ -78,8 +78,8 @@
 
             <div class="info">
                 <h2>Wishten</h2>
-                <a href="#">About us</a>
-                <a href="#">FAQ</a>
+                <a href="/aboutUs">About us</a>
+                <a href="/FAQ">FAQ</a>
                 <a href="#">Services</a>
             </div>
             <div class="redes">
