@@ -30,15 +30,6 @@ class OfferController extends Controller
         ]);
     }
 
-    function downloadOffer($document){
-        $filePath = storage_path('app/public/' . $document);
-        if (file_exists($filePath)) {
-            return response()->download($filePath);
-        } else {
-        abort(404, 'El documento no existe.');
-        }
-
-    }
 
     //Devuelve la vista con los resultados de buscar por título
     function OfferResults(Request $request) {

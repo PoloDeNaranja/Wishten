@@ -1,9 +1,16 @@
+.container{
+    min-height: 100%;  
+    padding: 0;
+     
+}
+
 .image-rectangle{
     position: relative;
     overflow:hidden; 
     text-align: center;
     /* margin-top: -95px;  */
     width: 100%;
+   
     
 }
 
@@ -14,7 +21,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: rgb(27, 27, 29);
+    color: rgb(244, 244, 248);
 } 
 
 .image-overtext h2{
@@ -26,6 +33,7 @@
     width: 100%;
     height:auto;
     object-fit: cover;
+    
 }
 
 .about-us {

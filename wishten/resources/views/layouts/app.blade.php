@@ -80,13 +80,13 @@
                 <h2>Wishten</h2>
                 <a href="/aboutUs">About us</a>
                 <a href="/FAQ">FAQ</a>
-                <a href="#">Services</a>
+               
             </div>
             <div class="redes">
             <a href="https://github.com/PoloDeNaranja/Wishten" class="nav-link" title="Github">
                 <i class="fa-brands fa-github"></i>
             </a>
-            <a href="#" class="nav-link">
+            <!-- <a href="#" class="nav-link">
                 <i class="fa-brands fa-facebook"></i>
             </a>
             <a href="#" class="nav-link">
@@ -94,7 +94,7 @@
             </a>
             <a href="#" class="nav-link">
                 <i class="fa-brands fa-twitter"></i>
-            </a>
+            </a> -->
             </div>
             <div class="logo foot">
             <a href="/">

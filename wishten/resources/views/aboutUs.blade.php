@@ -13,7 +13,7 @@
         <div class="image-overtext">
             <h2>At wishten, we are always looking for the best for you.</h2>
         </div>
-        <img src = "{{ asset('background/a.jpg') }}" alt="About Us Image">
+        <img src = "{{ asset('background/a.png') }}" alt="About Us Image">
     </div>
 
     <div class ="about-us">
