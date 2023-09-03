@@ -17,7 +17,6 @@
     flex-direction: row;
     width: 100%;
     border-radius: 8px;
-    margin: 1%;
 }
 
 @media (min-width: 100px) {
@@ -35,8 +34,10 @@
 }
 
 .video-view video {
+    margin: 1%;
     height: auto;
     width: 98%;
+    border-radius: 8px;
 }
 
 .video-info {
@@ -186,10 +187,10 @@
     width: 90%;
 }
 
-/* #video-wrapper video {
+#video-wrapper video {
     position: relative;
     z-index: 100;
-} */
+}
 
 #video-wrapper .question-wrapper {
     position: absolute;
