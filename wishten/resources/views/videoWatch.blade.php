@@ -4,12 +4,14 @@
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ url('/css/videoWatchStyle.css') }}">
+<link href="https://vjs.zencdn.net/8.5.2/video-js.css" rel="stylesheet" />
 @endsection
 
 @if ($video->questions->count()>0)
 @section('js')
 <script async src="{{ url('/js/showQuiz.js') }}"></script>
     <script async src="{{ url('/js/answerQuiz.js') }}"></script>
+    <script async src="https://vjs.zencdn.net/8.5.2/video.min.js"></script>
 @endsection
 @endif
 
@@ -47,7 +49,28 @@
     <div class="video-view">
 
         <div id="video-wrapper">
-            <video controls src="{{ url('storage/'.$video->video_path) }}" id="video-element"></video>
+            <video
+            id="video-element"
+            class="video-js"
+            controls
+
+            width="1000"
+            height="auto"
+
+            data-setup="{}"
+            >
+                <source src="{{ url('storage/'.$video->video_path) }}" type="video/mp4" />
+                <p class="vjs-no-js">
+                To view this video please enable JavaScript, and consider upgrading to a
+                web browser that
+                <a href="https://videojs.com/html5-video-support/" target="_blank"
+                    >supports HTML5 video</a
+                >
+                </p>
+            </video>
+
+
+            {{-- <video controls src="{{ url('storage/'.$video->video_path) }}" id="video-element"></video> --}}
             <div id="questions">
                 @php($count = 0)
                 @foreach ($video->questions as $question)
