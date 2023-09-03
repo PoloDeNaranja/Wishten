@@ -12,6 +12,7 @@
     padding-top: 1%;
 }
 
+
 @media (max-width: 1200px) {
     .video-display {
       flex-direction: column;
@@ -26,11 +27,23 @@
     border-radius: 8px;
 }
 
+.action-buttons{
+    display:flex;
+    flex-direction: row;
+    
+    width:100%;
+}
+
 .video-view video {
     margin: 1%;
     width: 95%;
     height: auto;
     border-radius: 8px;
+}
+
+.video-view .button{
+    margin-left:1%;
+    width: 6%; 
 }
 
 .questions-list {

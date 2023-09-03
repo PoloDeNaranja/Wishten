@@ -73,7 +73,6 @@
 }
 
 .feature i:hover {
-    cursor: pointer;
     color: #38A3A5;
 }
 
@@ -95,7 +94,7 @@
     border-radius: 10px;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 200px) {
     .feature-list, .tutorial-videos {
         flex-direction: column;
     }

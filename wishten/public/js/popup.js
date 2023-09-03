@@ -1,3 +1,4 @@
+//La estructura del código se ha basado en los ejemplo que propociona para ventanas modales la página https://www.w3schools.com/
 //Boton de abrir popup
 var open = document.getElementsByClassName("openPopup");
 //Ventana del popup

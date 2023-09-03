@@ -19,7 +19,20 @@
 
     <div class="video-display">
         <div class="video-view">
-            <video controls src="{{ url('storage/' . $video->video_path) }}" id="video-element"></video>
+            <div class = "action-buttons">
+            @if (Auth::user()->can('update', $video))
+                <a class="button" href="{{ route('video.edit', ['video'=>$video->id]) }}">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    Edit
+                </a>
+            @endif
+            <a class="button" href="{{ route('video.watch', ['video'=>$video->id]) }}">
+                    <i class="fa-solid fa-eye"></i>
+                    Watch
+                </a>
+                
+            </div>
+        <video controls src="{{ url('storage/' . $video->video_path) }}" id="video-element"></video>
         </div>
         <div class="questions-list">
             @if ($video->questions->isEmpty())
