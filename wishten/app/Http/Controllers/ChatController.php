@@ -13,13 +13,14 @@ use Illuminate\Database\Eloquent\Builder;
 
 class ChatController extends Controller
 {
+    // Manda a la página de chat
     public function index(Request $request)
     {
         $conversation = Conversation::findOrFail($request['conversation']);
         return view('chat')->with(['conversation' =>  $conversation]);
     }
 
-
+    // crea el chat de cada oferta tomando al usuario logeado y a la empresa que ha subido la oferta
     function createChat(Offer $offer){
 
         $offer = Offer::findOrFail($offer->id);
@@ -38,7 +39,7 @@ class ChatController extends Controller
         ]);
         return redirect()->route("chat.index",['conversation' =>  $chat]);
     }
-
+    // Manda mensaje al chat desde el usuario logeado
     function sendMessage(Conversation $conversation,Request $request){
 
         $conversation = Conversation::findOrFail($conversation->id);
@@ -55,7 +56,7 @@ class ChatController extends Controller
 
         return back();
     }
-
+    //Lista todos los chats que tiene una oferta concreta de una empresa
     function chatList(Request $request){
         $offer = Offer::findOrFail($request->offer);
         return view('chatList')->with(['chats' =>  $offer->chats()->withCount('messages')->having('messages_count', '>', 0)->get()]);
@@ -63,18 +64,19 @@ class ChatController extends Controller
 
     
 
-
+    //Lista todos los chats que tiene una oferta concreta de una empresa
     function userChatList(Request $request){
         $chats = Auth::user()->conversations()->withCount('messages')->having('messages_count', '>', 0)->get();
         return view('myChats')->with(['chats' =>  $chats]);
     }
 
+    // Manda a la paagina de administracion de mensajes
     function adminMessages() {
         $messages = Message::all();
 
         return view('adminMessages')->with('messages',$messages);
     }
-
+    //elimina el mensaje 
     function deleteMessage(Message $message) {
 
         $message->delete();
