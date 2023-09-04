@@ -53,19 +53,23 @@
                 @foreach ($video->questions as $question)
                     <div id="question-{{ $question->id }}" class="question-wrapper" data-minute="{{ $question->question_time }}">
                         <p>{{ $question->text }}</p>
+                        {{-- @if ($question->answers->count() > 0) --}}
                         @if ($question->answers->count() > 0)
                         <div class="answer-list">
+
                             @foreach ($question->answers as $answer)
                                 <label for="checkbox-{{ $answer->id }}">
                                     <input type="checkbox" class="answer-input" name="answer-{{ $count }}" id="checkbox-{{ $answer->id }}" value="{{ $answer->id }}" data-correct="{{ $answer->is_correct }}">{{ $answer->text }}
                                 </label>
                             @endforeach
+
                         </div>
+                        @endif
                         <button class="button answer-btn">Answer</button>
                         <button class="button continue">Continue</button>
-                        @else
+                        {{-- @else
                         <button class="button continue show">Continue</button>
-                        @endif
+                        @endif --}}
 
                     </div>
                     @php($count++)

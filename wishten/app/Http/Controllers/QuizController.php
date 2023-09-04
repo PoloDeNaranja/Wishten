@@ -107,10 +107,12 @@ class QuizController extends Controller
         }
 
         foreach($video->questions as $question) {
-            $score_question = ($correct_answers[$question->id] - $incorrect_answers[$question->id])/$question->correctAnswers();
-            // si se han dado todas las respuestas correctas y ninguna incorrecta, se ha respondido correctamente a la pregunta
-            if($score_question === 1) {
-                $score++;
+            if($question->answers->count() > 0) {
+                $score_question = ($correct_answers[$question->id] - $incorrect_answers[$question->id])/$question->correctAnswers();
+                // si se han dado todas las respuestas correctas y ninguna incorrecta, se ha respondido correctamente a la pregunta
+                if($score_question === 1) {
+                    $score++;
+                }
             }
         }
         $video->views()->where('user_id', Auth::user()->id)->update(['score'=>$score, 'date'=>date("Y-m-d H:i:s")]);
