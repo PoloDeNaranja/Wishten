@@ -13,10 +13,12 @@
 }
 
 
+
 @media (max-width: 1200px) {
     .video-display {
       flex-direction: column;
     }
+    
 }
 
 .video-view {
@@ -30,8 +32,7 @@
 .action-buttons{
     display:flex;
     flex-direction: row;
-    
-    width:100%;
+    width:1200px;
 }
 
 .video-view video {
