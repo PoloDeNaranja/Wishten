@@ -13,7 +13,7 @@
         @csrf
         <div>
             <div>
-                <input class="search-input" id="subject_name" type="text" placeholder="Search" name="subject_name" list="subject_names" @isset($subject_name) value="{{ $subject_name }}"@endif>
+                <input class="search-input" id="subject_name" type="text" placeholder="Search by subject" name="subject_name" list="subject_names" @isset($subject_name) value="{{ $subject_name }}"@endif>
                 <datalist id="subject_names">
                     @foreach ($subjects as $subject)
                         <option value="{{ $subject->name }}"></option>
