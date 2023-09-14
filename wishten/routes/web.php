@@ -76,11 +76,6 @@ Route::middleware('auth')->group(function () {
 
         Route::post('follow/{user}', 'follow')->name('user.follow');
 
-        Route::get('/chat/{offerId}', 'ChatController@chatWithReceiver')->name('chat.with_receiver');
-
-        // Ruta para enviar mensajes
-        Route::post('/chat/send-message', 'ChatController@sendMessage')->name('chat.send_message');
-
     });
 
     // Rutas de gestión de vídeos
@@ -173,7 +168,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/user-chat-list','userChatList')->name('chat.user-chat-list');
 
     });
-    
+
 });
 
 
@@ -227,7 +222,7 @@ Route::middleware('auth', 'roles:admin')->group(function () {
 
     });
 
-    
+
 });
 
 

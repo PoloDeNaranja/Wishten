@@ -65,21 +65,6 @@ class OfferController extends Controller
         }
     }
 
-    // Devuelve la vista con las ofertas de un usuario
-    function userOffers(Request $request) {
-        $user = User::find($request['user']);
-        if(!$user) {
-            abort(404);
-        }
-        $offers = $user->offers()->latest()->get();
-        return view('offerLista')->with([
-            'offers'    =>  $offers,
-            'title'     =>  $user->name.'\' Offers'
-        ]);
-    }
-
-
-
     // Devuelve la vista de la página de administración de vídeos
     function adminOffers() {
         $offers = Offer::all();

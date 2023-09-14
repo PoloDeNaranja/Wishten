@@ -45,28 +45,9 @@ class Conversation extends Model
     /**
      * Relacion entre la tabla messages y la tabla conversations, una conversacion puede tener varios mensajes asociados,así puedo obtener todos los mensajes de una conversación $messages = $conversation->messages;
      */
-    public function messages() 
+    public function messages()
     {
         return $this->hasMany(Message::class, 'id_conversation');
     }
-    
-    // static function generate($user1Id, $user2Id)
-    // {
-    //     // Busca una conversación existente entre los dos usuarios
-    //     $conversation = self::where(function ($query) use ($user1Id, $user2Id) {
-    //         $query->where('id_user1', $user1Id)->where('id_user2', $user2Id);
-    //     })->orWhere(function ($query) use ($user1Id, $user2Id) {
-    //         $query->where('id_user1', $user2Id)->where('id_user2', $user1Id);
-    //     })->first();
 
-    //     if (!$conversation) {
-    //         // Si no existe, crea una nueva conversación
-    //         $conversation = self::create([
-    //             'id_user1' => $user1Id,
-    //             'id_user2' => $user2Id,
-    //         ]);
-    //     }
-
-    //     return $conversation;
-    // }
 }
