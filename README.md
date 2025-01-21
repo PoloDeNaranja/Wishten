@@ -1,6 +1,6 @@
 # Wishten
 ## Enlace al prototipo de Wishten
-[http://178.128.164.243/](http://178.128.164.243/)
+
 
 ## Cómo configurar el proyecto en tu máquina local
 1. Instalar [PHP](https://www.php.net/manual/es/install.php) y [Composer](https://getcomposer.org/doc/00-intro.md).
